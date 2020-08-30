@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pantallajuegos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/papiro_fondo"
+    tools:context=".ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment">
+
+    <TextView
+        android:id="@+id/TV_palabra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="164dp"
+        android:layout_marginLeft="164dp"
+        android:layout_marginTop="200dp"
+        android:text="@string/palabra"
+        android:textColor="@android:color/background_dark"
+        android:textSize="24sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TV_pregunta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="@string/pregunta"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/TV_palabra"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/TV_palabra"
+        app:layout_constraintTop_toBottomOf="@+id/TV_palabra" />
+
+    <RadioGroup
+        android:id="@+id/RG_SN"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_above="@id/TV_pregunta"
+        android:layout_marginTop="28dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/TV_pregunta"
+        app:layout_constraintHorizontal_bias="0.63"
+        app:layout_constraintStart_toStartOf="@+id/TV_pregunta"
+        app:layout_constraintTop_toBottomOf="@+id/TV_pregunta">
+
+        <RadioButton
+            android:id="@+id/RB_si"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/si" />
+
+        <RadioButton
+            android:id="@+id/RB_no"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/no" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/BT_comprobar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/comprobar"
+        app:layout_constraintEnd_toEndOf="@+id/RG_SN"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/RG_SN"
+        app:layout_constraintTop_toBottomOf="@+id/RG_SN" />
+</androidx.constraintlayout.widget.ConstraintLayout>

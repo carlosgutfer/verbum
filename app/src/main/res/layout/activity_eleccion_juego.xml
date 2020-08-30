@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/menu_vertical"
+    tools:context=".ui.pantallajuegos.modoJuegos.EleccionJuegoActivity">
+
+    <Button
+        android:id="@+id/BT_Escalera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="236dp"
+        android:background="@drawable/button_border"
+        android:padding="5dp"
+        android:text="@string/EscaleraInfinita"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/BT_QueSoy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_border"
+        android:text="@string/QueSoy"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/BT_Escalera"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/BT_Escalera"
+        app:layout_constraintTop_toBottomOf="@+id/BT_Escalera" />
+
+    <Button
+        android:id="@+id/BT_Herramientas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_border"
+        android:text="@string/CajaDeHerramientas"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/BT_QueSoy"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/BT_QueSoy"
+        app:layout_constraintTop_toBottomOf="@+id/BT_QueSoy"
+        app:layout_constraintVertical_bias="0.038" />
+</androidx.constraintlayout.widget.ConstraintLayout>

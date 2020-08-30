@@ -1,0 +1,116 @@
+package com.GF.verbum.DB.Entities;
+
+
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "Preguntas")
+public class PreguntasEntity {
+    @PrimaryKey
+    @NonNull
+    private String pregunta;
+    private boolean sustantivo;
+    private boolean articulo;
+    private boolean adjetivo;
+    private boolean pronombre;
+    private boolean verbo;
+    private boolean adverbio;
+    private boolean preposicion;
+    private boolean conjuncion;
+    private boolean interjeccion;
+
+    public PreguntasEntity(@NonNull String pregunta, boolean sustantivo, boolean articulo, boolean adjetivo, boolean pronombre, boolean verbo, boolean adverbio, boolean preposicion, boolean conjuncion, boolean interjeccion) {
+        this.pregunta = pregunta;
+        this.sustantivo = sustantivo;
+        this.articulo = articulo;
+        this.adjetivo = adjetivo;
+        this.pronombre = pronombre;
+        this.verbo = verbo;
+        this.adverbio = adverbio;
+        this.preposicion = preposicion;
+        this.conjuncion = conjuncion;
+        this.interjeccion = interjeccion;
+    }
+
+    @NonNull
+    public String getPregunta() {
+        return pregunta;
+    }
+
+    public void setPregunta(@NonNull String pregunta) {
+        this.pregunta = pregunta;
+    }
+
+    public boolean isSustantivo() {
+        return sustantivo;
+    }
+
+    public void setSustantivo(boolean sustantivo) {
+        this.sustantivo = sustantivo;
+    }
+
+    public boolean isArticulo() {
+        return articulo;
+    }
+
+    public void setArticulo(boolean articulo) {
+        this.articulo = articulo;
+    }
+
+    public boolean isAdjetivo() {
+        return adjetivo;
+    }
+
+    public void setAdjetivo(boolean adjetivo) {
+        this.adjetivo = adjetivo;
+    }
+
+    public boolean isPronombre() {
+        return pronombre;
+    }
+
+    public void setPronombre(boolean pronombre) {
+        this.pronombre = pronombre;
+    }
+
+    public boolean isVerbo() {
+        return verbo;
+    }
+
+    public void setVerbo(boolean verbo) {
+        this.verbo = verbo;
+    }
+
+    public boolean isAdverbio() {
+        return adverbio;
+    }
+
+    public void setAdverbio(boolean adverbio) {
+        this.adverbio = adverbio;
+    }
+
+    public boolean isPreposicion() {
+        return preposicion;
+    }
+
+    public void setPreposicion(boolean preposicion) {
+        this.preposicion = preposicion;
+    }
+
+    public boolean isConjuncion() {
+        return conjuncion;
+    }
+
+    public void setConjuncion(boolean conjuncion) {
+        this.conjuncion = conjuncion;
+    }
+
+    public boolean isInterjeccion() {
+        return interjeccion;
+    }
+
+    public void setInterjeccion(boolean interjeccion) {
+        this.interjeccion = interjeccion;
+    }
+}

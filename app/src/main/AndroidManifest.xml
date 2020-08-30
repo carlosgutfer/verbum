@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.GF.verbum">
+
+    <application
+        android:name=".commun.MyApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.pantallajuegos.Sintaxis.SintaxisActivity"></activity>
+        <activity android:name=".ui.pantallajuegos.RecordActivity" />
+        <activity android:name=".ui.pantallajuegos.modoJuegos.EleccionJuegoActivity" />
+        <activity android:name=".ui.pantallajuegos.modoJuegos.pantalla_juegos" />
+        <activity android:name=".ui.pantallajuegos.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

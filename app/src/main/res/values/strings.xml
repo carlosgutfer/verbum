@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">verbum</string>
+    <string name="Jugar">Jugar</string>
+    <string name="tutorial">tutorial</string>
+    <string name="sintaxis">Sintaxis</string>
+    <string name="palabra">Palabra</string>
+    <string name="pregunta">"pregunta recibida "</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
+    <string name="comprobar">Comprobar</string>
+    <string name="EscaleraInfinita">Escalera infinita</string>
+    <string name="QueSoy">¿Qué soy?</string>
+    <string name="CajaDeHerramientas">Caja de herramientas</string>
+    <string name="Comprobar">Comprobar</string>
+    <string name="Records">Mejores Puntuaciones</string>
+    <string name="Letras">Letras ganadas</string>
+    <string name="Ninguna">Ninguna </string>
+    <string name="SinRegistros">No hay registros todavía ¡Comienza a jugar para ver tus progresos!</string>
+</resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/menu_vertical"
+    tools:context=".ui.pantallajuegos.MainActivity">
+
+    <Button
+        android:id="@+id/BT_Jugar"
+        android:layout_width="237dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="244dp"
+        android:background="@drawable/button_border"
+        android:text="@string/Jugar"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Bt_tutorial"
+        android:layout_width="0dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_border"
+        android:text="@string/tutorial"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/BT_Jugar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/BT_Jugar"
+        app:layout_constraintTop_toBottomOf="@+id/BT_Jugar" />
+
+    <Button
+        android:id="@+id/Bt_Sintaxis"
+        android:layout_width="0dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_border"
+        android:text="@string/sintaxis"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/Bt_tutorial"
+        app:layout_constraintStart_toStartOf="@+id/Bt_tutorial"
+        app:layout_constraintTop_toBottomOf="@+id/Bt_tutorial" />
+
+    <Button
+        android:id="@+id/BT_Mejores"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_border"
+        android:text="@string/Records"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/Bt_Sintaxis"
+        app:layout_constraintStart_toStartOf="@+id/Bt_Sintaxis"
+        app:layout_constraintTop_toBottomOf="@+id/Bt_Sintaxis" />
+</androidx.constraintlayout.widget.ConstraintLayout>
