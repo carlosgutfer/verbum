@@ -1,9 +1,7 @@
 package com.GF.verbum.ui.pantallajuegos.modoJuegos.CajaDeHerramientas;
 
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +21,8 @@ import android.widget.TextView;
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.PreguntasEntity;
 import com.GF.verbum.R;
+import com.GF.verbum.commun.Constantes;
+import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.MainActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 
@@ -32,7 +32,7 @@ import java.util.Locale;
 public class HerramientasFragment extends Fragment {
 
     private ModosJuegosViewModel mViewModel;
-    private CheckBox op1, op2, op3,op4;
+    private CheckBox op1, op2, op3,op4, ninguna;
     private List<PreguntasEntity> allPreguntas;
     private List<PalabrasEntity> allPalabras;
     private Button comprobar;
@@ -78,17 +78,12 @@ public class HerramientasFragment extends Fragment {
     return v;
     }
 
-    private List<PreguntasEntity> setPreguntas(List<PreguntasEntity> preguntasEntities) {
-        this.allPreguntas=preguntasEntities;
-        return allPreguntas;
-    }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         findViewById();
-
-        tiempo();
 
         comprobar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,12 +91,10 @@ public class HerramientasFragment extends Fragment {
                 if(op1.isChecked()) {
                     comprobarrespuesta(p1);
                     op1.setChecked(false);
-
                 }
                 if(op2.isChecked()){
                     comprobarrespuesta(p2);
                     op2.setChecked(false);
-
                 }
                 if(op3.isChecked()){
                     comprobarrespuesta(p3);
@@ -111,9 +104,12 @@ public class HerramientasFragment extends Fragment {
                     comprobarrespuesta(p4);
                     op4.setChecked(false);
                 }
+                if(ninguna.isChecked()){
+                    comprobarTodas();
+                    ninguna.setChecked(false);
+                }
             countDownTimer.cancel();
             countDownTimer.onFinish();
-            tiempo();
             letrasconseguidas.setText(String.valueOf(letrasTotales));
             }
         });
@@ -132,6 +128,7 @@ public class HerramientasFragment extends Fragment {
         aleatorio= (int) (Math.random()*allPalabras.size());
         op4.setText(allPalabras.get(aleatorio).getPalabra());
         p4=allPalabras.get(aleatorio);
+        tiempo();
     }
     private void NuevaPregunta(){
         aleatorio= (int) (Math.random()*allPreguntas.size());
@@ -143,6 +140,10 @@ public class HerramientasFragment extends Fragment {
         this.allPalabras=palabrasEntities;
         return allPalabras;
     }
+    private List<PreguntasEntity> setPreguntas(List<PreguntasEntity> preguntasEntities) {
+        this.allPreguntas=preguntasEntities;
+        return allPreguntas;
+    }
 
     private void findViewById() {
         op1=v.findViewById(R.id.CB_op1);
@@ -152,7 +153,8 @@ public class HerramientasFragment extends Fragment {
         tiempo=v.findViewById(R.id.TV_tiempo);
         pregunta=v.findViewById(R.id.TV_PreguntaHerramientas);
         comprobar=v.findViewById(R.id.BT_comprobarHerramientas);
-        letrasconseguidas=v.findViewById(R.id.TV_LetrasConseguidas);
+        letrasconseguidas=v.findViewById(R.id.TV_LetrasConseguidasEscalera);
+        ninguna=v.findViewById(R.id.CB_ninguna);
     }
 
     private void tiempo(){
@@ -171,13 +173,14 @@ public class HerramientasFragment extends Fragment {
     private void JuegoFinalizado(){
         contador++;
         if (contador == 9) {
+            if(SharedPreferentManager.getIntegerValue(Constantes.MEJOR_HERRAMIENTAS)<letrasTotales){
+            SharedPreferentManager.setIntegerValue(Constantes.MEJOR_HERRAMIENTAS,letrasTotales);}
             Intent i = new Intent(getActivity(), MainActivity.class);
             startActivity(i);
         }
-
     }
 
-    private boolean comprobarrespuesta(PalabrasEntity p){
+    private void comprobarrespuesta(PalabrasEntity p){
         boolean valido=false;
         if(p.isAdjetivo()&&preguntaActual.isAdjetivo()){
              valido =true;
@@ -198,11 +201,65 @@ public class HerramientasFragment extends Fragment {
         }else if(p.isVerbo()&&preguntaActual.isVerbo()){
             valido=true;
         }
-        if(valido==true) {
+        if(valido) {
             letrasTotales++;
         }else{
             letrasTotales--;
         }
-        return valido;
     }
+
+    private void comprobarTodas(){
+        PalabrasEntity p=null;
+        boolean valido=false;
+        for (int i=0;i<4;i++) {
+            if (i == 0) {
+                p = p1;
+            }
+            if (i == 1) {
+                p = p2;
+            }
+            if (i == 2) {
+                p = p3;
+            }
+            if (i == 3) {
+                p = p4;
+            }
+
+            if (p.isAdjetivo() && preguntaActual.isAdjetivo()) {
+                valido = true;
+                break;
+            } else if (p.isAdverbio() && preguntaActual.isAdverbio()) {
+                valido = true;
+                break;
+            } else if (p.isArticulo() && preguntaActual.isArticulo()) {
+                valido = true;
+                break;
+            } else if (p.isConjuncion() && preguntaActual.isConjuncion()) {
+                valido = true;
+                break;
+            } else if (p.isInterjeccion() && preguntaActual.isConjuncion()) {
+                valido = true;
+                break;
+            } else if (p.isPreposicion() && preguntaActual.isPreposicion()) {
+                valido = true;
+                break;
+            } else if (p.isPronombre() && preguntaActual.isPronombre()) {
+                valido = true;
+                break;
+            } else if (p.isSustantivo() && preguntaActual.isSustantivo()) {
+                valido = true;
+                break;
+            } else if (p.isVerbo() && preguntaActual.isVerbo()) {
+                valido = true;
+                break;
+            }
+        }
+            if(valido) {
+                letrasTotales--;
+            }else{
+                letrasTotales++;
+            }
+        }
+
+
 }

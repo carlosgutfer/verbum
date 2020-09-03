@@ -15,15 +15,16 @@
         android:text="Hello"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.153" />
+        app:layout_constraintVertical_bias="0.124" />
 
     <CheckBox
         android:id="@+id/CB_op1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="12dp"
         android:padding="5dp"
         android:text="CheckBox"
         app:layout_constraintStart_toStartOf="@+id/TV_PreguntaHerramientas"
@@ -33,19 +34,17 @@
         android:id="@+id/CB_op2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="90dp"
-        android:layout_marginRight="90dp"
+        android:layout_marginTop="12dp"
         android:padding="5dp"
         android:text="CheckBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TV_PreguntaHerramientas" />
+        app:layout_constraintStart_toStartOf="@+id/CB_op3"
+        app:layout_constraintTop_toBottomOf="@+id/CB_op3" />
 
     <CheckBox
         android:id="@+id/CB_op3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:padding="5dp"
         android:text="CheckBox"
         app:layout_constraintStart_toStartOf="@+id/CB_op1"
@@ -55,7 +54,7 @@
         android:id="@+id/CB_op4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:padding="5dp"
         android:text="CheckBox"
         app:layout_constraintStart_toStartOf="@+id/CB_op2"
@@ -65,15 +64,16 @@
         android:id="@+id/BT_comprobarHerramientas"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="252dp"
+        android:layout_marginTop="276dp"
         android:layout_marginEnd="79dp"
         android:layout_marginRight="79dp"
         android:background="@drawable/pieza"
         android:text="@string/Comprobar"
+        android:textColor="@color/marron"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/CB_op3"
         app:layout_constraintTop_toBottomOf="@+id/TV_PreguntaHerramientas" />
 
@@ -90,7 +90,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/TV_LetrasConseguidas"
+        android:id="@+id/TV_LetrasConseguidasEscalera"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="32dp"
@@ -100,23 +100,20 @@
         android:gravity="center|center_horizontal|center_vertical"
         android:text="@string/Letras"
         android:textAllCaps="true"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@color/marron"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button2"
+    <CheckBox
+        android:id="@+id/CB_ninguna"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/pieza"
-        android:text="@string/Ninguna"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/BT_comprobarHerramientas"
-        app:layout_constraintStart_toStartOf="@+id/BT_comprobarHerramientas"
-        app:layout_constraintTop_toBottomOf="@+id/BT_comprobarHerramientas" />
+        android:layout_marginTop="12dp"
+        android:padding="5dp"
+        android:text="@string/ninguna"
+        app:layout_constraintStart_toStartOf="@+id/CB_op4"
+        app:layout_constraintTop_toBottomOf="@+id/CB_op4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

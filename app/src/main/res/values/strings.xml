@@ -16,4 +16,14 @@
     <string name="Letras">Letras ganadas</string>
     <string name="Ninguna">Ninguna </string>
     <string name="SinRegistros">No hay registros todavía ¡Comienza a jugar para ver tus progresos!</string>
+    <string name="ninguna">Ninguna de las anteriores</string>
+    <string name="Sustantivo">Sustantivo</string>
+    <string name="Adjetivo">Adjetivo</string>
+    <string name="Articulos">Artículo</string>
+    <string name="Adverbios">Adverbio</string>
+    <string name="Verbo">Verbo</string>
+    <string name="Pronombre">Pronombre</string>
+    <string name="conjuncion">Conjunción</string>
+    <string name="Interjeccion">Interjección</string>
+    <string name="Preposicion">Preposición</string>
 </resources>

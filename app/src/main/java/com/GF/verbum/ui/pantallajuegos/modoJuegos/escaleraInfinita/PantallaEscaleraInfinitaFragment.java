@@ -3,6 +3,7 @@ package com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,28 +14,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.GF.verbum.DB.Entities.PalabrasEntity;
+import com.GF.verbum.DB.Entities.PreguntasEntity;
 import com.GF.verbum.R;
+import com.GF.verbum.commun.Constantes;
+import com.GF.verbum.commun.SharedPreferentManager;
+import com.GF.verbum.ui.pantallajuegos.MainActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 
 import java.util.List;
 
-public class PantallaEscaleraInfinitaFragment extends Fragment {
+public class PantallaEscaleraInfinitaFragment extends Fragment implements View.OnClickListener {
 
 
-    List<PalabrasEntity> allPalabras;
+    private List<PalabrasEntity> allPalabras;
+    private List<PreguntasEntity> allPreguntas;
+    private PalabrasEntity palabraAleatoria;
+    private PreguntasEntity preguntaAleatoria;
+
     private ModosJuegosViewModel mpalabrasviewModel;
-    private TextView palabra,pregunta;
-    private RadioGroup RGSN;
-    private RadioButton si,no;
-    private Button comprobar;
-    private int constante;
+    private TextView palabra;
     private View v;
+    private int aleatorio;
+    private int letrasGanadas;
+    private int  posicion;
+
+    private TextView letras;
+    private Button sust, adj, pro, adv, verb, pre, conj, inter, art;
 
     public static PantallaEscaleraInfinitaFragment newInstance() {
 
@@ -45,81 +53,219 @@ public class PantallaEscaleraInfinitaFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.pantalla_juegos_fragment, container, false);
+        View view = inflater.inflate(R.layout.escalera_infinita_fragment, container, false);
         this.v=view;
-        palabra=view.findViewById(R.id.TV_palabra);
-        pregunta=view.findViewById(R.id.TV_pregunta);
-        si=view.findViewById(R.id.RB_si);
-        no=view.findViewById(R.id.RB_no);
-        RGSN=view.findViewById(R.id.RG_SN);
-        comprobar=view.findViewById(R.id.BT_comprobar);
+        findViewById();
+
+
+        this.aleatorio= (int) (Math.random()*2);
+
         mpalabrasviewModel=new ViewModelProvider(this).get(ModosJuegosViewModel.class);
         mpalabrasviewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {
             @Override
             public void onChanged(List<PalabrasEntity> palabrasEntities) {
                 setSustantivos(palabrasEntities);
-                palabra.setText(palabrasEntities.get(0).getPalabra());
-                pregunta.setText("¿Tiene género?");
-                RGSN.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup group, int checkedId) {
-                        if (si.isChecked()) {
-                            constante = 1;
-
-                        }
-                        if (no.isChecked()) {
-                            constante = 2;
-
-                        }
-
-                    }
-                });
+                if(aleatorio==0) {
+                    posicion= (int) (Math.random()*palabrasEntities.size());
+                    palabraAleatoria=palabrasEntities.get(posicion);
+                    palabra.setText(palabraAleatoria.getPalabra());
+                }
+            }
+        });
+        mpalabrasviewModel.getAllPreguntas().observe(getViewLifecycleOwner(), new Observer<List<PreguntasEntity>>() {
+            @Override
+            public void onChanged(List<PreguntasEntity> preguntasEntities) {
+                setPreguntas(preguntasEntities);
+                if(aleatorio==1) {
+                    posicion= (int) (Math.random()*preguntasEntities.size());
+                    preguntaAleatoria=preguntasEntities.get(posicion);
+                    palabra.setText(preguntaAleatoria.getPregunta());
+                }
             }
         });
 
         return view;
     }
 
-
-
-
-
-
-
-
-
+    private void findViewById() {
+        palabra=v.findViewById(R.id.TV_palabraInfinita);
+        art=v.findViewById(R.id.BT_Articulo);
+        sust=v.findViewById(R.id.BT_Sustantivo);
+        pro=v.findViewById(R.id.BT_Pronombre);
+        adj=v.findViewById(R.id.BT_Adjetivo);
+        adv=v.findViewById(R.id.BT_Adverbios);
+        verb=v.findViewById(R.id.BT_verbos);
+        pre=v.findViewById(R.id.BT_Preposicion);
+        conj=v.findViewById(R.id.BT_Conjuncion);
+        inter=v.findViewById(R.id.BT_Interjencion);
+        letras=v.findViewById(R.id.TV_LetrasConseguidasEscalera);
+    }
 
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        onClick();
 
-        palabra=v.findViewById(R.id.TV_palabra);
-        comprobar=v.findViewById(R.id.BT_comprobar);
-        comprobar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int size = allPalabras.size();
-                String getPalabra="allPlabras.get";
-
-                if(constante==1&allPalabras.get(0).getPalabra().equals(palabra.getText())) {
-                    Toast.makeText(getActivity(), "Mensaje SI preuba", Toast.LENGTH_LONG).show();
-                   int  numAleatorio=(int)Math.floor(Math.random()*(0-(size+1))+(size));
-                    palabra.setText(allPalabras.get(numAleatorio).getPalabra());
-                }else{
-                    Toast.makeText(getActivity(), "Mensaje NO preuba", Toast.LENGTH_LONG).show();
-
-                }
-
-            }
-        });
-        // TODO: Use the ViewModel
     }
 
-
+    private void onClick() {
+        sust.setOnClickListener(this);
+        adj.setOnClickListener(this);
+        pro.setOnClickListener(this);
+        adv.setOnClickListener(this);
+        verb.setOnClickListener(this);
+        pre.setOnClickListener(this);
+        conj.setOnClickListener(this);
+        inter.setOnClickListener(this);
+        art.setOnClickListener(this);
+    }
 
     private void setSustantivos(List<PalabrasEntity> palabras) {
         this.allPalabras=palabras;
+    }
+    private void setPreguntas(List<PreguntasEntity> preguntasEntities) { this.allPreguntas=preguntasEntities; }
+
+    @Override
+    public void onClick(View v) {
+        int view = v.getId();
+        if(view==R.id.BT_Sustantivo){
+            if(aleatorio==0&&palabraAleatoria.isSustantivo()) {
+                mostrar();
+                nuevaPalabra();
+            }else if(aleatorio==1&&preguntaAleatoria.isSustantivo()){
+                mostrar();
+                nuevaPalabra();
+            }
+            else{
+                JuegoFinalizado();
+            }
+
+        }
+        if(view==R.id.BT_Adjetivo){
+            if(aleatorio==0&&palabraAleatoria.isAdjetivo()) {
+                mostrar();
+                nuevaPalabra();
+            }else if(aleatorio==1&&preguntaAleatoria.isAdjetivo()){
+                mostrar();
+                nuevaPalabra();
+            }
+            else{
+                JuegoFinalizado();
+            }
+
+        }
+        if(view==R.id.BT_Pronombre){
+            if(aleatorio==0&&palabraAleatoria.isPronombre()) {
+                mostrar();
+                nuevaPalabra();
+            }else if(aleatorio==1&&preguntaAleatoria.isPronombre()) {
+                mostrar();
+                nuevaPalabra();
+            } else{
+                JuegoFinalizado();
+            }
+
+        }
+        if(view==R.id.BT_Adverbios){
+            if(aleatorio==0&&palabraAleatoria.isAdverbio()) {
+                mostrar();
+                nuevaPalabra();
+            }else if(aleatorio==1&&preguntaAleatoria.isAdverbio()){
+                mostrar();
+                nuevaPalabra();
+            } else{
+                JuegoFinalizado();
+            }
+
+        }
+        if(view==R.id.BT_verbos){
+            if(aleatorio==0&&palabraAleatoria.isVerbo()) {
+                mostrar();
+                nuevaPalabra();
+            }else if(aleatorio==1&&preguntaAleatoria.isVerbo()){
+                mostrar();
+                nuevaPalabra();
+            } else{
+                JuegoFinalizado();
+            }
+        }
+        if(view==R.id.BT_Preposicion){
+            if(aleatorio==0&&palabraAleatoria.isPreposicion()) {
+                mostrar();
+                nuevaPalabra();
+            }else if(aleatorio==1&&preguntaAleatoria.isPreposicion()){
+                mostrar();
+                nuevaPalabra();
+            } else{
+                JuegoFinalizado();
+            }
+
+        }
+        if(view==R.id.BT_Conjuncion){
+            if(aleatorio==0&&palabraAleatoria.isConjuncion()) {
+                mostrar();
+                nuevaPalabra();
+            }else if(aleatorio==1&&preguntaAleatoria.isConjuncion()){
+               mostrar();
+                nuevaPalabra();
+            } else{
+                JuegoFinalizado();
+            }
+
+        }
+        if(view==R.id.BT_Interjencion){
+            if(aleatorio==0&&palabraAleatoria.isInterjeccion()) {
+                mostrar();
+                nuevaPalabra();
+            }else if(aleatorio==1&&preguntaAleatoria.isInterjeccion()){
+                mostrar();
+                nuevaPalabra();
+            } else{
+                JuegoFinalizado();
+            }
+
+        }
+        if(view==R.id.BT_Articulo){
+            if(aleatorio==0&&palabraAleatoria.isArticulo()) {
+                mostrar();
+                nuevaPalabra();
+            }else if(aleatorio==1&&preguntaAleatoria.isArticulo()) {
+                mostrar();
+                nuevaPalabra();
+            }else{
+                JuegoFinalizado();
+            }
+
+        }
+
+    }
+
+    private void mostrar(){
+        letrasGanadas++;
+        letras.setText(String.valueOf(letrasGanadas));
+    }
+
+    private void nuevaPalabra() {
+        this.aleatorio=(int)(Math.random()*2);
+        if(aleatorio==0){
+            posicion= (int) (Math.random()*allPalabras.size());
+            palabraAleatoria=allPalabras.get(posicion);
+            palabra.setText(palabraAleatoria.getPalabra());
+        }else  if(aleatorio==1){
+            posicion= (int) (Math.random()*allPreguntas.size());
+            preguntaAleatoria=allPreguntas.get(posicion);
+            palabra.setText(preguntaAleatoria.getPregunta());
+        }
+    }
+
+    private void JuegoFinalizado(){
+
+            if(SharedPreferentManager.getIntegerValue(Constantes.MEJOR_ESCALERA)<letrasGanadas)
+                SharedPreferentManager.setIntegerValue(Constantes.MEJOR_ESCALERA,letrasGanadas);
+            Intent i = new Intent(getActivity(), MainActivity.class);
+            startActivity(i);
+
     }
 }
