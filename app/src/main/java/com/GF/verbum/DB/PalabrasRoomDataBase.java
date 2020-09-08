@@ -74,26 +74,15 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
                     PronombreAdjetivoAdverbio(dao);
                     PalabrasConCuatroOMasFunciones(dao);
                     Verbo(dao);
-
-
                     palabra = new PalabrasEntity("TRANQUILAMENTE",false,false,false,false,false,true,false,false,false);
                     dao.insert(palabra);
                     palabra = new PalabrasEntity("SUMAMENTE",false,false,false,false,false,true,false,false,false);
                     dao.insert(palabra);
                     palabra = new PalabrasEntity("INCLUSO",false,false,false,false,false,true,false,false,false);
                     dao.insert(palabra);
-                    palabra = new PalabrasEntity("ANTE",false,false,false,false,false,false,true,false,false);
-                    dao.insert(palabra);
-                    palabra = new PalabrasEntity("PARA",false,false,false,false,false,false,true,false,false);
-                    dao.insert(palabra);
-                    palabra = new PalabrasEntity("CABE",false,false,false,false,false,false,true,false,false);
-                    dao.insert(palabra);
-                    palabra = new PalabrasEntity("PERO",false,false,false,false,false,false,false,true,false);
-                    dao.insert(palabra);
-                    palabra = new PalabrasEntity("NI",false,false,false,false,false,false,false,true,false);
-                    dao.insert(palabra);
-                    palabra = new PalabrasEntity("SINO",false,false,false,false,false,false,false,true,false);
-                    dao.insert(palabra);
+                    Conjuncion(dao);
+                    Preposicion(dao);
+                    Interjeccion(dao);
 
 
 
@@ -106,6 +95,74 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
 
     };
 
+    private static void Conjuncion(PalabrasDao dao) {
+         PalabrasEntity palabra = new PalabrasEntity("PERO",false,false,false,false,false,false,false,true,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("NI",false,false,false,false,false,false,false,true,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SINO",false,false,false,false,false,false,false,true,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("Y",false,false,false,false,false,false,false,true,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("MAS",false,false,false,false,false,false,false,true,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("O",false,false,false,false,false,false,false,true,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("PORQUE",false,false,false,false,false,false,false,true,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("COMO",false,false,false,false,false,false,false,true,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("PUES",false,false,false,false,false,false,false,true,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("QUE",false,false,false,false,false,false,false,true,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SI",false,false,false,false,false,false,false,true,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("AUNQUE",false,false,false,false,false,false,false,true,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ERGO",false,false,false,false,false,false,false,true,false);
+        dao.insert(palabra);
+    }
+    private static void Preposicion(PalabrasDao dao) {
+         PalabrasEntity palabra = new PalabrasEntity("A",false,false,false,false,false,false,true,false,false);
+            dao.insert(palabra);
+        palabra = new PalabrasEntity("ANTE",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("BAJO",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CABE",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CON",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CONTRA",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("DE",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("DESDE",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("EN",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ENTRE",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("HACIA",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("PARA",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("POR",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SEGÚN",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SIN",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SO",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("TRAS",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("DURANTE",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("MEDIANTE",false,false,false,false,false,false,true,false,false);
+        dao.insert(palabra);
+    }
     private static void Verbo(PalabrasDao dao) {
         PalabrasEntity palabra = new PalabrasEntity("VIVIR",false,false,false,false,true,false,false,false,false);
         dao.insert(palabra);
@@ -208,8 +265,6 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         palabra = new PalabrasEntity("PAGAR",false,false,false,false,true,false,false,false,false);
         dao.insert(palabra);
     }
-
-
     private static void Articulos(PalabrasDao dao){
         PalabrasEntity palabra = new PalabrasEntity("EL", false, true, false, false, false, false, false, false, false);
         dao.insert(palabra);
@@ -342,6 +397,36 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("OLÉ",false,false,false,false,false,false,false,false,true);
         dao.insert(palabra);
+        palabra = new PalabrasEntity("AH",false,false,false,false,false,false,false,false,true);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("OH",false,false,false,false,false,false,false,false,true);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("GUAY",false,false,false,false,false,false,false,false,true);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("EH",false,false,false,false,false,false,false,false,true);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("HEY",false,false,false,false,false,false,false,false,true);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("UY",false,false,false,false,false,false,false,false,true);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("PUAJ",false,false,false,false,false,false,false,false,true);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("HOLA",false,false,false,false,false,false,false,false,true);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("OJALÁ",false,false,false,false,false,false,false,false,true);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("UF",false,false,false,false,false,false,false,false,true);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("BAH",false,false,false,false,false,false,false,false,true);
+        dao.insert(palabra);
+
+
+
+
+
+
+
+
     }
 //Añadir en el layout un aviso que diga que aquellas formas que admiten plural deben ser tenidas en cuentas a la hora de elegir que tipo de función puede desempeñar una palbra
     //Ejemplo: aparece por pantalla la palabra demasiado, pero debe entenderse como demasiado/demasiados
