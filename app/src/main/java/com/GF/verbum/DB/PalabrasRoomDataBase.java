@@ -97,33 +97,30 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
     private static void Adjetivos(PalabrasDao dao) {
          PalabrasEntity palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("ABURRIDO",false,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ÁCIDA",false,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ALEGRE",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("AMARGA",false,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("BLANDO",false,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ATREVIDO ",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("ATREVIDA",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("BONITA",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("BUEN",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
+
         palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
@@ -237,6 +234,72 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+    }
+    private static void AdjetivosSutantivos(PalabrasDao dao){
+       PalabrasEntity palabra = new PalabrasEntity("ÁCIDO",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ANCHO",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ANCHA",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("AZUL",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("BLANCO",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("BLANCA",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("BLANDA",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("BONITO",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("BUENO",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("BUENA",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CENTRAL",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("COMÚN",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CONOCIDO",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CONOCIDA",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CONTENTO",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CONTENTA",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CORTO",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CORTA",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+
+    }
+    private static void AdjetivoSutantatioAdverbio(PalabrasDao dao){
+        PalabrasEntity palabra = new PalabrasEntity("ALTO",true,false,true,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ALTA",true,false,true,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("AMARGO",true,false,true,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("BAJA",true,false,true,false,false,true,false,false,false);
+        dao.insert(palabra);
+    }
+    private static void AdjetivoInterjeccion(PalabrasDao dao){
+        PalabrasEntity palabra = new PalabrasEntity("CALIENTE",true,false,true,false,false,true,false,false,false);
+        dao.insert(palabra);
+    }
+    private static void AdjetivoAdverbio(PalabrasDao dao){
+      PalabrasEntity  palabra = new PalabrasEntity("CAPAZ",false,false,false,false,false,true,false,false,false);
         dao.insert(palabra);
     }
 
@@ -363,8 +426,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
             dao.insert(palabra);
         palabra = new PalabrasEntity("ANTE",false,false,false,false,false,false,true,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("BAJO",false,false,false,false,false,false,true,false,false);
-        dao.insert(palabra);
+
         palabra = new PalabrasEntity("CABE",false,false,false,false,false,false,true,false,false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("CON",false,false,false,false,false,false,true,false,false);
@@ -623,6 +685,8 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         palabra = new PalabrasEntity("TODA",true,false,true,true,false,true,false,false,false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("MÁS",true,false,true,true,false,true,false,true,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("BAJO",true,false,true,false,false,true,true,false,false);
         dao.insert(palabra);
     }
     private static void Interjeccion(PalabrasDao dao){
