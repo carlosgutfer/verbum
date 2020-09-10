@@ -51,16 +51,10 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
                     PalabrasDao dao = INSTANCE.DAO();
                     dao.deleteAll();
                     Sustantivos(dao);
-
-                    PalabrasEntity palabra = new PalabrasEntity("ESTRECHO",true,false,true,false,false,false,false,false,false);
-                    dao.insert(palabra);
-                    palabra = new PalabrasEntity("ROJO",true,false,true,false,false,false,false,false,false);
-                    dao.insert(palabra);
-                    palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-                    dao.insert(palabra);
-                    palabra = new PalabrasEntity("TRES",true,false,true,false,false,false,false,false,false);
-                    dao.insert(palabra);
-
+                    AdjetivosSutantivos(dao);
+                    AdjetivoSutantatioAdverbio(dao);
+                    AdjetivoInterjeccion(dao);
+                    AdjetivoAdverbio(dao);
                     Pronombres(dao);
                     Articulos(dao);
                     Adjetivos(dao);
@@ -70,30 +64,110 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
                     PronombreAdjetivoAdverbio(dao);
                     PalabrasConCuatroOMasFunciones(dao);
                     Verbo(dao);
-
-
-                    palabra = new PalabrasEntity("TRANQUILAMENTE",false,false,false,false,false,true,false,false,false);
-                    dao.insert(palabra);
-                    palabra = new PalabrasEntity("SUMAMENTE",false,false,false,false,false,true,false,false,false);
-                    dao.insert(palabra);
-                    palabra = new PalabrasEntity("INCLUSO",false,false,false,false,false,true,false,false,false);
-                    dao.insert(palabra);
-
                     Conjuncion(dao);
                     Preposicion(dao);
                     Interjeccion(dao);
-
-
-
-
-
-
+                    Adverbios(dao);
+                    AdverbiosPronombre(dao);
+                    AdverbioSustantivo(dao);
+                    AdverbioInterjeccion(dao);
+                    AdverbioPreposicion(dao);
+                    AdverbioPronombreSustantivo(dao);
                 }
             });
         }
 
     };
-
+    private static void Sustantivos(PalabrasDao dao) {
+        PalabrasEntity palabra = new PalabrasEntity("HIERRO",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("PATO",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("MESA",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CREMA",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CAFÉ",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ESTRELLA",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("EXPLOSIÓN",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("GUITARRA",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("PLÁSTICO",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("NAVAJA",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("MARTILLO",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("LIBROS",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("EMBARCACIÓN",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("RUEDA",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("PELO",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("AGUJETA",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("LIBROS",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("PERRO",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("FELICIDAD",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SATÉLITE",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("TEMPLO",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("LENTES",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("BOLÍGRAFO",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("BOTELLA",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CASTILLO",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ENANO",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CASA",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("LIBRO",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("PERSONA",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("METAL",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("TELÉFONO",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ESTADÍSTICA",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("MAPA",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("MENSAJE",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("COHETE",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("REY",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("EDIFICIO",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CÉSPED",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CANDIDTAO",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("RECIPIENTE",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("DIARIOS",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SILLA",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("DEPORTE",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("RÚCULA",true,false,false,false,false,false,false,false,false);
+        dao.insert(palabra);
+    }
     private static void Adjetivos(PalabrasDao dao) {
          PalabrasEntity palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
@@ -191,89 +265,73 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("SANA",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("SOCIAL",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("SOLA",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("SOSO",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("SOSA",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("TÍMIDO",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("TÍMIDA",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("TONTA",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("VERDADERO",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("VERDADERA",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("VIVA",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("ERRADO",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("ERRADA",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("CARO",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("IMPRECISO",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("IMPRECISA",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ACTUAL",false,false,true,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("PRECISO",false,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
     }
     private static void AdjetivosSutantivos(PalabrasDao dao){
        PalabrasEntity palabra = new PalabrasEntity("ÁCIDO",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("TONTO",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CARA",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("VIVO",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("VIEJO",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("VIEJA",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("VERDE",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("PRECISA",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ÚTIL",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("TRISTE",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SINVERGÜENZA",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SOLO",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SEGUNDO",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SIMPLE",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SEGUNDA",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SECO",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SECA",true,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("SALADO",true,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
@@ -399,6 +457,10 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("MENOR",true,false,true,false,false,false,false,false,false);
         dao.insert(palabra);
+        palabra = new PalabrasEntity("CLARA",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SEGURA",true,false,true,false,false,false,false,false,false);
+        dao.insert(palabra);
     }
     private static void AdjetivoSutantatioAdverbio(PalabrasDao dao){
         PalabrasEntity palabra = new PalabrasEntity("ALTO",true,false,true,false,false,true,false,false,false);
@@ -423,6 +485,15 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("RÁPIDO",true,false,true,false,false,true,false,false,false);
         dao.insert(palabra);
+        palabra = new PalabrasEntity("TEMPRANO",true,false,true,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("MAL",true,false,true,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CLARO",true,false,true,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SEGURO",true,false,true,false,false,true,false,false,false);
+        dao.insert(palabra);
+
     }
     private static void AdjetivoInterjeccion(PalabrasDao dao){
         PalabrasEntity palabra = new PalabrasEntity("CALIENTE",true,false,true,false,false,true,false,false,false);
@@ -441,95 +512,13 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("PRIMERO",false,false,false,false,false,true,false,false,false);
         dao.insert(palabra);
-    }
-    private static void Sustantivos(PalabrasDao dao) {
-        PalabrasEntity palabra = new PalabrasEntity("HIERRO",true,false,false,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("TEMPRANA",false,false,false,false,false,true,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("PATO",true,false,false,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("ANTES",false,false,false,false,false,true,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("MESA",true,false,false,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("DESPUÉS",false,false,false,false,false,true,false,false,false);
         dao.insert(palabra);
-         palabra = new PalabrasEntity("CREMA",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("CAFÉ",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ESTRELLA",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("EXPLOSIÓN",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("GUITARRA",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("PLÁSTICO",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("NAVAJA",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("MARTILLO",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("LIBROS",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("EMBARCACIÓN",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("RUEDA",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("PELO",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("AGUJETA",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("LIBROS",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("PERRO",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("FELICIDAD",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("SATÉLITE",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("TEMPLO",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("LENTES",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("BOLÍGRAFO",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("BOTELLA",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("CASTILLO",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ENANO",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("CASA",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("LIBRO",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("PERSONA",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("METAL",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("TELÉFONO",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ESTADÍSTICA",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("MAPA",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("MENSAJE",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("COHETE",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("REY",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("EDIFICIO",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("CÉSPED",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("CANDIDTAO",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("RECIPIENTE",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("DIARIOS",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("SILLA",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("DEPORTE",true,false,false,false,false,false,false,false,false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("RÚCULA",true,false,false,false,false,false,false,false,false);
+        palabra = new PalabrasEntity("ANTEAYER",false,false,false,false,false,true,false,false,false);
         dao.insert(palabra);
     }
     private static void Conjuncion(PalabrasDao dao) {
@@ -586,8 +575,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("POR",false,false,false,false,false,false,true,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("SEGÚN",false,false,false,false,false,false,true,false,false);
-        dao.insert(palabra);
+
         palabra = new PalabrasEntity("SIN",false,false,false,false,false,false,true,false,false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("SO",false,false,false,false,false,false,true,false,false);
@@ -801,6 +789,8 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("ALGUIEN",true,false,true,true,false,false,false,false,false);
         dao.insert(palabra);
+        palabra = new PalabrasEntity("PRONTO",true,false,true,true,false,false,false,false,false);
+        dao.insert(palabra);
     }
     private static void PronombreAdjetivoAdverbio(PalabrasDao dao){
         PalabrasEntity palabra = new PalabrasEntity("MUCHO",false,false,true,true,false,true,false,false,false);
@@ -826,6 +816,131 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         palabra = new PalabrasEntity("MÁS",true,false,true,true,false,true,false,true,false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("BAJO",true,false,true,false,false,true,true,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ASÍ",false,false,true,false,false,true,false,true,true);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("COMO",true,false,false,false,false,true,true,true,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("JAMÁS",true,false,false,false,false,true,true,true,false);
+        dao.insert(palabra);
+
+    }
+    private static void Adverbios(PalabrasDao dao) {
+        PalabrasEntity palabra = new PalabrasEntity("ALLÍ", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("TAMPOCO", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("QUIZÁ", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("NUNCA", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("JAMÁS", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ALLÁ", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ENFRENTE", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("DENTRO", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ABAJO", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ABAJO", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ABAJO", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ABAJO", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ABAJO", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ENSEGUIDA", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("TODAVÍA", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ANOCHE", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("RECIÉN", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ACTUALMENTE", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ANTIGUAMENTE", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ÚLTIMAMENTE", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("RECIENTEMENTE", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ANTEANOCHE", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ANTEANOCHE", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("DEPRISA", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("GRATIS", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("APOSTA", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ADREDE", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("TRANQUILAMENTE", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("PENOSAMENTE", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("LIGERAMENTE", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("INDISTINTAMENTE", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CUIDADOSAMENTE", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("VELOZMENTE", false, false, false, false, false, true, false, false, false);
+        dao.insert(palabra);
+    }
+    private static void AdverbiosPronombre(PalabrasDao dao){
+        PalabrasEntity palabra = new PalabrasEntity("ACÁ",false,false,false,true,false,true,false,false,false);
+        dao.insert(palabra);
+    }
+    private static void AdverbioSustantivo(PalabrasDao dao){
+        PalabrasEntity palabra = new PalabrasEntity("AFUERA",true,false,false,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("NUNCA",true,false,false,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("SIEMPRE",true,false,false,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("CERCA",true,false,false,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("LEJOS",true,false,false,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ALREDEDOR",true,false,false,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("HOY",true,false,false,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("MAÑANA",true,false,false,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("AYER",true,false,false,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("TARDE",true,false,false,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("NO",true,false,false,false,false,true,false,false,false);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ACASO",true,false,false,false,false,true,false,false,false);
+        dao.insert(palabra);
+    }
+    private static void AdverbioInterjeccion(PalabrasDao dao){
+        PalabrasEntity palabra = new PalabrasEntity("AQUÍ",false,false,false,false,false,true,false,false,true);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("ARRIBA",false,false,false,false,false,true,false,false,true);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("FUERA",false,false,false,false,false,true,false,false,true);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("YA",false,false,false,false,false,true,false,false,true);
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("DESPACIO",false,false,false,false,false,true,false,false,true);
+        dao.insert(palabra);
+    }
+    private static void AdverbioPreposicion(PalabrasDao dao) {
+         PalabrasEntity palabra = new PalabrasEntity("SEGÚN", false, false, false, false, false, true, true, false, false);
+        dao.insert(palabra);
+    }
+    private static void AdverbioPronombreSustantivo(PalabrasDao dao) {
+        PalabrasEntity palabra = new PalabrasEntity("NADA", true, false, false, true, false, true, false, false, false);
         dao.insert(palabra);
     }
     private static void Interjeccion(PalabrasDao dao){
@@ -857,14 +972,6 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("BAH",false,false,false,false,false,false,false,false,true);
         dao.insert(palabra);
-
-
-
-
-
-
-
-
     }
 //Añadir en el layout un aviso que diga que aquellas formas que admiten plural deben ser tenidas en cuentas a la hora de elegir que tipo de función puede desempeñar una palbra
     //Ejemplo: aparece por pantalla la palabra demasiado, pero debe entenderse como demasiado/demasiados
