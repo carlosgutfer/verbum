@@ -25,7 +25,9 @@ import com.GF.verbum.commun.Constantes;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.MainActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.pantalla_juegos;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -33,8 +35,8 @@ public class HerramientasFragment extends Fragment {
 
     private ModosJuegosViewModel mViewModel;
     private CheckBox op1, op2, op3,op4, ninguna;
-    private List<PreguntasEntity> allPreguntas;
-    private List<PalabrasEntity> allPalabras;
+    private List<PreguntasEntity> allPreguntas = new ArrayList<>();
+    private List<PalabrasEntity> allPalabras = new ArrayList<>();
     private Button comprobar;
     private TextView tiempo,letrasconseguidas;
     private TextView pregunta;
@@ -43,6 +45,8 @@ public class HerramientasFragment extends Fragment {
     private int contador=0;
     private View v;
     private int letrasTotales=0;
+    private int dificultad;
+
 
 
 
@@ -50,8 +54,12 @@ public class HerramientasFragment extends Fragment {
     private PreguntasEntity preguntaActual;
 
 
-    public static HerramientasFragment newInstance() {
-        return new HerramientasFragment();
+    public static HerramientasFragment newInstance(int dificultad) {
+        HerramientasFragment herramientasFragment = new HerramientasFragment();
+        Bundle args = new Bundle();
+        args.putInt("dificultad", dificultad);
+        herramientasFragment.setArguments(args);
+        return  herramientasFragment;
     }
 
     @Override
@@ -60,7 +68,7 @@ public class HerramientasFragment extends Fragment {
         v= inflater.inflate(R.layout.herramientas_fragment, container, false);
         mViewModel = new ViewModelProvider(this).get(ModosJuegosViewModel.class);
         findViewById();
-        mViewModel.getAllPalabras().observe(getViewLifecycleOwner(), new Observer<List<PalabrasEntity>>() {
+        mViewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {
             @Override
             public void onChanged(List<PalabrasEntity> palabrasEntities) {
                 allPalabras=setPalabras(palabrasEntities);
@@ -68,11 +76,11 @@ public class HerramientasFragment extends Fragment {
             }
         });
 
-        mViewModel.getAllPreguntas().observe(getViewLifecycleOwner(), new Observer<List<PreguntasEntity>>() {
+        mViewModel.getAllPreguntas().observe(getActivity(), new Observer<List<PreguntasEntity>>() {
             @Override
             public void onChanged(List<PreguntasEntity> preguntasEntities) {
                 allPreguntas=setPreguntas(preguntasEntities);
-               NuevaPregunta();
+               NuevaPregunta(preguntasEntities);
             }
         });
     return v;
@@ -130,16 +138,55 @@ public class HerramientasFragment extends Fragment {
         p4=allPalabras.get(aleatorio);
         tiempo();
     }
-    private void NuevaPregunta(){
+    private void NuevaPregunta(List<PreguntasEntity> allPreguntas){
         aleatorio= (int) (Math.random()*allPreguntas.size());
         pregunta.setText(allPreguntas.get(aleatorio).getPregunta());
         preguntaActual=allPreguntas.get(aleatorio);
     }
 
     private List<PalabrasEntity> setPalabras(List<PalabrasEntity> palabrasEntities) {
-        this.allPalabras=palabrasEntities;
+        dificultad=getArguments().getInt("dificultad");
+
+            for(int i=0;i<palabrasEntities.size();i++){
+                if(funcionesPalabras(palabrasEntities.get(i),dificultad)){
+                    this.allPalabras.add(palabrasEntities.get(i));
+                }
+            }
+
         return allPalabras;
     }
+
+    private boolean  funcionesPalabras(PalabrasEntity palabra, int dificultad) {
+        boolean valido=false;
+        int contador =0;
+        if(palabra.isArticulo())
+            contador++;
+        if(palabra.isInterjeccion())
+            contador++;
+        if(palabra.isConjuncion())
+            contador++;
+        if(palabra.isPreposicion())
+            contador++;
+        if(palabra.isVerbo())
+            contador++;
+        if(palabra.isPronombre())
+            contador++;
+        if(palabra.isSustantivo())
+            contador++;
+        if(palabra.isAdjetivo())
+            contador++;
+        if(palabra.isAdverbio())
+            contador++;
+            if(dificultad==1&&contador<2){
+                valido=true;
+            }else if(dificultad==2&&contador<3){
+                valido=true;
+            }else if(dificultad==3) {
+                valido=true;
+            }
+        return valido;
+    }
+
     private List<PreguntasEntity> setPreguntas(List<PreguntasEntity> preguntasEntities) {
         this.allPreguntas=preguntasEntities;
         return allPreguntas;
@@ -165,7 +212,7 @@ public class HerramientasFragment extends Fragment {
             public void onFinish() {
                 JuegoFinalizado();
                 NuevasPalabras();
-                NuevaPregunta();
+                NuevaPregunta(allPreguntas);
             }
         }.start();
     }
@@ -173,10 +220,10 @@ public class HerramientasFragment extends Fragment {
     private void JuegoFinalizado(){
         contador++;
         if (contador == 9) {
-            if(SharedPreferentManager.getIntegerValue(Constantes.MEJOR_HERRAMIENTAS)<letrasTotales){
-            SharedPreferentManager.setIntegerValue(Constantes.MEJOR_HERRAMIENTAS,letrasTotales);}
-            Intent i = new Intent(getActivity(), MainActivity.class);
-            startActivity(i);
+                    if(SharedPreferentManager.getIntegerValue(Constantes.MEJOR_HERRAMIENTAS)<letrasTotales){
+                    SharedPreferentManager.setIntegerValue(Constantes.MEJOR_HERRAMIENTAS,letrasTotales);}
+                    getActivity().onBackPressed();
+
         }
     }
 

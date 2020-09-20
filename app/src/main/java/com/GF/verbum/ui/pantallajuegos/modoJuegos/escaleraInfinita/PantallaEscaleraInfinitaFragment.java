@@ -24,13 +24,14 @@ import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.MainActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PantallaEscaleraInfinitaFragment extends Fragment implements View.OnClickListener {
 
 
-    private List<PalabrasEntity> allPalabras;
-    private List<PreguntasEntity> allPreguntas;
+    private List<PalabrasEntity> allPalabras = new ArrayList<>();
+    private List<PreguntasEntity> allPreguntas = new ArrayList<>();
     private PalabrasEntity palabraAleatoria;
     private PreguntasEntity preguntaAleatoria;
 
@@ -40,13 +41,17 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     private int aleatorio;
     private int letrasGanadas;
     private int  posicion;
+    private int dificultad;
 
     private TextView letras;
     private Button sust, adj, pro, adv, verb, pre, conj, inter, art;
 
-    public static PantallaEscaleraInfinitaFragment newInstance() {
-
-        return new PantallaEscaleraInfinitaFragment();
+    public static PantallaEscaleraInfinitaFragment newInstance(int dificultad) {
+                PantallaEscaleraInfinitaFragment fragment = new PantallaEscaleraInfinitaFragment();
+                    Bundle args = new Bundle();
+                    args.putInt("dificultad", dificultad);
+                    fragment.setArguments(args);
+                return fragment;
     }
 
     @Nullable
@@ -64,10 +69,10 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
         mpalabrasviewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {
             @Override
             public void onChanged(List<PalabrasEntity> palabrasEntities) {
-                setSustantivos(palabrasEntities);
+               allPalabras=setPalabras(palabrasEntities);
                 if(aleatorio==0) {
                     posicion= (int) (Math.random()*palabrasEntities.size());
-                    palabraAleatoria=palabrasEntities.get(posicion);
+                    palabraAleatoria=allPalabras.get(posicion);
                     palabra.setText(palabraAleatoria.getPalabra());
                 }
             }
@@ -75,10 +80,10 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
         mpalabrasviewModel.getAllPreguntas().observe(getViewLifecycleOwner(), new Observer<List<PreguntasEntity>>() {
             @Override
             public void onChanged(List<PreguntasEntity> preguntasEntities) {
-                setPreguntas(preguntasEntities);
+                allPreguntas=setPreguntas(preguntasEntities);
                 if(aleatorio==1) {
                     posicion= (int) (Math.random()*preguntasEntities.size());
-                    preguntaAleatoria=preguntasEntities.get(posicion);
+                    preguntaAleatoria=allPreguntas.get(posicion);
                     palabra.setText(preguntaAleatoria.getPregunta());
                 }
             }
@@ -122,10 +127,90 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
         art.setOnClickListener(this);
     }
 
-    private void setSustantivos(List<PalabrasEntity> palabras) {
-        this.allPalabras=palabras;
+    private List<PalabrasEntity> setPalabras(List<PalabrasEntity> palabrasEntities) {
+        dificultad=getArguments().getInt("dificultad");
+
+        for(int i=0;i<palabrasEntities.size();i++){
+            if(funcionesPalabras(palabrasEntities.get(i),dificultad)){
+                palabraAleatoria=palabrasEntities.get(i);
+                allPalabras.add(palabraAleatoria);
+            }
+        }
+        return allPalabras;
     }
-    private void setPreguntas(List<PreguntasEntity> preguntasEntities) { this.allPreguntas=preguntasEntities; }
+
+    private boolean funcionesPalabras(PalabrasEntity palabra, int dificultad) {
+        boolean valido=false;
+        int contador =0;
+        if(palabra.isArticulo())
+            contador++;
+        if(palabra.isInterjeccion())
+            contador++;
+        if(palabra.isConjuncion())
+            contador++;
+        if(palabra.isPreposicion())
+            contador++;
+        if(palabra.isVerbo())
+            contador++;
+        if(palabra.isPronombre())
+            contador++;
+        if(palabra.isSustantivo())
+            contador++;
+        if(palabra.isAdjetivo())
+            contador++;
+        if(palabra.isAdverbio())
+            contador++;
+        if(dificultad==1&&contador<2){
+            valido=true;
+        }else if(dificultad==2&&contador<3){
+            valido=true;
+        }else if(dificultad==3) {
+            valido=true;
+        }
+        return valido;
+    }
+
+    private List<PreguntasEntity> setPreguntas(List<PreguntasEntity> preguntasEntities) {
+        dificultad=getArguments().getInt("dificultad");
+
+        for(int i=0;i<preguntasEntities.size();i++){
+            if(funcionPreguntas(preguntasEntities.get(i),dificultad)){
+                preguntaAleatoria=preguntasEntities.get(i);
+                allPreguntas.add(preguntaAleatoria);
+            }
+        }        return allPreguntas;
+    }
+
+    private boolean funcionPreguntas(PreguntasEntity preguntaEntity, int dificultad) {
+        boolean valido=false;
+        int contador =0;
+        if(preguntaEntity.isArticulo())
+            contador++;
+        if(preguntaEntity.isInterjeccion())
+            contador++;
+        if(preguntaEntity.isConjuncion())
+            contador++;
+        if(preguntaEntity.isPreposicion())
+            contador++;
+        if(preguntaEntity.isVerbo())
+            contador++;
+        if(preguntaEntity.isPronombre())
+            contador++;
+        if(preguntaEntity.isSustantivo())
+            contador++;
+        if(preguntaEntity.isAdjetivo())
+            contador++;
+        if(preguntaEntity.isAdverbio())
+            contador++;
+        if(dificultad==1&&contador<2){
+            valido=true;
+        }else if(dificultad==2&&contador<3){
+            valido=true;
+        }else if(dificultad==3) {
+            valido=true;
+        }
+        return valido;
+    }
 
     @Override
     public void onClick(View v) {

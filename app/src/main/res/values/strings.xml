@@ -26,4 +26,9 @@
     <string name="conjuncion">Conjunción</string>
     <string name="Interjeccion">Interjección</string>
     <string name="Preposicion">Preposición</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Facil">Fácil</string>
+    <string name="Medio">Medio</string>
+    <string name="Dificil">Difícil</string>
 </resources>

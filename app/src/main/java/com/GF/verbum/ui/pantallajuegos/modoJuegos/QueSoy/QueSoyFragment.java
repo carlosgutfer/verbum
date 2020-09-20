@@ -19,8 +19,12 @@ public class QueSoyFragment extends Fragment {
 
     private ModosJuegosViewModel mViewModel;
 
-    public static QueSoyFragment newInstance() {
-        return new QueSoyFragment();
+    public static QueSoyFragment newInstance(int dificultad) {
+        QueSoyFragment fragment = new QueSoyFragment();
+        Bundle args = new Bundle();
+        args.putInt("dificultad", dificultad);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
