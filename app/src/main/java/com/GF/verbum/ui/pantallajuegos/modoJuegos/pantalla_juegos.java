@@ -47,7 +47,7 @@ public class pantalla_juegos extends AppCompatActivity {
                         .replace(R.id.containerJuegos, PantallaEscaleraInfinitaFragment.newInstance(dificultad))
                         .commitNow();
 
-            }else{
+            }else if(modoJuego==3&dificultad!=1){
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.containerJuegos, pantallaEscaleraInfinitaMedioDificilFragment.newInstance(dificultad))
                         .commitNow();

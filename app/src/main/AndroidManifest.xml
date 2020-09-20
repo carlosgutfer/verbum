@@ -10,16 +10,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.pantallajuegos.Sintaxis.SintaxisActivity"></activity>
-        <activity android:name=".ui.pantallajuegos.RecordActivity" />
-        <activity android:name=".ui.pantallajuegos.modoJuegos.EleccionJuegoActivity" />
-        <activity android:name=".ui.pantallajuegos.modoJuegos.pantalla_juegos" />
-        <activity android:name=".ui.pantallajuegos.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".ui.pantallajuegos.Sintaxis.SintaxisActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.pantallajuegos.RecordActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.pantallajuegos.modoJuegos.EleccionJuegoActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.pantallajuegos.modoJuegos.pantalla_juegos"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ui.pantallajuegos.MainActivity"
+            android:screenOrientation="portrait"
+            >
 
-                <category android:name="android.intent.category.LAUNCHER" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"
+
+                    />
+
+                <category android:name="android.intent.category.LAUNCHER"
+                    />
             </intent-filter>
+
         </activity>
     </application>
 

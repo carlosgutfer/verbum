@@ -66,7 +66,7 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
             @Override
             public void onChanged(List<PalabrasEntity> palabrasEntities) {
                 allPalabras=setPalabras(palabrasEntities);
-                    posicion= (int) (Math.random()*palabrasEntities.size());
+                    posicion= (int) (Math.random()*allPalabras.size());
                     palabraAleatoria=allPalabras.get(posicion);
                     palabra.setText(palabraAleatoria.getPalabra());
 

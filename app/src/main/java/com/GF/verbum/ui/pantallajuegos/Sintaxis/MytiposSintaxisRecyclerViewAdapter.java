@@ -22,6 +22,7 @@ public class MytiposSintaxisRecyclerViewAdapter extends RecyclerView.Adapter<Myt
     }
 
     @Override
+    @NonNull
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.sintaxist_item, parent, false);

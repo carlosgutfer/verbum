@@ -3,7 +3,6 @@ package com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -110,11 +109,11 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     private List<PalabrasEntity> setPalabras(List<PalabrasEntity> palabrasEntities) {
         dificultad=getArguments().getInt("dificultad");
 
-        for(int i=0;i<palabrasEntities.size();i++){
-            if(funcionesPalabras(palabrasEntities.get(i),dificultad)){
-                palabraAleatoria=palabrasEntities.get(i);
-                allPalabras.add(palabraAleatoria);
-            }
+            for(int i=0;i<palabrasEntities.size();i++){
+                if(funcionesPalabras(palabrasEntities.get(i),dificultad)){
+                    palabraAleatoria=palabrasEntities.get(i);
+                    allPalabras.add(palabraAleatoria);
+                }
         }
         return allPalabras;
     }
