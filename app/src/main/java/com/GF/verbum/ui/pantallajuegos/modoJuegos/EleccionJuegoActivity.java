@@ -15,7 +15,6 @@ public class EleccionJuegoActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eleccion_juego);
-    getSupportActionBar().hide();
     findViewById();
         herramientas.setOnClickListener(this);
         escalera.setOnClickListener(this);

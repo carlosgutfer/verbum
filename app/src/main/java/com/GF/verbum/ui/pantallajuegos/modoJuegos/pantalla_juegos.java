@@ -18,7 +18,6 @@ public class pantalla_juegos extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.pantalla_juegos_activity);
         dificultad = getIntent().getIntExtra("dificultad", -1);
         modoJuego = getIntent().getIntExtra("ModoJuego", -1);
