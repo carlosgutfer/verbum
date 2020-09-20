@@ -33,14 +33,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int view=v.getId();
         if(view==R.id.BT_Jugar){
         Intent i = new Intent(this, EleccionJuegoActivity.class);
-        startActivity(i);}
+        startActivity(i);
+        finish();}
         if(view==R.id.BT_Mejores){
             Intent i = new Intent(this, RecordActivity.class);
             startActivity(i);
+            finish();
         }
         if(view==R.id.Bt_Sintaxis){
             Intent i = new Intent(this, SintaxisActivity.class);
             startActivity(i);
+            finish();
         }
     }
 }

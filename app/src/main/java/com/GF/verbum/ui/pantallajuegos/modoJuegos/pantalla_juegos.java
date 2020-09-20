@@ -10,6 +10,7 @@ import com.GF.verbum.ui.pantallajuegos.MainActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.CajaDeHerramientas.HerramientasFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.QueSoy.QueSoyFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
 
 public class pantalla_juegos extends AppCompatActivity {
  private int modoJuego;
@@ -42,11 +43,15 @@ public class pantalla_juegos extends AppCompatActivity {
                         .replace(R.id.containerJuegos, QueSoyFragment.newInstance(dificultad))
                         .commitNow();
             }
-            if (modoJuego == 3) {
+            if (modoJuego == 3&&dificultad==1) {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.containerJuegos, PantallaEscaleraInfinitaFragment.newInstance(dificultad))
                         .commitNow();
 
+            }else{
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.containerJuegos, pantallaEscaleraInfinitaMedioDificilFragment.newInstance(dificultad))
+                        .commitNow();
             }
         }
 

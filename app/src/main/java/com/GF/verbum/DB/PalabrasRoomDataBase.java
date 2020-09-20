@@ -669,7 +669,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("PERDER",false,false,false,false,true,false,false,false,false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("OÍR",false,false,false,false,true,false,false,false,false);
+        palabra = new PalabrasEntity("OIR",false,false,false,false,true,false,false,false,false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("JUGAR",false,false,false,false,true,false,false,false,false);
         dao.insert(palabra);

@@ -1,5 +1,6 @@
 package com.GF.verbum.ui.pantallajuegos.Sintaxis;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -7,20 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.GF.verbum.DB.Entities.SintaxisEntity;
 import com.GF.verbum.R;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class MytiposSintaxisRecyclerViewAdapter extends RecyclerView.Adapter<MytiposSintaxisRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<SintaxisEntity> mValues;
 
-    public MytiposSintaxisRecyclerViewAdapter(List<DummyItem> items) {
+    public MytiposSintaxisRecyclerViewAdapter(List<SintaxisEntity> items) {
         mValues = items;
     }
 
@@ -34,8 +31,8 @@ public class MytiposSintaxisRecyclerViewAdapter extends RecyclerView.Adapter<Myt
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(mValues.get(position).getNombre());
+        holder.mContentView.setText(mValues.get(position).getTexto());
     }
 
     @Override
@@ -47,16 +44,17 @@ public class MytiposSintaxisRecyclerViewAdapter extends RecyclerView.Adapter<Myt
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public SintaxisEntity mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mIdView = view.findViewById(R.id.item_number);
+            mContentView = view.findViewById(R.id.content);
         }
 
         @Override
+        @NonNull
         public String toString() {
             return super.toString() + " '" + mContentView.getText() + "'";
         }

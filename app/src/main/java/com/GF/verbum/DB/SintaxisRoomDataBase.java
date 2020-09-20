@@ -8,9 +8,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.GF.verbum.DB.DAO.PreguntasDao;
 import com.GF.verbum.DB.DAO.SintaxisDao;
-import com.GF.verbum.DB.Entities.PreguntasEntity;
 import com.GF.verbum.DB.Entities.SintaxisEntity;
 
 import java.util.concurrent.ExecutorService;

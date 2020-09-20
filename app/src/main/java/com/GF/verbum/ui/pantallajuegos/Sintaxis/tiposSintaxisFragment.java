@@ -12,12 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.GF.verbum.DB.Entities.SintaxisEntity;
 import com.GF.verbum.R;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.dummy.DummyContent;
 
-/**
- * A fragment representing a list of Items.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class tiposSintaxisFragment extends Fragment {
 
     // TODO: Customize parameter argument names
@@ -25,10 +25,6 @@ public class tiposSintaxisFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     public tiposSintaxisFragment() {
     }
 
@@ -65,7 +61,8 @@ public class tiposSintaxisFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MytiposSintaxisRecyclerViewAdapter(DummyContent.ITEMS));
+            List<SintaxisEntity> allSintaxis= new ArrayList<>();
+            recyclerView.setAdapter(new MytiposSintaxisRecyclerViewAdapter(allSintaxis));
         }
         return view;
     }

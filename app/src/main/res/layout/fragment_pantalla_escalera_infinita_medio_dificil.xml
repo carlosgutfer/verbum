@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pantallajuegos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/papiro_fondo"
+    tools:context=".ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment">
+
+    <TextView
+        android:id="@+id/TV_palabraInfinita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="88dp"
+        android:text="@string/palabra"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TV_LetrasConseguidasEscalera"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/pieza"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="@string/Letras"
+        android:textAllCaps="true"
+        android:textColor="@color/marron"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.887"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/BT_comprobar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pieza"
+        android:padding="10dp"
+        android:text="@string/Comprobar"
+        android:textColor="@color/marron"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/TV_LetrasConseguidasEscalera"
+        app:layout_constraintStart_toStartOf="@+id/TV_palabraInfinita"
+        app:layout_constraintTop_toBottomOf="@+id/CB_pronombre"
+        app:layout_constraintVertical_bias="0.186" />
+
+    <CheckBox
+        android:id="@+id/CB_sustantivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:padding="10dp"
+        android:text="@string/Sustantivo"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/TV_palabraInfinita"
+        app:layout_constraintTop_toBottomOf="@+id/TV_palabraInfinita" />
+
+    <CheckBox
+        android:id="@+id/CB_Adjetivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/Adjetivo"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/CB_sustantivo"
+        app:layout_constraintTop_toBottomOf="@+id/CB_sustantivo" />
+
+    <CheckBox
+        android:id="@+id/CB_artiuclo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/Articulos"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/CB_Adjetivo"
+        app:layout_constraintTop_toBottomOf="@+id/CB_Adjetivo" />
+
+    <CheckBox
+        android:id="@+id/CB_adverbio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/Adverbios"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/CB_artiuclo"
+        app:layout_constraintTop_toBottomOf="@+id/CB_artiuclo" />
+
+    <CheckBox
+        android:id="@+id/CB_verbo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/Verbo"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/CB_adverbio"
+        app:layout_constraintTop_toBottomOf="@+id/CB_adverbio" />
+
+    <CheckBox
+        android:id="@+id/CB_preposicion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/Preposicion"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/CB_verbo"
+        app:layout_constraintTop_toBottomOf="@+id/CB_verbo" />
+
+    <CheckBox
+        android:id="@+id/CB_conjuncion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/conjuncion"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/CB_preposicion"
+        app:layout_constraintTop_toBottomOf="@+id/CB_preposicion" />
+
+    <CheckBox
+        android:id="@+id/CB_interjeccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/Interjeccion"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/CB_conjuncion"
+        app:layout_constraintTop_toBottomOf="@+id/CB_conjuncion" />
+
+    <CheckBox
+        android:id="@+id/CB_pronombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/Pronombre"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/CB_interjeccion"
+        app:layout_constraintTop_toBottomOf="@+id/CB_interjeccion" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

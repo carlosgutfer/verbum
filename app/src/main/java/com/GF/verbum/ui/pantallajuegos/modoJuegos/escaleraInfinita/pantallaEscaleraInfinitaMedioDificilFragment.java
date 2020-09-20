@@ -1,31 +1,33 @@
 package com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita;
 
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.Constantes;
 import com.GF.verbum.commun.SharedPreferentManager;
+import com.GF.verbum.ui.pantallajuegos.MainActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PantallaEscaleraInfinitaFragment extends Fragment implements View.OnClickListener {
+
+public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment implements View.OnClickListener {
 
 
     private List<PalabrasEntity> allPalabras = new ArrayList<>();
@@ -39,29 +41,31 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     private int dificultad;
 
     private TextView letras;
-    private Button sust, adj, pro, adv, verb, pre, conj, inter, art;
+    private CheckBox sust, adj, pro, adv, verb, pre, conj, inter, art;
+    private Button comprobar;
 
-    public static PantallaEscaleraInfinitaFragment newInstance(int dificultad) {
-                PantallaEscaleraInfinitaFragment fragment = new PantallaEscaleraInfinitaFragment();
-                    Bundle args = new Bundle();
-                    args.putInt("dificultad", dificultad);
-                    fragment.setArguments(args);
-                return fragment;
+    public static pantallaEscaleraInfinitaMedioDificilFragment newInstance(int dificultad) {
+        pantallaEscaleraInfinitaMedioDificilFragment fragment = new pantallaEscaleraInfinitaMedioDificilFragment();
+        Bundle args = new Bundle();
+        args.putInt("dificultad", dificultad);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.escalera_infinita_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_pantalla_escalera_infinita_medio_dificil, container, false);
         this.v=view;
         findViewById();
+
 
         mpalabrasviewModel=new ViewModelProvider(this).get(ModosJuegosViewModel.class);
         mpalabrasviewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {
             @Override
             public void onChanged(List<PalabrasEntity> palabrasEntities) {
-               allPalabras=setPalabras(palabrasEntities);
+                allPalabras=setPalabras(palabrasEntities);
                     posicion= (int) (Math.random()*palabrasEntities.size());
                     palabraAleatoria=allPalabras.get(posicion);
                     palabra.setText(palabraAleatoria.getPalabra());
@@ -74,16 +78,17 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
 
     private void findViewById() {
         palabra=v.findViewById(R.id.TV_palabraInfinita);
-        art=v.findViewById(R.id.BT_Articulo);
-        sust=v.findViewById(R.id.BT_Sustantivo);
-        pro=v.findViewById(R.id.BT_Pronombre);
-        adj=v.findViewById(R.id.BT_Adjetivo);
-        adv=v.findViewById(R.id.BT_Adverbios);
-        verb=v.findViewById(R.id.BT_verbos);
-        pre=v.findViewById(R.id.BT_Preposicion);
-        conj=v.findViewById(R.id.BT_Conjuncion);
-        inter=v.findViewById(R.id.BT_Interjencion);
+        art=v.findViewById(R.id.CB_artiuclo);
+        sust=v.findViewById(R.id.CB_sustantivo);
+        pro=v.findViewById(R.id.CB_pronombre);
+        adj=v.findViewById(R.id.CB_Adjetivo);
+        adv=v.findViewById(R.id.CB_adverbio);
+        verb=v.findViewById(R.id.CB_verbo);
+        pre=v.findViewById(R.id.CB_preposicion);
+        conj=v.findViewById(R.id.CB_conjuncion);
+        inter=v.findViewById(R.id.CB_interjeccion);
         letras=v.findViewById(R.id.TV_LetrasConseguidasEscalera);
+        comprobar=v.findViewById(R.id.BT_comprobar);
     }
 
 
@@ -96,15 +101,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     }
 
     private void onClick() {
-        sust.setOnClickListener(this);
-        adj.setOnClickListener(this);
-        pro.setOnClickListener(this);
-        adv.setOnClickListener(this);
-        verb.setOnClickListener(this);
-        pre.setOnClickListener(this);
-        conj.setOnClickListener(this);
-        inter.setOnClickListener(this);
-        art.setOnClickListener(this);
+    comprobar.setOnClickListener(this);
     }
 
     private List<PalabrasEntity> setPalabras(List<PalabrasEntity> palabrasEntities) {
@@ -149,92 +146,71 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
         }
         return valido;
     }
+
     @Override
     public void onClick(View v) {
         int view = v.getId();
-        if(view==R.id.BT_Sustantivo){
-            if(palabraAleatoria.isSustantivo()) {
-                mostrar();
-                nuevaPalabra();
+       if(view==R.id.BT_comprobar){
+           if(comprobar()){
+               mostrar();
+               nuevaPalabra();
+           }else {
+               juegoFinalizado();
+           }
 
-            } else{
-                JuegoFinalizado();
-            }
+       }
 
-        }
-        if(view==R.id.BT_Adjetivo){
-            if(palabraAleatoria.isAdjetivo()) {
-                mostrar();
-                nuevaPalabra();
-            } else{
-                JuegoFinalizado();
-            }
+    }
 
-        }
-        if(view==R.id.BT_Pronombre){
-            if(palabraAleatoria.isPronombre()) {
-                mostrar();
-                nuevaPalabra();
-            }else{
-                JuegoFinalizado();
-            }
+    private boolean comprobar() {
+        boolean correcto=true;
+        if(sust.isChecked()&&!palabraAleatoria.isSustantivo()){
+            correcto=false;
+        }else if(!sust.isChecked()&&palabraAleatoria.isSustantivo()) {
+            correcto=false;
+        }else if(adj.isChecked()&&!palabraAleatoria.isAdjetivo()){
+            correcto=false;
 
-        }
-        if(view==R.id.BT_Adverbios){
-            if(palabraAleatoria.isAdverbio()) {
-                mostrar();
-                nuevaPalabra();
-            } else{
-                JuegoFinalizado();
-            }
+        }else if(!adj.isChecked()&&palabraAleatoria.isAdjetivo()) {
+            correcto=false;
+        }else if(adv.isChecked()&&!palabraAleatoria.isAdverbio()){
+            correcto=false;
 
-        }
-        if(view==R.id.BT_verbos){
-            if(palabraAleatoria.isVerbo()) {
-                mostrar();
-                nuevaPalabra();
-            } else{
-                JuegoFinalizado();
-            }
-        }
-        if(view==R.id.BT_Preposicion){
-            if(palabraAleatoria.isPreposicion()) {
-                mostrar();
-                nuevaPalabra();
-            } else{
-                JuegoFinalizado();
-            }
+        }else if(!adv.isChecked()&&palabraAleatoria.isAdverbio()) {
+            correcto=false;
+        }else if(art.isChecked()&&!palabraAleatoria.isArticulo()){
+            correcto=false;
 
-        }
-        if(view==R.id.BT_Conjuncion){
-            if(palabraAleatoria.isConjuncion()) {
-                mostrar();
-                nuevaPalabra();
-            } else{
-                JuegoFinalizado();
-            }
+        }else if(!art.isChecked()&&palabraAleatoria.isArticulo()) {
+            correcto=false;
+        }else if(verb.isChecked()&&!palabraAleatoria.isVerbo()){
+            correcto=false;
 
-        }
-        if(view==R.id.BT_Interjencion){
-            if(palabraAleatoria.isInterjeccion()) {
-                mostrar();
-                nuevaPalabra();
+        }else if(!verb.isChecked()&&palabraAleatoria.isVerbo()) {
+            correcto=false;
+        }else if(pre.isChecked()&&!palabraAleatoria.isPreposicion()){
+            correcto=false;
 
-            } else{
-                JuegoFinalizado();
-            }
+        }else if(!pre.isChecked()&&palabraAleatoria.isPreposicion()) {
+            correcto=false;
+        }else if(pro.isChecked()&&!palabraAleatoria.isPronombre()){
+            correcto=false;
 
-        }
-        if(view==R.id.BT_Articulo){
-            if(palabraAleatoria.isArticulo()) {
-                mostrar();
-                nuevaPalabra();
-            }else{
-                JuegoFinalizado();
-            }
+        }else if(!pro.isChecked()&&palabraAleatoria.isPronombre()) {
+            correcto=false;
+        }else if(conj.isChecked()&&!palabraAleatoria.isConjuncion()){
+            correcto=false;
 
+        }else if(!conj.isChecked()&&palabraAleatoria.isConjuncion()) {
+            correcto=false;
+        }else if(inter.isChecked()&&!palabraAleatoria.isInterjeccion()){
+            correcto=false;
+        }else if(!inter.isChecked()&&palabraAleatoria.isInterjeccion()) {
+            correcto=false;
         }
 
+
+        return correcto;
     }
 
     private void mostrar(){
@@ -248,11 +224,12 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
             palabra.setText(palabraAleatoria.getPalabra());
     }
 
-    private void JuegoFinalizado(){
+    private void juegoFinalizado(){
 
-            if(SharedPreferentManager.getIntegerValue(Constantes.MEJOR_ESCALERA)<letrasGanadas)
-                SharedPreferentManager.setIntegerValue(Constantes.MEJOR_ESCALERA,letrasGanadas);
-            getActivity().onBackPressed();
+        if(SharedPreferentManager.getIntegerValue(Constantes.MEJOR_ESCALERA)<letrasGanadas)
+            SharedPreferentManager.setIntegerValue(Constantes.MEJOR_ESCALERA,letrasGanadas);
+
+        getActivity().onBackPressed();
 
 
     }
