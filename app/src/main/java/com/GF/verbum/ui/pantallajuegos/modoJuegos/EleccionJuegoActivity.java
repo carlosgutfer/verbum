@@ -34,16 +34,21 @@ public class EleccionJuegoActivity extends AppCompatActivity implements View.OnC
             Intent i = new Intent(this, pantalla_juegos.class);
             i.putExtra("ModoJuego",1);
             startActivity(i);
+            finish();
         }
         if(view==R.id.BT_QueSoy){
             Intent i = new Intent(this, pantalla_juegos.class);
             i.putExtra("ModoJuego",2);
             startActivity(i);
+            finish();
+
         }
         if(view==R.id.BT_Escalera){
             Intent i = new Intent(this, pantalla_juegos.class);
             i.putExtra("ModoJuego",3);
             startActivity(i);
+            finish();
+
         }
         finish();
     }

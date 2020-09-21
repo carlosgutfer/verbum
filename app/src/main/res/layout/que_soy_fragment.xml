@@ -8,7 +8,7 @@
     tools:context=".ui.pantallajuegos.modoJuegos.QueSoy.QueSoyFragment">
 
     <TextView
-        android:id="@+id/TV_LetrasConseguidasEscalera"
+        android:id="@+id/TV_LetrasConseguidasQueSoy"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="32dp"
@@ -28,17 +28,16 @@
         android:id="@+id/TV_preguntas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:text="TextView"
+        android:layout_marginTop="12dp"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.114"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TV_LetrasConseguidasEscalera" />
+        app:layout_constraintTop_toBottomOf="@+id/TV_LetrasConseguidasQueSoy" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/BT_si"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
@@ -58,14 +57,13 @@
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
         android:layout_marginTop="36dp"
-        android:text="TextView"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TV_preguntas" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/Bt_no"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -77,6 +75,6 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/BT_si"
         app:layout_constraintTop_toBottomOf="@+id/TV_palabra" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,6 +43,7 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
     private TextView letras;
     private CheckBox sust, adj, pro, adv, verb, pre, conj, inter, art;
     private Button comprobar;
+    private String nombre;
 
     public static pantallaEscaleraInfinitaMedioDificilFragment newInstance(int dificultad) {
         pantallaEscaleraInfinitaMedioDificilFragment fragment = new pantallaEscaleraInfinitaMedioDificilFragment();
@@ -52,6 +53,16 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
         return fragment;
     }
 
+    public static pantallaEscaleraInfinitaMedioDificilFragment newInstance(String palabra,int letras) {
+        pantallaEscaleraInfinitaMedioDificilFragment fragment = new pantallaEscaleraInfinitaMedioDificilFragment();
+        Bundle args = new Bundle();
+        args.putString("palabra",palabra);
+        args.putInt("letras", letras);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -59,21 +70,34 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
         View view = inflater.inflate(R.layout.fragment_pantalla_escalera_infinita_medio_dificil, container, false);
         this.v=view;
         findViewById();
-
+        nombre=getArguments().getString("palabra",null);
 
         mpalabrasviewModel=new ViewModelProvider(this).get(ModosJuegosViewModel.class);
         mpalabrasviewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {
             @Override
             public void onChanged(List<PalabrasEntity> palabrasEntities) {
-                allPalabras=setPalabras(palabrasEntities);
-                    posicion= (int) (Math.random()*allPalabras.size());
-                    palabraAleatoria=allPalabras.get(posicion);
+                if(nombre==null) {
+                    allPalabras = setPalabras(palabrasEntities);
+                    posicion = (int) (Math.random() * allPalabras.size());
+                    palabraAleatoria = allPalabras.get(posicion);
                     palabra.setText(palabraAleatoria.getPalabra());
-
+                }else{
+                    buscarPalabra(palabrasEntities);
+                }
             }
         });
 
         return view;
+    }
+
+    private void buscarPalabra(List<PalabrasEntity> palabrasEntities) {
+        for (int i =0;i<palabrasEntities.size();i++ ){
+            if(nombre.equals(palabrasEntities.get(i).getPalabra())){
+                palabraAleatoria = palabrasEntities.get(i);
+                palabra.setText(palabraAleatoria.getPalabra());
+                break;
+            }
+        }
     }
 
     private void findViewById() {
@@ -216,6 +240,10 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
     private void mostrar(){
         letrasGanadas++;
         letras.setText(String.valueOf(letrasGanadas));
+        if(getArguments().getInt("letras",-50)!=-50){
+            letrasGanadas=getArguments().getInt("letras")+letrasGanadas;
+            juegoFinalizado();
+        }
     }
 
     private void nuevaPalabra() {

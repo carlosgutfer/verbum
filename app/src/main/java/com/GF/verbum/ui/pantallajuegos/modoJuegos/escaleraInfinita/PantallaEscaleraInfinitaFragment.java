@@ -21,6 +21,7 @@ import com.GF.verbum.commun.Constantes;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +37,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     private int letrasGanadas;
     private int  posicion;
     private int dificultad;
+    private String nombre;
 
     private TextView letras;
     private Button sust, adj, pro, adv, verb, pre, conj, inter, art;
@@ -47,6 +49,14 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                     fragment.setArguments(args);
                 return fragment;
     }
+    public static PantallaEscaleraInfinitaFragment newInstance(String palabra,int letras) {
+        PantallaEscaleraInfinitaFragment fragment = new PantallaEscaleraInfinitaFragment();
+        Bundle args = new Bundle();
+        args.putString("palabra", palabra);
+        args.putInt("letras",letras);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Nullable
     @Override
@@ -55,20 +65,35 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
         View view = inflater.inflate(R.layout.escalera_infinita_fragment, container, false);
         this.v=view;
         findViewById();
+        nombre=getArguments().getString("palabra",null);
 
-        mpalabrasviewModel=new ViewModelProvider(this).get(ModosJuegosViewModel.class);
-        mpalabrasviewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {
-            @Override
-            public void onChanged(List<PalabrasEntity> palabrasEntities) {
-               allPalabras=setPalabras(palabrasEntities);
-                    posicion= (int) (Math.random()*palabrasEntities.size());
-                    palabraAleatoria=allPalabras.get(posicion);
-                    palabra.setText(palabraAleatoria.getPalabra());
+            mpalabrasviewModel = new ViewModelProvider(this).get(ModosJuegosViewModel.class);
+            mpalabrasviewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {
+                @Override
+                public void onChanged(List<PalabrasEntity> palabrasEntities) {
+                    if(nombre==null) {
+                        allPalabras = setPalabras(palabrasEntities);
+                        posicion = (int) (Math.random() * allPalabras.size());
+                        palabraAleatoria = allPalabras.get(posicion);
+                        palabra.setText(palabraAleatoria.getPalabra());
+                    }else{
+                        buscarPalabra(palabrasEntities);
+                    }
 
-            }
-        });
+                }
+            });
 
         return view;
+    }
+
+    private void buscarPalabra(List<PalabrasEntity> palabrasEntities) {
+        for (int i =0;i<palabrasEntities.size();i++ ){
+            if(nombre.equals(palabrasEntities.get(i).getPalabra())){
+                palabraAleatoria = palabrasEntities.get(i);
+                palabra.setText(palabraAleatoria.getPalabra());
+                break;
+            }
+        }
     }
 
     private void findViewById() {
@@ -108,7 +133,6 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
 
     private List<PalabrasEntity> setPalabras(List<PalabrasEntity> palabrasEntities) {
         dificultad=getArguments().getInt("dificultad");
-
             for(int i=0;i<palabrasEntities.size();i++){
                 if(funcionesPalabras(palabrasEntities.get(i),dificultad)){
                     palabraAleatoria=palabrasEntities.get(i);
@@ -148,6 +172,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
         }
         return valido;
     }
+
     @Override
     public void onClick(View v) {
         int view = v.getId();
@@ -157,7 +182,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 nuevaPalabra();
 
             } else{
-                JuegoFinalizado();
+                juegoFinalizado();
             }
 
         }
@@ -166,7 +191,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 mostrar();
                 nuevaPalabra();
             } else{
-                JuegoFinalizado();
+                juegoFinalizado();
             }
 
         }
@@ -175,7 +200,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 mostrar();
                 nuevaPalabra();
             }else{
-                JuegoFinalizado();
+                juegoFinalizado();
             }
 
         }
@@ -184,7 +209,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 mostrar();
                 nuevaPalabra();
             } else{
-                JuegoFinalizado();
+                juegoFinalizado();
             }
 
         }
@@ -193,7 +218,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 mostrar();
                 nuevaPalabra();
             } else{
-                JuegoFinalizado();
+                juegoFinalizado();
             }
         }
         if(view==R.id.BT_Preposicion){
@@ -201,7 +226,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 mostrar();
                 nuevaPalabra();
             } else{
-                JuegoFinalizado();
+                juegoFinalizado();
             }
 
         }
@@ -210,7 +235,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 mostrar();
                 nuevaPalabra();
             } else{
-                JuegoFinalizado();
+                juegoFinalizado();
             }
 
         }
@@ -220,7 +245,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 nuevaPalabra();
 
             } else{
-                JuegoFinalizado();
+                juegoFinalizado();
             }
 
         }
@@ -229,7 +254,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 mostrar();
                 nuevaPalabra();
             }else{
-                JuegoFinalizado();
+                juegoFinalizado();
             }
 
         }
@@ -239,6 +264,10 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     private void mostrar(){
         letrasGanadas++;
         letras.setText(String.valueOf(letrasGanadas));
+        if(getArguments().getInt("letras",-50)!=-50){
+            letrasGanadas=getArguments().getInt("letras")+letrasGanadas;
+            juegoFinalizado();
+        }
     }
 
     private void nuevaPalabra() {
@@ -247,7 +276,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
             palabra.setText(palabraAleatoria.getPalabra());
     }
 
-    private void JuegoFinalizado(){
+    private void juegoFinalizado(){
 
             if(SharedPreferentManager.getIntegerValue(Constantes.MEJOR_ESCALERA)<letrasGanadas)
                 SharedPreferentManager.setIntegerValue(Constantes.MEJOR_ESCALERA,letrasGanadas);

@@ -13,25 +13,29 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.PreguntasEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class QueSoyFragment extends Fragment {
+public class QueSoyFragment extends Fragment implements View.OnClickListener {
 
     private ModosJuegosViewModel mpalabrasviewModel;
     private List<PalabrasEntity> allPalabras = new ArrayList<>();
     private List<PreguntasEntity> allPreguntas = new ArrayList<>();
-    private int posicion, dificultad,aleatorio;
+    private int posicion, dificultad,aleatorio, letrasConseguidas=0, ronda=0;
     private PalabrasEntity palabraAleatoria;
     private PreguntasEntity preguntaActual;
-    private TextView palabra, pregunta;
+    private TextView palabra, pregunta, letras;
+    private Button si, no;
     private View v;
 
     public static QueSoyFragment newInstance(int dificultad) {
@@ -96,6 +100,7 @@ public class QueSoyFragment extends Fragment {
         return allPalabras;
 
     }
+
     private boolean funcionesPalabras(PalabrasEntity palabra, int dificultad) {
         boolean valido=false;
         int contador =0;
@@ -130,13 +135,91 @@ public class QueSoyFragment extends Fragment {
     private void findViewById() {
         palabra=v.findViewById(R.id.TV_palabra);
         pregunta=v.findViewById(R.id.TV_preguntas);
+        si=v.findViewById(R.id.BT_si);
+        no=v.findViewById(R.id.Bt_no);
+        letras=v.findViewById(R.id.TV_LetrasConseguidasQueSoy);
     }
+    private void onClick() {
+        si.setOnClickListener(this);
+        no.setOnClickListener(this);
+    }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mpalabrasviewModel = ViewModelProviders.of(this).get(ModosJuegosViewModel.class);
-        // TODO: Use the ViewModel
+        onClick();
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        int view = v.getId();
+        if(view==R.id.BT_si){
+            if(comprobarPalabra(palabraAleatoria,preguntaActual)){
+                letrasConseguidas++;
+                nuevaRonda();
+            }else{
+                letrasConseguidas--;
+                nuevaRonda();
+            }
+        }
+        if(view==R.id.Bt_no){
+            if(comprobarPalabra(palabraAleatoria,preguntaActual)){
+                letrasConseguidas--;
+                nuevaRonda();
+            }else{
+                letrasConseguidas++;
+                nuevaRonda();
+            }
+        }
+    }
+
+    private boolean comprobarPalabra(PalabrasEntity palabra, PreguntasEntity pregunta) {
+        boolean valido=false;
+
+        if(palabra.isArticulo()&&pregunta.isArticulo()){
+         valido=true;
+        }else if (palabra.isInterjeccion()&&pregunta.isInterjeccion()){
+            valido=true;
+        } else if(palabra.isConjuncion()&&pregunta.isConjuncion()){
+            valido=true;
+        } else if(palabra.isPreposicion()&&pregunta.isPreposicion()){
+            valido=true;
+        } else if(palabra.isVerbo()&&pregunta.isVerbo()){
+            valido=true;
+        } else if(palabra.isPronombre()&&pregunta.isPronombre()){
+            valido=true;
+        } else if(palabra.isSustantivo()&&pregunta.isSustantivo()){
+            valido=true;
+        } else if(palabra.isAdjetivo()&&pregunta.isAdjetivo()){
+            valido=true;
+        } else if(palabra.isAdverbio()&&pregunta.isAdverbio()){
+            valido=true;
+        }
+
+        return valido;
+    }
+
+    private void nuevaRonda(){
+        ronda++;
+        if(ronda<6) {
+            letras.setText(String.valueOf(letrasConseguidas));
+            NuevaPregunta(allPreguntas);
+        }else if (dificultad==1&&ronda==6){
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.containerJuegos, PantallaEscaleraInfinitaFragment.newInstance(palabraAleatoria.getPalabra(),letrasConseguidas))
+                    .commit();
+        }else if(dificultad!=1&&ronda==6){
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.containerJuegos, pantallaEscaleraInfinitaMedioDificilFragment.newInstance(palabraAleatoria.getPalabra(),letrasConseguidas))
+                    .commit();
+        }
     }
 
 }

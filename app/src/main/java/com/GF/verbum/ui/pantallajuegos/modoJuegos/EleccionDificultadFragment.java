@@ -14,6 +14,7 @@ import com.GF.verbum.R;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.CajaDeHerramientas.HerramientasFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.QueSoy.QueSoyFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
 
 
 public class EleccionDificultadFragment extends Fragment implements View.OnClickListener {
@@ -52,7 +53,6 @@ public class EleccionDificultadFragment extends Fragment implements View.OnClick
                              Bundle savedInstanceState) {
          v = inflater.inflate(R.layout.fragment_eleccion_dificultad, container, false);
         modo=getArguments().getInt(MODODEJUEGO);
-
         findViewById();
         setOnClick();
         return v;
@@ -74,29 +74,42 @@ public class EleccionDificultadFragment extends Fragment implements View.OnClick
     public void onClick(View v) {
         int View=v.getId();
         if(View==R.id.BT_Facil){
-            Intent i = new Intent(getActivity(), pantalla_juegos.class);
-            i.putExtra("dificultad",1);
-            i.putExtra("ModoJuego",modo);
-            startActivity(i);
-
-
+           eleccionDificultad(1);
         }
         if(View==R.id.BT_Medio){
-            Intent i = new Intent(getActivity(), pantalla_juegos.class);
-            i.putExtra("dificultad",2);
-            i.putExtra("ModoJuego",modo);
-            startActivity(i);
-
+            eleccionDificultad(2);
         }
         if(View==R.id.BT_Dificil){
-            Intent i = new Intent(getActivity(), pantalla_juegos.class);
-            i.putExtra("dificultad",3);
-            i.putExtra("ModoJuego",modo);
-            startActivity(i);
-
+            eleccionDificultad(3);
         }
 
+    }
 
+    private void eleccionDificultad(int i) {
+        if (modo == 1) {
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.containerJuegos, HerramientasFragment.newInstance(i))
+                    .commitNow();
+        } else if (modo == 2) {
+            getActivity()
+                    .getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.containerJuegos, QueSoyFragment.newInstance(i))
+                    .commitNow();
+        } else if (modo == 3&&i==1) {
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.containerJuegos, PantallaEscaleraInfinitaFragment.newInstance(i))
+                    .commitNow();
+        }else if(modo==3){
+           getActivity()
+                   .getSupportFragmentManager()
+                   .beginTransaction()
+                    .replace(R.id.containerJuegos, pantallaEscaleraInfinitaMedioDificilFragment.newInstance(i))
+                    .commitNow();
+        }
 
     }
 }
