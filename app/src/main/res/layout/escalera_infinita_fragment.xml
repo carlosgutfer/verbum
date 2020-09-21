@@ -14,11 +14,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="136dp"
+        android:fontFamily="cursive"
+        android:padding="10dp"
         android:text="@string/palabra"
         android:textColor="@android:color/background_dark"
         android:textSize="20sp"
-        android:textStyle="normal"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

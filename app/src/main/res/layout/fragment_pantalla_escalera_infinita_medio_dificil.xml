@@ -15,10 +15,12 @@
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="88dp"
+        android:fontFamily="casual"
+        android:padding="10dp"
         android:text="@string/palabra"
         android:textColor="@android:color/background_dark"
         android:textSize="20sp"
-        android:textStyle="normal"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,10 +60,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:fontFamily="casual"
         android:padding="10dp"
         android:text="@string/Sustantivo"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/TV_palabraInfinita"
         app:layout_constraintTop_toBottomOf="@+id/TV_palabraInfinita" />
 
@@ -69,10 +73,12 @@
         android:id="@+id/CB_Adjetivo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:padding="10dp"
         android:text="@string/Adjetivo"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/CB_sustantivo"
         app:layout_constraintTop_toBottomOf="@+id/CB_sustantivo" />
 
@@ -80,10 +86,12 @@
         android:id="@+id/CB_artiuclo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:padding="10dp"
         android:text="@string/Articulos"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/CB_Adjetivo"
         app:layout_constraintTop_toBottomOf="@+id/CB_Adjetivo" />
 
@@ -91,10 +99,12 @@
         android:id="@+id/CB_adverbio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:padding="10dp"
         android:text="@string/Adverbios"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/CB_artiuclo"
         app:layout_constraintTop_toBottomOf="@+id/CB_artiuclo" />
 
@@ -102,10 +112,12 @@
         android:id="@+id/CB_verbo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:padding="10dp"
         android:text="@string/Verbo"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/CB_adverbio"
         app:layout_constraintTop_toBottomOf="@+id/CB_adverbio" />
 
@@ -113,10 +125,12 @@
         android:id="@+id/CB_preposicion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:padding="10dp"
         android:text="@string/Preposicion"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/CB_verbo"
         app:layout_constraintTop_toBottomOf="@+id/CB_verbo" />
 
@@ -124,10 +138,12 @@
         android:id="@+id/CB_conjuncion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:padding="10dp"
         android:text="@string/conjuncion"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/CB_preposicion"
         app:layout_constraintTop_toBottomOf="@+id/CB_preposicion" />
 
@@ -135,10 +151,12 @@
         android:id="@+id/CB_interjeccion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:padding="10dp"
         android:text="@string/Interjeccion"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/CB_conjuncion"
         app:layout_constraintTop_toBottomOf="@+id/CB_conjuncion" />
 
@@ -146,10 +164,12 @@
         android:id="@+id/CB_pronombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:padding="10dp"
         android:text="@string/Pronombre"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/CB_interjeccion"
         app:layout_constraintTop_toBottomOf="@+id/CB_interjeccion" />
 
