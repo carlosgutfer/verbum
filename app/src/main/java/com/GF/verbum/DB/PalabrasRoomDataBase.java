@@ -58,12 +58,20 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
 
 
                     Sustantivos(dao);
-                    Adjetivos(dao);
 
+                    Adjetivos(dao);
                     AdjetivosSutantivos(dao);
                     AdjetivoSutantatioAdverbio(dao);
                     AdjetivoInterjeccion(dao);
                     AdjetivoAdverbio(dao);
+
+                    Conjuncion(dao);
+                    ConjuncionSustantivo (dao);
+                    conjuncionAdverbioInterjeccion(dao);
+                    conjuncionPronombre(dao);
+
+
+
                     Pronombres(dao);
                     Articulos(dao);
                     PronombreArticulo(dao);
@@ -72,7 +80,6 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
                     PronombreAdjetivoAdverbio(dao);
                     PalabrasConCuatroOMasFunciones(dao);
                     Verbo(dao);
-                    Conjuncion(dao);
                     Preposicion(dao);
                     Interjeccion(dao);
                     Adverbios(dao);
@@ -280,7 +287,6 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         palabra = new PalabrasEntity("Preciso", false, false, true, false, false, false, false, false, false, "https://dle.rae.es/preciso?m=form");
         dao.insert(palabra);
     }
-
     private static void AdjetivosSutantivos(PalabrasDao dao) {
         PalabrasEntity palabra = new PalabrasEntity("Ácido", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/%C3%A1cido?m=form");
         dao.insert(palabra);
@@ -390,21 +396,21 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("Natural", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/natural?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("NACIONAL", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Nacional", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/nacional?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("MUSICAL", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Musical", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/musical?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ANCHO", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Ancho", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/ancho?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ANCHA", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Ancha", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/ancho?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("AZUL", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Azul", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/azul?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("BLANCO", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Blanco", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/blanco?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("BLANCA", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Blanca", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/blanco?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("BLANDA", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Blanda", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/blando");
         dao.insert(palabra);
         palabra = new PalabrasEntity("Bonito", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/bonito#5rVKGkX");
         dao.insert(palabra);
@@ -440,156 +446,153 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("Estrecho", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/estrecho?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("EXTERIOR", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Exterior", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/exterior?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("FALSO", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Falso", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/falso?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("FALSA", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Falsa", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/falso?m=form");
         dao.insert(palabra);
         palabra = new PalabrasEntity("Feo", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/feo?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("FINAL", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Final", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/final?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("FRESCA", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Fresca", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/fresco#IT35u3d");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("FRÍA", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Fresco", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/fresco#IT35u3d");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("FRÍO", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Fría", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/fr%C3%ADo#IUteOxn");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("GORDO", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Frío", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/fr%C3%ADo#IUteOxn");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("GORDA", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Gordo", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/gordo?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("GRANDE", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Gorda", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/gordo?m=form");
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("Grande", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/grande?m=form");
         dao.insert(palabra);
         palabra = new PalabrasEntity("Guapo", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/guapo?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("IMPOSIBLE", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Imposible", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/imposible?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("INTERIOR", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Interior", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/interior?m=form");
         dao.insert(palabra);
         palabra = new PalabrasEntity("Izquierda", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/izquierdo?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("JOVEN", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Joven", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/joven?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("MALO", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Malo", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/malo?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("MALA", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Mala", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/malo?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("MAYOR", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Mayor", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/mayor?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("MENOR", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Menor", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/menor?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("CLARA", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Clara", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/claro#9PhBhLd");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("SEGURA", true, false, true, false, false, false, false, false, false);
+        palabra = new PalabrasEntity("Seguro", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/seguro?m=form");
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("Larga", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/largo?m=form");
         dao.insert(palabra);
     }
-
     private static void AdjetivoSutantatioAdverbio(PalabrasDao dao) {
-        PalabrasEntity palabra = new PalabrasEntity("ALTO", true, false, true, false, false, true, false, false, false);
+        PalabrasEntity palabra = new PalabrasEntity("Alto", true, false, true, false, false, true, false, false, false,"https://dle.rae.es/alto#27ieUu8");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ALTA", true, false, true, false, false, true, false, false, false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("Blanda", true, false, true, false, false, true, false, false, false, "https://dle.rae.es/blando?m=form");
+        palabra = new PalabrasEntity("Alta", true, false, true, false, false, true, false, false, false,"https://dle.rae.es/alto#27ieUu8");
         dao.insert(palabra);
         palabra = new PalabrasEntity("Solo", true, false, true, false, false, true, false, false, false, "https://dle.rae.es/solo?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("BAJA", true, false, true, false, false, true, false, false, false);
-        dao.insert(palabra);
         palabra = new PalabrasEntity("Duro", true, false, true, false, false, true, false, false, false, "https://dle.rae.es/duro#EIKtetO");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("FUERTE", true, false, true, false, false, true, false, false, false);
+        palabra = new PalabrasEntity("Fuerte", true, false, true, false, false, true, false, false, false,"https://dle.rae.es/fuerte?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("IGUAL", true, false, true, false, false, true, false, false, false);
+        palabra = new PalabrasEntity("Igual", true, false, true, false, false, true, false, false, false,"https://dle.rae.es/igual?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("LARGO", true, false, true, false, false, true, false, false, false);
+        palabra = new PalabrasEntity("Largo", true, false, true, false, false, true, false, false, false,"https://dle.rae.es/largo?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("LARGA", true, false, true, false, false, true, false, false, false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("LENTO", true, false, true, false, false, true, false, false, false);
+        palabra = new PalabrasEntity("Lento", true, false, true, false, false, true, false, false, false,"https://dle.rae.es/lento?m=form");
         dao.insert(palabra);
         palabra = new PalabrasEntity("Rápido", true, false, true, false, false, true, false, false, false, "https://dle.rae.es/r%C3%A1pido?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("TEMPRANO", true, false, true, false, false, true, false, false, false);
+        palabra = new PalabrasEntity("Temprano", true, false, true, false, false, true, false, false, false,"https://dle.rae.es/temprano?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("MAL", true, false, true, false, false, true, false, false, false);
+        palabra = new PalabrasEntity("Mal", true, false, true, false, false, true, false, false, false,"https://dle.rae.es/mal#NyEUGaa");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("CLARO", true, false, true, false, false, true, false, false, false);
+        palabra = new PalabrasEntity("Claro", true, false, true, false, false, true, false, false, false,"https://dle.rae.es/claro#9PhBhLd");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("SEGURO", true, false, true, false, false, true, false, false, false);
+        palabra = new PalabrasEntity("Segura", true, false, true, false, false, true, false, false, false,"https://dle.rae.es/seguro?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("AYER", true, false, true, false, false, true, false, false, false);
-        dao.insert(palabra);
+
 
     }
-
     private static void AdjetivoInterjeccion(PalabrasDao dao) {
-        PalabrasEntity palabra = new PalabrasEntity("CALIENTE", true, false, true, false, false, true, false, false, false);
+        PalabrasEntity palabra = new PalabrasEntity("Caliente", true, false, true, false, false, true, false, false, false,"https://dle.rae.es/caliente?m=form");
         dao.insert(palabra);
     }
-
     private static void AdjetivoAdverbio(PalabrasDao dao) {
-        PalabrasEntity palabra = new PalabrasEntity("CAPAZ", false, false, false, false, false, true, false, false, false);
+        PalabrasEntity palabra = new PalabrasEntity("Capaz", false, false, false, false, false, true, false, false, false,"https://dle.rae.es/capaz?m=form");
         dao.insert(palabra);
         palabra = new PalabrasEntity("Blando", false, false, true, false, false, true, false, false, false, "https://dle.rae.es/blando?m=form");
         dao.insert(palabra);
         palabra = new PalabrasEntity("Caro", false, false, true, false, false, true, false, false, false, "https://dle.rae.es/caro#7d34R35");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("DIFERENTE", false, false, false, false, false, true, false, false, false);
+        palabra = new PalabrasEntity("Baja", false, false, true, false, false, true, false, false, false,"https://dle.rae.es/bajo#4oyrC6G");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("LENTA", false, false, false, false, false, true, false, false, false);
+        palabra = new PalabrasEntity("Diferente", false, false, false, false, false, true, false, false, false,"https://dle.rae.es/diferente?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("MEJOR", false, false, false, false, false, true, false, false, false);
+        palabra = new PalabrasEntity("Lenta", false, false, false, false, false, true, false, false, false,"https://dle.rae.es/lento?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("PEOR", false, false, false, false, false, true, false, false, false);
+        palabra = new PalabrasEntity("Mejor", false, false, false, false, false, true, false, false, false,"https://dle.rae.es/mejor?m=form");
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("Peor", false, false, false, false, false, true, false, false, false,"https://dle.rae.es/peor?m=form");
         dao.insert(palabra);
         palabra = new PalabrasEntity("PRIMERO", false, false, false, false, false, true, false, false, false, "https://dle.rae.es/primero#UAztjAx");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("TEMPRANA", false, false, false, false, false, true, false, false, false);
+        palabra = new PalabrasEntity("Temprana", false, false, false, false, false, true, false, false, false,"https://dle.rae.es/temprano?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ANTES", false, false, false, false, false, true, false, false, false);
+        palabra = new PalabrasEntity("Antes", false, false, false, false, false, true, false, false, false,"https://dle.rae.es/antes?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("DESPUÉS", false, false, false, false, false, true, false, false, false);
+        palabra = new PalabrasEntity("Después", false, false, false, false, false, true, false, false, false,"https://dle.rae.es/despu%C3%A9s?m=form");
         dao.insert(palabra);
 
     }
 
     private static void Conjuncion(PalabrasDao dao) {
-        PalabrasEntity palabra = new PalabrasEntity("PERO", false, false, false, false, false, false, false, true, false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("NI", false, false, false, false, false, false, false, true, false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("SINO", false, false, false, false, false, false, false, true, false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("Y", false, false, false, false, false, false, false, true, false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("MAS", false, false, false, false, false, false, false, true, false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("O", false, false, false, false, false, false, false, true, false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("PORQUE", false, false, false, false, false, false, false, true, false);
-        dao.insert(palabra);
 
-        palabra = new PalabrasEntity("PUES", false, false, false, false, false, false, false, true, false);
+        PalabrasEntity palabra = new PalabrasEntity("SINO", false, false, false, false, false, false, false, true, false,"https://dle.rae.es/sino#XywVM1a");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("QUE", false, false, false, false, false, false, false, true, false);
+        palabra = new PalabrasEntity("Mas", false, false, false, false, false, false, false, true, false,"https://dle.rae.es/mas?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("SI", false, false, false, false, false, false, false, true, false);
+        palabra = new PalabrasEntity("Porque", false, false, false, false, false, false, false, true, false,"https://dle.rae.es/porque?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("AUNQUE", false, false, false, false, false, false, false, true, false);
+        palabra = new PalabrasEntity("Aunque", false, false, false, false, false, false, false, true, false,"https://dle.rae.es/aunque?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("ERGO", false, false, false, false, false, false, false, true, false);
+        palabra = new PalabrasEntity("Ergo", false, false, false, false, false, false, false, true, false,"https://dle.rae.es/ergo?m=form");
+        dao.insert(palabra);
+    }
+    private static void ConjuncionSustantivo(PalabrasDao dao){
+        PalabrasEntity palabra = new PalabrasEntity("Pero", true, false, false, false, false, false, false, true, false,"https://dle.rae.es/pero#SgxG2YC");
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("Ni", true, false, false, false, false, false, false, true, false,"https://dle.rae.es/ni?m=form");
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("Y", true, false, false, false, false, false, false, true, false,"https://dle.rae.es/y#c8HoARq");
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("O", true, false, false, false, false, false, false, true, false,"https://dle.rae.es/o#QlqTEX0");
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("Si", true, false, false, false, false, false, false, true, false,"https://dle.rae.es/si#XmM8PPL");
+        dao.insert(palabra);
+    }
+    private static void conjuncionAdverbioInterjeccion(PalabrasDao dao){
+        PalabrasEntity  palabra = new PalabrasEntity("Pues", false, false, false, false, false, true, false, true, true,"https://dle.rae.es/pues?m=form");
+        dao.insert(palabra);
+    }
+    private static void conjuncionPronombre(PalabrasDao dao){
+        PalabrasEntity    palabra = new PalabrasEntity("Que", false, false, false, true, false, false, false, true, false,"https://dle.rae.es/que?m=form");
         dao.insert(palabra);
     }
 
     private static void Preposicion(PalabrasDao dao) {
-        PalabrasEntity palabra = new PalabrasEntity("A", false, false, false, false, false, false, true, false, false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("ANTE", false, false, false, false, false, false, true, false, false);
-        dao.insert(palabra);
-
-        palabra = new PalabrasEntity("CABE", false, false, false, false, false, false, true, false, false);
+        PalabrasEntity palabra = new PalabrasEntity("CABE", false, false, false, false, false, false, true, false, false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("CON", false, false, false, false, false, false, true, false, false);
         dao.insert(palabra);
@@ -609,7 +612,6 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("POR", false, false, false, false, false, false, true, false, false);
         dao.insert(palabra);
-
         palabra = new PalabrasEntity("SIN", false, false, false, false, false, false, true, false, false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("SO", false, false, false, false, false, false, true, false, false);
@@ -619,6 +621,14 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         palabra = new PalabrasEntity("DURANTE", false, false, false, false, false, false, true, false, false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("MEDIANTE", false, false, false, false, false, false, true, false, false);
+        dao.insert(palabra);
+    }
+    private static void PreposicionSustantivo(PalabrasDao dao){
+        PalabrasEntity palabra = new PalabrasEntity("A", true, false, false, false, false, false, true, false, false,"https://dle.rae.es/a#002rZ9U");
+        dao.insert(palabra);
+    }
+    private static void PreposicionSustantivoAdverbio(PalabrasDao dao){
+         PalabrasEntity palabra = new PalabrasEntity("Ante", false, false, false, false, false, false, true, false, false,"https://dle.rae.es/ante#2lpFbYn");
         dao.insert(palabra);
     }
 
@@ -743,6 +753,10 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         palabra = new PalabrasEntity("DEL", false, true, false, false, false, false, false, false, false);
         dao.insert(palabra);
     }
+    private static void ArticuloSustantivo (PalabrasDao dao){
+        PalabrasEntity palabra = new PalabrasEntity("La", true, true, false, false, false, false, false, false, false,"https://dle.rae.es/el#ESraxkH");
+        dao.insert(palabra);
+    }
 
     private static void Pronombres(PalabrasDao dao) {
         PalabrasEntity palabra = new PalabrasEntity("YO", false, false, false, true, false, false, false, false, false);
@@ -788,11 +802,9 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         palabra = new PalabrasEntity("QUIENESQUIERA", false, false, false, true, false, false, false, false, false);
         dao.insert(palabra);
     }
-
     private static void PronombreArticulo(PalabrasDao dao) {
 
-        PalabrasEntity palabra = new PalabrasEntity("LA", false, true, false, true, false, false, false, false, false);
-        dao.insert(palabra);
+        PalabrasEntity
         palabra = new PalabrasEntity("LO", false, true, false, true, false, false, false, false, false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("LOS", false, true, false, true, false, false, false, false, false);
@@ -801,7 +813,6 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
 
     }
-
     private static void PronommbresAdjetivo(PalabrasDao dao) {
         PalabrasEntity palabra = new PalabrasEntity("ALGUNA", false, false, true, true, false, false, false, false, false);
         dao.insert(palabra);
@@ -813,7 +824,6 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
 
     }
-
     private static void PronombreAdjetivoSustantivo(PalabrasDao dao) {
         PalabrasEntity palabra = new PalabrasEntity("CUALQUIERA", true, false, true, true, false, false, false, false, false);
         dao.insert(palabra);
@@ -824,7 +834,6 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         palabra = new PalabrasEntity("PRONTO", true, false, true, true, false, false, false, false, false);
         dao.insert(palabra);
     }
-
     private static void PronombreAdjetivoAdverbio(PalabrasDao dao) {
         PalabrasEntity palabra = new PalabrasEntity("MUCHO", false, false, true, true, false, true, false, false, false);
         dao.insert(palabra);
@@ -849,7 +858,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("MÁS", true, false, true, true, false, true, false, true, false);
         dao.insert(palabra);
-        palabra = new PalabrasEntity("BAJO", true, false, true, false, false, true, true, false, false);
+        palabra = new PalabrasEntity("BAJO", true, false, true, false, false, true, true, false, false,"https://dle.rae.es/bajo#4oyrC6G");
         dao.insert(palabra);
         palabra = new PalabrasEntity("ASÍ", false, false, true, false, false, true, false, true, true);
         dao.insert(palabra);
@@ -916,12 +925,10 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         palabra = new PalabrasEntity("VELOZMENTE", false, false, false, false, false, true, false, false, false);
         dao.insert(palabra);
     }
-
     private static void AdverbiosPronombre(PalabrasDao dao) {
-        PalabrasEntity palabra = new PalabrasEntity("ACÁ", false, false, false, true, false, true, false, false, false);
+        PalabrasEntity palabra = new PalabrasEntity("Acá", false, false, false, true, false, true, false, false, false,"https://dle.rae.es/ac%C3%A1?m=form");
         dao.insert(palabra);
     }
-
     private static void AdverbioSustantivo(PalabrasDao dao) {
         PalabrasEntity palabra = new PalabrasEntity("AFUERA", true, false, false, false, false, true, false, false, false);
         dao.insert(palabra);
@@ -939,7 +946,8 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("MAÑANA", true, false, false, false, false, true, false, false, false);
         dao.insert(palabra);
-
+        palabra = new PalabrasEntity("Ayer", true, false, false, false, false, true, false, false, false,"https://dle.rae.es/ayer?m=form");
+        dao.insert(palabra);
         palabra = new PalabrasEntity("TARDE", true, false, false, false, false, true, false, false, false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("NO", true, false, false, false, false, true, false, false, false);
@@ -947,7 +955,6 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         palabra = new PalabrasEntity("ACASO", true, false, false, false, false, true, false, false, false);
         dao.insert(palabra);
     }
-
     private static void AdverbioInterjeccion(PalabrasDao dao) {
         PalabrasEntity palabra = new PalabrasEntity("AQUÍ", false, false, false, false, false, true, false, false, true);
         dao.insert(palabra);
@@ -960,14 +967,12 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         palabra = new PalabrasEntity("DESPACIO", false, false, false, false, false, true, false, false, true);
         dao.insert(palabra);
     }
-
     private static void AdverbioPreposicion(PalabrasDao dao) {
-        PalabrasEntity palabra = new PalabrasEntity("SEGÚN", false, false, false, false, false, true, true, false, false);
+        PalabrasEntity palabra = new PalabrasEntity("Según", false, false, false, false, false, true, true, false, false,"https://dle.rae.es/seg%C3%BAn?m=form");
         dao.insert(palabra);
     }
-
     private static void AdverbioPronombreSustantivo(PalabrasDao dao) {
-        PalabrasEntity palabra = new PalabrasEntity("NADA", true, false, false, true, false, true, false, false, false);
+        PalabrasEntity palabra = new PalabrasEntity("Nada", true, false, false, true, false, true, false, false, false,"https://dle.rae.es/nada?m=form");
         dao.insert(palabra);
     }
 
