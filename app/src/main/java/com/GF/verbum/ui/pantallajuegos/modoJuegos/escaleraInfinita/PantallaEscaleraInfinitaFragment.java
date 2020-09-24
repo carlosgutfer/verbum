@@ -22,6 +22,7 @@ import com.GF.verbum.R;
 import com.GF.verbum.commun.Constantes;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -289,11 +290,16 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     }
 
     private void juegoFinalizado(){
-
-            if(SharedPreferentManager.getIntegerValue(Constantes.MEJOR_ESCALERA)<letrasGanadas)
-                SharedPreferentManager.setIntegerValue(Constantes.MEJOR_ESCALERA,letrasGanadas);
+        if(letrasGanadas==0){
             getActivity().onBackPressed();
-
-
+        }else {
+            if (SharedPreferentManager.getIntegerValue(Constantes.MEJOR_ESCALERA) < letrasGanadas)
+                SharedPreferentManager.setIntegerValue(Constantes.MEJOR_ESCALERA, letrasGanadas);
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas,"df",palabraAleatoria.getPalabra()))
+                        .commit();
+        }
     }
 }

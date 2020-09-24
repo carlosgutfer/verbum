@@ -31,5 +31,9 @@
     <string name="Facil">Fácil</string>
     <string name="Medio">Medio</string>
     <string name="Dificil">Difícil</string>
+    <string name="record">Record</string>
+    <string name="DiccionarioRae">Diccionario RAE</string>
+    <string name="SubirRegistro">Subir puntuación</string>
+    <string name="Nick">Nick</string>
 
 </resources>

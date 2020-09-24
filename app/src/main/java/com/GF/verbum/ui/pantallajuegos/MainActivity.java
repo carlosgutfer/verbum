@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
@@ -20,7 +21,7 @@ import com.GF.verbum.ui.pantallajuegos.modoJuegos.EleccionJuegoActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button jugar,mejores, sintaxis;
-    private ImageButton sound;
+    private ImageView sound;
     private  int sonido_de_tecla;
     SoundPool sp;
     private int position;

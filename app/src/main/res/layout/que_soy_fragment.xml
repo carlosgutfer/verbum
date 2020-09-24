@@ -26,8 +26,8 @@
 
     <TextView
         android:id="@+id/TV_preguntas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="14dp"
+        android:layout_height="58dp"
         android:layout_marginTop="12dp"
         android:fontFamily="cursive"
         android:padding="10dp"
@@ -35,9 +35,9 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TV_LetrasConseguidasQueSoy" />
+        app:layout_constraintTop_toBottomOf="@+id/TV_palabra" />
 
     <Button
         android:id="@+id/BT_si"
@@ -45,13 +45,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
         android:layout_marginLeft="68dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/pieza"
         android:text="@string/si"
         android:textColor="@color/marron"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TV_palabra" />
+        app:layout_constraintTop_toBottomOf="@+id/TV_preguntas" />
 
     <TextView
         android:id="@+id/TV_palabra"
@@ -59,14 +59,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
-        android:layout_marginTop="36dp"
         android:fontFamily="cursive"
         android:padding="10dp"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TV_preguntas" />
+        app:layout_constraintTop_toBottomOf="@+id/TV_LetrasConseguidasQueSoy" />
 
     <Button
         android:id="@+id/Bt_no"
@@ -74,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/pieza"
         android:text="@string/no"
         android:textColor="@color/marron"
@@ -82,5 +81,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/BT_si"
-        app:layout_constraintTop_toBottomOf="@+id/TV_palabra" />
+        app:layout_constraintTop_toBottomOf="@+id/TV_preguntas" />
 </androidx.constraintlayout.widget.ConstraintLayout>

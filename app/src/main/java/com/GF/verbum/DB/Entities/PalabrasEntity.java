@@ -19,8 +19,9 @@ public class PalabrasEntity {
     private boolean preposicion;
     private boolean conjuncion;
     private boolean interjeccion;
+    private String urlRae;
 
-    public PalabrasEntity(@NonNull String palabra, boolean sustantivo, boolean articulo, boolean adjetivo, boolean pronombre, boolean verbo, boolean adverbio, boolean preposicion, boolean conjuncion, boolean interjeccion) {
+    public PalabrasEntity(@NonNull String palabra, boolean sustantivo, boolean articulo, boolean adjetivo, boolean pronombre, boolean verbo, boolean adverbio, boolean preposicion, boolean conjuncion, boolean interjeccion,String urlRae) {
         this.palabra = palabra;
         this.sustantivo = sustantivo;
         this.articulo = articulo;
@@ -31,6 +32,7 @@ public class PalabrasEntity {
         this.preposicion = preposicion;
         this.conjuncion = conjuncion;
         this.interjeccion = interjeccion;
+        this.urlRae=urlRae;
     }
 
     @NonNull
@@ -78,6 +80,8 @@ public class PalabrasEntity {
         return verbo;
     }
 
+
+
     public void setVerbo(boolean verbo) {
         this.verbo = verbo;
     }
@@ -112,6 +116,14 @@ public class PalabrasEntity {
 
     public void setInterjeccion(boolean interjeccion) {
         this.interjeccion = interjeccion;
+    }
+
+    public String getUrlRae() {
+        return urlRae;
+    }
+
+    public void setUrlRae(String urlRae) {
+        this.urlRae = urlRae;
     }
 }
 
