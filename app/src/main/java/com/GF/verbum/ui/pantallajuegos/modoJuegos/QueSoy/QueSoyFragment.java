@@ -4,6 +4,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +21,7 @@ import android.widget.TextView;
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.PreguntasEntity;
 import com.GF.verbum.R;
+import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
@@ -27,7 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QueSoyFragment extends Fragment implements View.OnClickListener {
-
+    private  int sonido_de_tecla;
+    private SoundPool sp;
     private ModosJuegosViewModel mpalabrasviewModel;
     private List<PalabrasEntity> allPalabras = new ArrayList<>();
     private List<PreguntasEntity> allPreguntas = new ArrayList<>();
@@ -51,7 +55,8 @@ public class QueSoyFragment extends Fragment implements View.OnClickListener {
                              @Nullable Bundle savedInstanceState) {
         this.v= inflater.inflate(R.layout.que_soy_fragment, container, false);
         findViewById();
-
+        sp = new SoundPool(10, AudioManager.STREAM_MUSIC,1);
+        sonido_de_tecla= sp.load(getActivity(),R.raw.tecla,1);
         mpalabrasviewModel=new ViewModelProvider(this).get(ModosJuegosViewModel.class);
         mpalabrasviewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {
             @Override
@@ -220,6 +225,10 @@ public class QueSoyFragment extends Fragment implements View.OnClickListener {
                     .replace(R.id.containerJuegos, pantallaEscaleraInfinitaMedioDificilFragment.newInstance(palabraAleatoria.getPalabra(),letrasConseguidas))
                     .commit();
         }
+    }
+    private void sonido() {
+        if(SharedPreferentManager.getIntegerValue("soundMode")==-1)
+            sp.play(sonido_de_tecla,0.4f,0.4f,1,0,0);
     }
 
 }

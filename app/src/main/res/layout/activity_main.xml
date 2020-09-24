@@ -75,4 +75,17 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/Bt_tutorial"
         app:layout_constraintTop_toBottomOf="@+id/Bt_tutorial" />
+
+    <ImageButton
+        android:id="@+id/IB_sound"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@android:drawable/divider_horizontal_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_volume_up_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

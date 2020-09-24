@@ -3,6 +3,7 @@ package com.GF.verbum.commun;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+
 public class SharedPreferentManager {
 
     private SharedPreferentManager() {
@@ -24,5 +25,6 @@ public class SharedPreferentManager {
     public static Integer getIntegerValue(String dataLabel){
         return getSharePreferences().getInt(dataLabel, -1);
     }
+
 
 }

@@ -1,6 +1,8 @@
 package com.GF.verbum.ui.pantallajuegos.modoJuegos;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.GF.verbum.R;
+import com.GF.verbum.commun.SharedPreferentManager;
+import com.GF.verbum.ui.pantallajuegos.MainActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.CajaDeHerramientas.HerramientasFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.QueSoy.QueSoyFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment;
@@ -24,7 +28,8 @@ public class EleccionDificultadFragment extends Fragment implements View.OnClick
  private View v;
  private static String MODODEJUEGO;
  private int modo;
-
+   private SoundPool sp;
+   private  int sonido_de_tecla;
 
 
     public EleccionDificultadFragment() {
@@ -53,6 +58,8 @@ public class EleccionDificultadFragment extends Fragment implements View.OnClick
                              Bundle savedInstanceState) {
          v = inflater.inflate(R.layout.fragment_eleccion_dificultad, container, false);
         modo=getArguments().getInt(MODODEJUEGO);
+        sp = new SoundPool(10, AudioManager.STREAM_MUSIC,1);
+        sonido_de_tecla= sp.load(getActivity(),R.raw.espacio,1);
         findViewById();
         setOnClick();
         return v;
@@ -73,6 +80,7 @@ public class EleccionDificultadFragment extends Fragment implements View.OnClick
     @Override
     public void onClick(View v) {
         int View=v.getId();
+        sonido();
         if(View==R.id.BT_Facil){
            eleccionDificultad(1);
         }
@@ -111,5 +119,9 @@ public class EleccionDificultadFragment extends Fragment implements View.OnClick
                     .commitNow();
         }
 
+    }
+    public void sonido(){
+        if(SharedPreferentManager.getIntegerValue("soundMode")==-1)
+            sp.play(sonido_de_tecla,1,1,1,0,0);
     }
 }

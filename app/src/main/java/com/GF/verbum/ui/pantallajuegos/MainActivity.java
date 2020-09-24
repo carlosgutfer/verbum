@@ -11,28 +11,48 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.GF.verbum.R;
+import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.Sintaxis.SintaxisActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.EleccionJuegoActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button jugar,mejores, sintaxis;
+    private ImageButton sound;
     private  int sonido_de_tecla;
     SoundPool sp;
+    private int position;
+     private MediaPlayer md;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        jugar=findViewById(R.id.BT_Jugar);
-        mejores=findViewById(R.id.BT_Mejores);
-        sintaxis=findViewById(R.id.Bt_Sintaxis);
+
+        findViewById();
         mejores.setOnClickListener(this);
         jugar.setOnClickListener(this);
         sintaxis.setOnClickListener(this);
-         sp = new SoundPool(10, AudioManager.STREAM_MUSIC,1);
+        sound.setOnClickListener(this);
+        sp = new SoundPool(10, AudioManager.STREAM_MUSIC,1);
         sonido_de_tecla= sp.load(MainActivity.this,R.raw.espacio,1);
+
+        if(SharedPreferentManager.getIntegerValue("soundMode")==1){
+            sound.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_off_24));
+        }
+
+
+
+
+    }
+
+    private void findViewById() {
+        jugar=findViewById(R.id.BT_Jugar);
+        mejores=findViewById(R.id.BT_Mejores);
+        sintaxis=findViewById(R.id.Bt_Sintaxis);
+        sound=findViewById(R.id.IB_sound);
     }
 
     @Override
@@ -41,37 +61,80 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sonido();
         if(view==R.id.BT_Jugar){
             Intent i = new Intent(this, EleccionJuegoActivity.class);
-        startActivity(i);
-            finish();}
+            if(md!=null){
+            position=md.getCurrentPosition();
+            i.putExtra("position",position);}
+
+            startActivity(i);
+            finish();
+           }
         if(view==R.id.BT_Mejores){
             Intent i = new Intent(this, RecordActivity.class);
+            if(md!=null){
+                position=md.getCurrentPosition();
+            i.putExtra("position",position);}
             startActivity(i);
             finish();
         }
         if(view==R.id.Bt_Sintaxis){
             Intent i = new Intent(this, SintaxisActivity.class);
+            if(md!=null){
+                position=md.getCurrentPosition();
+            i.putExtra("position",position);}
             startActivity(i);
             finish();
         }
+        if(view==R.id.IB_sound){
+          soundMode();
+        }
+    }
+
+    private void soundMode() {
+        int soundMode= SharedPreferentManager.getIntegerValue("soundMode");
+        if(soundMode==1){
+            sound.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_up_24));
+            SharedPreferentManager.setIntegerValue("soundMode",-1);
+            startMusic();
+        }
+        if(soundMode==-1){
+            if(md.isPlaying()&&md!=null){
+                md.release();
+                md=null;
+            }
+            sound.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_off_24));
+            SharedPreferentManager.setIntegerValue("soundMode",1);
+        }
+
     }
 
     public void sonido(){
-     /*   if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
-            AudioAttributes audioAttributes = new AudioAttributes.Builder()
-                                                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build();
-            SoundPool sp = new SoundPool.Builder()
-                    .setMaxStreams(6)
-                    .setAudioAttributes(audioAttributes)
-                    .build();
-            sonido_de_tecla= sp.load(this,R.raw.tecla,1);
-            sp.play(sonido_de_tecla,1,1,1,0,0);
-        }else{
-*/
-
+        if(SharedPreferentManager.getIntegerValue("soundMode")==-1)
         sp.play(sonido_de_tecla,1,1,1,0,0);
-       /* MediaPlayer md = MediaPlayer.create(this,R.raw.espacio);
-        md.start();*/
-
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(md!=null)
+        md.release();
+        md = null;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startMusic();
+    }
+
+    private void startMusic() {
+        if(SharedPreferentManager.getIntegerValue("soundMode")==-1) {
+            md = MediaPlayer.create(this, R.raw.export);
+            md.setVolume(0.5f, 0.5f);
+            int soundPosition = getIntent().getIntExtra("position", 0);
+            md.seekTo(soundPosition);
+            md.setLooping(true);
+            md.start();
+        }
+    }
+
 }

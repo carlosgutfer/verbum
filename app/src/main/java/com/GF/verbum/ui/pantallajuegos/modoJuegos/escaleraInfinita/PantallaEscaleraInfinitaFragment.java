@@ -3,6 +3,8 @@ package com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,12 +23,14 @@ import com.GF.verbum.commun.Constantes;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PantallaEscaleraInfinitaFragment extends Fragment implements View.OnClickListener {
 
+
+    private  int sonido_de_tecla;
+    SoundPool sp;
 
     private List<PalabrasEntity> allPalabras = new ArrayList<>();
     private PalabrasEntity palabraAleatoria;
@@ -64,6 +68,8 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.escalera_infinita_fragment, container, false);
         this.v=view;
+        sp = new SoundPool(10, AudioManager.STREAM_MUSIC,1);
+        sonido_de_tecla= sp.load(getActivity(),R.raw.tecla,1);
         findViewById();
         nombre=getArguments().getString("palabra",null);
 
@@ -176,6 +182,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     @Override
     public void onClick(View v) {
         int view = v.getId();
+        sonido();
         if(view==R.id.BT_Sustantivo){
             if(palabraAleatoria.isSustantivo()) {
                 mostrar();
@@ -259,6 +266,11 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
 
         }
 
+    }
+
+    private void sonido() {
+        if(SharedPreferentManager.getIntegerValue("soundMode")==-1)
+            sp.play(sonido_de_tecla,0.4f,0.4f,1,0,0);
     }
 
     private void mostrar(){
