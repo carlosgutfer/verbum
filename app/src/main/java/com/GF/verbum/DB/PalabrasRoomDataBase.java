@@ -74,7 +74,6 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
 
                     Pronombres(dao);
                     Articulos(dao);
-                    PronombreArticulo(dao);
                     PronommbresAdjetivo(dao);
                     PronombreAdjetivoSustantivo(dao);
                     PronombreAdjetivoAdverbio(dao);
@@ -736,7 +735,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
     }
 
     private static void Articulos(PalabrasDao dao) {
-        PalabrasEntity palabra = new PalabrasEntity("EL", false, true, false, false, false, false, false, false, false);
+        PalabrasEntity palabra = new PalabrasEntity("El", false, true, false, false, false, false, false, false, false,"https://dle.rae.es/el#ESraxkH");
         dao.insert(palabra);
         palabra = new PalabrasEntity("UN", false, true, false, false, false, false, false, false, false);
         dao.insert(palabra);
@@ -802,17 +801,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         palabra = new PalabrasEntity("QUIENESQUIERA", false, false, false, true, false, false, false, false, false);
         dao.insert(palabra);
     }
-    private static void PronombreArticulo(PalabrasDao dao) {
 
-        PalabrasEntity
-        palabra = new PalabrasEntity("LO", false, true, false, true, false, false, false, false, false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("LOS", false, true, false, true, false, false, false, false, false);
-        dao.insert(palabra);
-        palabra = new PalabrasEntity("LAS", false, true, false, true, false, false, false, false, false);
-        dao.insert(palabra);
-
-    }
     private static void PronommbresAdjetivo(PalabrasDao dao) {
         PalabrasEntity palabra = new PalabrasEntity("ALGUNA", false, false, true, true, false, false, false, false, false);
         dao.insert(palabra);
@@ -848,6 +837,10 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         palabra = new PalabrasEntity("DEMASIADO", false, false, true, true, false, true, false, false, false);
         dao.insert(palabra);
         palabra = new PalabrasEntity("DEMASIADA", false, false, true, true, false, true, false, false, false);
+        dao.insert(palabra);
+    }
+    private static void PronombreSustantivo(PalabrasDao dao){
+        PalabrasEntity   palabra = new PalabrasEntity("Lo", true, false, false, true, false, false, false, false, false,"https://dle.rae.es/lo#NWnLPAn");
         dao.insert(palabra);
     }
 
