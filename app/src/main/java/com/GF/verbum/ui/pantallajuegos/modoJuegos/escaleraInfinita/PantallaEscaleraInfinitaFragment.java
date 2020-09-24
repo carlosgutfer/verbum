@@ -298,7 +298,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas,"df",palabraAleatoria.getPalabra()))
+                        .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas,palabraAleatoria.getUrlRae(),palabraAleatoria.getPalabra()))
                         .commit();
         }
     }

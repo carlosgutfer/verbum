@@ -1,18 +1,24 @@
 package com.GF.verbum.ui.pantallajuegos.modoJuegos;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.GF.verbum.R;
 
+import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 
-public class RecordFragment extends Fragment {
+
+public class RecordFragment extends Fragment implements View.OnClickListener {
 
     private static final String ARG_PARAM1 = "letras";
     private static final String ARG_PARAM2 = "urlPalabra";
@@ -24,6 +30,8 @@ public class RecordFragment extends Fragment {
     private String urlPalabra;
     private int letras;
     private String Palabra;
+    private ImageView diccionario;
+
 
     public RecordFragment() {
         // Required empty public constructor
@@ -52,6 +60,7 @@ public class RecordFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_record, container, false);
         findViewById(v);
+        diccionario.setOnClickListener(this);
         letrasYPalabra.setText("¡Felicidades! Has conseguido "+letras+ " letras y la última palabra era "+ Palabra+"." +
                 "Si quieres revisar que funciones puede tener, pulsa sobre el diccionario.");
         return v;
@@ -66,6 +75,14 @@ public class RecordFragment extends Fragment {
 
     private void findViewById(View v) {
         letrasYPalabra=v.findViewById(R.id.TV_PalabraYgemas);
+        diccionario=v.findViewById(R.id.IV_URLRAE);
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        Uri uri = Uri.parse(urlPalabra);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 }
