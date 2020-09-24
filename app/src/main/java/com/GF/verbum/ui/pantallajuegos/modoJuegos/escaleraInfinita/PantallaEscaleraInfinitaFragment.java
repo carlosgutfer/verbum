@@ -121,6 +121,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        mpalabrasviewModel = new ViewModelProvider(this).get(ModosJuegosViewModel.class);
 
         onClick();
 
