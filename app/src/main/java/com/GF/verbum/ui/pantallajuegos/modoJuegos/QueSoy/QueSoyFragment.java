@@ -161,6 +161,7 @@ public class QueSoyFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         int view = v.getId();
+        sonido();
         if(view==R.id.BT_si){
             if(comprobarPalabra(palabraAleatoria,preguntaActual)){
                 letrasConseguidas++;
@@ -222,7 +223,7 @@ public class QueSoyFragment extends Fragment implements View.OnClickListener {
             getActivity()
                     .getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.containerJuegos, pantallaEscaleraInfinitaMedioDificilFragment.newInstance(palabraAleatoria.getPalabra(),letrasConseguidas))
+                    .replace(R.id.containerJuegos, pantallaEscaleraInfinitaMedioDificilFragment.newInstance(palabraAleatoria.getPalabra(),letrasConseguidas,dificultad,2))
                     .commit();
         }
     }

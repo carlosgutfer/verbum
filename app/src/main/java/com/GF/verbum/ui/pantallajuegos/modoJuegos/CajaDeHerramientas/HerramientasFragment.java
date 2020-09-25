@@ -25,6 +25,7 @@ import com.GF.verbum.commun.Constantes;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.MainActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.pantalla_juegos;
 
 import java.util.ArrayList;
@@ -145,7 +146,7 @@ public class HerramientasFragment extends Fragment {
     }
 
     private List<PalabrasEntity> setPalabras(List<PalabrasEntity> palabrasEntities) {
-        dificultad=getArguments().getInt("dificultad");
+        this.dificultad=getArguments().getInt("dificultad");
 
             for(int i=0;i<palabrasEntities.size();i++){
                 if(funcionesPalabras(palabrasEntities.get(i),dificultad)){
@@ -205,7 +206,9 @@ public class HerramientasFragment extends Fragment {
     }
 
     private void tiempo(){
-         countDownTimer = new CountDownTimer(10000, 1000) {
+        int tiempoDificultad = tiempoDificultad();
+
+         countDownTimer = new CountDownTimer(tiempoDificultad, 1000) {
             public void onTick(long millisUntilFinished) {
                 tiempo.setText(String.format(Locale.getDefault(), "%d S", millisUntilFinished / 1000L));
             }
@@ -217,12 +220,35 @@ public class HerramientasFragment extends Fragment {
         }.start();
     }
 
+    private int tiempoDificultad() {
+        int tiempo=getArguments().getInt("dificultad");
+        if(tiempo==1){
+            tiempo=45000;
+        }else if(tiempo==2){
+            tiempo=30000;
+        }else if(tiempo==3){
+            tiempo=15000;
+        }
+
+        return tiempo;
+    }
+
     private void JuegoFinalizado(){
         contador++;
         if (contador == 9) {
-                    if(SharedPreferentManager.getIntegerValue(Constantes.MEJOR_HERRAMIENTAS)<letrasTotales){
+            if(letrasTotales>0){
+                if(SharedPreferentManager.getIntegerValue(Constantes.MEJOR_HERRAMIENTAS)<letrasTotales){
                     SharedPreferentManager.setIntegerValue(Constantes.MEJOR_HERRAMIENTAS,letrasTotales);}
-                    getActivity().onBackPressed();
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasTotales,1,dificultad))
+                        .commit();
+            }else{
+                getActivity().onBackPressed();
+
+            }
+
 
         }
     }

@@ -74,21 +74,22 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
         findViewById();
         nombre=getArguments().getString("palabra",null);
 
-            mpalabrasviewModel = new ViewModelProvider(this).get(ModosJuegosViewModel.class);
-            mpalabrasviewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {
-                @Override
-                public void onChanged(List<PalabrasEntity> palabrasEntities) {
-                    if(nombre==null) {
-                        allPalabras = setPalabras(palabrasEntities);
-                        posicion = (int) (Math.random() * allPalabras.size());
-                        palabraAleatoria = allPalabras.get(posicion);
-                        palabra.setText(palabraAleatoria.getPalabra());
-                    }else{
-                        buscarPalabra(palabrasEntities);
-                    }
+        mpalabrasviewModel = new ViewModelProvider(this).get(ModosJuegosViewModel.class);
+           mpalabrasviewModel.getAllPalabras().observe(getViewLifecycleOwner(), new Observer<List<PalabrasEntity>>() {
+               @Override
+               public void onChanged(List<PalabrasEntity> palabrasEntities) {
+                   if(nombre==null) {
+                       allPalabras = setPalabras(palabrasEntities);
+                       posicion = (int) (Math.random() * allPalabras.size());
+                       palabraAleatoria = allPalabras.get(posicion);
+                       palabra.setText(palabraAleatoria.getPalabra());
+                   }else{
+                       buscarPalabra(palabrasEntities);
+                       mostrar();
+                   }
 
-                }
-            });
+               }
+           });
 
         return view;
     }
@@ -140,7 +141,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     }
 
     private List<PalabrasEntity> setPalabras(List<PalabrasEntity> palabrasEntities) {
-        dificultad=getArguments().getInt("dificultad");
+        this.dificultad=getArguments().getInt("dificultad");
             for(int i=0;i<palabrasEntities.size();i++){
                 if(funcionesPalabras(palabrasEntities.get(i),dificultad)){
                     palabraAleatoria=palabrasEntities.get(i);
@@ -276,18 +277,24 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     }
 
     private void mostrar(){
-        letrasGanadas++;
-        letras.setText(String.valueOf(letrasGanadas));
         if(getArguments().getInt("letras",-50)!=-50){
-            letrasGanadas=getArguments().getInt("letras")+letrasGanadas;
-            juegoFinalizado();
+            letrasGanadas=getArguments().getInt("letras");
+            letras.setText(String.valueOf(letrasGanadas));
+        }else {
+            letrasGanadas++;
+            letras.setText(String.valueOf(letrasGanadas));
         }
     }
 
     private void nuevaPalabra() {
-            posicion= (int) (Math.random()*allPalabras.size());
-            palabraAleatoria=allPalabras.get(posicion);
+        if(nombre==null) {
+            posicion = (int) (Math.random() * allPalabras.size());
+            palabraAleatoria = allPalabras.get(posicion);
             palabra.setText(palabraAleatoria.getPalabra());
+        }else {
+            letrasGanadas++;
+            juegoFinalizado();
+        }
     }
 
     private void juegoFinalizado(){
@@ -296,11 +303,19 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
         }else {
             if (SharedPreferentManager.getIntegerValue(Constantes.MEJOR_ESCALERA) < letrasGanadas)
                 SharedPreferentManager.setIntegerValue(Constantes.MEJOR_ESCALERA, letrasGanadas);
+            if(nombre==null) {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas,palabraAleatoria.getUrlRae(),palabraAleatoria.getPalabra()))
+                        .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 3, 1))
                         .commit();
+            }else{
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 2, 1))
+                        .commit();
+            }
         }
     }
 }

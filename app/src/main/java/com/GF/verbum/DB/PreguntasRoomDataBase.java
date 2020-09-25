@@ -52,15 +52,15 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
                     PreguntasDao dao = INSTANCE.DAO();
                     dao.deleteAll();
 
-                    PreguntasEntity pregunta = new PreguntasEntity("¿Admiten género y número?",true,false,true,false,true,false,false,false,false);
+                    PreguntasEntity pregunta = new PreguntasEntity("¿Admite género y número?",true,false,true,false,true,false,false,false,false);
                     dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("¿Presentan coorcondancia con la palabra que acompañan?",true,true,true,false,false,false,false,false,false);
+                    pregunta = new PreguntasEntity("¿Presenta coorcondancia con la palabra que acompañan?",true,true,true,false,false,false,false,false,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Es una palabra invariable?",false,false,false,false,false,true,true,true,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Puede funcionar  como sujeto?",true,false,false,true,false,false,false,false,false);
                     dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("¿Denotan entidades, materiales o inmateriales?",true,false,false,false,false,false,false,false,false);
+                    pregunta = new PreguntasEntity("¿Denota entidades, materiales o inmateriales?",true,false,false,false,false,false,false,false,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Aparecen acompañados de determinativos?",true,false,false,false,false,false,false,false,false);
                     dao.insert(pregunta);
@@ -70,9 +70,9 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Puede denotar propiedades o cualidades?",false,false,true,false,false,true,false,false,false);
                     dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("¿Presentan rasgos gramaticales de persona?",false,false,false,true,false,false,false,false,false);
+                    pregunta = new PreguntasEntity("¿Presenta rasgos gramaticales de persona?",false,false,false,true,false,false,false,false,false);
                     dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("¿Poseen grado?",false,false,true,false,false,true,false,false,false);
+                    pregunta = new PreguntasEntity("¿Posee grado?",false,false,true,false,false,true,false,false,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Su significado debe interpretarse en función de la situación comunicativa?",false,false,false,true,false,false,false,false,false);
                     dao.insert(pregunta);
@@ -82,7 +82,7 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Comunica sentimientos e impresiones?",false,false,false,false,false,false,false,false,true);
                     dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("¿Codifican verbalmente determinados comportamientos sociales convencionales?",false,false,false,false,false,false,false,false,true);
+                    pregunta = new PreguntasEntity("¿Codifica verbalmente determinados comportamientos sociales convencionales?",false,false,false,false,false,false,false,false,true);
                     dao.insert(pregunta);
                 }
             });

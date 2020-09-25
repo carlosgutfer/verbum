@@ -22,6 +22,7 @@ import com.GF.verbum.commun.Constantes;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.MainActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,7 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
     private CheckBox sust, adj, pro, adv, verb, pre, conj, inter, art;
     private Button comprobar;
     private String nombre;
+    private int mode;
 
     public static pantallaEscaleraInfinitaMedioDificilFragment newInstance(int dificultad) {
         pantallaEscaleraInfinitaMedioDificilFragment fragment = new pantallaEscaleraInfinitaMedioDificilFragment();
@@ -53,11 +55,13 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
         return fragment;
     }
 
-    public static pantallaEscaleraInfinitaMedioDificilFragment newInstance(String palabra,int letras) {
+    public static pantallaEscaleraInfinitaMedioDificilFragment newInstance(String palabra,int letras, int dificultad, int mode) {
         pantallaEscaleraInfinitaMedioDificilFragment fragment = new pantallaEscaleraInfinitaMedioDificilFragment();
         Bundle args = new Bundle();
         args.putString("palabra",palabra);
         args.putInt("letras", letras);
+        args.putInt("dificultad",dificultad);
+        args.putInt("mode",mode);
         fragment.setArguments(args);
         return fragment;
     }
@@ -83,6 +87,7 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
                     palabra.setText(palabraAleatoria.getPalabra());
                 }else{
                     buscarPalabra(palabrasEntities);
+                    mostrar();
                 }
             }
         });
@@ -91,6 +96,8 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
     }
 
     private void buscarPalabra(List<PalabrasEntity> palabrasEntities) {
+        this.dificultad=getArguments().getInt("dificultad");
+        this.mode=getArguments().getInt("mode");
         for (int i =0;i<palabrasEntities.size();i++ ){
             if(nombre.equals(palabrasEntities.get(i).getPalabra())){
                 palabraAleatoria = palabrasEntities.get(i);
@@ -129,7 +136,7 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
     }
 
     private List<PalabrasEntity> setPalabras(List<PalabrasEntity> palabrasEntities) {
-        dificultad=getArguments().getInt("dificultad");
+        this.dificultad=getArguments().getInt("dificultad");
 
         for(int i=0;i<palabrasEntities.size();i++){
             if(funcionesPalabras(palabrasEntities.get(i),dificultad)){
@@ -238,26 +245,48 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
     }
 
     private void mostrar(){
-        letrasGanadas++;
-        letras.setText(String.valueOf(letrasGanadas));
         if(getArguments().getInt("letras",-50)!=-50){
-            letrasGanadas=getArguments().getInt("letras")+letrasGanadas;
-            juegoFinalizado();
+            letrasGanadas=getArguments().getInt("letras");
+            letras.setText(String.valueOf(letrasGanadas));
+        }else {
+            letrasGanadas++;
+            letras.setText(String.valueOf(letrasGanadas));
         }
     }
 
     private void nuevaPalabra() {
-            posicion= (int) (Math.random()*allPalabras.size());
-            palabraAleatoria=allPalabras.get(posicion);
+        if(nombre==null) {
+            posicion = (int) (Math.random() * allPalabras.size());
+            palabraAleatoria = allPalabras.get(posicion);
             palabra.setText(palabraAleatoria.getPalabra());
+        }else {
+            letrasGanadas++;
+            juegoFinalizado();
+        }
     }
 
     private void juegoFinalizado(){
 
-        if(SharedPreferentManager.getIntegerValue(Constantes.MEJOR_ESCALERA)<letrasGanadas)
-            SharedPreferentManager.setIntegerValue(Constantes.MEJOR_ESCALERA,letrasGanadas);
+        if(letrasGanadas==0){
+            getActivity().onBackPressed();
+        }else {
+            if (SharedPreferentManager.getIntegerValue(Constantes.MEJOR_ESCALERA) < letrasGanadas)
+                SharedPreferentManager.setIntegerValue(Constantes.MEJOR_ESCALERA, letrasGanadas);
+            if(nombre==null) {
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 3, dificultad))
+                        .commit();
+            }else{
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(),mode, dificultad))
+                        .commit();
+            }
 
-        getActivity().onBackPressed();
+        }
 
 
     }

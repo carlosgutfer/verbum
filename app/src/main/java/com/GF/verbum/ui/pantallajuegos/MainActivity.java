@@ -1,6 +1,8 @@
 package com.GF.verbum.ui.pantallajuegos;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.media.AudioAttributes;
@@ -13,25 +15,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.Sintaxis.SintaxisActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.EleccionJuegoActivity;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button jugar,mejores, sintaxis;
     private ImageView sound;
     private  int sonido_de_tecla;
     SoundPool sp;
+    private List<PalabrasEntity> allPalabras = new ArrayList<>();
     private int position;
      private MediaPlayer md;
+    private ModosJuegosViewModel mpalabrasviewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         findViewById();
         mejores.setOnClickListener(this);
         jugar.setOnClickListener(this);
@@ -43,7 +52,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(SharedPreferentManager.getIntegerValue("soundMode")==1){
             sound.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_off_24));
         }
+        mpalabrasviewModel = new ViewModelProvider(this).get(ModosJuegosViewModel.class);
+        mpalabrasviewModel.getAllPalabras().observe(this, new Observer<List<PalabrasEntity>>() {
+            @Override
+            public void onChanged(List<PalabrasEntity> palabrasEntities) {
 
+            }
+        });
 
 
 
