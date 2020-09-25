@@ -1,41 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.GF.verbum">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".commun.MyApp"
         android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.pantallajuegos.Sintaxis.SintaxisActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".ui.pantallajuegos.RecordActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".ui.pantallajuegos.modoJuegos.EleccionJuegoActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".ui.pantallajuegos.modoJuegos.pantalla_juegos"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".ui.pantallajuegos.MainActivity"
-            android:screenOrientation="portrait"
-            >
-
+        <activity android:name=".ui.pantallajuegos.Sintaxis.explicacionSintaxisActivity"></activity>
+        <activity
+            android:name=".ui.pantallajuegos.Sintaxis.SintaxisActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.pantallajuegos.record.RecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.pantallajuegos.modoJuegos.EleccionJuegoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.pantallajuegos.modoJuegos.pantalla_juegos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.pantallajuegos.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"
+                <action android:name="android.intent.action.MAIN" />
 
-                    />
-
-                <category android:name="android.intent.category.LAUNCHER"
-                    />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

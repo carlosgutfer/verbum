@@ -35,5 +35,10 @@
     <string name="DiccionarioRae">Diccionario RAE</string>
     <string name="SubirRegistro">Subir puntuación</string>
     <string name="Nick">Nick</string>
+    <string name="ModoDeJuego">Modo de juego</string>
+    <string name="dificultad">Dificultad</string>
+    <string name="buscar">Buscar</string>
+    <string name="modoJuegoVacio">El campo modo de juego no puede estar vacio</string>
+    <string name="dificultadVacio">El campo dificultad no puede estar vacio</string>
 
 </resources>

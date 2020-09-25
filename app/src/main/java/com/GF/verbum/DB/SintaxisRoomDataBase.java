@@ -47,7 +47,24 @@ public  abstract class SintaxisRoomDataBase extends RoomDatabase {
 
                     SintaxisDao dao = INSTANCE.DAO();
                     dao.deleteAll();
-
+                SintaxisEntity nuevoTipo = new SintaxisEntity("Sustantivo","");
+                    dao.insert(nuevoTipo);
+                    nuevoTipo = new SintaxisEntity("Adjetivo","");
+                    dao.insert(nuevoTipo);
+                    nuevoTipo = new SintaxisEntity("Pronombre","");
+                    dao.insert(nuevoTipo);
+                    nuevoTipo = new SintaxisEntity("Adverbio","");
+                    dao.insert(nuevoTipo);
+                    nuevoTipo = new SintaxisEntity("Verbo","");
+                    dao.insert(nuevoTipo);
+                    nuevoTipo = new SintaxisEntity("Preposición","");
+                    dao.insert(nuevoTipo);
+                    nuevoTipo = new SintaxisEntity("Conjucción","");
+                    dao.insert(nuevoTipo);
+                    nuevoTipo = new SintaxisEntity("Interjección","");
+                    dao.insert(nuevoTipo);
+                    nuevoTipo = new SintaxisEntity("Artículo","");
+                    dao.insert(nuevoTipo);
 
                 }
             });

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,13 +20,15 @@ import com.GF.verbum.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class tiposSintaxisFragment extends Fragment {
+public class tiposSintaxisFragment extends Fragment   {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
-    private int mColumnCount = 1;
+    private int mColumnCount = 2;
+    private OnListFragmentInteractionListener mListener;
 
+    private SintaxisViewModel viewModel;
     public tiposSintaxisFragment() {
     }
 
@@ -55,15 +59,25 @@ public class tiposSintaxisFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            final RecyclerView recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            List<SintaxisEntity> allSintaxis= new ArrayList<>();
-            recyclerView.setAdapter(new MytiposSintaxisRecyclerViewAdapter(allSintaxis));
+            final List<SintaxisEntity> allSintaxis= new ArrayList<>();
+            viewModel = new ViewModelProvider(this).get(SintaxisViewModel.class);
+            viewModel.getAllSintaxis().observe(getActivity(), new Observer<List<SintaxisEntity>>() {
+                @Override
+                public void onChanged(List<SintaxisEntity> sintaxisEntities) {
+                    recyclerView.setAdapter(new MytiposSintaxisRecyclerViewAdapter( sintaxisEntities,getActivity(),mListener));
+                }
+            });
+
         }
         return view;
     }
+    public interface OnListFragmentInteractionListener {
+    }
+
 }

@@ -4,45 +4,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/menu_vertical"
-    tools:context=".ui.pantallajuegos.RecordActivity">
+    android:background="@drawable/papiro_fondo"
+    tools:context=".ui.pantallajuegos.record.RecordActivity">
 
-    <TextView
-        android:id="@+id/TV_RecordHerramientas"
-        android:layout_width="223dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="236dp"
-        android:fontFamily="casual"
-        android:padding="3dp"
-        android:text="@string/SinRegistros"
-        android:textColor="@android:color/background_dark"
+    <Button
+        android:id="@+id/BT_buscar"
+        android:layout_width="178dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/pieza"
+        android:text="@string/buscar"
+        android:textColor="@color/marron"
         android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/BT_modoJuego"
+        app:layout_constraintStart_toStartOf="@+id/BT_modoJuego"
+        app:layout_constraintTop_toBottomOf="@+id/BT_modoJuego" />
+
+    <Button
+        android:id="@+id/BT_dificultad"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/pieza"
+        android:text="@string/dificultad"
+        android:textColor="@color/marron"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintHorizontal_bias="0.359"
+        app:layout_constraintStart_toEndOf="@+id/BT_modoJuego"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/BT_modoJuego"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/pieza"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp"
+        android:text="@string/ModoDeJuego"
+        android:textColor="@color/marron"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/TV_RecordEscalera"
+        android:id="@+id/TV_modosDeJuego"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/button_border"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:fontFamily="casual"
-        android:textColor="@android:color/background_dark"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/ModoDeJuego"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/TV_RecordHerramientas"
-        app:layout_constraintStart_toStartOf="@+id/TV_RecordHerramientas"
-        app:layout_constraintTop_toBottomOf="@+id/TV_RecordHerramientas" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/BT_modoJuego"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/container_record"
+        app:layout_constraintTop_toBottomOf="@+id/BT_buscar" />
 
     <TextView
-        android:id="@+id/TV_RecordQue"
+        android:id="@+id/TV_dificultad"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="@android:color/background_dark"
+        android:layout_height="0dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/button_border"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/dificultad"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/TV_RecordEscalera"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/container_record"
+        app:layout_constraintEnd_toEndOf="@+id/container_record"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/TV_RecordEscalera"
-        app:layout_constraintTop_toBottomOf="@+id/TV_RecordEscalera" />
+        app:layout_constraintStart_toEndOf="@+id/TV_modosDeJuego"
+        app:layout_constraintTop_toBottomOf="@+id/BT_buscar" />
+
+    <FrameLayout
+        android:id="@+id/container_record"
+        android:layout_width="352dp"
+        android:layout_height="404dp"
+        android:layout_marginBottom="16dp"
+        android:foreground="@drawable/button_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.61"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_modosDeJuego"
+        app:layout_constraintVertical_bias="0.0">
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

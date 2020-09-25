@@ -5,17 +5,13 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
-import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.R;
@@ -23,6 +19,7 @@ import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.Sintaxis.SintaxisActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.EleccionJuegoActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
+import com.GF.verbum.ui.pantallajuegos.record.RecordActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +28,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button jugar,mejores, sintaxis;
     private ImageView sound;
     private  int sonido_de_tecla;
-    SoundPool sp;
+    private SoundPool sp;
+    private MediaPlayer md;
     private List<PalabrasEntity> allPalabras = new ArrayList<>();
     private int position;
-     private MediaPlayer md;
+
     private ModosJuegosViewModel mpalabrasviewModel;
 
     @Override

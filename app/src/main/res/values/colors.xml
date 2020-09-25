@@ -5,5 +5,6 @@
     <color name="colorPrimaryDark">#c9982f</color>
     <color name="colorAccent">#fffc8f</color>
     <color name="marron">#8F550C</color>
+    <color name="custome">#77FFC95F</color>
 
 </resources>
