@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_escaleraInfinita">
+
+    <fragment
+        android:id="@+id/navigation_escaleraInfinita"
+        android:name="com.GF.verbum.ui.pantallajuegos.tutorial.ui.escaleraInfinitaTutorial"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_escalera_infinita_tutorial" />
+
+    <fragment
+        android:id="@+id/navigation_queSoy"
+        android:name="com.GF.verbum.ui.pantallajuegos.tutorial.ui.queSoyTutorialFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_que_soy_tutorial" />
+
+    <fragment
+        android:id="@+id/navigation_cajaHerramientas"
+        android:name="com.GF.verbum.ui.pantallajuegos.tutorial.ui.cajaHerramientasTutorialFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_caja_herramientas_tutorial" />
+</navigation>

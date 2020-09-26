@@ -9,10 +9,6 @@ import android.os.Bundle;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.MainActivity;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.CajaDeHerramientas.HerramientasFragment;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.QueSoy.QueSoyFragment;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
 
 public class pantalla_juegos extends AppCompatActivity {
  private int modoJuego;
@@ -21,7 +17,7 @@ public class pantalla_juegos extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pantalla_juegos_activity);
+        setContentView(R.layout.activity_pantalla_juegos);
         modoJuego = getIntent().getIntExtra("ModoJuego", -1);
 
 

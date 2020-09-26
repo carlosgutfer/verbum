@@ -67,7 +67,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.escalera_infinita_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_escalera_infinita, container, false);
         this.v=view;
         sp = new SoundPool(10, AudioManager.STREAM_MUSIC,1);
         sonido_de_tecla= sp.load(getActivity(),R.raw.tecla,1);

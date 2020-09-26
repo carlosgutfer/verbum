@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.pantallajuegos.Sintaxis.explicacionSintaxisActivity"></activity>
+        <activity
+            android:name=".ui.pantallajuegos.tutorial.tutorialActivity"
+            android:label="@string/title_activity_tutorial"></activity>
+        <activity android:name=".ui.pantallajuegos.Sintaxis.explicacionSintaxisActivity" />
         <activity
             android:name=".ui.pantallajuegos.Sintaxis.SintaxisActivity"
             android:screenOrientation="portrait" />

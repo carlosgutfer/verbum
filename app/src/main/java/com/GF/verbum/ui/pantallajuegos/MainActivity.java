@@ -20,12 +20,13 @@ import com.GF.verbum.ui.pantallajuegos.Sintaxis.SintaxisActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.EleccionJuegoActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 import com.GF.verbum.ui.pantallajuegos.record.RecordActivity;
+import com.GF.verbum.ui.pantallajuegos.tutorial.tutorialActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button jugar,mejores, sintaxis;
+    private Button jugar,mejores, sintaxis,tutorial;
     private ImageView sound;
     private  int sonido_de_tecla;
     private SoundPool sp;
@@ -40,10 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById();
-        mejores.setOnClickListener(this);
-        jugar.setOnClickListener(this);
-        sintaxis.setOnClickListener(this);
-        sound.setOnClickListener(this);
+        onClickthis();
         sp = new SoundPool(10, AudioManager.STREAM_MUSIC,1);
         sonido_de_tecla= sp.load(MainActivity.this,R.raw.espacio,1);
 
@@ -62,11 +60,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    private void onClickthis() {
+        mejores.setOnClickListener(this);
+        jugar.setOnClickListener(this);
+        sintaxis.setOnClickListener(this);
+        sound.setOnClickListener(this);
+        tutorial.setOnClickListener(this);
+    }
+
     private void findViewById() {
         jugar=findViewById(R.id.BT_Jugar);
         mejores=findViewById(R.id.BT_Mejores);
         sintaxis=findViewById(R.id.Bt_Sintaxis);
         sound=findViewById(R.id.IB_sound);
+        tutorial=findViewById(R.id.Bt_tutorial);
     }
 
     @Override
@@ -100,6 +107,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(view==R.id.IB_sound){
           soundMode();
+        }
+        if(view==R.id.Bt_tutorial){
+            Intent i = new Intent(this, tutorialActivity.class);
+            startActivity(i);
+            finish();
         }
     }
 

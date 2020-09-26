@@ -3,7 +3,6 @@ package com.GF.verbum.ui.pantallajuegos.modoJuegos.CajaDeHerramientas;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,10 +22,8 @@ import com.GF.verbum.DB.Entities.PreguntasEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.Constantes;
 import com.GF.verbum.commun.SharedPreferentManager;
-import com.GF.verbum.ui.pantallajuegos.MainActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.pantalla_juegos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +63,7 @@ public class HerramientasFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        v= inflater.inflate(R.layout.herramientas_fragment, container, false);
+        v= inflater.inflate(R.layout.fragment_herramientas, container, false);
         mViewModel = new ViewModelProvider(this).get(ModosJuegosViewModel.class);
         findViewById();
         mViewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {

@@ -53,7 +53,7 @@ public class QueSoyFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        this.v= inflater.inflate(R.layout.que_soy_fragment, container, false);
+        this.v= inflater.inflate(R.layout.fragment_que_soy, container, false);
         findViewById();
         sp = new SoundPool(10, AudioManager.STREAM_MUSIC,1);
         sonido_de_tecla= sp.load(getActivity(),R.raw.tecla,1);
