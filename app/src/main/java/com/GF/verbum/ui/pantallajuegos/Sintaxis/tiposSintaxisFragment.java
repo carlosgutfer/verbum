@@ -20,13 +20,15 @@ import com.GF.verbum.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class tiposSintaxisFragment extends Fragment   {
+public class tiposSintaxisFragment extends Fragment  {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
+
     // TODO: Customize parameters
     private int mColumnCount = 2;
     private OnListFragmentInteractionListener mListener;
+
 
     private SintaxisViewModel viewModel;
     public tiposSintaxisFragment() {
@@ -49,6 +51,7 @@ public class tiposSintaxisFragment extends Fragment   {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
+
     }
 
     @Override
@@ -71,13 +74,36 @@ public class tiposSintaxisFragment extends Fragment   {
                 @Override
                 public void onChanged(List<SintaxisEntity> sintaxisEntities) {
                     recyclerView.setAdapter(new MytiposSintaxisRecyclerViewAdapter( sintaxisEntities,getActivity(),mListener));
+
+
                 }
             });
 
         }
         return view;
     }
-    public interface OnListFragmentInteractionListener {
+
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnListFragmentInteractionListener) {
+            mListener = (OnListFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnListFragmentInteractionListener");
+        }
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+
+    public interface OnListFragmentInteractionListener {
+
+    }
 }

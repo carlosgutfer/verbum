@@ -1,10 +1,12 @@
 package com.GF.verbum.ui.pantallajuegos.tutorial;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.GF.verbum.R;
+import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.MainActivity;
 import com.GF.verbum.ui.pantallajuegos.tutorial.ui.cajaHerramientasTutorialFragment;
 import com.GF.verbum.ui.pantallajuegos.tutorial.ui.escaleraInfinitaTutorial;
@@ -16,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 public class tutorialActivity extends AppCompatActivity {
-
+    private MediaPlayer md;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -65,8 +67,32 @@ public class tutorialActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+
         Intent i = new Intent(this, MainActivity.class);
+        if(md!=null){
+            i.putExtra("position",md.getCurrentPosition());
+            md.release();
+            md = null;
+        }
         startActivity(i);
         finish();
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startMusic();
+    }
+
+    private void startMusic() {
+        if(SharedPreferentManager.getIntegerValue("soundMode")==-1) {
+            md = MediaPlayer.create(this, R.raw.export);
+            md.setVolume(0.5f, 0.5f);
+            int soundPosition = getIntent().getIntExtra("position", 0);
+            md.seekTo(soundPosition);
+            md.setLooping(true);
+            md.start();
+        }
     }
 }

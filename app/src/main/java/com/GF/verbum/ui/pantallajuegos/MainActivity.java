@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if(md!=null){
             position=md.getCurrentPosition();
             i.putExtra("position",position);}
-
             startActivity(i);
             finish();
            }
@@ -103,13 +102,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 position=md.getCurrentPosition();
             i.putExtra("position",position);}
             startActivity(i);
-            finish();
         }
         if(view==R.id.IB_sound){
           soundMode();
         }
         if(view==R.id.Bt_tutorial){
             Intent i = new Intent(this, tutorialActivity.class);
+            if(md!=null){
+                position=md.getCurrentPosition();
+                i.putExtra("position",position);}
             startActivity(i);
             finish();
         }

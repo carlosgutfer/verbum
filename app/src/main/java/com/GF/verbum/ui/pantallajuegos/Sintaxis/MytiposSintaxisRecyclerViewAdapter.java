@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -47,11 +48,10 @@ public class MytiposSintaxisRecyclerViewAdapter extends RecyclerView.Adapter<Myt
         holder.mIdView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent prueba = new Intent(ctx, explicacionSintaxisActivity.class);
-                prueba.putExtra("nombre",mValues.get(position).getNombre());
-                prueba.putExtra("texto",mValues.get(position).getTexto());
-                ctx.startActivity(prueba);
-
+                Intent i = new Intent(ctx, explicacionSintaxisActivity.class);
+                i.putExtra("nombre",mValues.get(position).getNombre());
+                i.putExtra("texto",mValues.get(position).getTexto());
+                ctx.startActivity(i);
             }
         });
     }

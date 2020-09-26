@@ -17,24 +17,23 @@
         android:textColor="@color/marron"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/BT_modoJuego"
-        app:layout_constraintStart_toStartOf="@+id/BT_modoJuego"
-        app:layout_constraintTop_toBottomOf="@+id/BT_modoJuego" />
+        app:layout_constraintEnd_toEndOf="@+id/BT_dificultad"
+        app:layout_constraintHorizontal_bias="0.218"
+        app:layout_constraintStart_toStartOf="@+id/BT_dificultad"
+        app:layout_constraintTop_toBottomOf="@+id/BT_dificultad" />
 
     <Button
         android:id="@+id/BT_dificultad"
         android:layout_width="160dp"
         android:layout_height="80dp"
-        android:layout_marginTop="36dp"
         android:background="@drawable/pieza"
         android:text="@string/dificultad"
         android:textColor="@color/marron"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.359"
-        app:layout_constraintStart_toEndOf="@+id/BT_modoJuego"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/BT_modoJuego"
+        app:layout_constraintStart_toStartOf="@+id/BT_modoJuego"
+        app:layout_constraintTop_toBottomOf="@+id/BT_modoJuego" />
 
     <Button
         android:id="@+id/BT_modoJuego"
@@ -57,7 +56,8 @@
         android:id="@+id/TV_modosDeJuego"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:background="@drawable/button_border"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -68,16 +68,36 @@
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/BT_modoJuego"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@+id/BT_dificultad"
+        app:layout_constraintStart_toEndOf="@+id/BT_modoJuego"
+        app:layout_constraintTop_toTopOf="@+id/BT_modoJuego"
+        app:layout_constraintVertical_bias="0.395" />
+
+    <TextView
+        android:id="@+id/TV_modosDeJuego2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_border"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/Nombre"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/BT_buscar"
         app:layout_constraintStart_toStartOf="@+id/container_record"
         app:layout_constraintTop_toBottomOf="@+id/BT_buscar" />
 
     <TextView
         android:id="@+id/TV_dificultad"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
         android:background="@drawable/button_border"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -88,24 +108,38 @@
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/container_record"
+        app:layout_constraintBottom_toBottomOf="@+id/BT_dificultad"
+        app:layout_constraintStart_toEndOf="@+id/BT_dificultad"
+        app:layout_constraintTop_toTopOf="@+id/BT_dificultad" />
+
+    <TextView
+        android:id="@+id/TV_dificultad2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_border"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/Puntuacion"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/container_record"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/TV_modosDeJuego"
+        app:layout_constraintStart_toEndOf="@+id/TV_modosDeJuego2"
         app:layout_constraintTop_toBottomOf="@+id/BT_buscar" />
 
     <FrameLayout
         android:id="@+id/container_record"
         android:layout_width="352dp"
-        android:layout_height="404dp"
-        android:layout_marginBottom="16dp"
+        android:layout_height="350dp"
         android:foreground="@drawable/button_border"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.61"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TV_modosDeJuego"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/TV_dificultad2">
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,7 @@
     <string name="EscaleraInfinita">Escalera infinita</string>
     <string name="QueSoy">¿Qué soy?</string>
     <string name="CajaDeHerramientas">Caja de herramientas</string>
+    <string name="CajaHerramienta">Caja herramientas</string>
     <string name="Comprobar">Comprobar</string>
     <string name="Records">Mejores Puntuaciones</string>
     <string name="Letras">Letras ganadas</string>
@@ -44,14 +45,16 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="tutorialEscalera">En este modo de juego deberás clasificar las palabras que se muestran por pantalla eligiendo entre una o varias opciones (dependiendo de la dificultad) para conseguir el mayor número posible de letras. El juego terminará cuando te equivoques, es el modo más difícil y en el se pondrá a prueba todos tus conocimientos de la sintaxis. ¡Buena suerte!</string>
+    <string name="tutorialEscalera">En este modo de juego deberás clasificar las palabras que se muestran por pantalla eligiendo entre una o varias opciones (dependiendo de la dificultad) para conseguir el mayor número posible de letras. El juego terminará cuando te equivoques, es el modo  de juego más difícil y en el se pondrá a prueba todos tus conocimientos de la sintaxis. ¡Buena suerte!</string>
     <string name="medioDidifil">Medio/Difícil</string>
     <string name="escaleraTutorialSubrayado"><![CDATA[<u>Escalera infinita</u>]]></string>
-    <string name="QueSoyTutorialSubrayado"><![CDATA[<u>¿Qué soy?</u>]]></string>
+    <string name="QueSoyTutorialSubrayado"><![CDATA[<u>¿ Qué soy ?</u>]]></string>
     <string name="cajaHerramientasTutorialSubrayado"><![CDATA[<u>Caja de herramientas</u>]]></string>
     <string name="clasificacion">Clasificación</string>
     <string name="pregutantasRespuestas">Preguntas</string>
     <string name="tutorialQueSoy">En este modo de juego deberás responder una serie de preguntas sobre una palabra aleatoria para conseguir el mayor número de letras posibles. Una vez respondidas todas, deberás clasificar la palabra eligiendo todas las funciones que puede cumplir. ¡Buenas suerte!</string>
-    <string name="tutorialCajaHerramientas">En este modo de juego deberás elegir entre cinco opciones que cumplan la pregunta dada sin que se te acabe el tiempo, donde una o varias serán las correctas. El tiempo que dispones para responder se irá reduciendo a medida que elijas aumentar la dificultad ¡Buenas suerte!</string>
+    <string name="tutorialCajaHerramientas">En este modo de juego deberás elegir entre cinco opciones que cumplan la pregunta dada sin que se te acabe el tiempo, donde una o varias serán las correctas. El tiempo que dispones para responder se irá reduciendo a medida que aumentes la dificultad ¡Buenas suerte!</string>
     <string name="todasLasDificultades">Todas las dificultades</string>
+    <string name="Nombre">Jugador</string>
+    <string name="Puntuacion">Puntuación</string>
 </resources>
