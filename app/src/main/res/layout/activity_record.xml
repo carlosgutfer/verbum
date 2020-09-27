@@ -39,8 +39,8 @@
         android:id="@+id/BT_modoJuego"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="36dp"
         android:background="@drawable/pieza"
         android:paddingLeft="18dp"
@@ -54,7 +54,7 @@
 
     <TextView
         android:id="@+id/TV_modosDeJuego"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
@@ -69,9 +69,11 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/BT_dificultad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/BT_modoJuego"
         app:layout_constraintTop_toTopOf="@+id/BT_modoJuego"
-        app:layout_constraintVertical_bias="0.395" />
+        app:layout_constraintVertical_bias="0.465" />
 
     <TextView
         android:id="@+id/TV_modosDeJuego2"
@@ -109,8 +111,11 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/BT_dificultad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.146"
         app:layout_constraintStart_toEndOf="@+id/BT_dificultad"
-        app:layout_constraintTop_toTopOf="@+id/BT_dificultad" />
+        app:layout_constraintTop_toTopOf="@+id/BT_dificultad"
+        app:layout_constraintVertical_bias="0.488" />
 
     <TextView
         android:id="@+id/TV_dificultad2"

@@ -11,17 +11,18 @@
         android:id="@+id/TV_PreguntaHerramientas"
         android:layout_width="272dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
         android:fontFamily="casual"
         android:padding="10dp"
         android:text="Hello"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintEnd_toStartOf="@+id/TV_tiempo"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.124" />
+        app:layout_constraintVertical_bias="0.058" />
 
     <CheckBox
         android:id="@+id/CB_op1"
@@ -75,7 +76,6 @@
         android:id="@+id/BT_comprobarHerramientas"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="276dp"
         android:layout_marginEnd="79dp"
         android:layout_marginRight="79dp"
         android:background="@drawable/pieza"
@@ -83,18 +83,20 @@
         android:textColor="@color/marron"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/CB_op3"
-        app:layout_constraintTop_toBottomOf="@+id/TV_PreguntaHerramientas" />
+        app:layout_constraintTop_toBottomOf="@+id/CB_ninguna"
+        app:layout_constraintVertical_bias="0.104" />
 
     <TextView
         android:id="@+id/TV_tiempo"
         android:layout_width="84dp"
         android:layout_height="82dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:gravity="clip_horizontal|center|clip_vertical"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -104,9 +106,9 @@
         android:id="@+id/TV_LetrasConseguidasEscalera"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:background="@drawable/pieza"
         android:gravity="center|center_horizontal|center_vertical"
         android:text="@string/Letras"
@@ -114,8 +116,8 @@
         android:textColor="@color/marron"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_tiempo" />
 
     <CheckBox
         android:id="@+id/CB_ninguna"

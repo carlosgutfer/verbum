@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.GF.verbum.DB.Entities.PalabrasEntity;
+import com.GF.verbum.DB.Entities.PreguntasEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.Sintaxis.SintaxisActivity;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private  int sonido_de_tecla;
     private SoundPool sp;
     private MediaPlayer md;
-    private List<PalabrasEntity> allPalabras = new ArrayList<>();
+
     private int position;
 
     private ModosJuegosViewModel mpalabrasviewModel;
@@ -53,6 +54,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onChanged(List<PalabrasEntity> palabrasEntities) {
 
+            }
+        });
+        mpalabrasviewModel.getAllPreguntas().observe(this, new Observer<List<PreguntasEntity>>() {
+            @Override
+            public void onChanged(List<PreguntasEntity> preguntasEntities) {
             }
         });
 

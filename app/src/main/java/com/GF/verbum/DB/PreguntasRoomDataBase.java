@@ -84,6 +84,8 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Codifica verbalmente determinados comportamientos sociales convencionales?",false,false,false,false,false,false,false,false,true);
                     dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("¿Modifica a la palabra que acompaña para que fundione como sujeto ?",false,true,false,false,false,false,false,false,false);
+                    dao.insert(pregunta);
                 }
             });
         }

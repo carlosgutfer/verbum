@@ -628,6 +628,8 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("Mediante", false, false, false, false, false, false, true, false, false,"https://dle.rae.es/mediante?m=form");
         dao.insert(palabra);
+        palabra = new PalabrasEntity("Versus", false, false, false, false, false, false, true, false, false,"https://dle.rae.es/versus");
+        dao.insert(palabra);
     }
     private static void PreposicionSustantivo(PalabrasDao dao){
         PalabrasEntity palabra = new PalabrasEntity("A", true, false, false, false, false, false, true, false, false,"https://dle.rae.es/a#002rZ9U");
@@ -637,6 +639,8 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         palabra = new PalabrasEntity("Contra", true, false, false, false, false, false, true, false, false,"https://dle.rae.es/contra#AWCzXfA");
         dao.insert(palabra);
         palabra = new PalabrasEntity("Tras", false, false, false, false, false, false, true, false, false,"https://dle.rae.es/tras#aOnVELH");
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("Vía", true, false, false, false, false, false, true, false, false,"https://dle.rae.es/v%C3%ADa?m=form");
         dao.insert(palabra);
     }
     private static void PreposicionSustantivoAdverbio(PalabrasDao dao){

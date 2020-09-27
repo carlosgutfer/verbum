@@ -31,6 +31,7 @@ public class SintaxisActivity extends AppCompatActivity implements tiposSintaxis
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if(md!=null)
         md.release();
         finish();
     }

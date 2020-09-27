@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">verbum</string>
+    <string name="app_name">Verbum</string>
     <string name="Jugar">Jugar</string>
     <string name="tutorial">tutorial</string>
     <string name="sintaxis">Sintaxis</string>
@@ -27,8 +27,6 @@
     <string name="conjuncion">Conjunción</string>
     <string name="Interjeccion">Interjección</string>
     <string name="Preposicion">Preposición</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Facil">Fácil</string>
     <string name="Medio">Medio</string>
     <string name="Dificil">Difícil</string>
@@ -57,4 +55,5 @@
     <string name="todasLasDificultades">Todas las dificultades</string>
     <string name="Nombre">Jugador</string>
     <string name="Puntuacion">Puntuación</string>
+    <string name="Semantica">Semántica</string>
 </resources>
