@@ -26,6 +26,7 @@ import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PantallaEscaleraInfinitaFragment extends Fragment implements View.OnClickListener {
 
@@ -299,7 +300,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
 
     private void juegoFinalizado(){
         if(letrasGanadas==0){
-            getActivity().onBackPressed();
+            requireActivity().onBackPressed();
         }else {
             if (SharedPreferentManager.getIntegerValue(Constantes.MEJOR_ESCALERA) < letrasGanadas)
                 SharedPreferentManager.setIntegerValue(Constantes.MEJOR_ESCALERA, letrasGanadas);

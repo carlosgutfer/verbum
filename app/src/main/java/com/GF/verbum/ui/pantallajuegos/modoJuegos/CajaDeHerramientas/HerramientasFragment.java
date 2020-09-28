@@ -28,6 +28,7 @@ import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class HerramientasFragment extends Fragment {
 
@@ -242,7 +243,8 @@ public class HerramientasFragment extends Fragment {
                         .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasTotales,1,dificultad))
                         .commit();
             }else{
-                getActivity().onBackPressed();
+
+                requireActivity().onBackPressed();
 
             }
 

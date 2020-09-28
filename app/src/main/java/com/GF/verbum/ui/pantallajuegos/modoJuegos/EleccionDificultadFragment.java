@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,9 @@ import com.GF.verbum.ui.pantallajuegos.modoJuegos.CajaDeHerramientas.Herramienta
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.QueSoy.QueSoyFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaPantallaPequeña;
+
+import java.util.Objects;
 
 
 public class EleccionDificultadFragment extends Fragment implements View.OnClickListener {
@@ -112,11 +116,26 @@ public class EleccionDificultadFragment extends Fragment implements View.OnClick
                     .replace(R.id.containerJuegos, PantallaEscaleraInfinitaFragment.newInstance(i))
                     .commitNow();
         }else if(modo==3){
-           getActivity()
-                   .getSupportFragmentManager()
-                   .beginTransaction()
-                    .replace(R.id.containerJuegos, pantallaEscaleraInfinitaMedioDificilFragment.newInstance(i))
-                    .commitNow();
+
+            DisplayMetrics metrics = new DisplayMetrics();
+            requireActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            int width = metrics.widthPixels; // ancho absoluto en pixels
+            int height = metrics.heightPixels; // alto absoluto en pixels
+            if (height<=600&&width<=900) {
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.containerJuegos, pantallaEscaleraInfinitaPantallaPequeña.newInstance(i))
+                        .commitNow();
+
+            } else{
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.containerJuegos, pantallaEscaleraInfinitaMedioDificilFragment.newInstance(i))
+                        .commitNow();
+            }
+
         }
 
     }

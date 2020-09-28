@@ -56,4 +56,7 @@
     <string name="Nombre">Jugador</string>
     <string name="Puntuacion">Puntuación</string>
     <string name="Semantica">Semántica</string>
+    <string name="controlDeSonido">Control de música</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

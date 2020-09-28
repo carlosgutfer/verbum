@@ -11,7 +11,7 @@
         android:id="@+id/BT_Escalera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_border"
+        android:background="@drawable/button_border_white"
         android:fontFamily="casual"
         android:padding="5dp"
         android:text="@string/EscaleraInfinita"
@@ -21,14 +21,14 @@
         app:layout_constraintHorizontal_bias="0.548"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.281" />
+        app:layout_constraintVertical_bias="0.292" />
 
     <Button
         android:id="@+id/BT_QueSoy"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="@drawable/button_border"
+        android:background="@drawable/button_border_white"
         android:fontFamily="casual"
         android:text="@string/QueSoy"
         android:textStyle="bold"
@@ -41,14 +41,13 @@
         android:id="@+id/BT_Herramientas"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_border"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_border_white"
         android:fontFamily="casual"
         android:text="@string/CajaDeHerramientas"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/BT_QueSoy"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/BT_QueSoy"
-        app:layout_constraintTop_toBottomOf="@+id/BT_QueSoy"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintTop_toBottomOf="@+id/BT_QueSoy" />
 </androidx.constraintlayout.widget.ConstraintLayout>

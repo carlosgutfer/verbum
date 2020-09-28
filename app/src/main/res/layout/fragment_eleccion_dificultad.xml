@@ -11,7 +11,7 @@
         android:id="@+id/BT_Facil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_border"
+        android:background="@drawable/button_border_white"
         android:fontFamily="casual"
         android:padding="5dp"
         android:text="@string/Facil"
@@ -21,14 +21,14 @@
         app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.282" />
+        app:layout_constraintVertical_bias="0.294" />
 
     <Button
         android:id="@+id/BT_Medio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="@drawable/button_border"
+        android:background="@drawable/button_border_white"
         android:fontFamily="casual"
         android:text="@string/Medio"
         android:textStyle="bold"
@@ -41,15 +41,14 @@
         android:id="@+id/BT_Dificil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_border"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_border_white"
         android:fontFamily="casual"
         android:text="@string/Dificil"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/BT_Medio"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/BT_Medio"
-        app:layout_constraintTop_toBottomOf="@+id/BT_Medio"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintTop_toBottomOf="@+id/BT_Medio" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

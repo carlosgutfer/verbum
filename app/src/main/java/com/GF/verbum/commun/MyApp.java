@@ -3,7 +3,9 @@ package com.GF.verbum.commun;
 import android.app.Application;
 import android.content.Context;
 
-public class MyApp extends Application {
+import androidx.multidex.MultiDexApplication;
+
+public class MyApp extends MultiDexApplication {
 
     private static MyApp instance;
 

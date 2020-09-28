@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaPantallaPequeña;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -220,11 +222,23 @@ public class QueSoyFragment extends Fragment implements View.OnClickListener {
                     .replace(R.id.containerJuegos, PantallaEscaleraInfinitaFragment.newInstance(palabraAleatoria.getPalabra(),letrasConseguidas))
                     .commit();
         }else if(dificultad!=1&&ronda==6){
-            getActivity()
-                    .getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.containerJuegos, pantallaEscaleraInfinitaMedioDificilFragment.newInstance(palabraAleatoria.getPalabra(),letrasConseguidas,dificultad,2))
-                    .commit();
+            DisplayMetrics metrics = new DisplayMetrics();
+            requireActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            int width = metrics.widthPixels; // ancho absoluto en pixels
+            int height = metrics.heightPixels; // alto absoluto en pixels
+            if (height<=600&&width<=900) {
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.containerJuegos, pantallaEscaleraInfinitaPantallaPequeña.newInstance(palabraAleatoria.getPalabra(), letrasConseguidas, dificultad, 2))
+                        .commit();
+            }else{
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.containerJuegos, pantallaEscaleraInfinitaMedioDificilFragment.newInstance(palabraAleatoria.getPalabra(), letrasConseguidas, dificultad, 2))
+                        .commit();
+            }
         }
     }
     private void sonido() {
