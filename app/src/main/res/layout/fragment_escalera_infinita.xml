@@ -28,9 +28,7 @@
         android:id="@+id/TV_LetrasConseguidasEscalera"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/pieza"
         android:gravity="center|center_horizontal|center_vertical"
         android:text="@string/Letras"
@@ -38,8 +36,8 @@
         android:textColor="@color/marron"
         android:textSize="14sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="@+id/tableLayout"
-        app:layout_constraintStart_toEndOf="@+id/TV_palabraInfinita"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout

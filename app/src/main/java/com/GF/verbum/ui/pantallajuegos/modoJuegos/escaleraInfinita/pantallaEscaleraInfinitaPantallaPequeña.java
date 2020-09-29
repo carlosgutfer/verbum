@@ -68,7 +68,7 @@ public class pantallaEscaleraInfinitaPantallaPequeña extends Fragment implement
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_pantalla_escalera_infinita_medio_dificil, container, false);
+        View view = inflater.inflate(R.layout.fragment_escalera_infinita_medio_dificil_pantalla_pequenna, container, false);
         this.v=view;
         findViewById();
         nombre=getArguments().getString("palabra",null);

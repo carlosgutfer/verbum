@@ -13,6 +13,11 @@ import android.widget.Button;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.MainActivity;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class EleccionJuegoActivity extends AppCompatActivity implements View.OnClickListener {
     private Button herramientas, escalera, QS;
@@ -20,17 +25,25 @@ public class EleccionJuegoActivity extends AppCompatActivity implements View.OnC
     private  int sonido_de_tecla;
     SoundPool sp;
     private MediaPlayer md;
+    private AdView mAdView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eleccion_juego);
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
         findViewById();
         herramientas.setOnClickListener(this);
         escalera.setOnClickListener(this);
         QS.setOnClickListener(this);
-
+        mAdView = findViewById(R.id.adViewBanner);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
 
 

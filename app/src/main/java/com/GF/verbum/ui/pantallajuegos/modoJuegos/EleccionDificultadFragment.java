@@ -121,7 +121,8 @@ public class EleccionDificultadFragment extends Fragment implements View.OnClick
             requireActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
             int width = metrics.widthPixels; // ancho absoluto en pixels
             int height = metrics.heightPixels; // alto absoluto en pixels
-            if (height<=600&&width<=900) {
+
+            if (height<=900&&width<=500) {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()

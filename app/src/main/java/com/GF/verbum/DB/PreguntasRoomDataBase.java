@@ -56,7 +56,9 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Presenta coorcondancia con la palabra que acompañan?",true,true,true,false,false,false,false,false,false);
                     dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("¿Es una palabra invariable?",false,false,false,false,false,true,true,true,false);
+                    pregunta = new PreguntasEntity("¿Precede a todos los componenetes del grupo nominal al que pertenece?",true,true,true,false,false,false,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("¿Es una palabra invariable?",false,false,false,false,false,true,true,true,true);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Puede funcionar  como sujeto?",true,false,false,true,false,false,false,false,false);
                     dao.insert(pregunta);
@@ -65,6 +67,8 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
                     pregunta = new PreguntasEntity("¿Aparecen acompañados de determinativos?",true,false,false,false,false,false,false,false,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Modifica a la palabra que acompaña?",false,false,true,false,false,true,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("¿Tiene significado de cantidad, lugar, tiempo, manera, afirmación, negación o duda?",false,false,false,false,false,true,false,false,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Puede no variar en el plural?",false,false,true,false,false,false,false,false,false);
                     dao.insert(pregunta);
@@ -83,6 +87,8 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
                     pregunta = new PreguntasEntity("¿Comunica sentimientos e impresiones?",false,false,false,false,false,false,false,false,true);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Codifica verbalmente determinados comportamientos sociales convencionales?",false,false,false,false,false,false,false,false,true);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("¿Esta especializada en la formación de enunciados exclamativos?",false,false,false,false,false,false,false,false,true);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Modifica a la palabra que acompaña para que fundione como sujeto ?",false,true,false,false,false,false,false,false,false);
                     dao.insert(pregunta);

@@ -23,6 +23,8 @@ import com.GF.verbum.commun.Constantes;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +46,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     private int  posicion;
     private int dificultad;
     private String nombre;
+    private InterstitialAd mInterstitialad;
 
     private TextView letras;
     private Button sust, adj, pro, adv, verb, pre, conj, inter, art;
@@ -69,6 +72,9 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_escalera_infinita, container, false);
+        mInterstitialad = new InterstitialAd(getActivity());
+        mInterstitialad.setAdUnitId("ca-app-pub-9592543293433576/3091063629");
+        mInterstitialad.loadAd(new AdRequest.Builder().build());
         this.v=view;
         sp = new SoundPool(10, AudioManager.STREAM_MUSIC,1);
         sonido_de_tecla= sp.load(getActivity(),R.raw.tecla,1);
@@ -305,12 +311,17 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
             if (SharedPreferentManager.getIntegerValue(Constantes.MEJOR_ESCALERA) < letrasGanadas)
                 SharedPreferentManager.setIntegerValue(Constantes.MEJOR_ESCALERA, letrasGanadas);
             if(nombre==null) {
+
+                if(mInterstitialad.isLoaded())
+                    mInterstitialad.show();
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 3, 1))
                         .commit();
             }else{
+                if(mInterstitialad.isLoaded())
+                    mInterstitialad.show();
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()

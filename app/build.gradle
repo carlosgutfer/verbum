@@ -9,8 +9,8 @@ android {
         applicationId "com.GF.verbum"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 6
-        versionName "1.0.4"
+        versionCode 8
+        versionName "1.0.6"
         multiDexEnabled true
 
 
@@ -30,7 +30,7 @@ dependencies {
 
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation 'com.google.android.gms:play-services-ads:19.4.0'
     implementation "androidx.room:room-runtime:2.2.5"
     implementation 'com.google.firebase:firebase-firestore:21.6.0'
     implementation 'com.google.android.material:material:1.2.1'

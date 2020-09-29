@@ -24,6 +24,8 @@ import com.GF.verbum.commun.Constantes;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,8 @@ public class HerramientasFragment extends Fragment {
     private View v;
     private int letrasTotales=0;
     private int dificultad;
+    private InterstitialAd mInterstitialad;
+
 
 
 
@@ -65,6 +69,9 @@ public class HerramientasFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         v= inflater.inflate(R.layout.fragment_herramientas, container, false);
+        mInterstitialad = new InterstitialAd(getActivity());
+        mInterstitialad.setAdUnitId("ca-app-pub-9592543293433576/3091063629");
+        mInterstitialad.loadAd(new AdRequest.Builder().build());
         mViewModel = new ViewModelProvider(this).get(ModosJuegosViewModel.class);
         findViewById();
         mViewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {
@@ -235,6 +242,8 @@ public class HerramientasFragment extends Fragment {
         contador++;
         if (contador == 9) {
             if(letrasTotales>0){
+                if(mInterstitialad.isLoaded())
+                    mInterstitialad.show();
                 if(SharedPreferentManager.getIntegerValue(Constantes.MEJOR_HERRAMIENTAS)<letrasTotales){
                     SharedPreferentManager.setIntegerValue(Constantes.MEJOR_HERRAMIENTAS,letrasTotales);}
                 getActivity()

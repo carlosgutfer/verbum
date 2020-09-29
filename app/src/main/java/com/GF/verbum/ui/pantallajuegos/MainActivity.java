@@ -22,6 +22,11 @@ import com.GF.verbum.ui.pantallajuegos.modoJuegos.EleccionJuegoActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 import com.GF.verbum.ui.pantallajuegos.record.RecordActivity;
 import com.GF.verbum.ui.pantallajuegos.tutorial.tutorialActivity;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private  int sonido_de_tecla;
     private SoundPool sp;
     private MediaPlayer md;
+    private AdView mAdView;
 
     private int position;
 
@@ -41,6 +47,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
         findViewById();
         onClickthis();
         sp = new SoundPool(10, AudioManager.STREAM_MUSIC,1);
@@ -61,6 +72,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onChanged(List<PreguntasEntity> preguntasEntities) {
             }
         });
+
+        mAdView = findViewById(R.id.adViewBanner);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
 
 
