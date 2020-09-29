@@ -28,6 +28,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="40dp"
+        android:contentDescription="@string/DiccionarioRae"
         android:src="@drawable/ic_baseline_menu_book_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ET_Nick" />
@@ -46,6 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:contentDescription="@string/SubirRegistro"
         android:src="@drawable/ic_baseline_cloud_upload_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.452"
