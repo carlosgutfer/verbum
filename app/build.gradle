@@ -9,8 +9,8 @@ android {
         applicationId "com.GF.verbum"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 10
-        versionName "1.0.8"
+        versionCode 14
+        versionName "1.1.2"
         multiDexEnabled true
 
 

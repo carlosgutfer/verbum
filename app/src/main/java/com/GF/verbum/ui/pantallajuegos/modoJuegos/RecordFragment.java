@@ -143,16 +143,13 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
         if(view==R.id.IV_SubirPuntuacion){
             nick=subirPuntuacion.getText().toString();
             if(nick.length()>=4){
-                    db.collection("users").whereEqualTo("name",nick)
+                    db.collection("users")
                            .get()
                             .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                                 @Override
                                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                    if(queryDocumentSnapshots.size()>0){
-                                        subirPuntuacion.setError("El nick no esta disponible");
-                                    }else{
                                         addNewLogin();
-                                    }
+
                                 }
                             });
             }else{

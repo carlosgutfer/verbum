@@ -11,6 +11,11 @@ import com.GF.verbum.ui.pantallajuegos.MainActivity;
 import com.GF.verbum.ui.pantallajuegos.tutorial.ui.cajaHerramientasTutorialFragment;
 import com.GF.verbum.ui.pantallajuegos.tutorial.ui.escaleraInfinitaTutorial;
 import com.GF.verbum.ui.pantallajuegos.tutorial.ui.queSoyTutorialFragment;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +24,7 @@ import androidx.fragment.app.Fragment;
 
 public class tutorialActivity extends AppCompatActivity {
     private MediaPlayer md;
+    private AdView mAdView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -53,7 +59,14 @@ public class tutorialActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
-
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mAdView = findViewById(R.id.adViewBanner);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         BottomNavigationView navView = findViewById(R.id.view);
 

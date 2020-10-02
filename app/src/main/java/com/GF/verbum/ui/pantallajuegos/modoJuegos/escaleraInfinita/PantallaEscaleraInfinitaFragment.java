@@ -23,6 +23,7 @@ import com.GF.verbum.commun.Constantes;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
+import com.GF.verbum.ui.pantallajuegos.nuevaOportunidad.nuevaOportunidadDialogFragment;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
@@ -307,6 +308,8 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     private void juegoFinalizado(){
         if(letrasGanadas==0){
             requireActivity().onBackPressed();
+            nuevaOportunidadDialogFragment dialog = new nuevaOportunidadDialogFragment().newInstance(palabraAleatoria.getPalabra());
+            dialog.show(requireActivity().getSupportFragmentManager(), "Fragment");
         }else {
             if (SharedPreferentManager.getIntegerValue(Constantes.MEJOR_ESCALERA) < letrasGanadas)
                 SharedPreferentManager.setIntegerValue(Constantes.MEJOR_ESCALERA, letrasGanadas);
@@ -314,7 +317,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
 
                 if(mInterstitialad.isLoaded())
                     mInterstitialad.show();
-                getActivity()
+                requireActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 3, 1))
@@ -322,7 +325,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
             }else{
                 if(mInterstitialad.isLoaded())
                     mInterstitialad.show();
-                getActivity()
+                requireActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 2, 1))

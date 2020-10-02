@@ -59,4 +59,9 @@
     <string name="controlDeSonido">Control de música</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="aclaraciones">1. Debes tener en cuenta el plural de las palabras que lo admitan (todas están en singular).</string>
+    <string name="aclaraciones2">2. Las palabras que funcionan como verbo apararecerán siempre en infinitivo.</string>
+    <string name="aclaraciones3" >3. No marcar como adverbio aquellas palabras que necesites añadirles un sufijo para que lo sean.</string>
+    <string name="continuar">Continuar</string>
+    <string name="verVideo">Ver video</string>
 </resources>

@@ -9,6 +9,8 @@ import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
@@ -26,7 +28,8 @@ public class EleccionJuegoActivity extends AppCompatActivity implements View.OnC
     SoundPool sp;
     private MediaPlayer md;
     private AdView mAdView;
-
+    private ImageView dificultad;
+    private TextView aclaracion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class EleccionJuegoActivity extends AppCompatActivity implements View.OnC
         herramientas.setOnClickListener(this);
         escalera.setOnClickListener(this);
         QS.setOnClickListener(this);
+        dificultad.setOnClickListener(this);
         mAdView = findViewById(R.id.adViewBanner);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -55,6 +59,8 @@ public class EleccionJuegoActivity extends AppCompatActivity implements View.OnC
         herramientas=findViewById(R.id.BT_Herramientas);
         escalera=findViewById(R.id.BT_Escalera);
         QS=findViewById(R.id.BT_QueSoy);
+        dificultad=findViewById(R.id.IV_setError);
+        aclaracion=findViewById(R.id.TV_aclaración);
     }
 
     @Override
@@ -87,7 +93,17 @@ public class EleccionJuegoActivity extends AppCompatActivity implements View.OnC
             finish();
 
         }
-        finish();
+        if(view==R.id.IV_setError){
+                if(aclaracion.getVisibility()==View.VISIBLE){
+
+                    aclaracion.setVisibility(View.INVISIBLE);
+                }else if (aclaracion.getVisibility()==View.INVISIBLE){
+                    String aclaraciones="";
+                    aclaraciones=getString(R.string.aclaraciones)+'\n'+getString(R.string.aclaraciones2)+'\n'+getString(R.string.aclaraciones3);
+                    aclaracion.setText(aclaraciones);
+                    aclaracion.setVisibility(View.VISIBLE);
+                }
+        }
     }
     public void sonido(){
         if(SharedPreferentManager.getIntegerValue("soundMode")==-1)

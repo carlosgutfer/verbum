@@ -26,13 +26,14 @@ private AdView mAdView;
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
+        mAdView = findViewById(R.id.adViewBanner);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         getIntentMethod();
         findView();
         titulo.setText(nombre);
         informacion.setText(texto);
-        mAdView = findViewById(R.id.adViewBanner);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+
     }
 
     private void findView() {

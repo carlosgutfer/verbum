@@ -24,13 +24,13 @@ import com.GF.verbum.commun.Constantes;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
+import com.GF.verbum.ui.pantallajuegos.nuevaOportunidad.nuevaOportunidadDialogFragment;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 
 public class HerramientasFragment extends Fragment {
 
@@ -240,13 +240,14 @@ public class HerramientasFragment extends Fragment {
 
     private void JuegoFinalizado(){
         contador++;
+
+
+
         if (contador == 9) {
             if(letrasTotales>0){
                 if(mInterstitialad.isLoaded())
                     mInterstitialad.show();
-                if(SharedPreferentManager.getIntegerValue(Constantes.MEJOR_HERRAMIENTAS)<letrasTotales){
-                    SharedPreferentManager.setIntegerValue(Constantes.MEJOR_HERRAMIENTAS,letrasTotales);}
-                getActivity()
+                    requireActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasTotales,1,dificultad))
