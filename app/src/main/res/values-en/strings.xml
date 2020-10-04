@@ -32,7 +32,7 @@
     <string name="Medio">Medium</string>
     <string name="Dificil">Difficult</string>
     <string name="record">Record</string>
-    <string name="DiccionarioRae">Dictionary RAE</string>
+    <string name="DiccionarioRae">RAE dictionary </string>
     <string name="SubirRegistro">Upload score</string>
     <string name="Nick">Nick</string>
     <string name="ModoDeJuego">Game mode</string>
@@ -65,4 +65,6 @@
     <string name="aclaraciones3" >3. Do not mark as adverb those words that you need to add a suffix to make them so.</string>
     <string name="continuar">Continue</string>
     <string name="verVideo">Watch our video</string>
+    <string name="informacionImportante">Important information</string>
+
 </resources>

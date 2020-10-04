@@ -67,8 +67,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="48dp"
+        android:contentDescription="@string/informacionImportante"
         app:layout_constraintStart_toEndOf="@+id/BT_Herramientas"
         app:layout_constraintTop_toTopOf="@+id/BT_Herramientas"
         app:srcCompat="@drawable/ic_baseline_warning_24" />

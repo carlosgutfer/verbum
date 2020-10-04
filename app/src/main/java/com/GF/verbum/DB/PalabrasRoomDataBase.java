@@ -241,7 +241,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("Listo", false, false, true, false, false, false, false, false, false, "https://dle.rae.es/listo?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("Masico", false, false, true, false, false, false, false, false, false, "https://dle.rae.es/masivo?m=form");
+        palabra = new PalabrasEntity("Masivo", false, false, true, false, false, false, false, false, false, "https://dle.rae.es/masivo?m=form");
         dao.insert(palabra);
         palabra = new PalabrasEntity("Masiva", false, false, true, false, false, false, false, false, false, "https://dle.rae.es/masivo?m=form");
         dao.insert(palabra);
