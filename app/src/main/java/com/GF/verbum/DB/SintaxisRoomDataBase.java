@@ -11,6 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.GF.verbum.DB.DAO.SintaxisDao;
 import com.GF.verbum.DB.Entities.SintaxisEntity;
 
+import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -26,9 +27,16 @@ public  abstract class SintaxisRoomDataBase extends RoomDatabase {
 
         if (INSTANCE==null){
             synchronized (PreguntasRoomDataBase.class){
-                if(INSTANCE==null){
-                    INSTANCE= Room.databaseBuilder(context.getApplicationContext(),
-                            SintaxisRoomDataBase.class,"Sintaxis_1_DataBase").addCallback(llamada).build();
+                if(Locale.getDefault().getLanguage()=="es") {
+                    if (INSTANCE == null) {
+                        INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                                SintaxisRoomDataBase.class, "Sintaxis_1_DataBase").addCallback(llamada).build();
+                    }
+                }else if(Locale.getDefault().getLanguage()=="en"){
+                    if (INSTANCE == null) {
+                        INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                                SintaxisRoomDataBase.class, "Sintaxis_1_DataBase_en").addCallback(call).build();
+                    }
                 }
             }
         }
@@ -110,6 +118,86 @@ public  abstract class SintaxisRoomDataBase extends RoomDatabase {
                     nuevoTipo = new SintaxisEntity("Artículo","Es una clase de palabra que permite delimitar la denotación del grupo nominal del que pertenece, es decir, especifica si lo designado por ese enunciado constituye o no información consabida. En el latín clásico no existían los artículos, su uso en lenguas románicas se debe a procesos de gramaticalización. El artículo se caracteriza por preceder a todos los demás componentes del grupo nominal, además, de los cuantificadores que pueda haber. Existen dos clases principales de artículos.\n" +
                             "1.\tLos artículos determinados, que en la tradición gramatical anuncia el género y número del sustantivo, es átono y actúa como elemento nominalizador o sustantivador en los grupos nominales que carecen de sustantivo explícito.  \n" +
                             "2.\tLos artículos indeterminados pueden ser tónicos y tiene una gran restricción con los cuantificadores que acompaña. \n");
+                    dao.insert(nuevoTipo);
+
+                }
+            });
+        }
+
+    };
+    private static RoomDatabase.Callback call = new RoomDatabase.Callback() {
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+
+            super.onCreate(db);
+
+            databaseWriteExecutor.execute(new Runnable() {
+                @Override
+                public void run() {
+
+                    SintaxisDao dao = INSTANCE.DAO();
+                    dao.deleteAll();
+                    SintaxisEntity nuevoTipo = new SintaxisEntity("Noun","Nouns denote entities, material or immaterial, of all nature and condition: people, animals, real things ... This diversity of functions allows them to group them into various grammatical classes. Nouns are divided into two large groups traditionally in common and proper name. \n "+
+                            "1. The common or appellative name is for all individuals in a class. It is characterized by classifying nouns according to a series of common features that distinguish them. \n" +
+                            "2. The proper name identifies a being among the others that make up the group, but without reporting its characteristic features. \n" +
+                            "In turn, common names can be divided into other subgroups. \n" +
+                            "1. Countables, are nouns that can be counted or enumerated. \n" +
+                            "2. Not countable, they are nouns that designate quantities that are interpreted as substances or matters. \n" +
+                            "3.  Individuals, denoting people, animals or things that are perceived as a single entity. \n" +
+                            "4.  Collectives, which refer to sets of people or things in their singular form.\n" +
+                            "5.  Abstracts, which refer to what is not material. \n" +
+                            "6. Concrete, which refer to beings that are attributed abstract nouns.");
+                    dao.insert(nuevoTipo);
+                    nuevoTipo = new SintaxisEntity("Adjective","It is responsible for modifying or reaffirming the accompanying noun. It performs the function of modifier, adjacent, complement of the name, attribute or predicative complement. \n" +
+                            "\n" +
+                            "We could include within this grammatical category all the words that modify the noun and agree with it (adjectives, demonstratives, possessives ...). All these groups could be included within the determiners at first sight, but the adjectives unlike these they do not have the ability to allow a name to function as a subject. \n "+
+                            "\n" +
+                            "When defining adjectives we can make two distinctions: \n" +
+                            "\n" +
+                            "1. Morphology: adjectives are variable words, which have gender, number and degree. \n" +
+                            "\n" +
+                            "2. Semantics and syntactics. Adjectives in turn can be divided into classes based on their different meanings and syntactic properties: \n" +
+                            "\n" +
+                            "1. Qualifying adjectives. They are those that express ownership, they can come before the name (with a non-restrictive interpretation) or postponed (with a restrictive interpretation). \n" +
+                            "\n" +
+                            "2. Relational adjectives. That relate the noun they accompany and the noun that the adjective itself has as its lexeme. We can find in this classification clarifying or thematic adjectives. \n" +
+                            "\n" +
+                            "3. Adverbial adjectives. They are those whose meaning is close to that of adverbs. In this group would be the modals, the markers of intensity or reference, the circumstantial or the aspectual. \n");
+                    dao.insert(nuevoTipo);
+                    nuevoTipo = new SintaxisEntity("Pronoun","They receive this name because they present grammatical characteristics of a person, agreeing in gender and number with the verb that is the subject of the predicate. In addition, they designate the participants of the statement. They are defined elements like the specific articles and with the proper names. Like the latter, they uniquely designate their referent.");
+                    dao.insert(nuevoTipo);
+                    nuevoTipo = new SintaxisEntity("Adverb","The adverb is an invariable word class characterized by the absence of inflection and the ability to establish a relationship of modification. Adverbs modify verbs, adjectives, and other adverbs. There are four main criteria for classifying adverbs: \n"+
+                            "1. Its morphological structure: the simple ones and the compounds that are mainly finished in -mente and -ante."+"\n"+
+                            "2. Its meaning: quantity, place, time, manner, affirmation, negation and doubt.\n" +
+                            "3. Its grammatical nature: lexical and grammatical.\n" +
+                            "4. Its syntactic incidence: arguments, attributives and attachments.");
+                    dao.insert(nuevoTipo);
+                    nuevoTipo = new SintaxisEntity("Verb","The verb is the class of words that is characterized by having variation of person, number, time, mood and aspect. Verbs act as the subject of the predicate of the sentence and are presented in personal or non-personal forms. \n "+
+                            "In its non-personal form we find: verbs in the infinitive (-ar, -er, -ir), verbs in gerund (-ando, -iendo) and verbs in participle (-do), which in some cases is variable (-da, -dos, -das). \n "+
+                            "The personal forms of the verb are the conjugated forms in a verb tense, this agrees in person and number with the subject of the sentence, they are divided into: \n" +
+                            "1.The verb mood: the indicative (real, known and certain information), the subjunctive (virtual, unspecific or unverified information) and the imperative (command or request). \n" +
+                            "2. The verb tense: present, past or future, which can be simple (a single verb) or compound (where there is a conjugated auxiliary verb joined to the main participle).");
+                    dao.insert(nuevoTipo);
+                    nuevoTipo = new SintaxisEntity("Preposition","Prepositions are invariable words, for the most part unstressed, characterized by introducing a complement. They usually introduce noun phrases, but they can also introduce others such as adverbial, prepositional, substantive subordinate phrases and relative sentences without an express antecedent. The preposition plus its complement can have an argument function, a regime complement or indirect complements. \n "+
+                         "The list of prepositions provided by the RAE (2009) is as follows: \n" +
+                            "\n" +
+                            "A, ante, bajo, cabe, con, contra, de, desde, en, entre, hacia, hasta, para, por, según, sin, so, sobre, tras, durante, mediante, versus, vía.");
+                    dao.insert(nuevoTipo);
+                    nuevoTipo = new SintaxisEntity("Conjunction","They are responsible for establishing relationships between different sentences. Within conjunctions we can find two types: \n" +
+                            "\n" +
+                            "1. Subordinate conjunctions, which introduce sentences that are included within broader ones. Unlike relative pronouns, subordinate conjunctions do not fulfill any function in the sentence they are present. \n" +
+                            "2. They establish relationships between two or more segments where they generally belong to the same category and level of complexity. If there are more than two elements, in general they only precede the last one. In turn, they are divided into copulatives (they join two segments) , disjunctive (giving a choice) or adversative (opposition between alternatives). "
+                            );
+                    dao.insert(nuevoTipo);
+                    nuevoTipo = new SintaxisEntity("Interjection","Interjection is a kind of word that is specialized in the formation of exclamatory sentences, it communicates feelings and impressions, affective relationships or induces action. Some of them encode certain social behaviors (greetings, congratulations, farewells ...). Unlike other words, interjections do not modify or determine the other words. \n "+
+                            "Interjections are divided into two large groups: \n" +
+                            "1. The appeals or directed directives have the listener perform the action or provoke an emotional reaction in him. \n" +
+                            "2. The expressive or symptomatic ones where the speaker expresses his sensations, feelings and moods.");
+                    dao.insert(nuevoTipo);
+
+                    nuevoTipo = new SintaxisEntity("Article","It is a kind of word that allows delimiting the denotation of the nominal group to which it belongs, that is, it specifies whether or not what is designated by that statement constitutes known information. In classical Latin there were no articles, their use in Romance languages is due to to grammaticalization processes. The article is characterized by preceding all the other components of the nominal group, in addition to any quantifiers that may exist. There are two main classes of articles. \n "+
+                            "1. Determined articles, which in the grammatical tradition announce the gender and number of the noun, is unstressed and acts as a nominalizing or substantivating element in nominal groups that lack an explicit noun. \n" +
+                            "2. Indeterminate articles can be tonic and you have a great restriction with accompanying quantifiers.");
                     dao.insert(nuevoTipo);
 
                 }

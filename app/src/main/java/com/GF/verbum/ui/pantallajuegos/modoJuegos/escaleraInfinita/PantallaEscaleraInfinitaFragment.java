@@ -3,6 +3,8 @@ package com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.R;
@@ -26,12 +29,18 @@ import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
 import com.GF.verbum.ui.pantallajuegos.nuevaOportunidad.nuevaOportunidadDialogFragment;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class PantallaEscaleraInfinitaFragment extends Fragment implements View.OnClickListener {
+import static com.GF.verbum.commun.Constantes.reward;
+
+public class PantallaEscaleraInfinitaFragment extends Fragment implements View.OnClickListener, RewardedVideoAdListener {
 
 
     private  int sonido_de_tecla;
@@ -51,6 +60,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
 
     private TextView letras;
     private Button sust, adj, pro, adv, verb, pre, conj, inter, art;
+    public  static RewardedVideoAd mRewardedVideoAd;
 
     public static PantallaEscaleraInfinitaFragment newInstance(int dificultad) {
                 PantallaEscaleraInfinitaFragment fragment = new PantallaEscaleraInfinitaFragment();
@@ -73,9 +83,14 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_escalera_infinita, container, false);
+
         mInterstitialad = new InterstitialAd(getActivity());
         mInterstitialad.setAdUnitId("ca-app-pub-9592543293433576/3091063629");
         mInterstitialad.loadAd(new AdRequest.Builder().build());
+        loadVideoRewar();
+
+
+
         this.v=view;
         sp = new SoundPool(10, AudioManager.STREAM_MUSIC,1);
         sonido_de_tecla= sp.load(getActivity(),R.raw.tecla,1);
@@ -100,6 +115,13 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
            });
 
         return view;
+    }
+
+    private void loadVideoRewar() {
+        MobileAds.initialize(getActivity(), "ca-app-pub-9592543293433576/6730215293");
+        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(getActivity());
+        mRewardedVideoAd.setRewardedVideoAdListener(this);
+        mRewardedVideoAd.loadAd("ca-app-pub-9592543293433576/6730215293", new AdRequest.Builder().build());
     }
 
     private void buscarPalabra(List<PalabrasEntity> palabrasEntities) {
@@ -200,7 +222,11 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 nuevaPalabra();
 
             } else{
-                juegoFinalizado();
+                if(SharedPreferentManager.getIntegerValue(reward)==-1){
+                    nuevaOportunidad();
+                }else {
+                    juegoFinalizado();
+                }
             }
 
         }
@@ -209,7 +235,11 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 mostrar();
                 nuevaPalabra();
             } else{
-                juegoFinalizado();
+                if(SharedPreferentManager.getIntegerValue(reward)==-1){
+                    nuevaOportunidad();
+                }else {
+                    juegoFinalizado();
+                }
             }
 
         }
@@ -218,7 +248,11 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 mostrar();
                 nuevaPalabra();
             }else{
-                juegoFinalizado();
+                if(SharedPreferentManager.getIntegerValue(reward)==-1){
+                    nuevaOportunidad();
+                }else {
+                    juegoFinalizado();
+                }
             }
 
         }
@@ -227,7 +261,11 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 mostrar();
                 nuevaPalabra();
             } else{
-                juegoFinalizado();
+                if(SharedPreferentManager.getIntegerValue(reward)==-1){
+                    nuevaOportunidad();
+                }else {
+                    juegoFinalizado();
+                }
             }
 
         }
@@ -236,7 +274,11 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 mostrar();
                 nuevaPalabra();
             } else{
-                juegoFinalizado();
+                if(SharedPreferentManager.getIntegerValue(reward)==-1){
+                    nuevaOportunidad();
+                }else {
+                    juegoFinalizado();
+                }
             }
         }
         if(view==R.id.BT_Preposicion){
@@ -244,7 +286,11 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 mostrar();
                 nuevaPalabra();
             } else{
-                juegoFinalizado();
+                if(SharedPreferentManager.getIntegerValue(reward)==-1){
+                    nuevaOportunidad();
+                }else {
+                    juegoFinalizado();
+                }
             }
 
         }
@@ -253,7 +299,11 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 mostrar();
                 nuevaPalabra();
             } else{
-                juegoFinalizado();
+                if(SharedPreferentManager.getIntegerValue(reward)==-1){
+                    nuevaOportunidad();
+                }else {
+                    juegoFinalizado();
+                }
             }
 
         }
@@ -263,7 +313,11 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 nuevaPalabra();
 
             } else{
-                juegoFinalizado();
+                if(SharedPreferentManager.getIntegerValue(reward)==-1){
+                    nuevaOportunidad();
+                }else {
+                    juegoFinalizado();
+                }
             }
 
         }
@@ -272,11 +326,22 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 mostrar();
                 nuevaPalabra();
             }else{
-                juegoFinalizado();
+                if(SharedPreferentManager.getIntegerValue(reward)==-1){
+                    nuevaOportunidad();
+                }else {
+                    juegoFinalizado();
+                }
+
             }
 
         }
 
+    }
+
+    private void nuevaOportunidad() {
+        nuevaOportunidadDialogFragment dialog = nuevaOportunidadDialogFragment.newInstance(palabraAleatoria.getPalabra());
+        dialog.setTargetFragment(this, 1);
+        dialog.show(requireActivity().getSupportFragmentManager(), "Fragment");
     }
 
     private void sonido() {
@@ -305,16 +370,14 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
         }
     }
 
-    private void juegoFinalizado(){
-        if(letrasGanadas==0){
-            requireActivity().onBackPressed();
-            nuevaOportunidadDialogFragment dialog = new nuevaOportunidadDialogFragment().newInstance(palabraAleatoria.getPalabra());
-            dialog.show(requireActivity().getSupportFragmentManager(), "Fragment");
-        }else {
-            if (SharedPreferentManager.getIntegerValue(Constantes.MEJOR_ESCALERA) < letrasGanadas)
-                SharedPreferentManager.setIntegerValue(Constantes.MEJOR_ESCALERA, letrasGanadas);
-            if(nombre==null) {
 
+    public void juegoFinalizado(){
+        SharedPreferentManager.setIntegerValue(reward,-1);
+        if(letrasGanadas==0){
+         requireActivity().onBackPressed();
+
+        }else {
+            if(nombre==null) {
                 if(mInterstitialad.isLoaded())
                     mInterstitialad.show();
                 requireActivity()
@@ -333,4 +396,57 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
             }
         }
     }
+
+
+    @Override
+    public void onRewardedVideoAdLoaded() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdOpened() {
+
+    }
+
+    @Override
+    public void onRewardedVideoStarted() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdClosed() {
+
+    }
+
+    @Override
+    public void onRewarded(RewardItem rewardItem) {
+        SharedPreferentManager.setIntegerValue(reward,rewardItem.getAmount());
+    }
+
+    @Override
+    public void onRewardedVideoAdLeftApplication() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdFailedToLoad(int i) {
+        SharedPreferentManager.setIntegerValue(reward,1);
+
+
+    }
+
+    @Override
+    public void onRewardedVideoCompleted() {
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+    if(requestCode==1){
+        if(resultCode==1) {
+            juegoFinalizado();
+        }
+    }
+    }
+
+
 }

@@ -20,7 +20,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adViewBanner"
+        app:layout_constraintTop_toBottomOf="@+id/adViewBannerTutorial"
         app:layout_constraintVertical_bias="0.0">
 
     </FrameLayout>
@@ -34,8 +34,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:menu="@menu/bottom_nav_menu" />
+
     <com.google.android.gms.ads.AdView
-        android:id="@+id/adViewBanner"
+        android:id="@+id/adViewBannerTutorial"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

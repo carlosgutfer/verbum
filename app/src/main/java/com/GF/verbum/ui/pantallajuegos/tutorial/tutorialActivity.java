@@ -64,7 +64,7 @@ public class tutorialActivity extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
-        mAdView = findViewById(R.id.adViewBanner);
+        mAdView = findViewById(R.id.adViewBannerTutorial);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
@@ -80,7 +80,6 @@ public class tutorialActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-
         Intent i = new Intent(this, MainActivity.class);
         if(md!=null){
             i.putExtra("position",md.getCurrentPosition());

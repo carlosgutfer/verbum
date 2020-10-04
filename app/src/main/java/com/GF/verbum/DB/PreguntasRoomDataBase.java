@@ -13,6 +13,7 @@ import com.GF.verbum.DB.DAO.PreguntasDao;
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.PreguntasEntity;
 
+import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -31,8 +32,13 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
         if (INSTANCE==null){
             synchronized (PreguntasRoomDataBase.class){
                 if(INSTANCE==null){
+                    if(Locale.getDefault().getLanguage()=="es"){
                     INSTANCE= Room.databaseBuilder(context.getApplicationContext(),
-                            PreguntasRoomDataBase.class,"Preguntas_1_DataBase").addCallback(llamada).build();
+                            PreguntasRoomDataBase.class,"Preguntas_1_DataBase").addCallback(llamada).build();}
+                    else if(Locale.getDefault().getLanguage()=="en"){
+                        INSTANCE= Room.databaseBuilder(context.getApplicationContext(),
+                                PreguntasRoomDataBase.class,"Preguntas_1_DataBase_en").addCallback(call).build();
+                    }
                 }
             }
         }
@@ -54,9 +60,9 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
 
                     PreguntasEntity pregunta = new PreguntasEntity("¿Admite género y número?",true,false,true,false,true,false,false,false,false);
                     dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("¿Presenta coorcondancia con la palabra que acompañan?",true,true,true,false,false,false,false,false,false);
+                    pregunta = new PreguntasEntity("¿Presenta concordancia con la palabra que acompañan?",true,true,true,false,false,false,false,false,false);
                     dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("¿Precede a todos los componenetes del grupo nominal al que pertenece?",true,true,true,false,false,false,false,false,false);
+                    pregunta = new PreguntasEntity("¿Precede a todos los componentes del grupo nominal al que pertenece?",true,true,true,false,false,false,false,false,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Es una palabra invariable?",false,false,false,false,false,true,true,true,true);
                     dao.insert(pregunta);
@@ -68,7 +74,7 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Modifica a la palabra que acompaña?",false,false,true,false,false,true,false,false,false);
                     dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("¿El grupo sintáctico Tiene significado de cantidad, lugar, tiempo, manera, afirmación, negación o duda?",false,false,false,false,false,true,false,false,false);
+                    pregunta = new PreguntasEntity("¿El grupo sintáctico tiene significado de cantidad, lugar, tiempo, manera, afirmación, negación o duda?",false,false,false,false,false,true,false,false,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Puede escribirse igual singular y en  plural?",false,false,true,false,false,false,false,false,false);
                     dao.insert(pregunta);
@@ -90,7 +96,66 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Esta especializada en la formación de enunciados exclamativos?",false,false,false,false,false,false,false,false,true);
                     dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("¿Modifica a la palabra que acompaña para que fundione como sujeto ?",false,true,false,false,false,false,false,false,false);
+                    pregunta = new PreguntasEntity("¿Modifica a la palabra que acompaña para que funcione como sujeto ?",false,true,false,false,false,false,false,false,false);
+                    dao.insert(pregunta);
+                }
+            });
+        }
+
+    };
+
+    private static RoomDatabase.Callback call = new RoomDatabase.Callback() {
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+
+            super.onCreate(db);
+
+            databaseWriteExecutor.execute(new Runnable() {
+                @Override
+                public void run() {
+
+                    PreguntasDao dao = INSTANCE.DAO();
+                    dao.deleteAll();
+
+                    PreguntasEntity pregunta = new PreguntasEntity("Does it support gender and number?",true,false,true,false,true,false,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Does it match the word that accompanies?",true,true,true,false,false,false,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Does it precede all the components of the nominal group to which it belongs?",true,true,true,false,false,false,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Is it an invariable word?",false,false,false,false,false,true,true,true,true);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Can it function as the subject of a sentence?",true,false,false,true,false,false,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Does it denote entities, material or immaterial?",true,false,false,false,false,false,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Are they accompanied by determinatives?",true,false,false,false,false,false,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Modify the accompanying word?",false,false,true,false,false,true,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Does the syntactic group have the meaning of quantity, place, time, manner, affirmation, negation or doubt?",false,false,false,false,false,true,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Can the singular and plural be written the same?",false,false,true,false,false,false,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Can it denote properties or qualities of objects?",false,false,true,false,false,true,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Does it present grammatical characteristics of person?",false,false,false,true,false,false,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Does it have a degree?",false,false,true,false,false,true,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Should its meaning be interpreted in terms of the sentence?",false,false,false,true,false,false,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Does it specify whether or not what is designated by that segment of the sentence constitutes information already known?",false,true,false,false,false,false,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Can it be conjugated?",false,false,false,false,true,false,false,false,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Does it communicate feelings and impressions?",false,false,false,false,false,false,false,false,true);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Does it verbally encode certain conventional social behaviors? ",false,false,false,false,false,false,false,false,true);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Is it specialized in the formation of exclamatory sentences?",false,false,false,false,false,false,false,false,true);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("Does it modify the accompanying word so that it merges as a subject?",false,true,false,false,false,false,false,false,false);
                     dao.insert(pregunta);
                 }
             });
