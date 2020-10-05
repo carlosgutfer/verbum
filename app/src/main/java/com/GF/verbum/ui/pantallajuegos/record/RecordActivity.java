@@ -151,10 +151,7 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
                 modosDeJuego.setText(R.string.EscaleraInfinita);
                 this.mode=3;
                 return true;
-            case R.id.queSoyMenu:
-                modosDeJuego.setText(R.string.QueSoy);
-                this.mode=2;
-                return true;
+
             case R.id.cajaHerramientasMenu:
                 modosDeJuego.setText(R.string.CajaDeHerramientas);
                 this.mode=1;

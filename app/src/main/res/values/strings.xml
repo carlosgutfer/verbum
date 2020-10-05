@@ -65,4 +65,13 @@
     <string name="continuar">Continuar</string>
     <string name="verVideo">Ver video</string>
     <string name="informacionImportante">Información importante</string>
+    <string name="recorduno">¡Felicidades! Has conseguido</string>
+    <string name="recordtres">. Si quieres revisar que funciones puede tener, pulsa sobre el diccionario.</string>
+    <string name="recordos">letras.</string>
+    <string name="recordcuatro">letras y la última palabra era </string>
+    <string name="recordcinco">¡Felicidades! Has acertado la palabra  </string>
+    <string name="recordseis">¡Casi! Has fallado la palabra  </string>
+    <string name="volverMenu">Volver al menú</string>
+
+
 </resources>

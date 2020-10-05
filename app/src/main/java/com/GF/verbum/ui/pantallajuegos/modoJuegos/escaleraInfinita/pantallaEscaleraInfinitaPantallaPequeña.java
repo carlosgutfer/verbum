@@ -54,6 +54,7 @@ public class pantallaEscaleraInfinitaPantallaPequeña extends Fragment implement
     private Button comprobar;
     private String nombre;
     private int mode;
+    private boolean correcto;
     public  static RewardedVideoAd mRewardedVideoAd;
 
     public static  pantallaEscaleraInfinitaPantallaPequeña newInstance(int dificultad) {
@@ -201,6 +202,7 @@ public class pantallaEscaleraInfinitaPantallaPequeña extends Fragment implement
                 if (SharedPreferentManager.getIntegerValue(reward) == -1) {
                     nuevaOportunidad();
                 } else {
+                    correcto=false;
                     juegoFinalizado();
                 }
             }
@@ -276,6 +278,7 @@ public class pantallaEscaleraInfinitaPantallaPequeña extends Fragment implement
             palabraAleatoria = allPalabras.get(posicion);
             palabra.setText(palabraAleatoria.getPalabra());
         }else {
+            correcto=true;
             letrasGanadas++;
             juegoFinalizado();
         }
@@ -293,7 +296,7 @@ public class pantallaEscaleraInfinitaPantallaPequeña extends Fragment implement
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 3, dificultad))
+                        .replace(R.id.containerJuegos, RecordFragment.newInstance(correcto,letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 3, dificultad))
                         .commit();
             }else{
                 if(mInterstitialad.isLoaded())
@@ -301,7 +304,7 @@ public class pantallaEscaleraInfinitaPantallaPequeña extends Fragment implement
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(),mode, dificultad))
+                        .replace(R.id.containerJuegos, RecordFragment.newInstance(correcto,letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(),mode, dificultad))
                         .commit();
             }
 
@@ -365,6 +368,7 @@ public class pantallaEscaleraInfinitaPantallaPequeña extends Fragment implement
     {
         if(requestCode==1){
             if(resultCode==1) {
+                correcto=false;
                 juegoFinalizado();
             }
         }

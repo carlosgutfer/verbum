@@ -240,9 +240,6 @@ public class HerramientasFragment extends Fragment {
 
     private void JuegoFinalizado(){
         contador++;
-
-
-
         if (contador == 9) {
             if(letrasTotales>0){
                 if(mInterstitialad.isLoaded())

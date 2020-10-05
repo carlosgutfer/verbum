@@ -47,7 +47,7 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
     private int letrasGanadas;
     private int  posicion;
     private int dificultad;
-
+    private boolean correcto;
     private TextView letras;
     private CheckBox sust, adj, pro, adv, verb, pre, conj, inter, art;
     private Button comprobar;
@@ -201,6 +201,7 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
                if (SharedPreferentManager.getIntegerValue(reward) == -1) {
                    nuevaOportunidad();
                } else {
+                   correcto=false;
                    juegoFinalizado();
                }
 
@@ -275,6 +276,7 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
             palabraAleatoria = allPalabras.get(posicion);
             palabra.setText(palabraAleatoria.getPalabra());
         }else {
+            correcto=true;
             letrasGanadas++;
             juegoFinalizado();
         }
@@ -293,7 +295,7 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 3, dificultad))
+                        .replace(R.id.containerJuegos, RecordFragment.newInstance(correcto,letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 3, dificultad))
                         .commit();
             }else{
                 if(mInterstitialad.isLoaded())
@@ -301,7 +303,7 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(),mode, dificultad))
+                        .replace(R.id.containerJuegos, RecordFragment.newInstance(correcto,letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(),mode, dificultad))
                         .commit();
             }
 
@@ -366,6 +368,7 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
     {
         if(requestCode==1){
             if(resultCode==1) {
+                correcto=false;
                 juegoFinalizado();
             }
         }

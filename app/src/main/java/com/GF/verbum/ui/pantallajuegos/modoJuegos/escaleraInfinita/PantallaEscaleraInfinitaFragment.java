@@ -55,6 +55,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     private int letrasGanadas;
     private int  posicion;
     private int dificultad;
+    private boolean correcto;
     private String nombre;
     private InterstitialAd mInterstitialad;
 
@@ -225,7 +226,8 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 if(SharedPreferentManager.getIntegerValue(reward)==-1){
                     nuevaOportunidad();
                 }else {
-                    juegoFinalizado();
+                    juegoFinalizadoQueSoy();
+
                 }
             }
 
@@ -238,7 +240,8 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 if(SharedPreferentManager.getIntegerValue(reward)==-1){
                     nuevaOportunidad();
                 }else {
-                    juegoFinalizado();
+                    juegoFinalizadoQueSoy();
+
                 }
             }
 
@@ -251,7 +254,8 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 if(SharedPreferentManager.getIntegerValue(reward)==-1){
                     nuevaOportunidad();
                 }else {
-                    juegoFinalizado();
+                    juegoFinalizadoQueSoy();
+
                 }
             }
 
@@ -264,7 +268,8 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 if(SharedPreferentManager.getIntegerValue(reward)==-1){
                     nuevaOportunidad();
                 }else {
-                    juegoFinalizado();
+                    juegoFinalizadoQueSoy();
+
                 }
             }
 
@@ -277,7 +282,8 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 if(SharedPreferentManager.getIntegerValue(reward)==-1){
                     nuevaOportunidad();
                 }else {
-                    juegoFinalizado();
+                    juegoFinalizadoQueSoy();
+
                 }
             }
         }
@@ -289,7 +295,8 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 if(SharedPreferentManager.getIntegerValue(reward)==-1){
                     nuevaOportunidad();
                 }else {
-                    juegoFinalizado();
+                    juegoFinalizadoQueSoy();
+
                 }
             }
 
@@ -302,7 +309,8 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 if(SharedPreferentManager.getIntegerValue(reward)==-1){
                     nuevaOportunidad();
                 }else {
-                    juegoFinalizado();
+                    juegoFinalizadoQueSoy();
+
                 }
             }
 
@@ -316,7 +324,8 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 if(SharedPreferentManager.getIntegerValue(reward)==-1){
                     nuevaOportunidad();
                 }else {
-                    juegoFinalizado();
+                    juegoFinalizadoQueSoy();
+
                 }
             }
 
@@ -329,13 +338,19 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 if(SharedPreferentManager.getIntegerValue(reward)==-1){
                     nuevaOportunidad();
                 }else {
-                    juegoFinalizado();
+                    juegoFinalizadoQueSoy();
+
                 }
 
             }
 
         }
 
+    }
+
+    private void juegoFinalizadoQueSoy() {
+        correcto=false;
+        juegoFinalizado();
     }
 
     private void nuevaOportunidad() {
@@ -365,6 +380,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
             palabraAleatoria = allPalabras.get(posicion);
             palabra.setText(palabraAleatoria.getPalabra());
         }else {
+            correcto=true;
             letrasGanadas++;
             juegoFinalizado();
         }
@@ -383,7 +399,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 requireActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 3, 1))
+                        .replace(R.id.containerJuegos, RecordFragment.newInstance(correcto,letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 3, 1))
                         .commit();
             }else{
                 if(mInterstitialad.isLoaded())
@@ -391,7 +407,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                 requireActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.containerJuegos, RecordFragment.newInstance(letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 2, 1))
+                        .replace(R.id.containerJuegos, RecordFragment.newInstance(correcto,letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 2, 1))
                         .commit();
             }
         }
@@ -443,6 +459,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     {
     if(requestCode==1){
         if(resultCode==1) {
+            correcto=false;
             juegoFinalizado();
         }
     }

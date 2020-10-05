@@ -66,5 +66,12 @@
     <string name="continuar">Continue</string>
     <string name="verVideo">Watch our video</string>
     <string name="informacionImportante">Important information</string>
+    <string name="recorduno">Congratulations! Has got</string>
+    <string name="recordos">letters.</string>
+    <string name="recordcuatro">letters and the last word was</string>
+    <string name="recordtres">. If you want to check what functions it can have, click on the dictionary.</string>
+    <string name="recordcinco">Congratulations! You are right whit the word </string>
+    <string name="recordseis">Almost! You have failed the word </string>
+    <string name="volverMenu">Back to menu</string>
 
 </resources>

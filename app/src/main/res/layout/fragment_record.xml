@@ -16,6 +16,7 @@
         android:fontFamily="casual"
         android:padding="16dp"
         android:textColor="@android:color/black"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,12 +70,31 @@
         app:layout_constraintTop_toBottomOf="@+id/TV_PalabraYgemas" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/TV_textoSubir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/SubirRegistro"
         app:layout_constraintEnd_toEndOf="@+id/IV_SubirPuntuacion"
         app:layout_constraintStart_toStartOf="@+id/IV_SubirPuntuacion"
         app:layout_constraintTop_toBottomOf="@+id/IV_SubirPuntuacion" />
+
+    <ImageView
+        android:id="@+id/IV_Back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_baseline_exit_to_app_24"
+        app:layout_constraintEnd_toEndOf="@+id/IV_URLRAE"
+        app:layout_constraintStart_toStartOf="@+id/IV_URLRAE"
+        app:layout_constraintTop_toBottomOf="@+id/TV_diccionario" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/volverMenu"
+        app:layout_constraintEnd_toEndOf="@+id/IV_Back"
+        app:layout_constraintStart_toStartOf="@+id/IV_Back"
+        app:layout_constraintTop_toBottomOf="@+id/IV_Back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
