@@ -128,13 +128,22 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
         String texto1 = getResources().getString(R.string.recorduno);
         String texto3 = getResources().getString(R.string.recordtres);
         String frase;
-    if(mode==1){
-        String texto2=getResources().getString(R.string.recordos);
-        frase= texto1+" " + letras+" " + texto2;
+    if(mode==1&&letras!=0) {
+        String texto2 = getResources().getString(R.string.recordos);
+        frase = texto1 + " " + letras + " " + texto2;
         letrasYPalabra.setText(frase);
-    }else if (mode==3){
+    }else if(mode==1){
+        String texto7=getResources().getString(R.string.recordsiete);
+        frase = texto7 + " " + letras;
+        letrasYPalabra.setText(frase);
+    }else if (mode==3&&letras!=0) {
         String texto4 = getResources().getString(R.string.recordcuatro);
-        frase= texto1 + " "+letras +" "+ texto4+" " + Palabra+" " + texto3;
+        frase = texto1 + " " + letras + " " + texto4 + " " + Palabra + " " + texto3;
+        letrasYPalabra.setText(frase);
+    }else if(mode==3){
+        String texto4 = getResources().getString(R.string.recordcuatro);
+        String texto8 = getResources().getString(R.string.recordocho);
+        frase = texto8+ " " + letras + " " + texto4 + " " + Palabra + " " + texto3;
         letrasYPalabra.setText(frase);
     }else if (mode==2&&correcto) {
         String texto5=getResources().getString(R.string.recordcinco);
@@ -146,8 +155,6 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
         letrasYPalabra.setText(frase);
     }
     }
-
-
 
     private void findViewById(View v) {
         letrasYPalabra=v.findViewById(R.id.TV_PalabraYgemas);

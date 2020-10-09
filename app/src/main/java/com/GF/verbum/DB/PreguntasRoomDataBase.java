@@ -38,6 +38,9 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
                     else if(Locale.getDefault().getLanguage()=="en"){
                         INSTANCE= Room.databaseBuilder(context.getApplicationContext(),
                                 PreguntasRoomDataBase.class,"Preguntas_1_DataBase_en").addCallback(call).build();
+                    } else{
+                        INSTANCE= Room.databaseBuilder(context.getApplicationContext(),
+                                PreguntasRoomDataBase.class,"Preguntas_1_DataBase").addCallback(llamada).build();
                     }
                 }
             }

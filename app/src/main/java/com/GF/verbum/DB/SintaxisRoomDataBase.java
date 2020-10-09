@@ -28,15 +28,15 @@ public  abstract class SintaxisRoomDataBase extends RoomDatabase {
         if (INSTANCE==null){
             synchronized (PreguntasRoomDataBase.class){
                 if(Locale.getDefault().getLanguage()=="es") {
-                    if (INSTANCE == null) {
                         INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                 SintaxisRoomDataBase.class, "Sintaxis_1_DataBase").addCallback(llamada).build();
-                    }
                 }else if(Locale.getDefault().getLanguage()=="en"){
-                    if (INSTANCE == null) {
                         INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                 SintaxisRoomDataBase.class, "Sintaxis_1_DataBase_en").addCallback(call).build();
-                    }
+
+                }else{
+                        INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                                SintaxisRoomDataBase.class, "Sintaxis_1_DataBase").addCallback(call).build();
                 }
             }
         }

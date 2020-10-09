@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.GF.verbum.DB.Entities.PalabrasEntity;
@@ -44,14 +45,18 @@ public class pantallaEscaleraInfinitaPantallaPequeña extends Fragment implement
     private ModosJuegosViewModel mpalabrasviewModel;
     private TextView palabra;
     private View v;
-    private int letrasGanadas;
+    private int letrasGanadas=0;
     private int  posicion;
     private InterstitialAd mInterstitialad;
     private int dificultad;
+    private int progresoBar=0;
+
 
     private TextView letras;
     private CheckBox sust, adj, pro, adv, verb, pre, conj, inter, art;
     private Button comprobar;
+    private ProgressBar upProgressBar;
+
     private String nombre;
     private int mode;
     private boolean correcto;
@@ -133,6 +138,7 @@ public class pantallaEscaleraInfinitaPantallaPequeña extends Fragment implement
         inter=v.findViewById(R.id.CB_interjeccion);
         letras=v.findViewById(R.id.TV_LetrasConseguidasEscalera);
         comprobar=v.findViewById(R.id.BT_comprobar);
+        upProgressBar=v.findViewById(R.id.PB_multiplicadorLetras);
     }
 
 
@@ -267,7 +273,7 @@ public class pantallaEscaleraInfinitaPantallaPequeña extends Fragment implement
             letrasGanadas=getArguments().getInt("letras");
             letras.setText(String.valueOf(letrasGanadas));
         }else {
-            letrasGanadas++;
+            progreso();
             letras.setText(String.valueOf(letrasGanadas));
         }
     }
@@ -279,38 +285,27 @@ public class pantallaEscaleraInfinitaPantallaPequeña extends Fragment implement
             palabra.setText(palabraAleatoria.getPalabra());
         }else {
             correcto=true;
-            letrasGanadas++;
+            progreso();
             juegoFinalizado();
         }
     }
 
     private void juegoFinalizado(){
         SharedPreferentManager.setIntegerValue(reward,-1);
-
-        if(letrasGanadas==0){
-            getActivity().onBackPressed();
-        }else {
-            if(nombre==null) {
-                if(mInterstitialad.isLoaded())
-                    mInterstitialad.show();
+        if(mInterstitialad.isLoaded())
+            mInterstitialad.show();
+            if(nombre==null)
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.containerJuegos, RecordFragment.newInstance(correcto,letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 3, dificultad))
                         .commit();
-            }else{
-                if(mInterstitialad.isLoaded())
-                    mInterstitialad.show();
+            else
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.containerJuegos, RecordFragment.newInstance(correcto,letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(),mode, dificultad))
                         .commit();
-            }
-
-        }
-
-
     }
     private void loadVideoRewar() {
         MobileAds.initialize(getActivity(), "ca-app-pub-9592543293433576/6730215293");
@@ -372,6 +367,20 @@ public class pantallaEscaleraInfinitaPantallaPequeña extends Fragment implement
                 juegoFinalizado();
             }
         }
+    }
+    public void progreso(){
+        progresoBar++;
+        if(progresoBar<3)
+            letrasGanadas=letrasGanadas+10;
+        else if(progresoBar>3&&progresoBar<7)
+            letrasGanadas = letrasGanadas + 20;
+        else if(progresoBar>5&&progresoBar<10)
+            letrasGanadas = letrasGanadas + 30;
+        else
+            letrasGanadas = letrasGanadas + 50;
+
+        if(progresoBar<11)
+            upProgressBar.setProgress(progresoBar*10);
     }
 
 }

@@ -73,5 +73,9 @@
     <string name="recordcinco">Congratulations! You are right whit the word </string>
     <string name="recordseis">Almost! You have failed the word </string>
     <string name="volverMenu">Back to menu</string>
-
+    <string name="recordsiete">Looks like you did not get any letter.</string>
+    <string name="recordocho">Looks like you get </string>
+    <string name="x2">+20</string>
+    <string name="x5">+30</string>
+    <string name="x10">+50</string>
 </resources>

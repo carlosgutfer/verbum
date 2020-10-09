@@ -62,7 +62,7 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
         mAdView = findViewById(R.id.adViewBanner);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
+        showStar();
     }
 
     private void setOnClick() {
@@ -207,6 +207,29 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
             md.setLooping(true);
             md.start();
         }
+    }
+
+    private void showStar(){
+        alluser.clear();
+        firestore = FirebaseFirestore.getInstance();
+        firestore.collection("users")
+                .orderBy("points", Query.Direction.DESCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for (DocumentSnapshot document : task.getResult()) {
+                            user userItem = document.toObject(user.class);
+                            alluser.add(userItem);
+
+                            getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.container_record, playersFragment.newInstance(1))
+                                    .commit();
+                        }
+
+                    }
+                });
     }
 
 }

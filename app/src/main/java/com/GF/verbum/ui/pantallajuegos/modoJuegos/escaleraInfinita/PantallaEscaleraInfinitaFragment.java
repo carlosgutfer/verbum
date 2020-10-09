@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,13 +53,15 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     private ModosJuegosViewModel mpalabrasviewModel;
     private TextView palabra;
     private View v;
-    private int letrasGanadas;
+    private int letrasGanadas=0;
     private int  posicion;
     private int dificultad;
     private boolean correcto;
     private String nombre;
     private InterstitialAd mInterstitialad;
+    private int progresoBar=0;
 
+    private ProgressBar upProgressBar;
     private TextView letras;
     private Button sust, adj, pro, adv, verb, pre, conj, inter, art;
     public  static RewardedVideoAd mRewardedVideoAd;
@@ -147,6 +150,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
         conj=v.findViewById(R.id.BT_Conjuncion);
         inter=v.findViewById(R.id.BT_Interjencion);
         letras=v.findViewById(R.id.TV_LetrasConseguidasEscalera);
+        upProgressBar=v.findViewById(R.id.PB_multiplicadorLetras);
     }
 
 
@@ -369,7 +373,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
             letrasGanadas=getArguments().getInt("letras");
             letras.setText(String.valueOf(letrasGanadas));
         }else {
-            letrasGanadas++;
+           progreso();
             letras.setText(String.valueOf(letrasGanadas));
         }
     }
@@ -381,37 +385,32 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
             palabra.setText(palabraAleatoria.getPalabra());
         }else {
             correcto=true;
-            letrasGanadas++;
-            juegoFinalizado();
+            progreso();
+        juegoFinalizado();
         }
     }
 
 
     public void juegoFinalizado(){
         SharedPreferentManager.setIntegerValue(reward,-1);
-        if(letrasGanadas==0){
-         requireActivity().onBackPressed();
+        if(mInterstitialad.isLoaded())
+            mInterstitialad.show();
 
-        }else {
-            if(nombre==null) {
-                if(mInterstitialad.isLoaded())
-                    mInterstitialad.show();
+            if(nombre==null)
                 requireActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.containerJuegos, RecordFragment.newInstance(correcto,letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 3, 1))
                         .commit();
-            }else{
-                if(mInterstitialad.isLoaded())
-                    mInterstitialad.show();
+            else
                 requireActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.containerJuegos, RecordFragment.newInstance(correcto,letrasGanadas, palabraAleatoria.getUrlRae(), palabraAleatoria.getPalabra(), 2, 1))
                         .commit();
-            }
+
         }
-    }
+
 
 
     @Override
@@ -465,5 +464,18 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     }
     }
 
+    public void progreso(){
+        progresoBar++;
+        if(progresoBar<3)
+            letrasGanadas=letrasGanadas+10;
+        else if(progresoBar>3&&progresoBar<7)
+            letrasGanadas = letrasGanadas + 20;
+        else if(progresoBar>5&&progresoBar<10)
+            letrasGanadas = letrasGanadas + 30;
+        else
+            letrasGanadas = letrasGanadas + 50;
 
+        if(progresoBar<11)
+        upProgressBar.setProgress(progresoBar*10);
+    }
 }

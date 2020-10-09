@@ -9,8 +9,8 @@ android {
         applicationId "com.GF.verbum"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 18
-        versionName "1.1.6"
+        versionCode 19
+        versionName "1.1.7"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -24,9 +24,8 @@ android {
 
 }
 
+
 dependencies {
-
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.android.gms:play-services-ads:19.4.0'
     implementation "androidx.room:room-runtime:2.2.5"

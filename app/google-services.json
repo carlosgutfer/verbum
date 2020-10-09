@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "394247660099",
+    "firebase_url": "https://verbum-99320.firebaseio.com",
+    "project_id": "verbum-99320",
+    "storage_bucket": "verbum-99320.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394247660099:android:e4df0d4229572a3797eaf6",
+        "android_client_info": {
+          "package_name": "com.GF.verbum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "394247660099-imjpie7r6tpnh5j1hdfrv6l7klocjing.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.GF.verbum",
+            "certificate_hash": "cd95d6a21a643e372a72ad6fa2a582e24a666466"
+          }
+        },
+        {
+          "client_id": "394247660099-4jsp58g0hml109hrb8d1cvlv9j0bknss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB520JopuLpFnj86WMV6tN4cnaTYV8tOUM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "394247660099-4jsp58g0hml109hrb8d1cvlv9j0bknss.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

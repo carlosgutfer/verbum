@@ -71,7 +71,13 @@
     <string name="recordcuatro">letras y la última palabra era </string>
     <string name="recordcinco">¡Felicidades! Has acertado la palabra  </string>
     <string name="recordseis">¡Casi! Has fallado la palabra  </string>
+    <string name="recordsiete">Oh vaya... Parece que no has conseguido ninguna letra.  </string>
+    <string name="recordocho">Oh vaya... Parece que  has conseguido   </string>
+
     <string name="volverMenu">Volver al menú</string>
+    <string name="x2">+20</string>
+    <string name="x5">+30</string>
+    <string name="x10">+50</string>
 
 
 </resources>
