@@ -125,6 +125,16 @@ public class EleccionJuegoActivity extends AppCompatActivity implements View.OnC
         startMusic();}
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(this, MainActivity.class);
+        if(md!=null)
+            i.putExtra("position",md.getCurrentPosition());
+        startActivity(i);
+        finish();
+    }
+
     private void startMusic() {
         md = MediaPlayer.create(this, R.raw.export);
         md.setVolume(0.5f, 0.5f);

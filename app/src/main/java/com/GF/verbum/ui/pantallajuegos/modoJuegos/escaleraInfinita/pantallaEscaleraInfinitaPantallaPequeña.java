@@ -280,6 +280,7 @@ public class pantallaEscaleraInfinitaPantallaPequeña extends Fragment implement
 
     private void nuevaPalabra() {
         if(nombre==null) {
+            checkOut();
             posicion = (int) (Math.random() * allPalabras.size());
             palabraAleatoria = allPalabras.get(posicion);
             palabra.setText(palabraAleatoria.getPalabra());
@@ -289,6 +290,19 @@ public class pantallaEscaleraInfinitaPantallaPequeña extends Fragment implement
             juegoFinalizado();
         }
     }
+
+    private void checkOut() {
+        sust.setChecked(false);
+        adj.setChecked(false);
+        pro.setChecked(false);
+        adv.setChecked(false);
+        verb.setChecked(false);
+        pre.setChecked(false);
+        conj.setChecked(false);
+        inter.setChecked(false);
+        art.setChecked(false);
+    }
+
 
     private void juegoFinalizado(){
         SharedPreferentManager.setIntegerValue(reward,-1);

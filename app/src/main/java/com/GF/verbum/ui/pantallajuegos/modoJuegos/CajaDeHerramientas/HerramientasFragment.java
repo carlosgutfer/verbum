@@ -15,16 +15,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.PreguntasEntity;
 import com.GF.verbum.R;
-import com.GF.verbum.commun.Constantes;
-import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
-import com.GF.verbum.ui.pantallajuegos.nuevaOportunidad.nuevaOportunidadDialogFragment;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
@@ -39,10 +37,13 @@ public class HerramientasFragment extends Fragment {
     private List<PreguntasEntity> allPreguntas = new ArrayList<>();
     private List<PalabrasEntity> allPalabras = new ArrayList<>();
     private Button comprobar;
+    private ProgressBar upProgressBar;
     private TextView tiempo,letrasconseguidas;
     private TextView pregunta;
     private int aleatorio;
     private   CountDownTimer countDownTimer;
+
+    private int progresoBar=0;
     private int contador=0;
     private View v;
     private int letrasTotales=0;
@@ -208,6 +209,7 @@ public class HerramientasFragment extends Fragment {
         comprobar=v.findViewById(R.id.BT_comprobarHerramientas);
         letrasconseguidas=v.findViewById(R.id.TV_LetrasConseguidasEscalera);
         ninguna=v.findViewById(R.id.CB_ninguna);
+        upProgressBar=v.findViewById(R.id.PB_multiplicadorLetras);
     }
 
     private void tiempo(){
@@ -234,12 +236,12 @@ public class HerramientasFragment extends Fragment {
         }else if(tiempo==3){
             tiempo=15000;
         }
-
         return tiempo;
     }
 
     private void JuegoFinalizado(){
         contador++;
+        checkOut();
         if (contador == 9) {
             if(letrasTotales>0){
                 if(mInterstitialad.isLoaded())
@@ -257,6 +259,14 @@ public class HerramientasFragment extends Fragment {
 
 
         }
+    }
+
+    private void checkOut() {
+        op1.setChecked(false);
+        op2.setChecked(false);
+        op3.setChecked(false);
+        op4.setChecked(false);
+        ninguna.setChecked(false);
     }
 
     private void comprobarrespuesta(PalabrasEntity p){
@@ -280,11 +290,10 @@ public class HerramientasFragment extends Fragment {
         }else if(p.isVerbo()&&preguntaActual.isVerbo()){
             valido=true;
         }
-        if(valido) {
-            letrasTotales++;
-        }else{
-            letrasTotales--;
-        }
+        if(valido)
+            progreso();
+        else
+            fallo();
     }
 
     private void comprobarTodas(){
@@ -333,12 +342,33 @@ public class HerramientasFragment extends Fragment {
                 break;
             }
         }
-            if(valido) {
-                letrasTotales--;
-            }else{
-                letrasTotales++;
-            }
-        }
+            if(valido)
+                fallo();
+            else
+                progreso();
+    }
+
+    private void fallo() {
+        letrasTotales=letrasTotales-10;
+        progresoBar=0;
+        upProgressBar.setProgress(0);
+    }
+
+
+    public void progreso(){
+        progresoBar++;
+        if(progresoBar<3)
+            letrasTotales=letrasTotales+10;
+        else if(progresoBar>3&&progresoBar<7)
+            letrasTotales = letrasTotales + 20;
+        else if(progresoBar>5&&progresoBar<10)
+            letrasTotales = letrasTotales + 30;
+        else
+            letrasTotales = letrasTotales + 50;
+
+        if(progresoBar<11)
+            upProgressBar.setProgress(progresoBar*10);
+    }
 
 
 }

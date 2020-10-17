@@ -31,10 +31,10 @@
         android:layout_marginTop="28dp"
         android:background="@drawable/pieza"
         android:gravity="center|center_horizontal|center_vertical"
-        android:text="@string/Letras"
+        android:text="@string/cero"
         android:textAllCaps="true"
         android:textColor="@color/marron"
-        android:textSize="14sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="@+id/tableLayout"
@@ -170,6 +170,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
         android:progress="0"
         app:layout_constraintEnd_toStartOf="@+id/TV_LetrasConseguidasEscalera"
         app:layout_constraintStart_toStartOf="@+id/TV_palabraInfinita"
@@ -179,7 +180,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
+        android:layout_marginStart="60dp"
         android:text="@string/x2"
         app:layout_constraintStart_toStartOf="@+id/PB_multiplicadorLetras"
         app:layout_constraintTop_toBottomOf="@+id/PB_multiplicadorLetras" />
@@ -200,7 +201,7 @@
         android:layout_height="wrap_content"
         android:text="@string/x10"
         app:layout_constraintEnd_toEndOf="@+id/PB_multiplicadorLetras"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.87"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/PB_multiplicadorLetras" />
 

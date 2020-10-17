@@ -226,7 +226,7 @@ public class QueSoyFragment extends Fragment implements View.OnClickListener {
             requireActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
             int width = metrics.widthPixels; // ancho absoluto en pixels
             int height = metrics.heightPixels; // alto absoluto en pixels
-            if (height<=600&&width<=900) {
+            if (height<=900&&width<=600) {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()

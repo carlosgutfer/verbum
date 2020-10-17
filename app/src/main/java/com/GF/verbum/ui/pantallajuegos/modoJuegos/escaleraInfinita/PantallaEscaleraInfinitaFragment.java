@@ -478,4 +478,6 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
         if(progresoBar<11)
         upProgressBar.setProgress(progresoBar*10);
     }
+
+
 }
