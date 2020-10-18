@@ -78,4 +78,6 @@
     <string name="x2">+20</string>
     <string name="x5">+30</string>
     <string name="x10">+50</string>
+    <string name="error">"The nick  must be between 4 and 17 characters"</string>
+    <string name="upload">"Upload"</string>
 </resources>

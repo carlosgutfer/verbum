@@ -176,7 +176,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
         }
         if(view==R.id.IV_SubirPuntuacion){
             nick=subirPuntuacion.getText().toString();
-            if(nick.length()>=4){
+            if(nick.length()>=4&&nick.length()<18){
                     db.collection("users")
                            .get()
                             .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -187,7 +187,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
                                 }
                             });
             }else{
-                subirPuntuacion.setError("El nick debe ser al menos de 4 caracteres");
+                subirPuntuacion.setError(getResources().getString(R.string.error));
             }
         }
         if(view==R.id.IV_Back){
@@ -202,7 +202,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         requireActivity().onBackPressed();
-                        Toast.makeText(getActivity(),"Puntuación subida",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),getResources().getString(R.string.upload),Toast.LENGTH_SHORT).show();
                     }
                 });
 
