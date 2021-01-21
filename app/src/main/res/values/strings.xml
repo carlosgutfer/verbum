@@ -37,13 +37,13 @@
     <string name="ModoDeJuego">Modo de juego</string>
     <string name="dificultad">Dificultad</string>
     <string name="buscar">Buscar</string>
-    <string name="modoJuegoVacio">El campo modo de juego no puede estar vacio</string>
-    <string name="dificultadVacio">El campo dificultad no puede estar vacio</string>
+    <string name="modoJuegoVacio">El campo modo de juego no puede estar vacío</string>
+    <string name="dificultadVacio">El campo dificultad no puede estar vacío</string>
     <string name="title_activity_tutorial">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="tutorialEscalera">En este modo de juego deberás clasificar las palabras que se muestran por pantalla eligiendo entre una o varias opciones (dependiendo de la dificultad) para conseguir el mayor número posible de letras. El juego terminará cuando te equivoques, es el modo  de juego más difícil y en el se pondrá a prueba todos tus conocimientos de la sintaxis. ¡Buena suerte!</string>
+    <string name="tutorialEscalera">En este modo de juego deberás clasificar las palabras que se muestran por pantalla eligiendo entre una o varias opciones (dependiendo de la dificultad) para conseguir el mayor número posible de letras. El juego terminará cuando te equivoques, es el modo  de juego más difícil y en él se pondrá a prueba todos tus conocimientos de la sintaxis. ¡Buena suerte!</string>
     <string name="medioDidifil">Medio/Difícil</string>
     <string name="escaleraTutorialSubrayado"><![CDATA[<u>Escalera infinita</u>]]></string>
     <string name="QueSoyTutorialSubrayado"><![CDATA[<u>¿ Qué soy ?</u>]]></string>
@@ -60,13 +60,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="aclaraciones">1. Debes tener en cuenta el plural de las palabras que lo admitan (todas están en singular).</string>
-    <string name="aclaraciones2">2. Las palabras que funcionan como verbo apararecerán siempre en infinitivo.</string>
+    <string name="aclaraciones2">2. Las palabras que funcionan como verbo aparecerán siempre en infinitivo.</string>
     <string name="aclaraciones3" >3. No marcar como adverbio aquellas palabras que necesites añadirles un sufijo para que lo sean.</string>
     <string name="continuar">Continuar</string>
     <string name="verVideo">Ver video</string>
     <string name="informacionImportante">Información importante</string>
-    <string name="recorduno">¡Felicidades! Has conseguido</string>
-    <string name="recordtres">. Si quieres revisar que funciones puede tener, pulsa sobre el diccionario.</string>
+    <string name="recorduno">Vaya, respuesta incorrecta. Has conseguido</string>
+    <string name="recordtres">. Si quieres revisar qué funciones puede tener, pulsa sobre el diccionario.</string>
     <string name="recordos">letras.</string>
     <string name="recordcuatro">letras y la última palabra era </string>
     <string name="recordcinco">¡Felicidades! Has acertado la palabra  </string>
