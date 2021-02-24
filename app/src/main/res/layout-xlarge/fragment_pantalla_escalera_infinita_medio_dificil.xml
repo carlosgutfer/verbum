@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pantallajuegos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/papiro_fondo"
+    tools:context=".ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment">
+
+    <TextView
+        android:id="@+id/TV_palabraInfinita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:text="@string/palabra"
+        android:textColor="@android:color/background_dark"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TV_LetrasConseguidasEscalera"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="104dp"
+        android:background="@drawable/pieza"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="@string/cero"
+        android:textAllCaps="true"
+        android:textColor="@color/marron"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.909"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/BT_comprobar"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:background="@drawable/pieza"
+        android:padding="10dp"
+        android:text="@string/Comprobar"
+        android:textColor="@color/marron"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/TV_LetrasConseguidasEscalera"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/TV_palabraInfinita"
+        app:layout_constraintTop_toBottomOf="@+id/CB_pronombre"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <CheckBox
+        android:id="@+id/CB_sustantivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:text="@string/Sustantivo"
+        android:textColor="@android:color/background_dark"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/TV_palabraInfinita"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <CheckBox
+        android:id="@+id/CB_Adjetivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:text="@string/Adjetivo"
+        android:textColor="@android:color/background_dark"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/CB_sustantivo"
+        app:layout_constraintTop_toBottomOf="@+id/CB_sustantivo" />
+
+    <CheckBox
+        android:id="@+id/CB_artiuclo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:text="@string/Articulos"
+        android:textColor="@android:color/background_dark"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/CB_Adjetivo"
+        app:layout_constraintTop_toBottomOf="@+id/CB_Adjetivo" />
+
+    <CheckBox
+        android:id="@+id/CB_adverbio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:text="@string/Adverbios"
+        android:textColor="@android:color/background_dark"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/CB_artiuclo"
+        app:layout_constraintTop_toBottomOf="@+id/CB_artiuclo" />
+
+    <CheckBox
+        android:id="@+id/CB_verbo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:text="@string/Verbo"
+        android:textColor="@android:color/background_dark"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/CB_adverbio"
+        app:layout_constraintTop_toBottomOf="@+id/CB_adverbio" />
+
+    <CheckBox
+        android:id="@+id/CB_preposicion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:text="@string/Preposicion"
+        android:textColor="@android:color/background_dark"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/CB_verbo"
+        app:layout_constraintTop_toBottomOf="@+id/CB_verbo" />
+
+    <CheckBox
+        android:id="@+id/CB_conjuncion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:text="@string/conjuncion"
+        android:textColor="@android:color/background_dark"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/CB_preposicion"
+        app:layout_constraintTop_toBottomOf="@+id/CB_preposicion" />
+
+    <CheckBox
+        android:id="@+id/CB_interjeccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:text="@string/Interjeccion"
+        android:textColor="@android:color/background_dark"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/CB_conjuncion"
+        app:layout_constraintTop_toBottomOf="@+id/CB_conjuncion" />
+
+    <CheckBox
+        android:id="@+id/CB_pronombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:text="@string/Pronombre"
+        android:textColor="@android:color/background_dark"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/CB_interjeccion"
+        app:layout_constraintTop_toBottomOf="@+id/CB_interjeccion" />
+
+    <ProgressBar
+        android:id="@+id/PB_multiplicadorLetras"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:progress="0"
+        app:layout_constraintEnd_toStartOf="@+id/TV_LetrasConseguidasEscalera"
+        app:layout_constraintStart_toStartOf="@+id/TV_palabraInfinita"
+        app:layout_constraintTop_toBottomOf="@+id/TV_palabraInfinita" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:text="@string/x2"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/PB_multiplicadorLetras"
+        app:layout_constraintTop_toBottomOf="@+id/PB_multiplicadorLetras" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/x5"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/PB_multiplicadorLetras"
+        app:layout_constraintHorizontal_bias="0.404"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/PB_multiplicadorLetras" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/x10"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/PB_multiplicadorLetras"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/PB_multiplicadorLetras" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/papiro_fondo"
+android:paddingLeft="15dp"
+tools:context=".ui.pantallajuegos.modoJuegos.CajaDeHerramientas.HerramientasFragment">
+
+    <TextView
+        android:id="@+id/TV_PreguntaHerramientas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:paddingLeft="15dp"
+        android:text="Hello"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/TV_tiempo"
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.06" />
+
+    <CheckBox
+        android:id="@+id/CB_op1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:paddingLeft="15dp"
+        android:text="CheckBox"
+        android:textSize="36dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/TV_PreguntaHerramientas"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <CheckBox
+        android:id="@+id/CB_op2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:paddingLeft="15dp"
+        android:text="CheckBox"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/CB_op3"
+        app:layout_constraintTop_toBottomOf="@+id/CB_op3" />
+
+    <CheckBox
+        android:id="@+id/CB_op3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:paddingLeft="15dp"
+        android:text="CheckBox"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/CB_op1"
+        app:layout_constraintTop_toBottomOf="@+id/CB_op1" />
+
+    <CheckBox
+        android:id="@+id/CB_op4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:checked="false"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:paddingLeft="15dp"
+        android:text="CheckBox"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/CB_op2"
+        app:layout_constraintTop_toBottomOf="@+id/CB_op2" />
+
+    <Button
+        android:id="@+id/BT_comprobarHerramientas"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:background="@drawable/pieza"
+        android:padding="30dp"
+        android:paddingLeft="15dp"
+        android:text="@string/Comprobar"
+        android:textColor="@color/marron"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/CB_op3"
+        app:layout_constraintTop_toBottomOf="@+id/CB_ninguna"
+        app:layout_constraintVertical_bias="0.104" />
+
+    <TextView
+        android:id="@+id/TV_tiempo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="clip_horizontal|center|clip_vertical"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TV_LetrasConseguidasEscalera"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/pieza"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="@string/cero"
+        android:textAllCaps="true"
+        android:textColor="@color/marron"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_tiempo" />
+
+    <CheckBox
+        android:id="@+id/CB_ninguna"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="casual"
+        android:padding="10dp"
+        android:paddingLeft="15dp"
+        android:text="@string/ninguna"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/CB_op4"
+        app:layout_constraintTop_toBottomOf="@+id/CB_op4" />
+
+<ProgressBar
+    android:id="@+id/PB_multiplicadorLetras"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="5dp"
+    android:progress="0"
+    app:layout_constraintEnd_toStartOf="@+id/TV_LetrasConseguidasEscalera"
+    app:layout_constraintStart_toStartOf="@+id/TV_PreguntaHerramientas"
+    app:layout_constraintTop_toBottomOf="@+id/TV_PreguntaHerramientas" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:text="@string/x2"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/PB_multiplicadorLetras"
+        app:layout_constraintTop_toBottomOf="@+id/PB_multiplicadorLetras" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/x5"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/PB_multiplicadorLetras"
+        app:layout_constraintHorizontal_bias="0.404"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/PB_multiplicadorLetras" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/x10"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/PB_multiplicadorLetras"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/PB_multiplicadorLetras" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

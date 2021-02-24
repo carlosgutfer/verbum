@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/papiro_fondo"
+    tools:context=".ui.pantallajuegos.modoJuegos.QueSoy.QueSoyFragment">
+
+    <TextView
+        android:id="@+id/TV_LetrasConseguidasQueSoy"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/pieza"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="@string/cero"
+        android:textAllCaps="true"
+        android:textColor="@color/marron"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.906"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TV_preguntas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="casual"
+        android:padding="12dp"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/TV_LetrasConseguidasQueSoy"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/TV_palabra"
+        app:layout_constraintTop_toBottomOf="@+id/TV_palabra" />
+
+    <Button
+        android:id="@+id/BT_si"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/pieza"
+        android:text="@string/si"
+        android:textColor="@color/marron"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_preguntas" />
+
+    <TextView
+        android:id="@+id/TV_palabra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="casual"
+        android:padding="12dp"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_LetrasConseguidasQueSoy" />
+
+    <Button
+        android:id="@+id/Bt_no"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="60dp"
+        android:background="@drawable/pieza"
+        android:text="@string/no"
+        android:textColor="@color/marron"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/BT_si"
+        app:layout_constraintTop_toTopOf="@+id/BT_si" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

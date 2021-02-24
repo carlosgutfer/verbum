@@ -23,8 +23,6 @@ import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscal
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaPantallaPequeña;
 
-import java.util.Objects;
-
 
 public class nuevaOportunidadDialogFragment extends DialogFragment {
     private String nombre;
@@ -47,7 +45,7 @@ public class nuevaOportunidadDialogFragment extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dialogfragment_nueva_oportuniad, container, false);
+        View view = inflater.inflate(R.layout.dialogfragment_nueva_oportunidad, container, false);
         nombre=getArguments().getString("nombre");
         findviewbyId(view);
         onClick();

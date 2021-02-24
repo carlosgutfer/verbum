@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/menu_vertical"
+    tools:context=".ui.pantallajuegos.MainActivity">
+
+    <Button
+        android:id="@+id/BT_Mejores"
+        android:layout_width="360dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_border_white_tablet"
+        android:fontFamily="casual"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/Records"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/Bt_Sintaxis"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/Bt_Sintaxis"
+        app:layout_constraintTop_toBottomOf="@+id/Bt_Sintaxis" />
+
+    <Button
+        android:id="@+id/BT_Jugar"
+        android:layout_width="360dp"
+        android:layout_height="130dp"
+        android:background="@drawable/button_border_white_tablet"
+        android:fontFamily="casual"
+        android:onClick="onClick"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/Jugar"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172" />
+
+    <Button
+        android:id="@+id/Bt_tutorial"
+        android:layout_width="360dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_border_white_tablet"
+        android:fontFamily="casual"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/tutorial"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/BT_Jugar"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/BT_Jugar"
+        app:layout_constraintTop_toBottomOf="@+id/BT_Jugar" />
+
+    <Button
+        android:id="@+id/Bt_Sintaxis"
+        android:layout_width="360dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_border_white_tablet"
+        android:fontFamily="casual"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/sintaxis"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/Bt_tutorial"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/Bt_tutorial"
+        app:layout_constraintTop_toBottomOf="@+id/Bt_tutorial" />
+
+    <ImageView
+        android:id="@+id/IB_sound"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="4dp"
+        android:contentDescription="@string/controlDeSonido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adViewBanner"
+        app:srcCompat="@drawable/ic_baseline_volume_up_24" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewBanner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-9592543293433576/3011990811"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.google.android.gms.ads.AdView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+<group>
     <item
         android:id="@+id/navigation_escaleraInfinita"
         android:icon="@drawable/escalera"
-        android:title="@string/EscaleraInfinita" />
+        android:title="@string/EscaleraInfinita"
+        />
 
     <item
         android:id="@+id/navigation_queSoy"
         android:icon="@drawable/ic_baseline_supervised_user_circle_24"
-        android:title="@string/QueSoy" />
+        android:title="@string/QueSoy"
+        />
 
     <item
         android:id="@+id/navigation_cajaHerramientas"
         android:icon="@drawable/ic_baseline_business_center_24"
-        android:title="@string/CajaDeHerramientas" />
-
+        android:title="@string/CajaDeHerramientas"
+        />
+</group>
 </menu>

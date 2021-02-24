@@ -22,4 +22,9 @@
         <item name="android:maxWidth">12dip</item>
     </style>
 
+    <style name="sizeLetter">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+
 </resources>
