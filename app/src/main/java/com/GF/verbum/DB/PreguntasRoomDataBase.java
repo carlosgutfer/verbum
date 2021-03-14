@@ -95,9 +95,9 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Comunica sentimientos e impresiones?",false,false,false,false,false,false,false,false,true);
                     dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("¿Codifica verbalmente determinados comportamientos sociales convencionales?",false,false,false,false,false,false,false,false,true);
+                    pregunta = new PreguntasEntity("¿Expresa por sí sola un estado de ánimo o capta la atención del oyente?",false,false,false,false,false,false,false,false,true);
                     dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("¿Esta especializada en la formación de enunciados exclamativos?",false,false,false,false,false,false,false,false,true);
+                    pregunta = new PreguntasEntity("¿Está especializada en la formación de enunciados exclamativos?",false,false,false,false,false,false,false,false,true);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Modifica a la palabra que acompaña para que funcione como sujeto ?",false,true,false,false,false,false,false,false,false);
                     dao.insert(pregunta);
@@ -154,7 +154,7 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("Does it communicate feelings and impressions?",false,false,false,false,false,false,false,false,true);
                     dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("Does it verbally encode certain conventional social behaviors? ",false,false,false,false,false,false,false,false,true);
+                    pregunta = new PreguntasEntity("Does it express a mood by itself or does it capture the listener's attention? ",false,false,false,false,false,false,false,false,true);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("Is it specialized in the formation of exclamatory sentences?",false,false,false,false,false,false,false,false,true);
                     dao.insert(pregunta);
