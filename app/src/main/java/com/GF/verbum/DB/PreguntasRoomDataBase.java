@@ -63,6 +63,8 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
 
                     PreguntasEntity pregunta = new PreguntasEntity("¿Admite género y número?",true,false,true,false,true,false,false,false,false);
                     dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("¿Es una palabra usada para delimitar un grupo que posee una serie de rasgos comunes que lo caracteriza y las distingue de otros?",true,false,false,false,false,false,false,false,false);
+                    dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Presenta concordancia con la palabra que acompañan?",true,true,true,false,false,false,false,false,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Precede a todos los componentes del grupo nominal al que pertenece?",true,true,true,false,false,false,false,false,false);
@@ -77,17 +79,19 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Modifica a la palabra que acompaña?",false,false,true,false,false,true,false,false,false);
                     dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("¿Es una palabra invariable?",false,false,false,false,false,true,true,true,false);
+                    dao.insert(pregunta);
+                    pregunta = new PreguntasEntity("¿ Atribuye alguna propiedad o clasifica la palabra que acompaña?",false,false,true,false,false,true,false,false,false);
+                    dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿El grupo sintáctico tiene significado de cantidad, lugar, tiempo, manera, afirmación, negación o duda?",false,false,false,false,false,true,false,false,false);
                     dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("¿Puede escribirse igual singular y en  plural?",false,false,true,false,false,false,false,false,false);
+                    pregunta = new PreguntasEntity("¿La palabra se escribe igual en singular y en  plural?",false,false,true,false,false,false,false,false,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Puede denotar propiedades o cualidades de los objetos?",false,false,true,false,false,true,false,false,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Presenta rasgos gramaticales de persona?",false,false,false,true,false,false,false,false,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Posee grado?",false,false,true,false,false,true,false,false,false);
-                    dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("¿Su significado debe interpretarse en función de la oración?",false,false,false,true,false,false,false,false,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Especifica si lo designado por ese segmento de la oración constituye o no información ya sabida?",false,true,false,false,false,false,false,false,false);
                     dao.insert(pregunta);
@@ -145,8 +149,6 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
                     pregunta = new PreguntasEntity("Does it present grammatical characteristics of person?",false,false,false,true,false,false,false,false,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("Does it have a degree?",false,false,true,false,false,true,false,false,false);
-                    dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("Should its meaning be interpreted in terms of the sentence?",false,false,false,true,false,false,false,false,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("Does it specify whether or not what is designated by that segment of the sentence constitutes information already known?",false,true,false,false,false,false,false,false,false);
                     dao.insert(pregunta);

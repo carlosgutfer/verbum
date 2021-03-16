@@ -81,6 +81,9 @@
     <string name="cero">0</string>
     <string name="error">"El nick debe ser de 4 a 17 caracteres"</string>
     <string name="upload">"Puntuación subida"</string>
+    <string name="verdadero">verdadero</string>
+    <string name="falso">falso</string>
+    <string name="introQueSoy">La palabra: </string>
 
 
 </resources>

@@ -41,12 +41,13 @@
 
     <Button
         android:id="@+id/BT_si"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="101dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/pieza"
-        android:text="@string/si"
+        android:padding="5dp"
+        android:text="@string/verdadero"
         android:textColor="@color/marron"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,13 +68,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TV_LetrasConseguidasQueSoy" />
 
+    <TextView
+        android:id="@+id/TV_Intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="casual"
+        android:padding="12dp"
+        android:text="@string/introQueSoy"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/TV_palabra"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/Bt_no"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:background="@drawable/pieza"
-        android:text="@string/no"
+        android:text="@string/falso"
         android:textColor="@color/marron"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"

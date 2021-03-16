@@ -80,4 +80,9 @@
     <string name="x10">+50</string>
     <string name="error">"The nick  must be between 4 and 17 characters"</string>
     <string name="upload">"Upload"</string>
+    <string name="cero">0</string>
+    <string name="verdadero">True</string>
+    <string name="falso">False</string>
+    <string name="introQueSoy">The word: </string>
+
 </resources>
