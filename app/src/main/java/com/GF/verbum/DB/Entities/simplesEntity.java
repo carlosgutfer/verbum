@@ -5,14 +5,11 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "simples")
 public class simplesEntity   {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int idOSimples;
-    private int value;
     private String descriptcion;
 
-    public simplesEntity(int idOSimples, int value, String descriptcion) {
-        this.idOSimples = idOSimples;
-        this.value = value;
+    public simplesEntity( String descriptcion) {
         this.descriptcion = descriptcion;
     }
 
@@ -24,13 +21,7 @@ public class simplesEntity   {
         this.idOSimples = idOSimples;
     }
 
-    public int getValue() {
-        return value;
-    }
 
-    public void setValue(int value) {
-        this.value = value;
-    }
 
     public String getDescriptcion() {
         return descriptcion;

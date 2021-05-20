@@ -6,10 +6,10 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Palabras")
 public class PalabrasEntity {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
+    private int identificador;
     private String palabra;
-
     private boolean sustantivo;
     private boolean articulo;
     private boolean adjetivo;
@@ -21,7 +21,8 @@ public class PalabrasEntity {
     private boolean interjeccion;
     private String urlRae;
 
-    public PalabrasEntity(@NonNull String palabra, boolean sustantivo, boolean articulo, boolean adjetivo, boolean pronombre, boolean verbo, boolean adverbio, boolean preposicion, boolean conjuncion, boolean interjeccion,String urlRae) {
+
+    public PalabrasEntity( String palabra, boolean sustantivo, boolean articulo, boolean adjetivo, boolean pronombre, boolean verbo, boolean adverbio, boolean preposicion, boolean conjuncion, boolean interjeccion, String urlRae) {
         this.palabra = palabra;
         this.sustantivo = sustantivo;
         this.articulo = articulo;
@@ -32,10 +33,17 @@ public class PalabrasEntity {
         this.preposicion = preposicion;
         this.conjuncion = conjuncion;
         this.interjeccion = interjeccion;
-        this.urlRae=urlRae;
+        this.urlRae = urlRae;
     }
 
-    @NonNull
+    public int getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador(int identificador) {
+        this.identificador = identificador;
+    }
+
     public String getPalabra() {
         return palabra;
     }

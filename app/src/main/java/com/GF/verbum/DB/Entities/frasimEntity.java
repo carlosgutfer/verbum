@@ -4,12 +4,10 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "frasim")
+@Entity(tableName = "frasim", primaryKeys = {"idFrase","idOSimple"})
 public class frasimEntity {
-    @PrimaryKey
     @ForeignKey(entity =frasesEntity.class, parentColumns = "idFrase", childColumns ="idFrase" )
     private int idFrase;
-    @PrimaryKey
     @ForeignKey(entity = simplesEntity.class, parentColumns = "idOSimples", childColumns = "idOSimple")
     private int idOSimple;
 

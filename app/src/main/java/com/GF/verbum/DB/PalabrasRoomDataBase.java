@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-@Database(entities = PalabrasEntity.class,version = 2 ,exportSchema = false)
+@Database(entities = PalabrasEntity.class,version = 3 ,exportSchema = false)
 
 public abstract class PalabrasRoomDataBase extends RoomDatabase {
 
@@ -32,7 +32,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
             synchronized (PalabrasRoomDataBase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            PalabrasRoomDataBase.class, "Palabra_DataBase")
+                            PalabrasRoomDataBase.class, "Palabra_v2_DataBase")
                             .fallbackToDestructiveMigration()
                             .addCallback(llamada)
                             .build();
