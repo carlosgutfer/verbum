@@ -88,9 +88,9 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
         findViewById();
         nombre=getArguments().getString("palabra",null);
         loadVideoRewar();
-        mInterstitialad = new InterstitialAd(getActivity());
+       /* mInterstitialad = new InterstitialAd(getActivity());
         mInterstitialad.setAdUnitId("ca-app-pub-9592543293433576/3091063629");
-        mInterstitialad.loadAd(new AdRequest.Builder().build());
+        mInterstitialad.loadAd(new AdRequest.Builder().build());*/
         mpalabrasviewModel=new ViewModelProvider(this).get(ModosJuegosViewModel.class);
         mpalabrasviewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {
             @Override
@@ -301,8 +301,8 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
 
     private void juegoFinalizado(){
         SharedPreferentManager.setIntegerValue(reward,-1);
-        if(mInterstitialad.isLoaded())
-            mInterstitialad.show();
+        /*if(mInterstitialad.isLoaded())
+            mInterstitialad.show();*/
             if(nombre==null)
                 getActivity()
                         .getSupportFragmentManager()

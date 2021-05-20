@@ -4,7 +4,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
+
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -19,11 +19,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.R;
-import com.GF.verbum.commun.Constantes;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
@@ -37,7 +35,6 @@ import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import static com.GF.verbum.commun.Constantes.reward;
 
@@ -88,9 +85,9 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_escalera_infinita, container, false);
 
-        mInterstitialad = new InterstitialAd(getActivity());
+       /* mInterstitialad = new InterstitialAd(getActivity());
         mInterstitialad.setAdUnitId("ca-app-pub-9592543293433576/3091063629");
-        mInterstitialad.loadAd(new AdRequest.Builder().build());
+        mInterstitialad.loadAd(new AdRequest.Builder().build());*/
         loadVideoRewar();
 
 
@@ -393,8 +390,8 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
 
     public void juegoFinalizado(){
         SharedPreferentManager.setIntegerValue(reward,-1);
-        if(mInterstitialad.isLoaded())
-            mInterstitialad.show();
+        /*if(mInterstitialad.isLoaded())
+            mInterstitialad.show();*/
 
             if(nombre==null)
                 requireActivity()

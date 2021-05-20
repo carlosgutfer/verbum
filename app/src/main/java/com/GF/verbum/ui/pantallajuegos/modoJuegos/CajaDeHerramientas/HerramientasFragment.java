@@ -1,13 +1,15 @@
 package com.GF.verbum.ui.pantallajuegos.modoJuegos.CajaDeHerramientas;
 
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -23,8 +25,8 @@ import com.GF.verbum.DB.Entities.PreguntasEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,11 +72,13 @@ public class HerramientasFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         v= inflater.inflate(R.layout.fragment_herramientas, container, false);
+        /*
         mInterstitialad = new InterstitialAd(getActivity());
         mInterstitialad.setAdUnitId("ca-app-pub-9592543293433576/3091063629");
-        mInterstitialad.loadAd(new AdRequest.Builder().build());
+        mInterstitialad.loadAd(new AdRequest.Builder().build());*/
         mViewModel = new ViewModelProvider(this).get(ModosJuegosViewModel.class);
         findViewById();
+
         mViewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {
             @Override
             public void onChanged(List<PalabrasEntity> palabrasEntities) {
@@ -244,8 +248,8 @@ public class HerramientasFragment extends Fragment {
         checkOut();
         if (contador == 9) {
             if(letrasTotales>0){
-                if(mInterstitialad.isLoaded())
-                    mInterstitialad.show();
+               /* if(mInterstitialad.isLoaded())
+                    mInterstitialad.show();*/
                     requireActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
