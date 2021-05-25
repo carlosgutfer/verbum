@@ -301,19 +301,19 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
     }
     private static void AdjetivosSutantivos(PalabrasDao dao) {
-        PalabrasEntity palabra = new PalabrasEntity("Ácido", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/%C3%A1cido?m=form");
+        PalabrasEntity palabra = new PalabrasEntity("ácido", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/%C3%A1cido?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("Rara", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/rara#VANhUcQ");
+        palabra = new PalabrasEntity("rara", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/rara#VANhUcQ");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("Errada", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/errada#G3VGPCX");
+        palabra = new PalabrasEntity("errada", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/errada#G3VGPCX");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("Lista", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/listo?m=form");
+        palabra = new PalabrasEntity("lista", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/listo?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("Recipiente", true, false, false, false, false, false, false, false, false, "https://dle.rae.es/recipiente?m=form");
+        palabra = new PalabrasEntity("recipiente", true, false, false, false, false, false, false, false, false, "https://dle.rae.es/recipiente?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("Estadística", true, false, false, false, false, false, false, false, false, "https://dle.rae.es/estad%C3%ADstico#GjpDTiC");
+        palabra = new PalabrasEntity("estadística", true, false, false, false, false, false, false, false, false, "https://dle.rae.es/estad%C3%ADstico#GjpDTiC");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("Húmedo", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/h%C3%BAmedo?m=form");
+        palabra = new PalabrasEntity("húmedo", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/h%C3%BAmedo?m=form");
         dao.insert(palabra);
         palabra = new PalabrasEntity("Húmeda", true, false, true, false, false, false, false, false, false, "https://dle.rae.es/h%C3%BAmedo?m=form");
         dao.insert(palabra);
@@ -654,8 +654,6 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("Comer", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/comer#9vPNMxG");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("Estar", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/estar?m=form");
-        dao.insert(palabra);
         palabra = new PalabrasEntity("Tener", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/tener?m=form");
         dao.insert(palabra);
         palabra = new PalabrasEntity("Poner", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/poner?m=form");
@@ -727,6 +725,8 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         palabra = new PalabrasEntity("Sentar", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/sentar?m=form");
         dao.insert(palabra);
         palabra = new PalabrasEntity("Pagar", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/pagar?m=form");
+        dao.insert(palabra);
+        palabra = new PalabrasEntity("Estar", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/estar?m=form");
         dao.insert(palabra);
     }
     private static void VerboSustantivo(PalabrasDao dao){
@@ -883,7 +883,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
 
     }
 
-  private static void Adverbios(PalabrasDao dao) {
+    private static void Adverbios(PalabrasDao dao) {
         PalabrasEntity palabra = new PalabrasEntity("Allí", false, false, false, false, false, true, false, false, false,"https://dle.rae.es/all%C3%AD?m=form");
         dao.insert(palabra);
         palabra = new PalabrasEntity("Jamás", false, false, false, false, false, true, false, false, false,"https://dle.rae.es/jam%C3%A1s?m=form");
@@ -1020,6 +1020,15 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
     private static void InterjeccionSustantivoAdverbio(PalabrasDao dao){
         PalabrasEntity    palabra = new PalabrasEntity("Guay", true, false, false, false, false, true, false, false, true,"https://dle.rae.es/guay#JmihBh3");
         dao.insert(palabra);
+
+    }
+
+    private static void verbosConjugados(PalabrasDao dao){
+        dao.insert(new PalabrasEntity("es", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/es"));
+        dao.insert(new PalabrasEntity("niño", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/ni%C3%B1o?m=form"));
+        dao.insert(new PalabrasEntity("muy", false, false, false, false, false, true, false, false, false,"https://dle.rae.es/muy?m=form"));
+
+
     }
 //Añadir en el layout un aviso que diga que aquellas formas que admiten plural deben ser tenidas en cuentas a la hora de elegir que tipo de función puede desempeñar una palbra
     //Ejemplo: aparece por pantalla la palabra demasiado, pero debe entenderse como demasiado/demasiados

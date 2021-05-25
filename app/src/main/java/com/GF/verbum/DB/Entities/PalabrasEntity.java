@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
 public class PalabrasEntity {
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    private int identificador;
+    private int idPalabra;
     private String palabra;
     private boolean sustantivo;
     private boolean articulo;
@@ -36,12 +36,12 @@ public class PalabrasEntity {
         this.urlRae = urlRae;
     }
 
-    public int getIdentificador() {
-        return identificador;
+    public int getIdPalabra() {
+        return idPalabra;
     }
 
-    public void setIdentificador(int identificador) {
-        this.identificador = identificador;
+    public void setIdPalabra(int idPalabra) {
+        this.idPalabra = idPalabra;
     }
 
     public String getPalabra() {
