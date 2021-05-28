@@ -3,12 +3,21 @@ package com.GF.verbum.ui.pantallajuegos.modoJuegos.analisis;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.GF.verbum.DB.Entities.PalabrasEntity;
+import com.GF.verbum.DB.Entities.frasesEntity;
+import com.GF.verbum.DB.Entities.palfraEntity;
 import com.GF.verbum.R;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.modosDeJuegoViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +32,9 @@ public class analisFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private int dificultad;
-
+    private analisisViewModel anaviewModel;
+    private modosDeJuegoViewModel modoviewModel;
+    private ArrayList<palfraEntity> palfra;
     public analisFragment() {
         // Required empty public constructor
     }
@@ -50,6 +61,13 @@ public class analisFragment extends Fragment {
         if (getArguments() != null) {
             dificultad = getArguments().getInt(ARG_PARAM1);
         }
+        modoviewModel.getAllFrases().observe(this, new Observer<List<frasesEntity>>() {
+            @Override
+            public void onChanged(List<frasesEntity> frasesEntities) {
+
+            }
+        });
+
     }
 
     @Override
@@ -57,6 +75,8 @@ public class analisFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View  v =  inflater.inflate(R.layout.fragment_analis, container, false);
+
+
         return v;
     }
 }
