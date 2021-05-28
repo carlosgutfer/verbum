@@ -101,6 +101,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
                     Interjeccion(dao);
                     InterjeccionSustantivo(dao);
                     InterjeccionSustantivoAdverbio(dao);
+                    palabrasFrases(dao);
                 }
             });
         }
@@ -1023,7 +1024,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
 
     }
 
-    private static void verbosConjugados(PalabrasDao dao){
+    private static void palabrasFrases(PalabrasDao dao){
         dao.insert(new PalabrasEntity("es", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/es"));
         dao.insert(new PalabrasEntity("niño", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/ni%C3%B1o?m=form"));
         dao.insert(new PalabrasEntity("muy", false, false, false, false, false, true, false, false, false,"https://dle.rae.es/muy?m=form"));

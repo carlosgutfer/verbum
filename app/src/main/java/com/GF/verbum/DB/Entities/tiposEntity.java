@@ -3,7 +3,7 @@ package com.GF.verbum.DB.Entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "simples")
+@Entity(tableName = "TIPOS")
 public class tiposEntity {
     @PrimaryKey(autoGenerate = true)
     private int idOSimples;

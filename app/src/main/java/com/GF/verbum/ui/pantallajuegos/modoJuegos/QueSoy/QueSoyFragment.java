@@ -23,7 +23,7 @@ import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.PreguntasEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.modosDeJuegoViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaPantallaPequeña;
@@ -34,7 +34,7 @@ import java.util.List;
 public class QueSoyFragment extends Fragment implements View.OnClickListener {
     private  int sonido_de_tecla;
     private SoundPool sp;
-    private ModosJuegosViewModel mpalabrasviewModel;
+    private modosDeJuegoViewModel mpalabrasviewModel;
     private List<PalabrasEntity> allPalabras = new ArrayList<>();
     private List<PreguntasEntity> allPreguntas = new ArrayList<>();
     private int posicion, dificultad,aleatorio, letrasConseguidas=0, ronda=0;
@@ -59,7 +59,7 @@ public class QueSoyFragment extends Fragment implements View.OnClickListener {
         findViewById();
         sp = new SoundPool(10, AudioManager.STREAM_MUSIC,1);
         sonido_de_tecla= sp.load(getActivity(),R.raw.tecla,1);
-        mpalabrasviewModel=new ViewModelProvider(this).get(ModosJuegosViewModel.class);
+        mpalabrasviewModel=new ViewModelProvider(this).get(modosDeJuegoViewModel.class);
         mpalabrasviewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {
             @Override
             public void onChanged(List<PalabrasEntity> palabrasEntities) {
@@ -155,7 +155,7 @@ public class QueSoyFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mpalabrasviewModel = ViewModelProviders.of(this).get(ModosJuegosViewModel.class);
+        mpalabrasviewModel = ViewModelProviders.of(this).get(modosDeJuegoViewModel.class);
         onClick();
     }
 

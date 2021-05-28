@@ -4,10 +4,13 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
+import com.GF.verbum.DB.DAO.FrasesDao;
 import com.GF.verbum.DB.DAO.PalabrasDao;
 import com.GF.verbum.DB.DAO.PreguntasDao;
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.PreguntasEntity;
+import com.GF.verbum.DB.Entities.frasesEntity;
+import com.GF.verbum.DB.FrasesRoomDataBase;
 import com.GF.verbum.DB.PalabrasRoomDataBase;
 import com.GF.verbum.DB.PreguntasRoomDataBase;
 
@@ -22,6 +25,10 @@ public class PalabraRepository {
     private LiveData<List<PalabrasEntity>> allPalabras;
 
 
+    private FrasesDao DAOfrases;
+    private LiveData<List<frasesEntity>> allFrases;
+
+
     public PalabraRepository(Application application) {
         PalabrasRoomDataBase dbPalabras = PalabrasRoomDataBase.getRoomDataBase(application);
         DaoPalabras=dbPalabras.DAO();
@@ -31,6 +38,10 @@ public class PalabraRepository {
         DaoPreguntas =dbPreguntas.DAO();
         allPreguntas=DaoPreguntas.getAllPreguntas();
 
+        FrasesRoomDataBase dbFrases = FrasesRoomDataBase.getRoomDataBase(application);
+        DAOfrases=dbFrases.DAO();
+        allFrases=DAOfrases.getAllFrases();
+
     }
 
     public LiveData<List<PreguntasEntity>> getAllPreguntas(){
@@ -39,4 +50,10 @@ public class PalabraRepository {
 
     public LiveData<List<PalabrasEntity>> getAll(){
         return  allPalabras;}
+
+    public LiveData<List<frasesEntity>> getAllFrases(){
+        return allFrases;
+    }
+
+
 }

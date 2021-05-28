@@ -15,11 +15,12 @@ import android.widget.ImageView;
 
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.PreguntasEntity;
+import com.GF.verbum.DB.Entities.frasesEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.Sintaxis.SintaxisActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.EleccionJuegoActivity;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.modosDeJuegoViewModel;
 import com.GF.verbum.ui.pantallajuegos.record.RecordActivity;
 import com.GF.verbum.ui.pantallajuegos.tutorial.tutorialActivity;
 import com.google.android.gms.ads.AdRequest;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private int position;
 
-    private ModosJuegosViewModel mpalabrasviewModel;
+    private modosDeJuegoViewModel mpalabrasviewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(SharedPreferentManager.getIntegerValue("soundMode")==1){
             sound.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_off_24));
         }
-        mpalabrasviewModel = new ViewModelProvider(this).get(ModosJuegosViewModel.class);
+        
+        mpalabrasviewModel = new ViewModelProvider(this).get(modosDeJuegoViewModel.class);
         mpalabrasviewModel.getAllPalabras().observe(this, new Observer<List<PalabrasEntity>>() {
             @Override
             public void onChanged(List<PalabrasEntity> palabrasEntities) {
@@ -69,6 +71,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mpalabrasviewModel.getAllPreguntas().observe(this, new Observer<List<PreguntasEntity>>() {
             @Override
             public void onChanged(List<PreguntasEntity> preguntasEntities) {
+            }
+        });
+        mpalabrasviewModel.getAllFrases().observe(this, new Observer<List<frasesEntity>>() {
+            @Override
+            public void onChanged(List<frasesEntity> frasesEntities) {
+
             }
         });
 

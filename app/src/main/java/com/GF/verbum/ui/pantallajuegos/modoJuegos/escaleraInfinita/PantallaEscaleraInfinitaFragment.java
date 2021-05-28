@@ -23,7 +23,7 @@ import android.widget.TextView;
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.modosDeJuegoViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
 import com.GF.verbum.ui.pantallajuegos.nuevaOportunidad.nuevaOportunidadDialogFragment;
 import com.google.android.gms.ads.AdRequest;
@@ -47,7 +47,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     private List<PalabrasEntity> allPalabras = new ArrayList<>();
     private PalabrasEntity palabraAleatoria;
 
-    private ModosJuegosViewModel mpalabrasviewModel;
+    private modosDeJuegoViewModel mpalabrasviewModel;
     private TextView palabra;
     private View v;
     private int letrasGanadas=0;
@@ -98,7 +98,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
         findViewById();
         nombre=getArguments().getString("palabra",null);
 
-        mpalabrasviewModel = new ViewModelProvider(this).get(ModosJuegosViewModel.class);
+        mpalabrasviewModel = new ViewModelProvider(this).get(modosDeJuegoViewModel.class);
            mpalabrasviewModel.getAllPalabras().observe(getViewLifecycleOwner(), new Observer<List<PalabrasEntity>>() {
                @Override
                public void onChanged(List<PalabrasEntity> palabrasEntities) {
@@ -154,7 +154,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mpalabrasviewModel = new ViewModelProvider(this).get(ModosJuegosViewModel.class);
+        mpalabrasviewModel = new ViewModelProvider(this).get(modosDeJuegoViewModel.class);
 
         onClick();
 

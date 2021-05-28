@@ -20,7 +20,7 @@ import android.widget.TextView;
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.modosDeJuegoViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
 import com.GF.verbum.ui.pantallajuegos.nuevaOportunidad.nuevaOportunidadDialogFragment;
 import com.google.android.gms.ads.AdRequest;
@@ -42,7 +42,7 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
     private List<PalabrasEntity> allPalabras = new ArrayList<>();
     private PalabrasEntity palabraAleatoria;
 
-    private ModosJuegosViewModel mpalabrasviewModel;
+    private modosDeJuegoViewModel mpalabrasviewModel;
     private TextView palabra;
     private View v;
     private int letrasGanadas=0;
@@ -91,7 +91,7 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
        /* mInterstitialad = new InterstitialAd(getActivity());
         mInterstitialad.setAdUnitId("ca-app-pub-9592543293433576/3091063629");
         mInterstitialad.loadAd(new AdRequest.Builder().build());*/
-        mpalabrasviewModel=new ViewModelProvider(this).get(ModosJuegosViewModel.class);
+        mpalabrasviewModel=new ViewModelProvider(this).get(modosDeJuegoViewModel.class);
         mpalabrasviewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {
             @Override
             public void onChanged(List<PalabrasEntity> palabrasEntities) {

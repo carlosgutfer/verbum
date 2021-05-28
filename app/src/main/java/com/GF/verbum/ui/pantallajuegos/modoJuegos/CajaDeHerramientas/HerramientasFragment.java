@@ -23,7 +23,7 @@ import android.widget.TextView;
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.PreguntasEntity;
 import com.GF.verbum.R;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.ModosJuegosViewModel;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.modosDeJuegoViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 
@@ -34,7 +34,7 @@ import java.util.Locale;
 
 public class HerramientasFragment extends Fragment {
 
-    private ModosJuegosViewModel mViewModel;
+    private modosDeJuegoViewModel mViewModel;
     private CheckBox op1, op2, op3,op4, ninguna;
     private List<PreguntasEntity> allPreguntas = new ArrayList<>();
     private List<PalabrasEntity> allPalabras = new ArrayList<>();
@@ -76,7 +76,7 @@ public class HerramientasFragment extends Fragment {
         mInterstitialad = new InterstitialAd(getActivity());
         mInterstitialad.setAdUnitId("ca-app-pub-9592543293433576/3091063629");
         mInterstitialad.loadAd(new AdRequest.Builder().build());*/
-        mViewModel = new ViewModelProvider(this).get(ModosJuegosViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(modosDeJuegoViewModel.class);
         findViewById();
 
         mViewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {

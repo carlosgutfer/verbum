@@ -11,9 +11,9 @@ public interface TiposDao {
     @Insert
     void insert(tiposEntity simple);
 
-    @Query("Select descriptcion FROM tiposEntity WHERE idOSimples = :id")
+    @Query("Select descriptcion FROM TIPOS WHERE idOSimples = :id")
         String getSimples(int id);
 
-    @Query (" DELETE FROM tiposEntity") void deleteAll();
+    @Query (" DELETE FROM TIPOS") void deleteAll();
 
 }
