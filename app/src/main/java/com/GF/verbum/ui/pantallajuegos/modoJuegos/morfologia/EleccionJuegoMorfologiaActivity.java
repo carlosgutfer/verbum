@@ -1,4 +1,4 @@
-package com.GF.verbum.ui.pantallajuegos.modoJuegos;
+package com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,13 +15,14 @@ import android.widget.TextView;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.MainActivity;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.pantalla_juegos;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
-public class EleccionJuegoActivity extends AppCompatActivity implements View.OnClickListener {
+public class EleccionJuegoMorfologiaActivity extends AppCompatActivity implements View.OnClickListener {
     private Button herramientas, escalera, QS;
 
     private  int sonido_de_tecla;
@@ -52,7 +53,7 @@ public class EleccionJuegoActivity extends AppCompatActivity implements View.OnC
 
 
         sp = new SoundPool(10, AudioManager.STREAM_MUSIC,1);
-        sonido_de_tecla= sp.load(EleccionJuegoActivity.this,R.raw.espacio,1);
+        sonido_de_tecla= sp.load(EleccionJuegoMorfologiaActivity.this,R.raw.espacio,1);
     }
 
     private void findViewById() {

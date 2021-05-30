@@ -1,6 +1,5 @@
 package com.GF.verbum.ui.pantallajuegos.modoJuegos;
 
-import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -15,14 +14,11 @@ import android.widget.Button;
 
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
-import com.GF.verbum.ui.pantallajuegos.MainActivity;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.CajaDeHerramientas.HerramientasFragment;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.QueSoy.QueSoyFragment;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaPantallaPequeña;
-
-import java.util.Objects;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.CajaDeHerramientas.HerramientasFragment;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.QueSoy.QueSoyFragment;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.escaleraInfinita.PantallaEscaleraInfinitaFragment;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.escaleraInfinita.pantallaEscaleraInfinitaPantallaPequeña;
 
 
 public class EleccionDificultadFragment extends Fragment implements View.OnClickListener {

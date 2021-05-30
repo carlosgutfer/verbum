@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/papiro_fondo"
-    tools:context=".ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment">
+    tools:context=".ui.pantallajuegos.modoJuegos.morfologia.escaleraInfinita.PantallaEscaleraInfinitaFragment">
 
     <TextView
         android:id="@+id/TV_palabraInfinita"

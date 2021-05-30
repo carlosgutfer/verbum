@@ -12,12 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.pantallajuegos.modoJuegos.eleccionSinMorActivity"></activity>
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-9592543293433576~4603100620"/>
+            android:value="ca-app-pub-9592543293433576~4603100620" />
+
         <activity
             android:name=".ui.pantallajuegos.tutorial.tutorialActivity"
-            android:label="@string/title_activity_tutorial"></activity>
+            android:label="@string/title_activity_tutorial" />
         <activity android:name=".ui.pantallajuegos.Sintaxis.explicacionSintaxisActivity" />
         <activity
             android:name=".ui.pantallajuegos.Sintaxis.SintaxisActivity"
@@ -26,7 +29,7 @@
             android:name=".ui.pantallajuegos.record.RecordActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.pantallajuegos.modoJuegos.EleccionJuegoActivity"
+            android:name=".ui.pantallajuegos.modoJuegos.morfologia.EleccionJuegoMorfologiaActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.pantallajuegos.modoJuegos.pantalla_juegos"

@@ -1,4 +1,4 @@
-package com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita;
+package com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.escaleraInfinita;
 
 import android.content.Intent;
 import android.os.Bundle;
