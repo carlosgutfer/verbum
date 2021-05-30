@@ -19,7 +19,7 @@ import com.GF.verbum.DB.Entities.frasesEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.Sintaxis.SintaxisActivity;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.EleccionJuegoMorfologiaActivity;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.eleccionSinMorActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.modosDeJuegoViewModel;
 import com.GF.verbum.ui.pantallajuegos.record.RecordActivity;
 import com.GF.verbum.ui.pantallajuegos.tutorial.tutorialActivity;
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int view=v.getId();
         sonido();
         if(view==R.id.BT_Jugar){
-            Intent i = new Intent(this, EleccionJuegoMorfologiaActivity.class);
+            Intent i = new Intent(this, eleccionSinMorActivity.class);
             if(md!=null){
             position=md.getCurrentPosition();
             i.putExtra("position",position);}

@@ -14,6 +14,7 @@ import android.widget.Button;
 
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.analisis.analisFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.CajaDeHerramientas.HerramientasFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.QueSoy.QueSoyFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.escaleraInfinita.PantallaEscaleraInfinitaFragment;
@@ -132,6 +133,13 @@ public class EleccionDificultadFragment extends Fragment implements View.OnClick
                         .replace(R.id.containerJuegos, pantallaEscaleraInfinitaMedioDificilFragment.newInstance(i))
                         .commitNow();
             }
+
+        }else if(modo==4){
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.containerJuegos, analisFragment.newInstance(i))
+                    .commitNow();
 
         }
 
