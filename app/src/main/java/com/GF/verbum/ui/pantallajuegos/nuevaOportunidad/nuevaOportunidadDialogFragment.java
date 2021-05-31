@@ -19,9 +19,9 @@ import androidx.fragment.app.DialogFragment;
 
 import com.GF.verbum.R;
 
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaPantallaPequeña;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.escaleraInfinita.PantallaEscaleraInfinitaFragment;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.escaleraInfinita.pantallaEscaleraInfinitaPantallaPequeña;
 
 
 public class nuevaOportunidadDialogFragment extends DialogFragment {

@@ -3,14 +3,14 @@ package com.GF.verbum.DB.Entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "frases")
+@Entity (tableName = "FRASES")
 public class frasesEntity {
-    @PrimaryKey (autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     private int idFrase;
-    private boolean compuesta;
+    private boolean oCompuesta;
 
-    public frasesEntity(boolean compuesta) {
-        this.compuesta = compuesta;
+    public frasesEntity(boolean oCompuesta) {
+        this.oCompuesta = oCompuesta;
     }
 
     public int getIdFrase() {
@@ -21,11 +21,11 @@ public class frasesEntity {
         this.idFrase = idFrase;
     }
 
-    public boolean isCompuesta() {
-        return compuesta;
+    public boolean isoCompuesta() {
+        return oCompuesta;
     }
 
-    public void setCompuesta(boolean compuesta) {
-        this.compuesta = compuesta;
+    public void setoCompuesta(boolean oCompuesta) {
+        this.oCompuesta = oCompuesta;
     }
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/papiro_fondo"
     android:paddingLeft="15dp"
-    tools:context=".ui.pantallajuegos.modoJuegos.CajaDeHerramientas.HerramientasFragment">
+    tools:context=".ui.pantallajuegos.modoJuegos.morfologia.CajaDeHerramientas.HerramientasFragment">
 
     <TextView
         android:id="@+id/TV_PreguntaHerramientas"

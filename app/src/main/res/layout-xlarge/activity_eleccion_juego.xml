@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/menu_vertical"
-    tools:context=".ui.pantallajuegos.modoJuegos.EleccionJuegoActivity">
+    tools:context=".ui.pantallajuegos.modoJuegos.morfologia.EleccionJuegoMorfologiaActivity">
 
     <Button
         android:id="@+id/BT_Escalera"

@@ -1,10 +1,12 @@
 package com.GF.verbum.ui.pantallajuegos.modoJuegos.analisis;
 
+import android.app.Application;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,10 +33,11 @@ public class analisFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
 
     // TODO: Rename and change types of parameters
-    private int dificultad;
+    private int idFrase;
     private analisisViewModel anaviewModel;
     private modosDeJuegoViewModel modoviewModel;
     private ArrayList<palfraEntity> palfra;
+    private ArrayList<frasesEntity> allFrases;
     public analisFragment() {
         // Required empty public constructor
     }
@@ -59,14 +62,8 @@ public class analisFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            dificultad = getArguments().getInt(ARG_PARAM1);
+             int dificultad = getArguments().getInt(ARG_PARAM1);
         }
-        modoviewModel.getAllFrases().observe(this, new Observer<List<frasesEntity>>() {
-            @Override
-            public void onChanged(List<frasesEntity> frasesEntities) {
-
-            }
-        });
 
     }
 
@@ -75,8 +72,43 @@ public class analisFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View  v =  inflater.inflate(R.layout.fragment_analis, container, false);
+        modoviewModel = new ViewModelProvider(this).get(modosDeJuegoViewModel.class);
+        modoviewModel.getAllFrases().observe(getActivity(), new Observer<List<frasesEntity>>() {
+            @Override
+            public void onChanged(List<frasesEntity> frasesEntities) {
+                setPalabras(frasesEntities);
+                newID();
+            }
+        });
+        anaviewModel = new analisisViewModel(getActivity().getApplication(), idFrase);
+        anaviewModel.getallPALFRA().observe(getActivity(), new Observer<List<palfraEntity>>() {
+           @Override
+           public void onChanged(List<palfraEntity> palfraEntities) {
+                setFrases(palfraEntities);
+           }
+       });
 
 
         return v;
     }
+
+    private void newID() {
+        int random = (int) (Math.random()*allFrases.size());
+        this.idFrase = allFrases.get(random).getIdFrase();
+
+    }
+
+    private void setFrases(List<palfraEntity> palfraEntities) {
+        for(int i=0;i<palfraEntities.size();i++){
+            this.palfra.add(palfraEntities.get(i));
+        }
+
+    }
+
+    private void setPalabras(List<frasesEntity> frase) {
+        for(int i=0;i<frase.size();i++){
+                this.allFrases.add(frase.get(i));
+        }
+    }
+
 }

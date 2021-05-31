@@ -1,4 +1,4 @@
-package com.GF.verbum.ui.pantallajuegos.modoJuegos.CajaDeHerramientas;
+package com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.CajaDeHerramientas;
 
 
 

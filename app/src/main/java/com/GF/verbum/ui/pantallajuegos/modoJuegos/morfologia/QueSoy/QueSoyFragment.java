@@ -1,4 +1,4 @@
-package com.GF.verbum.ui.pantallajuegos.modoJuegos.QueSoy;
+package com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.QueSoy;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -24,9 +24,9 @@ import com.GF.verbum.DB.Entities.PreguntasEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.modosDeJuegoViewModel;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.PantallaEscaleraInfinitaFragment;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.escaleraInfinita.pantallaEscaleraInfinitaPantallaPequeña;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.escaleraInfinita.PantallaEscaleraInfinitaFragment;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.escaleraInfinita.pantallaEscaleraInfinitaPantallaPequeña;
 
 import java.util.ArrayList;
 import java.util.List;
