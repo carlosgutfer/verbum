@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 public class frasesEntity {
     @PrimaryKey(autoGenerate = true)
     private int idFrase;
-    private boolean oCompuesta;
+    public  boolean oCompuesta;
 
     public frasesEntity(boolean oCompuesta) {
         this.oCompuesta = oCompuesta;

@@ -104,12 +104,12 @@ public class eleccionSinMorActivity extends AppCompatActivity implements View.On
         setSonido_de_tecla();
         int view = v.getId();
 
-        if (view == R.id.BT_sintaxis_eleccion){
+        if (view == R.id.BT_morfologia){
             Intent i = new Intent(this, EleccionJuegoMorfologiaActivity.class);
             check_md(i);
             startActivity(i);
             finish();
-        }if (view == R.id.BT_morfologia){
+        }if (view == R.id.BT_sintaxis_eleccion){
             Intent i = new Intent(this, pantalla_juegos.class);
             i.putExtra("ModoJuego",4);
             check_md(i);

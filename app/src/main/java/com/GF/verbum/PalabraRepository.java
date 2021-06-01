@@ -23,10 +23,12 @@ public class PalabraRepository {
 
     private PalabrasDao DaoPalabras;
     private LiveData<List<PalabrasEntity>> allPalabras;
-
+    private String palfra;
 
     private FrasesDao DAOfrases;
     private LiveData<List<frasesEntity>> allFrases;
+
+
 
 
     public PalabraRepository(Application application) {
@@ -48,11 +50,16 @@ public class PalabraRepository {
         return allPreguntas;
     }
 
-    public LiveData<List<PalabrasEntity>> getAll(){
+    public LiveData<List<PalabrasEntity>> getAllPalabras(){
         return  allPalabras;}
 
     public LiveData<List<frasesEntity>> getAllFrases(){
         return allFrases;
+    }
+
+    public String getPalabrasFrases(int id){
+        palfra = DaoPalabras.getPalabraFrase(id);
+        return  palfra;
     }
 
 

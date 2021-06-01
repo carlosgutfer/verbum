@@ -1,16 +1,15 @@
 package com.GF.verbum.ui.pantallajuegos.modoJuegos.analisis;
 
-import android.app.Application;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.frasesEntity;
@@ -33,11 +32,14 @@ public class analisFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
 
     // TODO: Rename and change types of parameters
+    private TextView TV_Frase;
     private int idFrase;
     private analisisViewModel anaviewModel;
     private modosDeJuegoViewModel modoviewModel;
-    private ArrayList<palfraEntity> palfra;
-    private ArrayList<frasesEntity> allFrases;
+    private ArrayList<palfraEntity> palfra = new ArrayList<>();
+    private ArrayList<frasesEntity> allFrases = new ArrayList<>();
+    private ArrayList<PalabrasEntity> allPalabras = new ArrayList<>();
+
     public analisFragment() {
         // Required empty public constructor
     }
@@ -72,43 +74,69 @@ public class analisFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View  v =  inflater.inflate(R.layout.fragment_analis, container, false);
+        findByID(v);
         modoviewModel = new ViewModelProvider(this).get(modosDeJuegoViewModel.class);
         modoviewModel.getAllFrases().observe(getActivity(), new Observer<List<frasesEntity>>() {
             @Override
             public void onChanged(List<frasesEntity> frasesEntities) {
-                setPalabras(frasesEntities);
-                newID();
+               setFrases(frasesEntities);
+               newID();
             }
         });
-        anaviewModel = new analisisViewModel(getActivity().getApplication(), idFrase);
-        anaviewModel.getallPALFRA().observe(getActivity(), new Observer<List<palfraEntity>>() {
+
+        anaviewModel = new ViewModelProvider(this).get(analisisViewModel.class);
+        anaviewModel.getAllPalfra(idFrase).observe(getActivity(), new Observer<List<palfraEntity>>() {
            @Override
            public void onChanged(List<palfraEntity> palfraEntities) {
-                setFrases(palfraEntities);
+               palfra = setPalFra(palfraEntities);
            }
        });
 
+        setTextToTV();
 
         return v;
     }
 
+
+    private void findByID(View v) {
+        TV_Frase = v.findViewById(R.id.TV_frasPal);
+    }
+
+
+
+
+    // metodo aleatorio
     private void newID() {
         int random = (int) (Math.random()*allFrases.size());
         this.idFrase = allFrases.get(random).getIdFrase();
 
     }
 
-    private void setFrases(List<palfraEntity> palfraEntities) {
+        // Cojo todas las frases
+    private ArrayList<frasesEntity> setFrases(List<frasesEntity> frase) {
+        for(int i=0;i<frase.size();i++){
+            this.allFrases.add(frase.get(i));
+        }
+        return allFrases;
+    }
+    // tomo de la tabla palBra todos los resultados que tengan ID de la frase aleatoria
+    private ArrayList<palfraEntity> setPalFra(List<palfraEntity> palfraEntities) {
         for(int i=0;i<palfraEntities.size();i++){
             this.palfra.add(palfraEntities.get(i));
         }
 
+        return palfra;
+    }
+    //Del arrayList palfra tomo el idPalabra de cada registro y en la tabla palabra tomo el string que corresponde a ese ID
+    private void setTextToTV() {
+        String frase ="";
+        for(int i =0;i<palfra.size();i++){
+            frase += modoviewModel.getPalFrases(palfra.get(i).getIdPalabra());
+        }
+        TV_Frase.setText(frase);
     }
 
-    private void setPalabras(List<frasesEntity> frase) {
-        for(int i=0;i<frase.size();i++){
-                this.allFrases.add(frase.get(i));
-        }
-    }
+
+
 
 }

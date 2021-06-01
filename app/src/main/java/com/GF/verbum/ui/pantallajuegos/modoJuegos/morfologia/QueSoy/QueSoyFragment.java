@@ -37,7 +37,9 @@ public class QueSoyFragment extends Fragment implements View.OnClickListener {
     private modosDeJuegoViewModel mpalabrasviewModel;
     private List<PalabrasEntity> allPalabras = new ArrayList<>();
     private List<PreguntasEntity> allPreguntas = new ArrayList<>();
-    private int posicion, dificultad,aleatorio, letrasConseguidas=0, ronda=0;
+    private int dificultad;
+    private int letrasConseguidas=0;
+    private int ronda=0;
     private PalabrasEntity palabraAleatoria;
     private PreguntasEntity preguntaActual;
     private TextView palabra, pregunta, letras;
@@ -79,13 +81,13 @@ public class QueSoyFragment extends Fragment implements View.OnClickListener {
     }
 
     private void NuevaPregunta(List<PreguntasEntity> preguntasEntities) {
-        aleatorio= (int) (Math.random()*preguntasEntities.size());
+        int aleatorio = (int) (Math.random() * preguntasEntities.size());
         preguntaActual=preguntasEntities.get(aleatorio);
         pregunta.setText(preguntaActual.getPregunta());
     }
 
     private void nuevaPlabra(List<PalabrasEntity> allPalabras) {
-        posicion= (int) (Math.random()*allPalabras.size());
+        int posicion = (int) (Math.random() * allPalabras.size());
         palabraAleatoria=allPalabras.get(posicion);
         palabra.setText(palabraAleatoria.getPalabra());
     }

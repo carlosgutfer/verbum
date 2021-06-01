@@ -61,10 +61,16 @@ public  abstract  class palaFraRoomDataBase extends RoomDatabase {
     };
 
     private static void primeraFrase(PalfraDao dao) {
-        dao.insert(new palfraEntity(1,304,1));
-        dao.insert(new palfraEntity(1,414,2));
-        dao.insert(new palfraEntity(1,413,3));
-        dao.insert(new palfraEntity(1,415,4));
-        dao.insert(new palfraEntity(1,65,5));
+
+        palfraEntity palfra = new palfraEntity(1,304,1);
+        dao.insert(palfra);
+        palfra=new palfraEntity(1,414,2);
+        dao.insert(palfra);
+        palfra=new palfraEntity(1,413,3);
+        dao.insert(palfra);
+        palfra=new palfraEntity(1,415,4);
+        dao.insert(palfra);
+        palfra=new palfraEntity(1,65,5);
+        dao.insert(palfra);
     }
 }

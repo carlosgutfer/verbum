@@ -19,11 +19,12 @@ public class modosDeJuegoViewModel extends AndroidViewModel {
     private LiveData<List<PalabrasEntity>> allPalabras;
     private LiveData<List<PreguntasEntity>> allPreguntas;
     private LiveData<List<frasesEntity>> allFrases;
+    private String palFra;
 
     public modosDeJuegoViewModel(@NonNull Application application) {
         super(application);
         mRepository = new PalabraRepository(application);
-        allPalabras=mRepository.getAll();
+        allPalabras=mRepository.getAllPalabras();
         allPreguntas=mRepository.getAllPreguntas();
         allFrases = mRepository.getAllFrases();
 
@@ -36,6 +37,11 @@ public class modosDeJuegoViewModel extends AndroidViewModel {
 
     public LiveData<List<frasesEntity>> getAllFrases(){
         return  allFrases;}
+
+    public String getPalFrases(int id){
+        palFra = mRepository.getPalabrasFrases(id);
+        return palFra;
+        }
 
 
 }

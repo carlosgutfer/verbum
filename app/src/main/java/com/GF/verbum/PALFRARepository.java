@@ -17,14 +17,15 @@ public class PALFRARepository {
     private PalfraDao DAOPalFra;
     private LiveData<List<palfraEntity>> allPalFra;
 
-   public PALFRARepository (Application application,int id){
+   public PALFRARepository (Application application){
        palaFraRoomDataBase roomDataBase =  palaFraRoomDataBase.getRoomDataBase(application);
        DAOPalFra = roomDataBase.DAO();
-       allPalFra = DAOPalFra.getPalFra(id);
 
    }
 
-   public  LiveData<List<palfraEntity>> getPALFRA( ){
-       return  allPalFra;
-   }
+    public LiveData<List<palfraEntity>> getAllPalFra(int id) {
+        allPalFra = DAOPalFra.getPalFra(id);
+        return allPalFra;
+    }
+
 }
