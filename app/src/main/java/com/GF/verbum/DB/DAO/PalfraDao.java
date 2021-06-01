@@ -14,7 +14,7 @@ public interface PalfraDao {
 
     @Insert void insert(palfraEntity palfra);
 
-    @Query("SELECT * FROM PALFRA WHERE idFrase = :ID")
+    @Query("SELECT * FROM PALFRA WHERE idFrase = :ID order by position")
         LiveData<List<palfraEntity>> getPalFra(int ID);
 
     @Query("DELETE FROM PALFRA")

@@ -22,6 +22,6 @@ public interface PalabrasDao {
     @Query (" DELETE FROM Palabras") void deleteAll();
 
     @Query("Select palabra from Palabras where idPalabra = :ID")
-    String getPalabraFrase(int ID);
+    LiveData<String> getPalabraFrase(int ID);
 
 }

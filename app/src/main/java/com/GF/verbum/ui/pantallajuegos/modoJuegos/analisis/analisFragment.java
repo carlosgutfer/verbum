@@ -37,9 +37,8 @@ public class analisFragment extends Fragment {
     private analisisViewModel anaviewModel;
     private modosDeJuegoViewModel modoviewModel;
     private ArrayList<palfraEntity> palfra = new ArrayList<>();
-    private ArrayList<frasesEntity> allFrases = new ArrayList<>();
-    private ArrayList<PalabrasEntity> allPalabras = new ArrayList<>();
-
+    private frasesEntity fraseFinal;
+    private String stFrase ="";
     public analisFragment() {
         // Required empty public constructor
     }
@@ -67,6 +66,7 @@ public class analisFragment extends Fragment {
              int dificultad = getArguments().getInt(ARG_PARAM1);
         }
 
+
     }
 
     @Override
@@ -75,24 +75,23 @@ public class analisFragment extends Fragment {
         // Inflate the layout for this fragment
         View  v =  inflater.inflate(R.layout.fragment_analis, container, false);
         findByID(v);
+
         modoviewModel = new ViewModelProvider(this).get(modosDeJuegoViewModel.class);
         modoviewModel.getAllFrases().observe(getActivity(), new Observer<List<frasesEntity>>() {
             @Override
             public void onChanged(List<frasesEntity> frasesEntities) {
-               setFrases(frasesEntities);
-               newID();
+               fraseFinal = getFrase(frasesEntities);
+
+               anaviewModel = new ViewModelProvider(getActivity()).get(analisisViewModel.class);
+               anaviewModel.getAllPalfra(idFrase).observe(getActivity(), new Observer<List<palfraEntity>>() {
+                    @Override
+                    public void onChanged(List<palfraEntity> palfraEntities) {
+                        palfra = setPalFra(palfraEntities);
+                        getStringPal();
+                    }
+               });
             }
         });
-
-        anaviewModel = new ViewModelProvider(this).get(analisisViewModel.class);
-        anaviewModel.getAllPalfra(idFrase).observe(getActivity(), new Observer<List<palfraEntity>>() {
-           @Override
-           public void onChanged(List<palfraEntity> palfraEntities) {
-               palfra = setPalFra(palfraEntities);
-           }
-       });
-
-        setTextToTV();
 
         return v;
     }
@@ -103,40 +102,38 @@ public class analisFragment extends Fragment {
     }
 
 
-
-
-    // metodo aleatorio
-    private void newID() {
-        int random = (int) (Math.random()*allFrases.size());
-        this.idFrase = allFrases.get(random).getIdFrase();
-
+        // Cojo una frase
+    private frasesEntity getFrase(List<frasesEntity> frase) {
+        int random = (int) (Math.random()*frase.size());
+        this.idFrase = frase.get(random).getIdFrase();
+        fraseFinal = frase.get(random);
+        return fraseFinal;
     }
 
-        // Cojo todas las frases
-    private ArrayList<frasesEntity> setFrases(List<frasesEntity> frase) {
-        for(int i=0;i<frase.size();i++){
-            this.allFrases.add(frase.get(i));
-        }
-        return allFrases;
-    }
     // tomo de la tabla palBra todos los resultados que tengan ID de la frase aleatoria
     private ArrayList<palfraEntity> setPalFra(List<palfraEntity> palfraEntities) {
         for(int i=0;i<palfraEntities.size();i++){
             this.palfra.add(palfraEntities.get(i));
         }
-
         return palfra;
     }
+
     //Del arrayList palfra tomo el idPalabra de cada registro y en la tabla palabra tomo el string que corresponde a ese ID
-    private void setTextToTV() {
-        String frase ="";
+    public void getStringPal() {
         for(int i =0;i<palfra.size();i++){
-            frase += modoviewModel.getPalFrases(palfra.get(i).getIdPalabra());
+            modoviewModel.getPalFrases(palfra.get(i).getIdPalabra()).observe(getActivity(), new Observer<String>() {
+                @Override
+                public void onChanged(String s) {
+                 addString(s);
+                 TV_Frase.setText(stFrase);
+                }
+            });
         }
-        TV_Frase.setText(frase);
     }
 
-
+    private void addString(String s) {
+        this.stFrase += s + " ";
+    }
 
 
 }
