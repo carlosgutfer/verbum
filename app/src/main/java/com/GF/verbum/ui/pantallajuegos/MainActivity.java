@@ -19,6 +19,7 @@ import com.GF.verbum.DB.Entities.frasesEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.Sintaxis.SintaxisActivity;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.analisis.analisisViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.eleccionSinMorActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.modosDeJuegoViewModel;
 import com.GF.verbum.ui.pantallajuegos.record.RecordActivity;
@@ -79,7 +80,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
-
         mAdView = findViewById(R.id.adViewBanner);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);

@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.frasesEntity;
 import com.GF.verbum.DB.Entities.palfraEntity;
+import com.GF.verbum.DB.Entities.tiposEntity;
 import com.GF.verbum.PALFRARepository;
 import com.GF.verbum.PalabraRepository;
 
@@ -17,12 +18,14 @@ import java.util.List;
 public class analisisViewModel  extends AndroidViewModel {
     private PALFRARepository newRepository;
     private LiveData<List<palfraEntity>> allPalfra;
+    private LiveData<List<tiposEntity>> allTipos;
 
 
 
     public analisisViewModel(@NonNull Application application) {
         super(application);
         newRepository = new PALFRARepository(application);
+        allTipos = newRepository.getAllTipos();
     }
 
     public LiveData<List<palfraEntity>> getAllPalfra(int id) {
@@ -30,7 +33,9 @@ public class analisisViewModel  extends AndroidViewModel {
     return allPalfra;
     }
 
-
+    public LiveData<List<tiposEntity>> getAllTipos(){
+        return allTipos;
+    }
 
 
 }

@@ -9,10 +9,19 @@ public class fratipEntity {
     private int idFrase;
     @ForeignKey( entity = tiposEntity.class, parentColumns = "idTipo", childColumns = "idTipo")
     private int idTipo;
-
-    public fratipEntity(int idFrase, int idTipo) {
+    private int order;
+    public fratipEntity(int idFrase, int idTipo,int order) {
         this.idFrase = idFrase;
         this.idTipo = idTipo;
+        this.order = order;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
     }
 
     public int getIdFrase() {

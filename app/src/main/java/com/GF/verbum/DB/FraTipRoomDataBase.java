@@ -4,36 +4,35 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
+import androidx.room.Entity;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.GF.verbum.DB.DAO.FrasesDao;
-
+import com.GF.verbum.DB.DAO.FratipDao;
 import com.GF.verbum.DB.Entities.frasesEntity;
+import com.GF.verbum.DB.Entities.fratipEntity;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+@Database(entities = fratipEntity.class, version = 1,exportSchema = false)
+public abstract  class FraTipRoomDataBase extends RoomDatabase {
 
-@Database(entities = frasesEntity.class,version = 2 ,exportSchema = false)
-public abstract class FrasesRoomDataBase extends RoomDatabase {
-
-
-   public abstract FrasesDao DAO();
-
-    private static volatile FrasesRoomDataBase INSTANCE;
+    public abstract  FratipDao DAO();
+    private static volatile FraTipRoomDataBase INSTANCE;
     private static final int NUMBER_OF_THREADS = 10000;
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    public static FrasesRoomDataBase getRoomDataBase(final Context context) {
+    public static FraTipRoomDataBase getRoomDataBase(final Context context) {
 
         if (INSTANCE == null) {
-            synchronized (FrasesRoomDataBase.class) {
+            synchronized (FraTipRoomDataBase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            FrasesRoomDataBase.class, "frases_v1_DataBase")
+                            FraTipRoomDataBase.class, "fratip_v1_DataBase")
                             .fallbackToDestructiveMigration()
                             .addCallback(llamada)
                             .build();
@@ -54,10 +53,16 @@ public abstract class FrasesRoomDataBase extends RoomDatabase {
                 @Override
                 public void run() {
 
-                    FrasesDao dao = INSTANCE.DAO();
+                    FratipDao dao = INSTANCE.DAO();
                     dao.deleteAll();
-                    frasesEntity newFrase = new frasesEntity(false);
-                    dao.insert(newFrase);
+                    fratipEntity newFraTip = new fratipEntity(1,1,1);
+                    dao.insert(newFraTip);
+                    newFraTip = new fratipEntity(1,10,2);
+                    dao.insert(newFraTip);
+                    newFraTip = new fratipEntity(1,11,3);
+                    dao.insert(newFraTip);
+                    newFraTip = new fratipEntity(1,12,3);
+                    dao.insert(newFraTip);
 
                 }
             });

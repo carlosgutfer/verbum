@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.frasesEntity;
 import com.GF.verbum.DB.Entities.palfraEntity;
+import com.GF.verbum.DB.Entities.tiposEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.modosDeJuegoViewModel;
 
@@ -39,6 +40,7 @@ public class analisFragment extends Fragment {
     private ArrayList<palfraEntity> palfra = new ArrayList<>();
     private frasesEntity fraseFinal;
     private String stFrase ="";
+    private ArrayList<tiposEntity> allTipos = new ArrayList<>();
     public analisFragment() {
         // Required empty public constructor
     }
@@ -86,10 +88,18 @@ public class analisFragment extends Fragment {
                anaviewModel.getAllPalfra(idFrase).observe(getActivity(), new Observer<List<palfraEntity>>() {
                     @Override
                     public void onChanged(List<palfraEntity> palfraEntities) {
+
                         palfra = setPalFra(palfraEntities);
                         getStringPal();
                     }
                });
+               anaviewModel.getAllTipos().observe(getActivity(), new Observer<List<tiposEntity>>() {
+                   @Override
+                   public void onChanged(List<tiposEntity> tiposEntities) {
+
+                   }
+               });
+
             }
         });
 
