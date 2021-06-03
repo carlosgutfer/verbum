@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.frasesEntity;
+import com.GF.verbum.DB.Entities.fratipEntity;
 import com.GF.verbum.DB.Entities.palfraEntity;
 import com.GF.verbum.DB.Entities.tiposEntity;
 import com.GF.verbum.R;
@@ -40,7 +41,8 @@ public class analisFragment extends Fragment {
     private ArrayList<palfraEntity> palfra = new ArrayList<>();
     private frasesEntity fraseFinal;
     private String stFrase ="";
-    private ArrayList<tiposEntity> allTipos = new ArrayList<>();
+    private ArrayList<fratipEntity> allfratip = new ArrayList<>();
+    private ArrayList<String> tipos = new ArrayList<>();
     public analisFragment() {
         // Required empty public constructor
     }
@@ -93,17 +95,32 @@ public class analisFragment extends Fragment {
                         getStringPal();
                     }
                });
-               anaviewModel.getAllTipos().observe(getActivity(), new Observer<List<tiposEntity>>() {
-                   @Override
-                   public void onChanged(List<tiposEntity> tiposEntities) {
+               // Llamada a la tabla fratip para tomar todos los registros que tengan el id proporcionado
+                anaviewModel.getTipFra(idFrase).observe(getActivity(), new Observer<List<fratipEntity>>() {
+                    @Override
+                    public void onChanged(List<fratipEntity> fratip) {
+                        allfratip = setFraTip(fratip);
+                        getTipos(allfratip);
+                    }
+                });
 
-                   }
-               });
+
 
             }
         });
 
         return v;
+    }
+
+    private void getTipos(ArrayList<fratipEntity> allfratip) {
+        for(int i=0; i<allfratip.size();i++) {
+            anaviewModel.getTipo(allfratip.get(i).getIdTipo()).observe(getActivity(), new Observer<String>() {
+                @Override
+                public void onChanged(String s) {
+                    tipos.add(s);
+                }
+            });
+        }
     }
 
 
@@ -145,5 +162,12 @@ public class analisFragment extends Fragment {
         this.stFrase += s + " ";
     }
 
+
+    private ArrayList<fratipEntity> setFraTip (List<fratipEntity> fratipEntities) {
+        for(int i=0;i<fratipEntities.size();i++){
+            this.allfratip.add(fratipEntities.get(i));
+        }
+        return allfratip;
+    }
 
 }

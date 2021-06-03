@@ -4,24 +4,26 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 
 @Entity(tableName = "FRATIP", primaryKeys = {"idFrase","idTipo"})
+
 public class fratipEntity {
-    @ForeignKey(entity = frasesEntity.class,parentColumns = "idFrase",childColumns = "idColums")
+    @ForeignKey(entity = frasesEntity.class,parentColumns = "idFrase",childColumns = "idFrase")
     private int idFrase;
-    @ForeignKey( entity = tiposEntity.class, parentColumns = "idTipo", childColumns = "idTipo")
+    @ForeignKey( entity = tiposEntity.class, parentColumns = "idOSimples", childColumns = "idTipo")
     private int idTipo;
-    private int order;
-    public fratipEntity(int idFrase, int idTipo,int order) {
+    private int position;
+
+    public fratipEntity(int idFrase, int idTipo,int position) {
         this.idFrase = idFrase;
         this.idTipo = idTipo;
-        this.order = order;
+        this.position = position;
     }
 
-    public int getOrder() {
-        return order;
+    public int getPosition() {
+        return position;
     }
 
-    public void setOrder(int order) {
-        this.order = order;
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public int getIdFrase() {

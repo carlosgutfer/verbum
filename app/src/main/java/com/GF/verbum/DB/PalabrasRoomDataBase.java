@@ -1029,6 +1029,8 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new PalabrasEntity("niño", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/ni%C3%B1o?m=form"));
         dao.insert(new PalabrasEntity("muy", false, false, false, false, false, true, false, false, false,"https://dle.rae.es/muy?m=form"));
 
+       
+
 
     }
 //Añadir en el layout un aviso que diga que aquellas formas que admiten plural deben ser tenidas en cuentas a la hora de elegir que tipo de función puede desempeñar una palbra

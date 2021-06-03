@@ -61,7 +61,7 @@ public abstract  class FraTipRoomDataBase extends RoomDatabase {
                     dao.insert(newFraTip);
                     newFraTip = new fratipEntity(1,11,3);
                     dao.insert(newFraTip);
-                    newFraTip = new fratipEntity(1,12,3);
+                    newFraTip = new fratipEntity(1,12,4);
                     dao.insert(newFraTip);
 
                 }

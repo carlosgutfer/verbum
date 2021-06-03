@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.frasesEntity;
+import com.GF.verbum.DB.Entities.fratipEntity;
 import com.GF.verbum.DB.Entities.palfraEntity;
 import com.GF.verbum.DB.Entities.tiposEntity;
 import com.GF.verbum.PALFRARepository;
@@ -18,24 +19,33 @@ import java.util.List;
 public class analisisViewModel  extends AndroidViewModel {
     private PALFRARepository newRepository;
     private LiveData<List<palfraEntity>> allPalfra;
-    private LiveData<List<tiposEntity>> allTipos;
+    private LiveData<List<fratipEntity>> fraTip;
+    private LiveData<String> tipo;
+
 
 
 
     public analisisViewModel(@NonNull Application application) {
         super(application);
         newRepository = new PALFRARepository(application);
-        allTipos = newRepository.getAllTipos();
-    }
 
+    }
+    // devuelve la lista de palabras/frase del id proporcionado
     public LiveData<List<palfraEntity>> getAllPalfra(int id) {
         allPalfra = newRepository.getAllPalFra(id);
     return allPalfra;
     }
 
-    public LiveData<List<tiposEntity>> getAllTipos(){
-        return allTipos;
+    // Devuelve la lista de de objetos tipfra de la tabla tipFra con el id pasado como parámetro.
+    public LiveData<List<fratipEntity>> getTipFra(int id) {
+        fraTip = newRepository.getFraTip(id);
+        return fraTip;
     }
+    public LiveData<String> getTipo (int id){
+        tipo = newRepository.getTipo(id);
+        return tipo;
+    }
+
 
 
 }
