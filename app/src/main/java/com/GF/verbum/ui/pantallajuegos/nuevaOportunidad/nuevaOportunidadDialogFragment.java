@@ -41,16 +41,24 @@ public class nuevaOportunidadDialogFragment extends DialogFragment {
         return fragment;
     }
 
+    public static nuevaOportunidadDialogFragment newInstance() {
+        nuevaOportunidadDialogFragment fragment = new nuevaOportunidadDialogFragment();
+        return fragment;
+    }
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialogfragment_nueva_oportunidad, container, false);
-        nombre=getArguments().getString("nombre");
         findviewbyId(view);
         onClick();
-        name.setText("Vaya, parece que has fallado en la palabra "+ (char)34+nombre+(char)34+ ". Puedes ver el siguiente video para tener una vida extra.");
-
+       try {
+           nombre=getArguments().getString("nombre");
+           name.setText("Vaya, parece que has fallado en la palabra "+ (char)34+nombre+(char)34+ ". Puedes ver el siguiente video para tener una vida extra.");
+       }catch (Exception e){
+           name.setText("Vaya, parece que has fallado. Puedes ver el siguiente video para tener una vida extra.");
+       }
         return view;
     }
 
@@ -100,6 +108,7 @@ public class nuevaOportunidadDialogFragment extends DialogFragment {
     @Override
     public void onDismiss(@NonNull DialogInterface dialog) {
         super.onDismiss(dialog);
-        getTargetFragment().onActivityResult(getTargetRequestCode(), mood, getActivity().getIntent()); dismiss();
+        getTargetFragment().onActivityResult(getTargetRequestCode(), mood, getActivity().getIntent());
+        dismiss();
     }
 }

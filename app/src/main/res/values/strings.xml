@@ -84,6 +84,7 @@
     <string name="falso">falso</string>
     <string name="introQueSoy">La palabra: </string>
     <string name="morfologia">Morfología</string>
+    <string name="falloAnalisis">Ups... Parece que has fallado.  ¡No te desanimes y vuelve a probar !</string>
 
 
 </resources>

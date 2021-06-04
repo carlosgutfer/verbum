@@ -1,5 +1,6 @@
 package com.GF.verbum.ui.pantallajuegos.modoJuegos.analisis;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.GF.verbum.DB.Entities.PalabrasEntity;
@@ -17,44 +19,45 @@ import com.GF.verbum.DB.Entities.fratipEntity;
 import com.GF.verbum.DB.Entities.palfraEntity;
 import com.GF.verbum.DB.Entities.tiposEntity;
 import com.GF.verbum.R;
+import com.GF.verbum.commun.SharedPreferentManager;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.modosDeJuegoViewModel;
+import com.GF.verbum.ui.pantallajuegos.nuevaOportunidad.nuevaOportunidadDialogFragment;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.GF.verbum.commun.Constantes.reward;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link analisFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class analisFragment extends Fragment {
+public class analisFragment extends Fragment implements View.OnClickListener, RewardedVideoAdListener {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-
-    // TODO: Rename and change types of parameters
+    //elementos layout
     private TextView TV_Frase;
+    private Button BT_op1, BT_op2;
+
+    //variables
     private int idFrase;
     private analisisViewModel anaviewModel;
     private modosDeJuegoViewModel modoviewModel;
     private ArrayList<palfraEntity> palfra = new ArrayList<>();
     private frasesEntity fraseFinal;
     private String stFrase ="";
-    private ArrayList<fratipEntity> allfratip = new ArrayList<>();
     private ArrayList<String> tipos = new ArrayList<>();
-    public analisFragment() {
-        // Required empty public constructor
-    }
+    private controlDeJuego newControl;
+    public  static RewardedVideoAd mRewardedVideoAd;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @return A new instance of fragment analisFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static analisFragment newInstance(int param1) {
         analisFragment fragment = new analisFragment();
         Bundle args = new Bundle();
@@ -66,19 +69,28 @@ public class analisFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadVideoRewar();
         if (getArguments() != null) {
              int dificultad = getArguments().getInt(ARG_PARAM1);
         }
 
 
+
+    }
+
+    private void onClick() {
+        BT_op1.setOnClickListener(this);
+        BT_op2.setOnClickListener(this);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View  v =  inflater.inflate(R.layout.fragment_analis, container, false);
+        final View  v =  inflater.inflate(R.layout.fragment_analis, container, false);
         findByID(v);
+        onClick();
+        setText();
 
         modoviewModel = new ViewModelProvider(this).get(modosDeJuegoViewModel.class);
         modoviewModel.getAllFrases().observe(getActivity(), new Observer<List<frasesEntity>>() {
@@ -99,8 +111,8 @@ public class analisFragment extends Fragment {
                 anaviewModel.getTipFra(idFrase).observe(getActivity(), new Observer<List<fratipEntity>>() {
                     @Override
                     public void onChanged(List<fratipEntity> fratip) {
-                        allfratip = setFraTip(fratip);
-                        getTipos(allfratip);
+                        getTipos(fratip);
+                        newControl = new controlDeJuego(v,tipos);
                     }
                 });
 
@@ -112,7 +124,12 @@ public class analisFragment extends Fragment {
         return v;
     }
 
-    private void getTipos(ArrayList<fratipEntity> allfratip) {
+    private void setText() {
+        BT_op1.setText("Simple");
+        BT_op2.setText("compuesta");
+    }
+
+    private void getTipos(List<fratipEntity> allfratip) {
         for(int i=0; i<allfratip.size();i++) {
             anaviewModel.getTipo(allfratip.get(i).getIdTipo()).observe(getActivity(), new Observer<String>() {
                 @Override
@@ -126,8 +143,9 @@ public class analisFragment extends Fragment {
 
     private void findByID(View v) {
         TV_Frase = v.findViewById(R.id.TV_frasPal);
+        BT_op1 = v.findViewById(R.id.BT_op1);
+        BT_op2 = v.findViewById(R.id.BT_op2);
     }
-
 
         // Cojo una frase
     private frasesEntity getFrase(List<frasesEntity> frase) {
@@ -146,7 +164,7 @@ public class analisFragment extends Fragment {
     }
 
     //Del arrayList palfra tomo el idPalabra de cada registro y en la tabla palabra tomo el string que corresponde a ese ID
-    public void getStringPal() {
+    private void getStringPal() {
         for(int i =0;i<palfra.size();i++){
             modoviewModel.getPalFrases(palfra.get(i).getIdPalabra()).observe(getActivity(), new Observer<String>() {
                 @Override
@@ -163,11 +181,99 @@ public class analisFragment extends Fragment {
     }
 
 
-    private ArrayList<fratipEntity> setFraTip (List<fratipEntity> fratipEntities) {
-        for(int i=0;i<fratipEntities.size();i++){
-            this.allfratip.add(fratipEntities.get(i));
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        if (id == R.id.BT_op1){
+           if( newControl.checkTipo(BT_op1.getText().toString())){
+               if(SharedPreferentManager.getIntegerValue(reward)==-1){
+                   nuevaOportunidad();
+               }
+           }
         }
-        return allfratip;
+        if (id == R.id.BT_op2){
+            if( newControl.checkTipo(BT_op2.getText().toString() ) ){
+                if(SharedPreferentManager.getIntegerValue(reward)==-1){
+                    nuevaOportunidad();
+                }
+            }
+
+        }
+
     }
 
+    private void juegoFinalizado( boolean correcto) {
+        SharedPreferentManager.setIntegerValue(reward,-1);
+
+        requireActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.containerJuegos, RecordFragment.newInstance(4,correcto))
+                .commit();
+
+    }
+
+    private void loadVideoRewar() {
+        MobileAds.initialize(getActivity(), "ca-app-pub-9592543293433576/6730215293");
+        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(getActivity());
+        mRewardedVideoAd.setRewardedVideoAdListener(this);
+        mRewardedVideoAd.loadAd("ca-app-pub-9592543293433576/6730215293", new AdRequest.Builder().build());
+    }
+
+    private void nuevaOportunidad() {
+        nuevaOportunidadDialogFragment dialog = nuevaOportunidadDialogFragment.newInstance();
+        dialog.setTargetFragment(this, 1);
+        dialog.show(requireActivity().getSupportFragmentManager(), "Fragment");
+    }
+
+    @Override
+    public void onRewardedVideoAdLoaded() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdOpened() {
+
+    }
+
+    @Override
+    public void onRewardedVideoStarted() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdClosed() {
+
+    }
+
+    @Override
+    public void onRewarded(RewardItem rewardItem) {
+        SharedPreferentManager.setIntegerValue(reward,rewardItem.getAmount());
+
+    }
+
+    @Override
+    public void onRewardedVideoAdLeftApplication() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdFailedToLoad(int i) {
+        SharedPreferentManager.setIntegerValue(reward,1);
+    }
+
+    @Override
+    public void onRewardedVideoCompleted() {
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if(requestCode==1){
+            if(resultCode==1) {
+                juegoFinalizado(false);
+            }
+        }
+    }
 }

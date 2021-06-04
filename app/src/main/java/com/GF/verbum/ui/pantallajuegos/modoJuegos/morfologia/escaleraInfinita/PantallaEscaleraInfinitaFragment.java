@@ -55,7 +55,6 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
     private int dificultad;
     private boolean correcto;
     private String nombre;
-    private InterstitialAd mInterstitialad;
     private int progresoBar=0;
 
     private ProgressBar upProgressBar;
@@ -85,9 +84,7 @@ public class PantallaEscaleraInfinitaFragment extends Fragment implements View.O
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_escalera_infinita, container, false);
 
-       /* mInterstitialad = new InterstitialAd(getActivity());
-        mInterstitialad.setAdUnitId("ca-app-pub-9592543293433576/3091063629");
-        mInterstitialad.loadAd(new AdRequest.Builder().build());*/
+
         loadVideoRewar();
 
 

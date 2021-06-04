@@ -76,6 +76,15 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
         return fragment;
     }
 
+    public static RecordFragment newInstance(int mode, Boolean correcto){
+        RecordFragment fragment = new RecordFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_PARAM4, mode);
+        args.putBoolean(ARG_PARAM6,correcto);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -94,22 +103,43 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
 
 
         findViewById(v);
-        getArgumentsMethod();
-        if(mode==2){
-            subirPuntuacion.setVisibility(View.INVISIBLE);
-            cloud.setVisibility(View.INVISIBLE);
-            TVtextoSubir.setVisibility(View.INVISIBLE);
+        this.mode=getArguments().getInt(ARG_PARAM4);
+        if (mode == 4) {
+            mode4(v);
+            setText(mode);
+        }else {
+
+            getArgumentsMethod();
+            if (mode == 2) {
+                subirPuntuacion.setVisibility(View.INVISIBLE);
+                cloud.setVisibility(View.INVISIBLE);
+                TVtextoSubir.setVisibility(View.INVISIBLE);
+
+            }
+            diccionario.setOnClickListener(this);
+            cloud.setOnClickListener(this);
+            back.setOnClickListener(this);
+            setText(mode);
+            db = FirebaseFirestore.getInstance();
         }
-        diccionario.setOnClickListener(this);
-        cloud.setOnClickListener(this);
-        back.setOnClickListener(this);
-        setText(mode);
-        db=FirebaseFirestore.getInstance();
         return v;
+
     }
 
+    private void mode4(View v) {
+        this.correcto=getArguments().getBoolean(ARG_PARAM6);
+
+        subirPuntuacion.setVisibility(v.INVISIBLE);
+        cloud.setVisibility(v.INVISIBLE);
+        TVtextoSubir.setVisibility(v.INVISIBLE);
+        diccionario.setVisibility(v.INVISIBLE);
+        TVdiccionario.setVisibility(v.INVISIBLE);
+        back.setOnClickListener(this);
+
+    }
+
+
     private void getArgumentsMethod() {
-        this.mode=getArguments().getInt(ARG_PARAM4);
         this.dificultad=getArguments().getInt(ARG_PARAM5);
 
         if(mode==1){
@@ -127,33 +157,31 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
     private void setText(int mode) {
         String texto1 = getResources().getString(R.string.recorduno);
         String texto3 = getResources().getString(R.string.recordtres);
-        String frase;
+        String frase ="";
     if(mode==1&&letras!=0) {
         String texto2 = getResources().getString(R.string.recordos);
         frase = texto1 + " " + letras + " " + texto2;
-        letrasYPalabra.setText(frase);
     }else if(mode==1){
         String texto7=getResources().getString(R.string.recordsiete);
         frase = texto7 + " " + letras;
-        letrasYPalabra.setText(frase);
     }else if (mode==3&&letras!=0) {
         String texto4 = getResources().getString(R.string.recordcuatro);
         frase = texto1 + " " + letras + " " + texto4 + " " + Palabra + " " + texto3;
-        letrasYPalabra.setText(frase);
     }else if(mode==3){
         String texto4 = getResources().getString(R.string.recordcuatro);
         String texto8 = getResources().getString(R.string.recordocho);
         frase = texto8+ " " + letras + " " + texto4 + " " + Palabra + " " + texto3;
-        letrasYPalabra.setText(frase);
     }else if (mode==2&&correcto) {
         String texto5=getResources().getString(R.string.recordcinco);
         frase= texto5+" "+Palabra+" "+texto3;
-        letrasYPalabra.setText(frase);
     }else if(mode ==2&&!correcto){
         String texto6=getResources().getString(R.string.recordseis);
         frase= texto6 +" "+Palabra+" "+texto3;
-        letrasYPalabra.setText(frase);
+    }else if(mode == 4&&!correcto){
+        frase = getResources().getString(R.string.falloAnalisis);
     }
+        letrasYPalabra.setText(frase);
+
     }
 
     private void findViewById(View v) {
