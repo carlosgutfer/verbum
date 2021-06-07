@@ -14,8 +14,12 @@ public interface TiposDao {
     @Insert
     void insert(tiposEntity simple);
 
-    @Query("Select descriptcion FROM TIPOS WHERE idOSimples = :id")
-        LiveData<String> getTipos(int id);
+    @Query("Select * FROM TIPOS WHERE idTipo = :id")
+        LiveData<List<tiposEntity>> getTipos(int id);
+
+
+    @Query("Select * FROM TIPOS WHERE idDependiente = :id")
+        LiveData<List<tiposEntity>> getDependientes(int id);
 
     @Query (" DELETE FROM TIPOS") void deleteAll();
 

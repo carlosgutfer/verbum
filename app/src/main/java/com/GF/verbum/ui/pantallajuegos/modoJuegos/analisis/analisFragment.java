@@ -34,26 +34,22 @@ import java.util.List;
 
 import static com.GF.verbum.commun.Constantes.reward;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link analisFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class analisFragment extends Fragment implements View.OnClickListener, RewardedVideoAdListener {
 
     private static final String ARG_PARAM1 = "param1";
     //elementos layout
-    private TextView TV_Frase;
-    private Button BT_op1, BT_op2;
+    private TextView TV_Frase, TV_oraciónTipo;
+    private Button BT_op1, BT_op2, BT_op3,BT_op4, BT_op5,BT_op6;
 
     //variables
     private int idFrase;
     private analisisViewModel anaviewModel;
     private modosDeJuegoViewModel modoviewModel;
     private ArrayList<palfraEntity> palfra = new ArrayList<>();
+    private ArrayList<tiposEntity> tiposFrase = new ArrayList<>();
     private frasesEntity fraseFinal;
     private String stFrase ="";
-    private ArrayList<String> tipos = new ArrayList<>();
     private controlDeJuego newControl;
     public  static RewardedVideoAd mRewardedVideoAd;
 
@@ -78,11 +74,6 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
 
     }
 
-    private void onClick() {
-        BT_op1.setOnClickListener(this);
-        BT_op2.setOnClickListener(this);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -90,7 +81,7 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
         final View  v =  inflater.inflate(R.layout.fragment_analis, container, false);
         findByID(v);
         onClick();
-        setText();
+
 
         modoviewModel = new ViewModelProvider(this).get(modosDeJuegoViewModel.class);
         modoviewModel.getAllFrases().observe(getActivity(), new Observer<List<frasesEntity>>() {
@@ -112,39 +103,52 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
                     @Override
                     public void onChanged(List<fratipEntity> fratip) {
                         getTipos(fratip);
-                        newControl = new controlDeJuego(v,tipos);
+                        newControl = new controlDeJuego(getActivity(),BT_op1,BT_op2,tiposFrase);
                     }
                 });
-
-
 
             }
         });
 
+
         return v;
     }
 
-    private void setText() {
-        BT_op1.setText("Simple");
-        BT_op2.setText("compuesta");
+
+
+    public void setText(ArrayList<String> s) {
+        Invisible();
+        BT_op1.setText(s.get(0));
+            BT_op2.setText(s.get(1));
+            if(s.size()>=3) {
+                BT_op3.setText(s.get(2));
+                BT_op3.setVisibility(View.VISIBLE);
+                if(s.size() >=5){
+                    BT_op4.setText(s.get(3));
+                    BT_op4.setVisibility(View.VISIBLE);
+                    BT_op5.setText(s.get(4));
+                    BT_op5.setVisibility(View.VISIBLE);
+                    if(s.size()>=6){
+                        BT_op6.setText(s.get(5));
+                        BT_op6.setVisibility(View.VISIBLE);
+                    }
+                }
+
+            }
     }
 
+    // añado al arrayList de tipos, los registros que pertenecen a la frase
     private void getTipos(List<fratipEntity> allfratip) {
         for(int i=0; i<allfratip.size();i++) {
-            anaviewModel.getTipo(allfratip.get(i).getIdTipo()).observe(getActivity(), new Observer<String>() {
+            anaviewModel.getTipo(allfratip.get(i).getIdTipo()).observe(this, new Observer<List<tiposEntity>>() {
                 @Override
-                public void onChanged(String s) {
-                    tipos.add(s);
+                public void onChanged(List<tiposEntity> tiposEntities) {
+                    for (tiposEntity newAdd: tiposEntities){
+                        tiposFrase.add(newAdd);
+                    }
                 }
             });
         }
-    }
-
-
-    private void findByID(View v) {
-        TV_Frase = v.findViewById(R.id.TV_frasPal);
-        BT_op1 = v.findViewById(R.id.BT_op1);
-        BT_op2 = v.findViewById(R.id.BT_op2);
     }
 
         // Cojo una frase
@@ -162,7 +166,6 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
         }
         return palfra;
     }
-
     //Del arrayList palfra tomo el idPalabra de cada registro y en la tabla palabra tomo el string que corresponde a ese ID
     private void getStringPal() {
         for(int i =0;i<palfra.size();i++){
@@ -184,24 +187,57 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.BT_op1){
-           if( newControl.checkTipo(BT_op1.getText().toString())){
-               if(SharedPreferentManager.getIntegerValue(reward)==-1){
-                   nuevaOportunidad();
-               }
-           }
-        }
-        if (id == R.id.BT_op2){
-            if( newControl.checkTipo(BT_op2.getText().toString() ) ){
-                if(SharedPreferentManager.getIntegerValue(reward)==-1){
+
+        if (id == R.id.BT_op1) {
+            if (!newControl.checkTipo(BT_op1.getText().toString())) {
+                if (SharedPreferentManager.getIntegerValue(reward) == -1)
                     nuevaOportunidad();
-                }
+            }else {
+                sonTips();
             }
+        }
+
+        if (id == R.id.BT_op2) {
+            if (!newControl.checkTipo(BT_op2.getText().toString())) {
+                if (SharedPreferentManager.getIntegerValue(reward) == -1)
+                    nuevaOportunidad();
+            }else{
+                sonTips();
+            }
+        }
+        if (id == R.id.BT_op3) {
+            if (!newControl.checkTipo(BT_op3.getText().toString()))
+                if (SharedPreferentManager.getIntegerValue(reward) == -1)
+                    nuevaOportunidad();
+        }
+        if (id == R.id.BT_op4) {
+            if (!newControl.checkTipo(BT_op4.getText().toString()))
+                if (SharedPreferentManager.getIntegerValue(reward) == -1)
+                    nuevaOportunidad();
+
 
         }
+        if (id == R.id.BT_op5) {
+            if (!newControl.checkTipo(BT_op5.getText().toString()))
+                if (SharedPreferentManager.getIntegerValue(reward) == -1)
+                    nuevaOportunidad();
+        }
+        if (id == R.id.BT_op6) {
+            if (!newControl.checkTipo(BT_op6.getText().toString()))
+                if (SharedPreferentManager.getIntegerValue(reward) == -1)
+                    nuevaOportunidad();
+        }
+
 
     }
 
+    private boolean checkEndGame() {
+        boolean endGame = false;
+
+        return endGame;
+    }
+
+    // cambia el fragment por el de la pantalla de fin
     private void juegoFinalizado( boolean correcto) {
         SharedPreferentManager.setIntegerValue(reward,-1);
 
@@ -212,14 +248,14 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
                 .commit();
 
     }
-
+    //  cargar el anuncio por si el jugador falla poder mostrarlo
     private void loadVideoRewar() {
         MobileAds.initialize(getActivity(), "ca-app-pub-9592543293433576/6730215293");
         mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(getActivity());
         mRewardedVideoAd.setRewardedVideoAdListener(this);
         mRewardedVideoAd.loadAd("ca-app-pub-9592543293433576/6730215293", new AdRequest.Builder().build());
     }
-
+    // instancia el dialogFragment de nueva oportunidad
     private void nuevaOportunidad() {
         nuevaOportunidadDialogFragment dialog = nuevaOportunidadDialogFragment.newInstance();
         dialog.setTargetFragment(this, 1);
@@ -275,5 +311,47 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
                 juegoFinalizado(false);
             }
         }
+    }
+    private void onClick() {
+        BT_op1.setOnClickListener(this);
+        BT_op2.setOnClickListener(this);
+        BT_op3.setOnClickListener(this);
+        BT_op4.setOnClickListener(this);
+        BT_op5.setOnClickListener(this);
+        BT_op6.setOnClickListener(this);
+
+    }
+    private void findByID(View v) {
+        TV_Frase = v.findViewById(R.id.TV_frasPal);
+        TV_oraciónTipo = v.findViewById(R.id.tv_tipoOracion);
+        BT_op1 = v.findViewById(R.id.BT_op1);
+        BT_op2 = v.findViewById(R.id.BT_op2);
+        BT_op3 = v.findViewById(R.id.BT_op3);
+        BT_op4 = v.findViewById(R.id.BT_op4);
+        BT_op5 = v.findViewById(R.id.BT_op5);
+        BT_op6 = v.findViewById(R.id.BT_op6);
+        Invisible();
+    }
+    private  void Invisible(){
+        BT_op3.setVisibility(View.INVISIBLE);
+        BT_op4.setVisibility(View.INVISIBLE);
+        BT_op5.setVisibility(View.INVISIBLE);
+        BT_op6.setVisibility(View.INVISIBLE);
+    }
+
+    // Tengo que llamar tomar el objetoActual de la clase control, y meterlo aqui. Hacer llamada al observer y dentor de ella llamar a los metodos de contros de juego 1º y después mandar el texto
+    private void sonTips(){
+        if (newControl.tiposFrase.size()==0)
+            juegoFinalizado(true);
+        anaviewModel.getSonTip(newControl.actual.getIdTipo()).observe(getActivity(), new Observer<List<tiposEntity>>() {
+            @Override
+            public void onChanged(List<tiposEntity> tiposEntities) {
+                ArrayList<tiposEntity> sonTip = new ArrayList<>();
+                sonTip.addAll(tiposEntities);
+                setText(newControl.flujoDelJuego(sonTip));
+                TV_oraciónTipo.setText(TV_oraciónTipo.getText()+" "+newControl.actual.getDescriptcion());
+
+            }
+        });
     }
 }

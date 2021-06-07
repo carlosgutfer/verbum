@@ -8,7 +8,7 @@ import androidx.room.ForeignKey;
 public class fratipEntity {
     @ForeignKey(entity = frasesEntity.class,parentColumns = "idFrase",childColumns = "idFrase")
     private int idFrase;
-    @ForeignKey( entity = tiposEntity.class, parentColumns = "idOSimples", childColumns = "idTipo")
+    @ForeignKey( entity = tiposEntity.class, parentColumns = "idTipo", childColumns = "idTipo")
     private int idTipo;
     private int position;
 

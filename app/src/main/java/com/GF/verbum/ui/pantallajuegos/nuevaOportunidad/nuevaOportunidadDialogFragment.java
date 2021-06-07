@@ -74,7 +74,8 @@ public class nuevaOportunidadDialogFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
                 if( PantallaEscaleraInfinitaFragment.mRewardedVideoAd!=null){
-                PantallaEscaleraInfinitaFragment.mRewardedVideoAd.show();}
+                    PantallaEscaleraInfinitaFragment.mRewardedVideoAd.show();
+                }
                 else if(pantallaEscaleraInfinitaPantallaPequeña.mRewardedVideoAd!=null){
                     pantallaEscaleraInfinitaPantallaPequeña.mRewardedVideoAd.show();
                 }else if(pantallaEscaleraInfinitaMedioDificilFragment.mRewardedVideoAd!=null){

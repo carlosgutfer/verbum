@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-@Database(entities = tiposEntity.class,version = 1 ,exportSchema = false)
+@Database(entities = tiposEntity.class,version = 3 ,exportSchema = false)
 
 public abstract class TiposRoomDataBase extends RoomDatabase {
 
@@ -59,77 +59,85 @@ public abstract class TiposRoomDataBase extends RoomDatabase {
 
                     tiposEntity newTipo = new tiposEntity("Simple");
                     dao.insert(newTipo);
-                    newTipo = new tiposEntity("Predicativa");
+                    newTipo = new tiposEntity("predicativa",1);
                     dao.insert(newTipo);
-                    newTipo = new tiposEntity("Activa");
+                    newTipo = new tiposEntity("activa",2);
                     dao.insert(newTipo);
-                    newTipo= new tiposEntity("Transitiva");
+                    newTipo= new tiposEntity("transitiva",3);
                     dao.insert(newTipo);
-                    newTipo = new tiposEntity("Reflexiva");
+                    newTipo = new tiposEntity("reflexiva",4);
                     dao.insert(newTipo);
-                    newTipo= new tiposEntity("Recíproca");
+                    newTipo= new tiposEntity("recíproca",4);
                     dao.insert(newTipo);
-                    newTipo = new tiposEntity("Intransitiva");
+                    newTipo = new tiposEntity("intransitiva",3);
                     dao.insert(newTipo);
-                    newTipo = new tiposEntity("Pasiva");
+                    newTipo = new tiposEntity("pasiva",2);
                     dao.insert(newTipo);
-                    newTipo = new tiposEntity("Pasiva refleja");
+                    newTipo = new tiposEntity("pasiva refleja",8);
                     dao.insert(newTipo);
-                    newTipo = new tiposEntity("Copulativa");
+                    newTipo = new tiposEntity("copulativa",1);
                     dao.insert(newTipo);
                     //actitud del hablante
                             //enunciativa
-                        newTipo = new tiposEntity("Enunciativa");
+                        newTipo = new tiposEntity("enunciativa");
                         dao.insert(newTipo);
-                    newTipo= new tiposEntity("Afirmativas");
+                    newTipo= new tiposEntity("afirmativas",11);
                         dao.insert(newTipo);
-                    newTipo= new tiposEntity("Negativas");
+                    newTipo= new tiposEntity("negativas",11);
                         dao.insert(newTipo);
                             //interrogativa
-                    newTipo= new tiposEntity("Interrogativa");
+                    newTipo= new tiposEntity("interrogativa");
                         dao.insert(newTipo);
-                    newTipo= new tiposEntity("directa");
+                    newTipo= new tiposEntity("directa",14);
                         dao.insert(newTipo);
-                    newTipo= new tiposEntity("indirecta");
+                    newTipo= new tiposEntity("indirecta",14);
                     dao.insert(newTipo);
-                    newTipo= new tiposEntity("total");
+                    newTipo= new tiposEntity("total",15);
                     dao.insert(newTipo);
-                    newTipo= new tiposEntity("parcial");
+                    newTipo= new tiposEntity("parcial",15);
+                    dao.insert(newTipo);
+                    newTipo= new tiposEntity("total",14);
+                    dao.insert(newTipo);
+                    newTipo= new tiposEntity("parcial",14);
                     dao.insert(newTipo);
 
-                    newTipo= new tiposEntity("Exclamativa");
+                    newTipo= new tiposEntity("exclamativa");
                     dao.insert(newTipo);
-                    newTipo= new tiposEntity("Dubitativa");
+                    newTipo= new tiposEntity("dubitativa");
                     dao.insert(newTipo);
-                    newTipo= new tiposEntity("Desiderativa");
+                    newTipo= new tiposEntity("desiderativa");
                     dao.insert(newTipo);
-                    newTipo= new tiposEntity("Imperativa");
+                    newTipo= new tiposEntity("imperativa");
                     dao.insert(newTipo);
-                    newTipo= new tiposEntity("Impersonal");
+                    newTipo= new tiposEntity("impersonal");
                     dao.insert(newTipo);
                     //Compuestas
                     newTipo= new tiposEntity("compuesta");
                     dao.insert(newTipo);
                     //coordinadas
-                    newTipo= new tiposEntity("coordinadas");
+                    newTipo= new tiposEntity("coordinadas",24);
                     dao.insert(newTipo);
-                    newTipo= new tiposEntity("disyuntivas");
+                    newTipo= new tiposEntity("copulativas",25);
                     dao.insert(newTipo);
-                    newTipo= new tiposEntity("distributivas");
+                    newTipo= new tiposEntity("disyuntivas",25);
                     dao.insert(newTipo);
-                    newTipo= new tiposEntity("adversativas");
+                    newTipo= new tiposEntity("distributivas",25);
                     dao.insert(newTipo);
-                    newTipo= new tiposEntity("explicativas");
+                    newTipo= new tiposEntity("adversativas",25);
+                    dao.insert(newTipo);
+                    newTipo= new tiposEntity("explicativas",25);
                     dao.insert(newTipo);
                     //subordinadas
-                    newTipo= new tiposEntity("subordinadas;");
+                    newTipo= new tiposEntity("subordinadas",24);
                     dao.insert(newTipo);
-                    newTipo= new tiposEntity("adjetivas");
+                    newTipo= new tiposEntity("sustantivas",31);
                     dao.insert(newTipo);
-                    newTipo= new tiposEntity("adverbiales");
+                    newTipo= new tiposEntity("adjetivas",31);
+                    dao.insert(newTipo);
+                    newTipo= new tiposEntity("adverbiales",31);
                     dao.insert(newTipo);
                     //yuxtapuestas
-                    newTipo= new tiposEntity("yuxtapuestas");
+                    newTipo= new tiposEntity("yuxtapuestas",24);
                     dao.insert(newTipo);
                 }
             });

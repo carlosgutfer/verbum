@@ -1,18 +1,25 @@
 package com.GF.verbum.ui.pantallajuegos.modoJuegos;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import com.GF.verbum.DB.Entities.tiposEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.MainActivity;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.analisis.analisisViewModel;
+
+import java.util.List;
 
 public class pantalla_juegos extends AppCompatActivity {
- private int modoJuego;
+    private int modoJuego;
     private MediaPlayer md;
+    private analisisViewModel aViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +27,13 @@ public class pantalla_juegos extends AppCompatActivity {
         setContentView(R.layout.activity_pantalla_juegos);
         modoJuego = getIntent().getIntExtra("ModoJuego", -1);
 
+        aViewModel = new ViewModelProvider(this).get(analisisViewModel.class);
+        aViewModel.getAllTipos().observe(this, new Observer<List<tiposEntity>>() {
+            @Override
+            public void onChanged(List<tiposEntity> tiposEntities) {
+
+            }
+        });
 
 
         if (savedInstanceState == null) {

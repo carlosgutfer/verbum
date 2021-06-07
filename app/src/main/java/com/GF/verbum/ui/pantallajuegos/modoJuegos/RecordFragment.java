@@ -179,6 +179,8 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
         frase= texto6 +" "+Palabra+" "+texto3;
     }else if(mode == 4&&!correcto){
         frase = getResources().getString(R.string.falloAnalisis);
+    }else if(mode == 4&&correcto){
+        frase = getResources().getString(R.string.aciertoAnalisis);
     }
         letrasYPalabra.setText(frase);
 
