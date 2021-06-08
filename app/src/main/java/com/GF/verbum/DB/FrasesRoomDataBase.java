@@ -56,8 +56,15 @@ public abstract class FrasesRoomDataBase extends RoomDatabase {
 
                     FrasesDao dao = INSTANCE.DAO();
                     dao.deleteAll();
-                    frasesEntity newFrase = new frasesEntity(false);
-                    dao.insert(newFrase);
+
+                    dao.insert(new frasesEntity(false));
+                    dao.insert(new frasesEntity(false));
+                    dao.insert(new frasesEntity(false));
+                    dao.insert(new frasesEntity(false));
+                    dao.insert(new frasesEntity(false));
+                    dao.insert(new frasesEntity(false));
+
+
 
                 }
             });

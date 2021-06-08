@@ -39,14 +39,13 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
 
     private static final String ARG_PARAM1 = "param1";
     //elementos layout
-    private TextView TV_Frase, TV_oraciónTipo;
+    private TextView TV_Frase, TV_oracionTipo;
     private Button BT_op1, BT_op2, BT_op3,BT_op4, BT_op5,BT_op6;
 
     //variables
     private int idFrase;
     private analisisViewModel anaviewModel;
     private modosDeJuegoViewModel modoviewModel;
-    private ArrayList<palfraEntity> palfra = new ArrayList<>();
     private ArrayList<tiposEntity> tiposFrase = new ArrayList<>();
     private frasesEntity fraseFinal;
     private String stFrase ="";
@@ -88,17 +87,9 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
             @Override
             public void onChanged(List<frasesEntity> frasesEntities) {
                fraseFinal = getFrase(frasesEntities);
-
-               anaviewModel = new ViewModelProvider(getActivity()).get(analisisViewModel.class);
-               anaviewModel.getAllPalfra(idFrase).observe(getActivity(), new Observer<List<palfraEntity>>() {
-                    @Override
-                    public void onChanged(List<palfraEntity> palfraEntities) {
-
-                        palfra = setPalFra(palfraEntities);
-                        getStringPal();
-                    }
-               });
+               getStringPal();
                // Llamada a la tabla fratip para tomar todos los registros que tengan el id proporcionado
+                anaviewModel = new ViewModelProvider(getActivity()).get(analisisViewModel.class);
                 anaviewModel.getTipFra(idFrase).observe(getActivity(), new Observer<List<fratipEntity>>() {
                     @Override
                     public void onChanged(List<fratipEntity> fratip) {
@@ -145,6 +136,8 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
                 public void onChanged(List<tiposEntity> tiposEntities) {
                     for (tiposEntity newAdd: tiposEntities){
                         tiposFrase.add(newAdd);
+                        if(newAdd.getIdTipo()==14)
+                            TV_Frase.setText("¿"+TV_Frase.getText()+"?");
                     }
                 }
             });
@@ -159,28 +152,31 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
         return fraseFinal;
     }
 
-    // tomo de la tabla palBra todos los resultados que tengan ID de la frase aleatoria
-    private ArrayList<palfraEntity> setPalFra(List<palfraEntity> palfraEntities) {
-        for(int i=0;i<palfraEntities.size();i++){
-            this.palfra.add(palfraEntities.get(i));
-        }
-        return palfra;
-    }
+
+
     //Del arrayList palfra tomo el idPalabra de cada registro y en la tabla palabra tomo el string que corresponde a ese ID
     private void getStringPal() {
-        for(int i =0;i<palfra.size();i++){
-            modoviewModel.getPalFrases(palfra.get(i).getIdPalabra()).observe(getActivity(), new Observer<String>() {
+
+            modoviewModel.getPalFrases(idFrase).observe(getActivity(), new Observer<List<String>>() {
                 @Override
-                public void onChanged(String s) {
-                 addString(s);
-                 TV_Frase.setText(stFrase);
+                public void onChanged(List<String> strings) {
+                    ArrayList<String> frase = new ArrayList<>();
+                    frase.addAll(strings);
+                    addString(frase);
+                    TV_Frase.setText(stFrase);
                 }
             });
         }
-    }
 
-    private void addString(String s) {
-        this.stFrase += s + " ";
+
+    private void addString(ArrayList<String> s) {
+
+
+        for (int i =0;i<s.size();i++) {
+            this.stFrase += s.get(i) + " ";
+        }
+
+
     }
 
 
@@ -192,6 +188,8 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
             if (!newControl.checkTipo(BT_op1.getText().toString())) {
                 if (SharedPreferentManager.getIntegerValue(reward) == -1)
                     nuevaOportunidad();
+                else
+                    juegoFinalizado(false);
             }else {
                 sonTips();
             }
@@ -201,31 +199,44 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
             if (!newControl.checkTipo(BT_op2.getText().toString())) {
                 if (SharedPreferentManager.getIntegerValue(reward) == -1)
                     nuevaOportunidad();
+                else
+                    juegoFinalizado(false);
             }else{
                 sonTips();
             }
         }
         if (id == R.id.BT_op3) {
-            if (!newControl.checkTipo(BT_op3.getText().toString()))
+            if (!newControl.checkTipo(BT_op3.getText().toString())) {
                 if (SharedPreferentManager.getIntegerValue(reward) == -1)
                     nuevaOportunidad();
+            }else {
+                sonTips();
+            }
         }
         if (id == R.id.BT_op4) {
-            if (!newControl.checkTipo(BT_op4.getText().toString()))
+            if (!newControl.checkTipo(BT_op4.getText().toString())) {
                 if (SharedPreferentManager.getIntegerValue(reward) == -1)
                     nuevaOportunidad();
-
+            }else {
+                sonTips();
+            }
 
         }
         if (id == R.id.BT_op5) {
-            if (!newControl.checkTipo(BT_op5.getText().toString()))
+            if (!newControl.checkTipo(BT_op5.getText().toString())) {
                 if (SharedPreferentManager.getIntegerValue(reward) == -1)
                     nuevaOportunidad();
+            }else {
+                sonTips();
+            }
         }
         if (id == R.id.BT_op6) {
-            if (!newControl.checkTipo(BT_op6.getText().toString()))
+            if (!newControl.checkTipo(BT_op6.getText().toString())) {
                 if (SharedPreferentManager.getIntegerValue(reward) == -1)
                     nuevaOportunidad();
+            }else {
+                sonTips();
+            }
         }
 
 
@@ -244,7 +255,7 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
         requireActivity()
                 .getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.containerJuegos, RecordFragment.newInstance(4,correcto))
+                .replace(R.id.containerJuegos, RecordFragment.newInstance(4,correcto,newControl.fraseFinal))
                 .commit();
 
     }
@@ -323,7 +334,7 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
     }
     private void findByID(View v) {
         TV_Frase = v.findViewById(R.id.TV_frasPal);
-        TV_oraciónTipo = v.findViewById(R.id.tv_tipoOracion);
+        TV_oracionTipo = v.findViewById(R.id.tv_tipoOracion);
         BT_op1 = v.findViewById(R.id.BT_op1);
         BT_op2 = v.findViewById(R.id.BT_op2);
         BT_op3 = v.findViewById(R.id.BT_op3);
@@ -349,7 +360,7 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
                 ArrayList<tiposEntity> sonTip = new ArrayList<>();
                 sonTip.addAll(tiposEntities);
                 setText(newControl.flujoDelJuego(sonTip));
-                TV_oraciónTipo.setText(TV_oraciónTipo.getText()+" "+newControl.actual.getDescriptcion());
+                TV_oracionTipo.setText(TV_oracionTipo.getText()+" "+newControl.actual.getDescriptcion());
 
             }
         });

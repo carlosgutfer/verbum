@@ -15,6 +15,7 @@ import java.util.List;
 
 public class controlDeJuego {
     public ArrayList<tiposEntity> tiposFrase;
+    public String fraseFinal = "O.";
     private analisisViewModel anaViewModel;
     private ArrayList<tiposEntity> allTipos = new ArrayList<>();
     private ArrayList<String> stFlujoJuego = new ArrayList<>();
@@ -43,6 +44,7 @@ public class controlDeJuego {
             for (int i=0;i<tiposFrase.size();i++){
                  actual = tiposFrase.get(i);
                 if( actual.getDescriptcion().equals(s)){
+                    fraseFinal+=actual.getDescriptcion()+" ";
                     tiposFrase.remove(i);
                     valido = true;
                     break;

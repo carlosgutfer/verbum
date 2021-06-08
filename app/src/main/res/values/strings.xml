@@ -85,7 +85,8 @@
     <string name="introQueSoy">La palabra: </string>
     <string name="morfologia">Morfología</string>
     <string name="falloAnalisis">Ups... Parece que has fallado.  ¡No te desanimes y vuelve a probar !</string>
-    <string name="aciertoAnalisis">es una prueba</string>
+    <string name="aciertoAnalisis">¡Felicidades has hecho correctamente el análisis!</string>
+    <string name="aciertoAnalisis2">"Prueba otra vez y sube la dificicultad. "</string>
 
 
 </resources>

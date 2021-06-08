@@ -79,8 +79,6 @@ public abstract class PreguntasRoomDataBase extends RoomDatabase {
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿Modifica a la palabra que acompaña?",false,false,true,false,false,true,false,false,false);
                     dao.insert(pregunta);
-                    pregunta = new PreguntasEntity("¿Es una palabra invariable?",false,false,false,false,false,true,true,true,false);
-                    dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿ Atribuye alguna propiedad o clasifica la palabra que acompaña?",false,false,true,false,false,true,false,false,false);
                     dao.insert(pregunta);
                     pregunta = new PreguntasEntity("¿El grupo sintáctico tiene significado de cantidad, lugar, tiempo, manera, afirmación, negación o duda?",false,false,false,false,false,true,false,false,false);

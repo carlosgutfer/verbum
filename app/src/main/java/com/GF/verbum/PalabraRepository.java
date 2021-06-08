@@ -23,7 +23,7 @@ public class PalabraRepository {
 
     private PalabrasDao DaoPalabras;
     private LiveData<List<PalabrasEntity>> allPalabras;
-    private LiveData<String> palfra;
+    private LiveData<List<String>> palfra;
 
     private FrasesDao DAOfrases;
     private LiveData<List<frasesEntity>> allFrases;
@@ -57,8 +57,8 @@ public class PalabraRepository {
         return allFrases;
     }
 
-    public LiveData<String> getPalabrasFrases(int id){
-        palfra = DaoPalabras.getPalabraFrase(id);
+    public LiveData<List<String>> getPalabrasFrases(int id){
+        palfra = DaoPalabras.getPalabrasFrase(id);
         return  palfra;
     }
 

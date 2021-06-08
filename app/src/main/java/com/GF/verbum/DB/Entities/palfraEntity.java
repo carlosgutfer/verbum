@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "PALFRA", primaryKeys = {"idFrase","idPalabra","position"})
+@Entity(tableName = "palfra", primaryKeys = {"idFrase","idPalabra","position"})
 public class palfraEntity {
 
     @ForeignKey(entity = frasesEntity.class,parentColumns = "idFrase",childColumns = "idFrase")

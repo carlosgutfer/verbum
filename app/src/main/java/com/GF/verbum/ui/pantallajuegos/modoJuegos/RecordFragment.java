@@ -76,9 +76,10 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
         return fragment;
     }
 
-    public static RecordFragment newInstance(int mode, Boolean correcto){
+    public static RecordFragment newInstance(int mode, Boolean correcto, String Palabra){
         RecordFragment fragment = new RecordFragment();
         Bundle args = new Bundle();
+        args.putString(ARG_PARAM3,Palabra);
         args.putInt(ARG_PARAM4, mode);
         args.putBoolean(ARG_PARAM6,correcto);
         fragment.setArguments(args);
@@ -128,6 +129,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
 
     private void mode4(View v) {
         this.correcto=getArguments().getBoolean(ARG_PARAM6);
+        this.Palabra=getArguments().getString(ARG_PARAM3);
 
         subirPuntuacion.setVisibility(v.INVISIBLE);
         cloud.setVisibility(v.INVISIBLE);
@@ -180,7 +182,9 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
     }else if(mode == 4&&!correcto){
         frase = getResources().getString(R.string.falloAnalisis);
     }else if(mode == 4&&correcto){
-        frase = getResources().getString(R.string.aciertoAnalisis);
+        String texto7 = getResources().getString(R.string.aciertoAnalisis);
+        String texto8 = getResources().getString(R.string.aciertoAnalisis2);
+        frase = texto7 + " "+Palabra+ " " +texto8;
     }
         letrasYPalabra.setText(frase);
 

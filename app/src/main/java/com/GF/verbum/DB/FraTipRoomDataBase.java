@@ -55,14 +55,65 @@ public abstract  class FraTipRoomDataBase extends RoomDatabase {
 
                     FratipDao dao = INSTANCE.DAO();
                     dao.deleteAll();
-                    fratipEntity newFraTip = new fratipEntity(1,1,1);
-                    dao.insert(newFraTip);
-                    newFraTip = new fratipEntity(1,10,2);
-                    dao.insert(newFraTip);
-                    newFraTip = new fratipEntity(1,11,3);
-                    dao.insert(newFraTip);
-                    newFraTip = new fratipEntity(1,12,4);
-                    dao.insert(newFraTip);
+                    dao.insert(new fratipEntity(1,1,1));
+                    dao.insert(new fratipEntity(1,10,2));
+                    dao.insert(new fratipEntity(1,11,3));
+                    dao.insert(new fratipEntity(1,12,4));
+
+                    dao.insert(new fratipEntity(2,1,1));
+                    dao.insert(new fratipEntity(2,2,2));
+                    dao.insert(new fratipEntity(2,3,3));
+                    dao.insert(new fratipEntity(2,7,4));
+                    dao.insert(new fratipEntity(2,14,5));
+                    dao.insert(new fratipEntity(2,15,6));
+                    dao.insert(new fratipEntity(2,18,7));
+
+                    dao.insert(new fratipEntity(3,1,1));
+                    dao.insert(new fratipEntity(3,2,2));
+                    dao.insert(new fratipEntity(3,3,3));
+                    dao.insert(new fratipEntity(3,4,4));
+                    dao.insert(new fratipEntity(3,11,5));
+                    dao.insert(new fratipEntity(3,12,6));
+
+                    dao.insert(new fratipEntity(4,1,1));
+                    dao.insert(new fratipEntity(4,2,2));
+                    dao.insert(new fratipEntity(4,3,3));
+                    dao.insert(new fratipEntity(4,4,4));
+                    dao.insert(new fratipEntity(4,11,5));
+                    dao.insert(new fratipEntity(4,12,6));
+
+                    dao.insert(new fratipEntity(5,1,1));
+                    dao.insert(new fratipEntity(5,2,2));
+                    dao.insert(new fratipEntity(5,3,3));
+                    dao.insert(new fratipEntity(5,4,4));
+                    dao.insert(new fratipEntity(5,5,5));
+                    dao.insert(new fratipEntity(5,11,6));
+                    dao.insert(new fratipEntity(5,12,7));
+
+                    dao.insert(new fratipEntity(6,1,1));
+                    dao.insert(new fratipEntity(6,2,2));
+                    dao.insert(new fratipEntity(6,3,3));
+                    dao.insert(new fratipEntity(6,4,4));
+                    dao.insert(new fratipEntity(6,5,5));
+                    dao.insert(new fratipEntity(6,11,6));
+                    dao.insert(new fratipEntity(6,12,7));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 }
             });

@@ -9,17 +9,20 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.GF.verbum.DB.DAO.PalabrasDao;
+import com.GF.verbum.DB.DAO.PalfraDao;
 import com.GF.verbum.DB.Entities.PalabrasEntity;
+import com.GF.verbum.DB.Entities.palfraEntity;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-@Database(entities = PalabrasEntity.class,version = 3 ,exportSchema = false)
+@Database(entities = {PalabrasEntity.class, palfraEntity.class},version = 3 ,exportSchema = false)
 
 public abstract class PalabrasRoomDataBase extends RoomDatabase {
 
     public abstract PalabrasDao DAO();
+    public abstract PalfraDao DAO2();
 
     private static volatile PalabrasRoomDataBase INSTANCE;
     private static final int NUMBER_OF_THREADS = 10000;
@@ -102,6 +105,55 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
                     InterjeccionSustantivo(dao);
                     InterjeccionSustantivoAdverbio(dao);
                     palabrasFrases(dao);
+
+                    PalfraDao dao2 = INSTANCE.DAO2();
+                    dao2.deleteAll();
+
+                    dao2.insert(new palfraEntity(1,304,1));
+                    dao2.insert(new palfraEntity(1,414,2));
+                    dao2.insert(new palfraEntity(1,413,3));
+                    dao2.insert(new palfraEntity(1,415,4));
+                    dao2.insert(new palfraEntity(1,65,5));
+
+                    dao2.insert(new palfraEntity(2,416,1));
+                    dao2.insert(new palfraEntity(2,417,2));
+                    dao2.insert(new palfraEntity(2,418,3));
+                    dao2.insert(new palfraEntity(2,419,4));
+
+                    dao2.insert(new palfraEntity(3,304,1));
+                    dao2.insert(new palfraEntity(3,423,2));
+                    dao2.insert(new palfraEntity(3,420,3));
+                    dao2.insert(new palfraEntity(3,305,4));
+                    dao2.insert(new palfraEntity(3,11,5));
+                    dao2.insert(new palfraEntity(3,421,6));
+                    dao2.insert(new palfraEntity(3,422,7));
+                    dao2.insert(new palfraEntity(3,423,8));
+
+                    dao2.insert(new palfraEntity(4,308,1));
+                    dao2.insert(new palfraEntity(4,424,2));
+                    dao2.insert(new palfraEntity(4,324,3));
+                    dao2.insert(new palfraEntity(4,425,4));
+                    dao2.insert(new palfraEntity(4,305,5));
+                    dao2.insert(new palfraEntity(4,426,6));
+                    dao2.insert(new palfraEntity(4,242,7));
+                    dao2.insert(new palfraEntity(4,427,8));
+
+                    dao2.insert(new palfraEntity(5,308,1));
+                    dao2.insert(new palfraEntity(5,423,2));
+                    dao2.insert(new palfraEntity(5,324,3));
+                    dao2.insert(new palfraEntity(5,428,4));
+                    dao2.insert(new palfraEntity(5,422,5));
+                    dao2.insert(new palfraEntity(5,429,6));
+                    dao2.insert(new palfraEntity(5,430,7));
+
+
+                    dao2.insert(new palfraEntity(6,304,1));
+                    dao2.insert(new palfraEntity(6,431,2));
+                    dao2.insert(new palfraEntity(6,432,3));
+                    dao2.insert(new palfraEntity(6,304,4));
+                    dao2.insert(new palfraEntity(6,433,5));
+                    dao2.insert(new palfraEntity(6,434,6));
+                    
                 }
             });
         }
@@ -804,7 +856,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(palabra);
         palabra = new PalabrasEntity("Le", false, false, false, true, false, false, false, false, false,"https://dle.rae.es/le?m=form");
         dao.insert(palabra);
-        palabra = new PalabrasEntity("Se", false, false, false, true, false, false, false, false, false,"https://dle.rae.es/se#XNVjCmd");
+        palabra = new PalabrasEntity("se", false, false, false, true, false, false, false, false, false,"https://dle.rae.es/se#XNVjCmd");
         dao.insert(palabra);
         palabra = new PalabrasEntity("Nadie", false, false, false, true, false, false, false, false, false,"https://dle.rae.es/nadie?m=form");
         dao.insert(palabra);
@@ -1028,8 +1080,26 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new PalabrasEntity("es", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/es"));
         dao.insert(new PalabrasEntity("niño", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/ni%C3%B1o?m=form"));
         dao.insert(new PalabrasEntity("muy", false, false, false, false, false, true, false, false, false,"https://dle.rae.es/muy?m=form"));
+        dao.insert(new PalabrasEntity("cuánto", false, false, true, true, false, true, false, false, false,"https://dle.rae.es/cu%C3%A1nto"));
+        dao.insert(new PalabrasEntity("cuesta", true, false, false, false, true, false, false, false, false,"https://dle.rae.es/cuesta?m=form"));
+        dao.insert(new PalabrasEntity("esa", false, false, true, true, false, false, false, false, false,"https://dle.rae.es/ese"));
+        dao.insert(new PalabrasEntity("raqueta", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/raqueta?m=form"));
+        dao.insert(new PalabrasEntity("compró", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/comprar?m=form"));
+        dao.insert(new PalabrasEntity("a", false, false, false, false, false, false, true, false, false,"https://dle.rae.es/a?m=form"));
+        dao.insert(new PalabrasEntity("su", false, false, true, false, false, false, false, false, false,"https://dle.rae.es/su?m=form"));
+        dao.insert(new PalabrasEntity("madre", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/madre?m=form"));
+        dao.insert(new PalabrasEntity("mujer", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/mujer?m=form"));
+        dao.insert(new PalabrasEntity("comió", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/comer?m=form"));
+        dao.insert(new PalabrasEntity("plátano", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/pl%C3%A1tano?m=form"));
+        dao.insert(new PalabrasEntity("desayunar", true, false, false, false, true, false, false, false, false,"https://dle.rae.es/desayuno?m=form"));
+        dao.insert(new PalabrasEntity("peina", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/peinar#SLj3fSm"));
+        dao.insert(new PalabrasEntity("rizado", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/rizado?m=form"));
+        dao.insert(new PalabrasEntity("cabello", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/cabello?m=form"));
+        dao.insert(new PalabrasEntity("bombero", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/bombero?m=form"));
+        dao.insert(new PalabrasEntity("apagó", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/apagar?m=form"));
+        dao.insert(new PalabrasEntity("fuego", true, false, false, false, false, false, false, false, true,"https://dle.rae.es/fuego?m=form"));
+        dao.insert(new PalabrasEntity("rapidamente", false, false, false, false, false, true, false, false, false,"https://dle.rae.es/r%C3%A1pido"));
 
-       
 
 
     }
