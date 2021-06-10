@@ -3,6 +3,7 @@ package com.GF.verbum.ui.pantallajuegos.modoJuegos.analisis;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -45,7 +46,6 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
     //variables
     private int idFrase;
     private analisisViewModel anaviewModel;
-    private modosDeJuegoViewModel modoviewModel;
     private ArrayList<tiposEntity> tiposFrase = new ArrayList<>();
     private frasesEntity fraseFinal;
     private String stFrase ="";
@@ -81,15 +81,13 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
         findByID(v);
         onClick();
 
-
-        modoviewModel = new ViewModelProvider(this).get(modosDeJuegoViewModel.class);
-        modoviewModel.getAllFrases().observe(getActivity(), new Observer<List<frasesEntity>>() {
+        anaviewModel = new ViewModelProvider(getActivity()).get(analisisViewModel.class);
+        anaviewModel.getAllFrases().observe(getActivity(), new Observer<List<frasesEntity>>() {
             @Override
             public void onChanged(List<frasesEntity> frasesEntities) {
                fraseFinal = getFrase(frasesEntities);
                getStringPal();
                // Llamada a la tabla fratip para tomar todos los registros que tengan el id proporcionado
-                anaviewModel = new ViewModelProvider(getActivity()).get(analisisViewModel.class);
                 anaviewModel.getTipFra(idFrase).observe(getActivity(), new Observer<List<fratipEntity>>() {
                     @Override
                     public void onChanged(List<fratipEntity> fratip) {
@@ -107,7 +105,7 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
 
 
 
-    public void setText(ArrayList<String> s) {
+    public void setText(@NonNull ArrayList<String> s) {
         Invisible();
         BT_op1.setText(s.get(0));
             BT_op2.setText(s.get(1));
@@ -157,7 +155,7 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
     //Del arrayList palfra tomo el idPalabra de cada registro y en la tabla palabra tomo el string que corresponde a ese ID
     private void getStringPal() {
 
-            modoviewModel.getPalFrases(idFrase).observe(getActivity(), new Observer<List<String>>() {
+            anaviewModel.getPalFrases(idFrase).observe(getActivity(), new Observer<List<String>>() {
                 @Override
                 public void onChanged(List<String> strings) {
                     ArrayList<String> frase = new ArrayList<>();
@@ -352,9 +350,13 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
 
     // Tengo que llamar tomar el objetoActual de la clase control, y meterlo aqui. Hacer llamada al observer y dentor de ella llamar a los metodos de contros de juego 1º y después mandar el texto
     private void sonTips(){
+        int idTipo = newControl.actual.getIdTipo();
         if (newControl.tiposFrase.size()==0)
             juegoFinalizado(true);
-        anaviewModel.getSonTip(newControl.actual.getIdTipo()).observe(getActivity(), new Observer<List<tiposEntity>>() {
+        if(newControl.tiposFrase.size()==2&&idTipo==4)
+            idTipo = 9;
+
+        anaviewModel.getSonTip(idTipo).observe(getActivity(), new Observer<List<tiposEntity>>() {
             @Override
             public void onChanged(List<tiposEntity> tiposEntities) {
                 ArrayList<tiposEntity> sonTip = new ArrayList<>();

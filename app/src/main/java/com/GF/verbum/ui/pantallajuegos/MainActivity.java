@@ -74,12 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onChanged(List<PreguntasEntity> preguntasEntities) {
             }
         });
-        mpalabrasviewModel.getAllFrases().observe(this, new Observer<List<frasesEntity>>() {
-            @Override
-            public void onChanged(List<frasesEntity> frasesEntities) {
 
-            }
-        });
         mAdView = findViewById(R.id.adViewBanner);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);

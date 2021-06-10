@@ -22,6 +22,10 @@ public class analisisViewModel  extends AndroidViewModel {
     private LiveData<List<fratipEntity>> fraTip;
     private LiveData<List<tiposEntity>> tipo;
     private LiveData<List<tiposEntity>> allTipos;
+    private LiveData<List<frasesEntity>> allFrases;
+    private LiveData<List<String>> palFra;
+
+
 
 
 
@@ -29,7 +33,7 @@ public class analisisViewModel  extends AndroidViewModel {
     public analisisViewModel(@NonNull Application application) {
         super(application);
         newRepository = new PALFRARepository(application);
-
+        allFrases = newRepository.getAllFrases();
 
     }
     // devuelve la lista de palabras/frase del id proporcionado
@@ -60,5 +64,11 @@ public class analisisViewModel  extends AndroidViewModel {
         return tipo;
     }
 
+    public LiveData<List<frasesEntity>> getAllFrases(){
+        return  allFrases;}
 
+    public LiveData<List<String>> getPalFrases(int id){
+        palFra = newRepository.getPalabrasFrases(id);
+        return palFra;
+    }
 }
