@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_border_white"
+        android:fontFamily="@font/allerta"
         android:padding="10dp"
         android:text="@string/morfologia"
         android:textSize="18dp"
@@ -20,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adViewBanner"
-        app:layout_constraintVertical_bias="0.251" />
+        app:layout_constraintVertical_bias="0.33" />
 
     <Button
         android:id="@+id/BT_sintaxis_eleccion"
@@ -28,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/button_border_white"
+        android:fontFamily="@font/allerta"
         android:text="@string/sintaxis"
         android:textSize="18dp"
         android:textStyle="bold"

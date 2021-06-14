@@ -136,7 +136,11 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
                         tiposFrase.add(newAdd);
                         if(newAdd.getIdTipo()==14)
                             TV_Frase.setText("¿"+TV_Frase.getText()+"?");
+                        else if(newAdd.getIdTipo()==21)
+                            TV_Frase.setText("¡"+TV_Frase.getText()+"!");
+                        
                     }
+
                 }
             });
         }
@@ -173,7 +177,7 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
         for (int i =0;i<s.size();i++) {
             this.stFrase += s.get(i) + " ";
         }
-
+       stFrase =  stFrase.substring(0,1).toUpperCase()+ stFrase.substring(1);
 
     }
 

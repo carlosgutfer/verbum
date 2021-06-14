@@ -9,12 +9,13 @@
 
     <Button
         android:id="@+id/BT_Facil"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_border_white"
-        android:fontFamily="casual"
-        android:padding="5dp"
+        android:fontFamily="@font/allerta"
+        android:padding="20dp"
         android:text="@string/Facil"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,31 +25,35 @@
         app:layout_constraintVertical_bias="0.294" />
 
     <Button
-        android:id="@+id/BT_Medio"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/button_border_white"
-        android:fontFamily="casual"
-        android:text="@string/Medio"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/BT_Facil"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/BT_Facil"
-        app:layout_constraintTop_toBottomOf="@+id/BT_Facil" />
-
-    <Button
         android:id="@+id/BT_Dificil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/button_border_white"
-        android:fontFamily="casual"
+        android:fontFamily="@font/allerta"
+        android:padding="20dp"
         android:text="@string/Dificil"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/BT_Medio"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/BT_Medio"
         app:layout_constraintTop_toBottomOf="@+id/BT_Medio" />
+
+    <Button
+        android:id="@+id/BT_Medio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_border_white"
+        android:fontFamily="@font/allerta"
+        android:padding="20dp"
+        android:text="@string/Medio"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/BT_Facil"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/BT_Facil"
+        app:layout_constraintTop_toBottomOf="@+id/BT_Facil" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
