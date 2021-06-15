@@ -14,15 +14,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.frasesEntity;
 import com.GF.verbum.DB.Entities.fratipEntity;
-import com.GF.verbum.DB.Entities.palfraEntity;
 import com.GF.verbum.DB.Entities.tiposEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.modosDeJuegoViewModel;
 import com.GF.verbum.ui.pantallajuegos.nuevaOportunidad.nuevaOportunidadDialogFragment;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
@@ -77,7 +74,7 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View  v =  inflater.inflate(R.layout.fragment_analis, container, false);
+        final View  v =  inflater.inflate(R.layout.fragment_analisis, container, false);
         findByID(v);
         onClick();
 
