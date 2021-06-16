@@ -24,11 +24,11 @@ import com.GF.verbum.ui.pantallajuegos.modoJuegos.modosDeJuegoViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
 import com.GF.verbum.ui.pantallajuegos.nuevaOportunidad.nuevaOportunidadDialogFragment;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.reward.RewardItem;
-import com.google.android.gms.ads.reward.RewardedVideoAd;
-import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ import java.util.List;
 import static com.GF.verbum.commun.Constantes.reward;
 
 
-public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment implements View.OnClickListener, RewardedVideoAdListener {
+public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment implements View.OnClickListener {
 
 
     private List<PalabrasEntity> allPalabras = new ArrayList<>();
@@ -55,8 +55,7 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
     private ProgressBar upProgressBar;
     private String nombre;
     private int mode;
-    private InterstitialAd mInterstitialad;
-    public  static RewardedVideoAd mRewardedVideoAd;
+    public  static RewardedAd mRewardedVideoAd;
     private int progresoBar=0;
 
     public static pantallaEscaleraInfinitaMedioDificilFragment newInstance(int dificultad) {
@@ -88,9 +87,7 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
         findViewById();
         nombre=getArguments().getString("palabra",null);
         loadVideoRewar();
-       /* mInterstitialad = new InterstitialAd(getActivity());
-        mInterstitialad.setAdUnitId("ca-app-pub-9592543293433576/3091063629");
-        mInterstitialad.loadAd(new AdRequest.Builder().build());*/
+
         mpalabrasviewModel=new ViewModelProvider(this).get(modosDeJuegoViewModel.class);
         mpalabrasviewModel.getAllPalabras().observe(getActivity(), new Observer<List<PalabrasEntity>>() {
             @Override
@@ -322,56 +319,41 @@ public class pantallaEscaleraInfinitaMedioDificilFragment extends Fragment imple
 
     }
     private void loadVideoRewar() {
-        MobileAds.initialize(getActivity(), "ca-app-pub-9592543293433576/6730215293");
-        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(getActivity());
-        mRewardedVideoAd.setRewardedVideoAdListener(this);
-        mRewardedVideoAd.loadAd("ca-app-pub-9592543293433576/6730215293", new AdRequest.Builder().build());
-    }
+            final FullScreenContentCallback fullScreenContentCallback =
+                    new FullScreenContentCallback() {
+                        @Override
+                        public void onAdShowedFullScreenContent() {
+                            // Code to be invoked when the ad showed full screen content.
+                        }
+
+                        @Override
+                        public void onAdDismissedFullScreenContent() {
+                            mRewardedVideoAd = null;
+                            // Code to be invoked when the ad dismissed full screen content.
+                        }
+                    };
+
+            RewardedAd.load(
+                    getActivity(),
+                    "adUnitId",
+                    new AdRequest.Builder().build(),
+                    new RewardedAdLoadCallback() {
+                        @Override
+                        public void onAdLoaded(RewardedAd ad) {
+                            mRewardedVideoAd = ad;
+                            mRewardedVideoAd.setFullScreenContentCallback(fullScreenContentCallback);
+                        }
+                    });
+        }
+
+
 
     private void nuevaOportunidad() {
-        nuevaOportunidadDialogFragment dialog = nuevaOportunidadDialogFragment.newInstance(palabraAleatoria.getPalabra());
+        nuevaOportunidadDialogFragment dialog = nuevaOportunidadDialogFragment.newInstance(palabraAleatoria.getPalabra(),getActivity());
         dialog.setTargetFragment(this, 1);
         dialog.show(requireActivity().getSupportFragmentManager(), "Fragment");
     }
-    @Override
-    public void onRewardedVideoAdLoaded() {
 
-    }
-
-    @Override
-    public void onRewardedVideoAdOpened() {
-
-    }
-
-    @Override
-    public void onRewardedVideoStarted() {
-
-    }
-
-    @Override
-    public void onRewardedVideoAdClosed() {
-
-    }
-
-    @Override
-    public void onRewarded(RewardItem rewardItem) {
-        SharedPreferentManager.setIntegerValue(reward,rewardItem.getAmount());
-    }
-
-    @Override
-    public void onRewardedVideoAdLeftApplication() {
-
-    }
-
-    @Override
-    public void onRewardedVideoAdFailedToLoad(int i) {
-        SharedPreferentManager.setIntegerValue(reward,1);
-    }
-
-
-    @Override
-    public void onRewardedVideoCompleted() {
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)

@@ -1,14 +1,16 @@
 package com.GF.verbum.DB.Entities;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 
-@Entity(tableName = "FRATIP", primaryKeys = {"idFrase","idTipo"})
+@Entity(tableName = "FRATIP", primaryKeys = {"idFrase","idTipo"},
+        foreignKeys = {@ForeignKey(entity = frasesEntity.class,parentColumns = "idFrase",childColumns = "idFrase"),
+                       @ForeignKey( entity = tiposEntity.class, parentColumns = "idTipo", childColumns = "idTipo")})
 
 public class fratipEntity {
-    @ForeignKey(entity = frasesEntity.class,parentColumns = "idFrase",childColumns = "idFrase")
     private int idFrase;
-    @ForeignKey( entity = tiposEntity.class, parentColumns = "idTipo", childColumns = "idTipo")
+    @ColumnInfo(index = true) //necesario para que no salte el warning
     private int idTipo;
     private int position;
 

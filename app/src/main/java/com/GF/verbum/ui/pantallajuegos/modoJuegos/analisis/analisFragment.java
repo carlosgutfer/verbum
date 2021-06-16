@@ -22,10 +22,10 @@ import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.RecordFragment;
 import com.GF.verbum.ui.pantallajuegos.nuevaOportunidad.nuevaOportunidadDialogFragment;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.reward.RewardItem;
-import com.google.android.gms.ads.reward.RewardedVideoAd;
-import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ import java.util.List;
 import static com.GF.verbum.commun.Constantes.reward;
 
 
-public class analisFragment extends Fragment implements View.OnClickListener, RewardedVideoAdListener {
+public class analisFragment extends Fragment implements View.OnClickListener{
 
     private static final String ARG_PARAM1 = "param1";
     //elementos layout
@@ -47,7 +47,7 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
     private frasesEntity fraseFinal;
     private String stFrase ="";
     private controlDeJuego newControl;
-    public  static RewardedVideoAd mRewardedVideoAd;
+    public  static RewardedAd mRewardedVideoAd;
 
 
     public static analisFragment newInstance(int param1) {
@@ -135,7 +135,7 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
                             TV_Frase.setText("¿"+TV_Frase.getText()+"?");
                         else if(newAdd.getIdTipo()==21)
                             TV_Frase.setText("¡"+TV_Frase.getText()+"!");
-                        
+
                     }
 
                 }
@@ -241,11 +241,7 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
 
     }
 
-    private boolean checkEndGame() {
-        boolean endGame = false;
 
-        return endGame;
-    }
 
     // cambia el fragment por el de la pantalla de fin
     private void juegoFinalizado( boolean correcto) {
@@ -260,58 +256,42 @@ public class analisFragment extends Fragment implements View.OnClickListener, Re
     }
     //  cargar el anuncio por si el jugador falla poder mostrarlo
     private void loadVideoRewar() {
-        MobileAds.initialize(getActivity(), "ca-app-pub-9592543293433576/6730215293");
-        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(getActivity());
-        mRewardedVideoAd.setRewardedVideoAdListener(this);
-        mRewardedVideoAd.loadAd("ca-app-pub-9592543293433576/6730215293", new AdRequest.Builder().build());
-    }
+
+        final FullScreenContentCallback fullScreenContentCallback =
+                new FullScreenContentCallback() {
+                    @Override
+                    public void onAdShowedFullScreenContent() {
+                        // Code to be invoked when the ad showed full screen content.
+                    }
+
+                    @Override
+                    public void onAdDismissedFullScreenContent() {
+                        mRewardedVideoAd = null;
+                        // Code to be invoked when the ad dismissed full screen content.
+                    }
+                };
+        RewardedAd.load(getActivity(), "ca-app-pub-9592543293433576/6730215293", new AdRequest.Builder().build(), new RewardedAdLoadCallback() {
+            @Override
+            public void onAdLoaded(RewardedAd ad) {
+                mRewardedVideoAd = ad;
+                mRewardedVideoAd.setFullScreenContentCallback(fullScreenContentCallback);
+            }
+        });
+        }
+
+
     // instancia el dialogFragment de nueva oportunidad
     private void nuevaOportunidad() {
-        nuevaOportunidadDialogFragment dialog = nuevaOportunidadDialogFragment.newInstance();
+        nuevaOportunidadDialogFragment dialog = nuevaOportunidadDialogFragment.newInstance(getActivity());
         dialog.setTargetFragment(this, 1);
         dialog.show(requireActivity().getSupportFragmentManager(), "Fragment");
     }
 
-    @Override
-    public void onRewardedVideoAdLoaded() {
 
-    }
 
-    @Override
-    public void onRewardedVideoAdOpened() {
 
-    }
 
-    @Override
-    public void onRewardedVideoStarted() {
 
-    }
-
-    @Override
-    public void onRewardedVideoAdClosed() {
-
-    }
-
-    @Override
-    public void onRewarded(RewardItem rewardItem) {
-        SharedPreferentManager.setIntegerValue(reward,rewardItem.getAmount());
-
-    }
-
-    @Override
-    public void onRewardedVideoAdLeftApplication() {
-
-    }
-
-    @Override
-    public void onRewardedVideoAdFailedToLoad(int i) {
-        SharedPreferentManager.setIntegerValue(reward,1);
-    }
-
-    @Override
-    public void onRewardedVideoCompleted() {
-
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)

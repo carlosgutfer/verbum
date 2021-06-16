@@ -23,7 +23,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-@Database(entities = {PalabrasEntity.class, palfraEntity.class, tiposEntity.class,fratipEntity.class,frasesEntity.class},version = 3 ,exportSchema = false)
+@Database(entities = {PalabrasEntity.class, palfraEntity.class, tiposEntity.class,fratipEntity.class,frasesEntity.class},version = 4 ,exportSchema = false)
 
 public abstract class PalabrasRoomDataBase extends RoomDatabase {
 
@@ -117,9 +117,9 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
                     InterjeccionSustantivoAdverbio(dao);
                     palabrasFrases(dao);
 
-                    PalfraDao dao2 = INSTANCE.DAOPALFRA();
-                    dao2.deleteAll();
-                    addItemspalfra(dao2);
+                    FrasesDao daoFrases = INSTANCE.DAOFRASES();
+                    daoFrases.deleteAll();
+                    addItemFra(daoFrases);
 
                     TiposDao dao3 = INSTANCE.DAOTIPOS();
                     dao3.deleteAll();
@@ -129,9 +129,13 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
                     daotipos.deleteAll();
                     addItemFraTip(daotipos);
 
-                    FrasesDao daoFrases = INSTANCE.DAOFRASES();
-                    daoFrases.deleteAll();
-                    addItemFra(daoFrases);
+                    PalfraDao dao2 = INSTANCE.DAOPALFRA();
+                    dao2.deleteAll();
+                    addItemspalfra(dao2);
+
+
+
+
 
 
 
@@ -1000,683 +1004,6 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new fratipEntity(100,12,5));
     }
 
-    private static void addItemspalfra(PalfraDao dao2) {
-
-
-
-
-        dao2.insert(new palfraEntity(88,483,1));
-        dao2.insert(new palfraEntity(88,323,2));
-        dao2.insert(new palfraEntity(88,644,3));
-        dao2.insert(new palfraEntity(88,304,4));
-        dao2.insert(new palfraEntity(88,309,5));
-        dao2.insert(new palfraEntity(88,306,6));
-        dao2.insert(new palfraEntity(88,330,7));
-        dao2.insert(new palfraEntity(88,236,8));
-        dao2.insert(new palfraEntity(88,436,9));
-        dao2.insert(new palfraEntity(88,645,10));
-
-        dao2.insert(new palfraEntity(87,445,1));
-        dao2.insert(new palfraEntity(87,641,2));
-        dao2.insert(new palfraEntity(87,323,3));
-        dao2.insert(new palfraEntity(87,642,4));
-        dao2.insert(new palfraEntity(87,304,5));
-        dao2.insert(new palfraEntity(87,309,6));
-        dao2.insert(new palfraEntity(87,306,7));
-        dao2.insert(new palfraEntity(87,330,8));
-        dao2.insert(new palfraEntity(87,243,9));
-        dao2.insert(new palfraEntity(87,304,10));
-        dao2.insert(new palfraEntity(87,643,11));
-
-        dao2.insert(new palfraEntity(86,445,1));
-        dao2.insert(new palfraEntity(86,638,2));
-        dao2.insert(new palfraEntity(86,323,3));
-        dao2.insert(new palfraEntity(86,639,4));
-        dao2.insert(new palfraEntity(86,239,5));
-        dao2.insert(new palfraEntity(86,304,6));
-        dao2.insert(new palfraEntity(86,640,7));
-
-        dao2.insert(new palfraEntity(85,483,1));
-        dao2.insert(new palfraEntity(85,323,2));
-        dao2.insert(new palfraEntity(85,636,3));
-        dao2.insert(new palfraEntity(85,238,4));
-        dao2.insert(new palfraEntity(85,308,5));
-        dao2.insert(new palfraEntity(85,637,6));
-
-        dao2.insert(new palfraEntity(84,445,1));
-        dao2.insert(new palfraEntity(84,633,2));
-        dao2.insert(new palfraEntity(84,323,3));
-        dao2.insert(new palfraEntity(84,634,4));
-        dao2.insert(new palfraEntity(84,304,5));
-        dao2.insert(new palfraEntity(84,14,6));
-        dao2.insert(new palfraEntity(84,635,7));
-
-        dao2.insert(new palfraEntity(83,324,1));
-        dao2.insert(new palfraEntity(83,613,2));
-        dao2.insert(new palfraEntity(83,436,3));
-        dao2.insert(new palfraEntity(83,632,4));
-        dao2.insert(new palfraEntity(83,236,5));
-        dao2.insert(new palfraEntity(83,343,6));
-        dao2.insert(new palfraEntity(83,612,7));
-
-
-        dao2.insert(new palfraEntity(82,316,1));
-        dao2.insert(new palfraEntity(82,629,2));
-        dao2.insert(new palfraEntity(82,485,3));
-        dao2.insert(new palfraEntity(82,436,4));
-        dao2.insert(new palfraEntity(82,630,5));
-
-        dao2.insert(new palfraEntity(81,445,1));
-        dao2.insert(new palfraEntity(81,626,2));
-        dao2.insert(new palfraEntity(81,323,3));
-        dao2.insert(new palfraEntity(81,627,4));
-        dao2.insert(new palfraEntity(81,308,5));
-        dao2.insert(new palfraEntity(81,628,6));
-
-        dao2.insert(new palfraEntity(80,445,1));
-        dao2.insert(new palfraEntity(80,624,2));
-        dao2.insert(new palfraEntity(80,625,3));
-        dao2.insert(new palfraEntity(80,305,4));
-        dao2.insert(new palfraEntity(80,69,5));
-        dao2.insert(new palfraEntity(80,460,6));
-
-        dao2.insert(new palfraEntity(79,316,1));
-        dao2.insert(new palfraEntity(79,622,2));
-        dao2.insert(new palfraEntity(79,238,3));
-        dao2.insert(new palfraEntity(79,385,4));
-        dao2.insert(new palfraEntity(79,236,5));
-        dao2.insert(new palfraEntity(79,337,6));
-        dao2.insert(new palfraEntity(79,623,7));
-
-        dao2.insert(new palfraEntity(78,483,1));
-        dao2.insert(new palfraEntity(78,323,2));
-        dao2.insert(new palfraEntity(78,620,3));
-        dao2.insert(new palfraEntity(78,243,4));
-        dao2.insert(new palfraEntity(78,445,5));
-        dao2.insert(new palfraEntity(78,574,6));
-        dao2.insert(new palfraEntity(78,621,7));
-
-        dao2.insert(new palfraEntity(77,316,1));
-        dao2.insert(new palfraEntity(77,618,2));
-        dao2.insert(new palfraEntity(77,237,3));
-        dao2.insert(new palfraEntity(77,619,4));
-
-        dao2.insert(new palfraEntity(76,304,1));
-        dao2.insert(new palfraEntity(76,602,2));
-        dao2.insert(new palfraEntity(76,413,3));
-        dao2.insert(new palfraEntity(76,415,4));
-        dao2.insert(new palfraEntity(76,616,5));
-        dao2.insert(new palfraEntity(76,239,6));
-        dao2.insert(new palfraEntity(76,304,7));
-        dao2.insert(new palfraEntity(76,617,8));
-
-        dao2.insert(new palfraEntity(75,304,1));
-        dao2.insert(new palfraEntity(75,613,2));
-        dao2.insert(new palfraEntity(75,586,3));
-        dao2.insert(new palfraEntity(75,614,4));
-        dao2.insert(new palfraEntity(75,223,5));
-        dao2.insert(new palfraEntity(75,237,6));
-        dao2.insert(new palfraEntity(75,422,7));
-        dao2.insert(new palfraEntity(75,615,8));
-
-        dao2.insert(new palfraEntity(74,316,1));
-        dao2.insert(new palfraEntity(74,590,2));
-        dao2.insert(new palfraEntity(74,611,3));
-        dao2.insert(new palfraEntity(74,223,4));
-        dao2.insert(new palfraEntity(74,237,5));
-        dao2.insert(new palfraEntity(74,343,6));
-        dao2.insert(new palfraEntity(74,612,7));
-
-        dao2.insert(new palfraEntity(73,589,1));
-        dao2.insert(new palfraEntity(73,608,2));
-        dao2.insert(new palfraEntity(73,243,3));
-        dao2.insert(new palfraEntity(73,304,4));
-        dao2.insert(new palfraEntity(73,609,5));
-        dao2.insert(new palfraEntity(73,307,6));
-        dao2.insert(new palfraEntity(73,610,7));
-
-        dao2.insert(new palfraEntity(72,304,1));
-        dao2.insert(new palfraEntity(72,588,2));
-        dao2.insert(new palfraEntity(72,336,3));
-        dao2.insert(new palfraEntity(72,349,4));
-        dao2.insert(new palfraEntity(72,198,5));
-
-        dao2.insert(new palfraEntity(71,422,1));
-        dao2.insert(new palfraEntity(71,607,2));
-        dao2.insert(new palfraEntity(71,413,3));
-        dao2.insert(new palfraEntity(71,305,4));
-        dao2.insert(new palfraEntity(71,602,5));
-        dao2.insert(new palfraEntity(71,415,6));
-        dao2.insert(new palfraEntity(71,198,7));
-
-
-        dao2.insert(new palfraEntity(70,575,1));
-        dao2.insert(new palfraEntity(70,576,2));
-        dao2.insert(new palfraEntity(70,413,3));
-        dao2.insert(new palfraEntity(70,305,4));
-        dao2.insert(new palfraEntity(70,605,5));
-        dao2.insert(new palfraEntity(70,606,6));
-
-
-        dao2.insert(new palfraEntity(69,308,1));
-        dao2.insert(new palfraEntity(69,23,2));
-        dao2.insert(new palfraEntity(69,413,3));
-        dao2.insert(new palfraEntity(69,237,4));
-        dao2.insert(new palfraEntity(69,604,5));
-        dao2.insert(new palfraEntity(69,153,6));
-        dao2.insert(new palfraEntity(69,231,7));
-        dao2.insert(new palfraEntity(69,122,8));
-
-
-        dao2.insert(new palfraEntity(68,462,1));
-        dao2.insert(new palfraEntity(68,602,2));
-        dao2.insert(new palfraEntity(68,586,3));
-        dao2.insert(new palfraEntity(68,603,4));
-
-
-        dao2.insert(new palfraEntity(67,575,1));
-        dao2.insert(new palfraEntity(67,423,2));
-        dao2.insert(new palfraEntity(67,585,3));
-        dao2.insert(new palfraEntity(67,599,4));
-        dao2.insert(new palfraEntity(67,243,5));
-        dao2.insert(new palfraEntity(67,600,6));
-        dao2.insert(new palfraEntity(67,601,7));
-
-        dao2.insert(new palfraEntity(66,595,1));
-        dao2.insert(new palfraEntity(66,596,2));
-        dao2.insert(new palfraEntity(66,584,3));
-        dao2.insert(new palfraEntity(66,597,4));
-        dao2.insert(new palfraEntity(66,223,5));
-        dao2.insert(new palfraEntity(66,307,6));
-        dao2.insert(new palfraEntity(66,610,7));
-
-
-        dao2.insert(new palfraEntity(65,344,1));
-        dao2.insert(new palfraEntity(65,583,2));
-        dao2.insert(new palfraEntity(65,592,3));
-        dao2.insert(new palfraEntity(65,237,4));
-        dao2.insert(new palfraEntity(65,593,5));
-        dao2.insert(new palfraEntity(65,594,6));
-
-        dao2.insert(new palfraEntity(64,321,1));
-        dao2.insert(new palfraEntity(64,323,2));
-        dao2.insert(new palfraEntity(64,580,3));
-        dao2.insert(new palfraEntity(64,237,4));
-        dao2.insert(new palfraEntity(64,436,5));
-        dao2.insert(new palfraEntity(64,581,6));
-
-        dao2.insert(new palfraEntity(63,321,1));
-        dao2.insert(new palfraEntity(63,323,2));
-        dao2.insert(new palfraEntity(63,578,3));
-        dao2.insert(new palfraEntity(63,243,4));
-        dao2.insert(new palfraEntity(63,308,5));
-        dao2.insert(new palfraEntity(63,579,6));
-
-        dao2.insert(new palfraEntity(62,575,1));
-        dao2.insert(new palfraEntity(62,576,2));
-        dao2.insert(new palfraEntity(62,323,3));
-        dao2.insert(new palfraEntity(62,577,4));
-        dao2.insert(new palfraEntity(62,335,5));
-        dao2.insert(new palfraEntity(62,444,6));
-        dao2.insert(new palfraEntity(62,445,7));
-        dao2.insert(new palfraEntity(62,446,8));
-
-
-        dao2.insert(new palfraEntity(61,304,1));
-        dao2.insert(new palfraEntity(61,572,2));
-        dao2.insert(new palfraEntity(61,323,3));
-        dao2.insert(new palfraEntity(61,573,4));
-        dao2.insert(new palfraEntity(61,237,5));
-        dao2.insert(new palfraEntity(61,445,6));
-        dao2.insert(new palfraEntity(61,574,7));
-
-        dao2.insert(new palfraEntity(60,308,1));
-        dao2.insert(new palfraEntity(60,569,2));
-        dao2.insert(new palfraEntity(60,312,3));
-        dao2.insert(new palfraEntity(60,570,4));
-        dao2.insert(new palfraEntity(60,571,5));
-
-        dao2.insert(new palfraEntity(59,323,1));
-        dao2.insert(new palfraEntity(59,312,2));
-        dao2.insert(new palfraEntity(59,566,3));
-        dao2.insert(new palfraEntity(59,305,4));
-        dao2.insert(new palfraEntity(59,567,5));
-        dao2.insert(new palfraEntity(59,243,6));
-        dao2.insert(new palfraEntity(59,304,7));
-        dao2.insert(new palfraEntity(59,568,8));
-
-        dao2.insert(new palfraEntity(58,314,1));
-        dao2.insert(new palfraEntity(58,563,2));
-        dao2.insert(new palfraEntity(58,421,3));
-        dao2.insert(new palfraEntity(58,308,4));
-        dao2.insert(new palfraEntity(58,564,5));
-        dao2.insert(new palfraEntity(58,237,6));
-        dao2.insert(new palfraEntity(58,565,7));
-
-        dao2.insert(new palfraEntity(57,312,1));
-        dao2.insert(new palfraEntity(57,560,2));
-        dao2.insert(new palfraEntity(57,237,3));
-        dao2.insert(new palfraEntity(57,561,4));
-        dao2.insert(new palfraEntity(57,242,5));
-        dao2.insert(new palfraEntity(57,445,6));
-        dao2.insert(new palfraEntity(57,562,7));
-
-        dao2.insert(new palfraEntity(56,321,1));
-        dao2.insert(new palfraEntity(56,323,2));
-        dao2.insert(new palfraEntity(56,558,3));
-        dao2.insert(new palfraEntity(56,237,4));
-        dao2.insert(new palfraEntity(56,495,5));
-        dao2.insert(new palfraEntity(56,559,6));
-
-        dao2.insert(new palfraEntity(55,321,1));
-        dao2.insert(new palfraEntity(55,323,2));
-        dao2.insert(new palfraEntity(55,420,3));
-        dao2.insert(new palfraEntity(55,310,4));
-        dao2.insert(new palfraEntity(55,23,5));
-        dao2.insert(new palfraEntity(55,145,6));
-
-        dao2.insert(new palfraEntity(54,312,1));
-        dao2.insert(new palfraEntity(54,557,2));
-        dao2.insert(new palfraEntity(54,243,3));
-        dao2.insert(new palfraEntity(54,436,4));
-        dao2.insert(new palfraEntity(54,486,5));
-        dao2.insert(new palfraEntity(54,222,6));
-        dao2.insert(new palfraEntity(54,237,7));
-        dao2.insert(new palfraEntity(54,260,8));
-        dao2.insert(new palfraEntity(54,306,9));
-        dao2.insert(new palfraEntity(54,512,9));
-
-
-        dao2.insert(new palfraEntity(53,322,1));
-        dao2.insert(new palfraEntity(53,323,2));
-        dao2.insert(new palfraEntity(53,582,3));
-        dao2.insert(new palfraEntity(53,236,4));
-        dao2.insert(new palfraEntity(53,495,5));
-        dao2.insert(new palfraEntity(53,493,6));
-
-
-        dao2.insert(new palfraEntity(52,304,1));
-        dao2.insert(new palfraEntity(52,414,2));
-        dao2.insert(new palfraEntity(52,323,3));
-        dao2.insert(new palfraEntity(52,131,4));
-        dao2.insert(new palfraEntity(52,308,5));
-        dao2.insert(new palfraEntity(52,353,6));
-        dao2.insert(new palfraEntity(52,236,7));
-        dao2.insert(new palfraEntity(52,308,8));
-        dao2.insert(new palfraEntity(52,556,9));
-
-
-
-        dao2.insert(new palfraEntity(51,312,1));
-        dao2.insert(new palfraEntity(51,555,2));
-        dao2.insert(new palfraEntity(51,308,3));
-        dao2.insert(new palfraEntity(51,353,4));
-        dao2.insert(new palfraEntity(51,236,5));
-        dao2.insert(new palfraEntity(51,308,6));
-        dao2.insert(new palfraEntity(51,556,7));
-
-        dao2.insert(new palfraEntity(50,312,1));
-        dao2.insert(new palfraEntity(50,552,2));
-        dao2.insert(new palfraEntity(50,304,3));
-        dao2.insert(new palfraEntity(50,553,4));
-        dao2.insert(new palfraEntity(50,236,5));
-        dao2.insert(new palfraEntity(50,304,6));
-        dao2.insert(new palfraEntity(50,554,7));
-
-        dao2.insert(new palfraEntity(49,312,1));
-        dao2.insert(new palfraEntity(49,550,2));
-        dao2.insert(new palfraEntity(49,239,3));
-        dao2.insert(new palfraEntity(49,304,4));
-        dao2.insert(new palfraEntity(49,551,5));
-        dao2.insert(new palfraEntity(49,222,6));
-        dao2.insert(new palfraEntity(49,237,7));
-        dao2.insert(new palfraEntity(49,285,8));
-
-        dao2.insert(new palfraEntity(48,312,1));
-        dao2.insert(new palfraEntity(48,548,2));
-        dao2.insert(new palfraEntity(48,223,3));
-        dao2.insert(new palfraEntity(48,237,4));
-        dao2.insert(new palfraEntity(48,549,5));
-
-        dao2.insert(new palfraEntity(47,323,1));
-        dao2.insert(new palfraEntity(47,547,2));
-        dao2.insert(new palfraEntity(47,222,3));
-        dao2.insert(new palfraEntity(47,237,4));
-        dao2.insert(new palfraEntity(47,285,5));
-
-        dao2.insert(new palfraEntity(46,393,1));
-        dao2.insert(new palfraEntity(46,323,2));
-        dao2.insert(new palfraEntity(46,543,3));
-        dao2.insert(new palfraEntity(46,304,4));
-        dao2.insert(new palfraEntity(46,544,5));
-
-        dao2.insert(new palfraEntity(45,323,1));
-        dao2.insert(new palfraEntity(45,545,2));
-        dao2.insert(new palfraEntity(45,546,3));
-        dao2.insert(new palfraEntity(45,242,4));
-        dao2.insert(new palfraEntity(45,304,5));
-        dao2.insert(new palfraEntity(45,147,6));
-
-        dao2.insert(new palfraEntity(44,323,1));
-        dao2.insert(new palfraEntity(44,540,2));
-        dao2.insert(new palfraEntity(44,541,3));
-        dao2.insert(new palfraEntity(44,308,4));
-        dao2.insert(new palfraEntity(44,542,5));
-
-        dao2.insert(new palfraEntity(43,393,2));
-        dao2.insert(new palfraEntity(43,391,3));
-        dao2.insert(new palfraEntity(43,323,4));
-        dao2.insert(new palfraEntity(43,543,5));
-        dao2.insert(new palfraEntity(43,304,6));
-        dao2.insert(new palfraEntity(43,544,7));
-
-
-        dao2.insert(new palfraEntity(42,323,1));
-        dao2.insert(new palfraEntity(42,537,2));
-        dao2.insert(new palfraEntity(42,538,3));
-        dao2.insert(new palfraEntity(42,243,4));
-        dao2.insert(new palfraEntity(42,539,5));
-
-        dao2.insert(new palfraEntity(41,323,1));
-        dao2.insert(new palfraEntity(41,533,2));
-        dao2.insert(new palfraEntity(41,534,3));
-        dao2.insert(new palfraEntity(41,239,4));
-        dao2.insert(new palfraEntity(41,535,5));
-        dao2.insert(new palfraEntity(41,536,6));
-
-
-
-        dao2.insert(new palfraEntity(40,323,1));
-        dao2.insert(new palfraEntity(40,516,2));
-        dao2.insert(new palfraEntity(40,337,3));
-        dao2.insert(new palfraEntity(40,531,4));
-        dao2.insert(new palfraEntity(40,242,5));
-        dao2.insert(new palfraEntity(40,532,6));
-
-        dao2.insert(new palfraEntity(39,323,1));
-        dao2.insert(new palfraEntity(39,527,2));
-        dao2.insert(new palfraEntity(39,528,3));
-        dao2.insert(new palfraEntity(39,529,4));
-        dao2.insert(new palfraEntity(39,239,5));
-        dao2.insert(new palfraEntity(39,304,6));
-        dao2.insert(new palfraEntity(39,530,7));
-
-
-        dao2.insert(new palfraEntity(38,323,1));
-        dao2.insert(new palfraEntity(38,524,2));
-        dao2.insert(new palfraEntity(38,525,3));
-        dao2.insert(new palfraEntity(38,526,4));
-        dao2.insert(new palfraEntity(38,239,5));
-        dao2.insert(new palfraEntity(38,304,6));
-        dao2.insert(new palfraEntity(38,527,7));
-
-        dao2.insert(new palfraEntity(37,323,1));
-        dao2.insert(new palfraEntity(37,524,2));
-        dao2.insert(new palfraEntity(37,525,3));
-        dao2.insert(new palfraEntity(37,239,4));
-        dao2.insert(new palfraEntity(37,505,5));
-        dao2.insert(new palfraEntity(37,526,6));
-
-        dao2.insert(new palfraEntity(36,323,1));
-        dao2.insert(new palfraEntity(36,521,2));
-        dao2.insert(new palfraEntity(36,522,3));
-        dao2.insert(new palfraEntity(36,375,4));
-        dao2.insert(new palfraEntity(36,243,5));
-        dao2.insert(new palfraEntity(36,308,6));
-        dao2.insert(new palfraEntity(36,523,7));
-
-
-        dao2.insert(new palfraEntity(35,323,1));
-        dao2.insert(new palfraEntity(35,123,2));
-        dao2.insert(new palfraEntity(35,305,3));
-        dao2.insert(new palfraEntity(35,519,4));
-        dao2.insert(new palfraEntity(35,520,5));
-
-
-        dao2.insert(new palfraEntity(34,323,1));
-        dao2.insert(new palfraEntity(34,516,2));
-        dao2.insert(new palfraEntity(34,305,3));
-        dao2.insert(new palfraEntity(34,517,4));
-        dao2.insert(new palfraEntity(34,242,5));
-        dao2.insert(new palfraEntity(34,304,6));
-        dao2.insert(new palfraEntity(34,518,7));
-
-
-        dao2.insert(new palfraEntity(33,323,1));
-        dao2.insert(new palfraEntity(33,513,2));
-        dao2.insert(new palfraEntity(33,514,3));
-        dao2.insert(new palfraEntity(33,223,4));
-        dao2.insert(new palfraEntity(33,307,5));
-        dao2.insert(new palfraEntity(33,515,6));
-
-        dao2.insert(new palfraEntity(32,445,1));
-        dao2.insert(new palfraEntity(32,510,2));
-        dao2.insert(new palfraEntity(32,323,3));
-        dao2.insert(new palfraEntity(32,511,4));
-        dao2.insert(new palfraEntity(32,306,5));
-        dao2.insert(new palfraEntity(32,512,6));
-
-
-        dao2.insert(new palfraEntity(31,323,1));
-        dao2.insert(new palfraEntity(31,508,2));
-        dao2.insert(new palfraEntity(31,415,3));
-        dao2.insert(new palfraEntity(31,509,4));
-
-        dao2.insert(new palfraEntity(30,483,1));
-        dao2.insert(new palfraEntity(30,323,2));
-        dao2.insert(new palfraEntity(30,506,3));
-        dao2.insert(new palfraEntity(30,507,4));
-
-        dao2.insert(new palfraEntity(29,323,1));
-        dao2.insert(new palfraEntity(29,504,2));
-        dao2.insert(new palfraEntity(29,350,3));
-        dao2.insert(new palfraEntity(29,505,4));
-        dao2.insert(new palfraEntity(29,463,5));
-
-        dao2.insert(new palfraEntity(28,323,1));
-        dao2.insert(new palfraEntity(28,502,2));
-        dao2.insert(new palfraEntity(28,305,3));
-        dao2.insert(new palfraEntity(28,503,4));
-        dao2.insert(new palfraEntity(28,415,5));
-        dao2.insert(new palfraEntity(28,202,6));
-
-
-        dao2.insert(new palfraEntity(1,304,1));
-        dao2.insert(new palfraEntity(1,414,2));
-        dao2.insert(new palfraEntity(1,413,3));
-        dao2.insert(new palfraEntity(1,415,4));
-        dao2.insert(new palfraEntity(1,65,5));
-
-        dao2.insert(new palfraEntity(2,416,1));
-        dao2.insert(new palfraEntity(2,417,2));
-        dao2.insert(new palfraEntity(2,418,3));
-        dao2.insert(new palfraEntity(2,419,4));
-
-        dao2.insert(new palfraEntity(3,304,1));
-        dao2.insert(new palfraEntity(3,414,2));
-        dao2.insert(new palfraEntity(3,420,3));
-        dao2.insert(new palfraEntity(3,305,4));
-        dao2.insert(new palfraEntity(3,11,5));
-        dao2.insert(new palfraEntity(3,421,6));
-        dao2.insert(new palfraEntity(3,422,7));
-        dao2.insert(new palfraEntity(3,423,8));
-
-        dao2.insert(new palfraEntity(4,308,1));
-        dao2.insert(new palfraEntity(4,424,2));
-        dao2.insert(new palfraEntity(4,324,3));
-        dao2.insert(new palfraEntity(4,425,4));
-        dao2.insert(new palfraEntity(4,305,5));
-        dao2.insert(new palfraEntity(4,426,6));
-        dao2.insert(new palfraEntity(4,242,7));
-        dao2.insert(new palfraEntity(4,427,8));
-
-        dao2.insert(new palfraEntity(5,308,1));
-        dao2.insert(new palfraEntity(5,423,2));
-        dao2.insert(new palfraEntity(5,324,3));
-        dao2.insert(new palfraEntity(5,428,4));
-        dao2.insert(new palfraEntity(5,422,5));
-        dao2.insert(new palfraEntity(5,429,6));
-        dao2.insert(new palfraEntity(5,430,7));
-
-
-        dao2.insert(new palfraEntity(6,304,1));
-        dao2.insert(new palfraEntity(6,431,2));
-        dao2.insert(new palfraEntity(6,432,3));
-        dao2.insert(new palfraEntity(6,304,4));
-        dao2.insert(new palfraEntity(6,433,5));
-        dao2.insert(new palfraEntity(6,434,6));
-
-        dao2.insert(new palfraEntity(7,435,1));
-        dao2.insert(new palfraEntity(7,243,2));
-        dao2.insert(new palfraEntity(7,436,3));
-        dao2.insert(new palfraEntity(7,437,4));
-        dao2.insert(new palfraEntity(7,237,5));
-        dao2.insert(new palfraEntity(7,308,6));
-        dao2.insert(new palfraEntity(7,438,7));
-
-        dao2.insert(new palfraEntity(8,439,1));
-        dao2.insert(new palfraEntity(8,306,2));
-        dao2.insert(new palfraEntity(8,440,3));
-        dao2.insert(new palfraEntity(8,307,4));
-        dao2.insert(new palfraEntity(8,441,5));
-        dao2.insert(new palfraEntity(8,389,6));
-
-        dao2.insert(new palfraEntity(9,442,1));
-        dao2.insert(new palfraEntity(9,421,2));
-        dao2.insert(new palfraEntity(9,308,3));
-        dao2.insert(new palfraEntity(9,443,4));
-        dao2.insert(new palfraEntity(9,444,5));
-        dao2.insert(new palfraEntity(9,445,6));
-        dao2.insert(new palfraEntity(9,446,7));
-
-        dao2.insert(new palfraEntity(10,447,1));
-        dao2.insert(new palfraEntity(10,239,2));
-        dao2.insert(new palfraEntity(10,448,3));
-        dao2.insert(new palfraEntity(10,449,4));
-
-        dao2.insert(new palfraEntity(11,304,1));
-        dao2.insert(new palfraEntity(11,450,2));
-        dao2.insert(new palfraEntity(11,451,3));
-        dao2.insert(new palfraEntity(11,452,4));
-
-        dao2.insert(new palfraEntity(12,453,1));
-        dao2.insert(new palfraEntity(12,305,2));
-        dao2.insert(new palfraEntity(12,454,3));
-        dao2.insert(new palfraEntity(12,332,4));
-        dao2.insert(new palfraEntity(12,308,5));
-        dao2.insert(new palfraEntity(12,455,6));
-
-        dao2.insert(new palfraEntity(13,304,1));
-        dao2.insert(new palfraEntity(13,456,2));
-        dao2.insert(new palfraEntity(13,457,3));
-        dao2.insert(new palfraEntity(13,445,4));
-        dao2.insert(new palfraEntity(13,458,5));
-        dao2.insert(new palfraEntity(13,239,6));
-        dao2.insert(new palfraEntity(13,304,7));
-        dao2.insert(new palfraEntity(13,459,8));
-
-        dao2.insert(new palfraEntity(14,304,1));
-        dao2.insert(new palfraEntity(14,460,2));
-        dao2.insert(new palfraEntity(14,324,3));
-        dao2.insert(new palfraEntity(14,461,4));
-        dao2.insert(new palfraEntity(14,250,5));
-        dao2.insert(new palfraEntity(14,462,6));
-        dao2.insert(new palfraEntity(14,463,7));
-
-        dao2.insert(new palfraEntity(15,464,1));
-        dao2.insert(new palfraEntity(15,304,2));
-        dao2.insert(new palfraEntity(15,465,3));
-        dao2.insert(new palfraEntity(15,466,4));
-
-        dao2.insert(new palfraEntity(16,308,1));
-        dao2.insert(new palfraEntity(16,467,2));
-        dao2.insert(new palfraEntity(16,308,3));
-        dao2.insert(new palfraEntity(16,468,4));
-        dao2.insert(new palfraEntity(16,448,5));
-        dao2.insert(new palfraEntity(16,450,6));
-
-        dao2.insert(new palfraEntity(17,469,1));
-        dao2.insert(new palfraEntity(17,470,2));
-        dao2.insert(new palfraEntity(17,446,3));
-        dao2.insert(new palfraEntity(17,471,4));
-        dao2.insert(new palfraEntity(17,472,5));
-
-        dao2.insert(new palfraEntity(18,308,1));
-        dao2.insert(new palfraEntity(18,473,2));
-        dao2.insert(new palfraEntity(18,474,3));
-        dao2.insert(new palfraEntity(18,421,4));
-        dao2.insert(new palfraEntity(18,445,5));
-        dao2.insert(new palfraEntity(18,475,6));
-
-        dao2.insert(new palfraEntity(19,476,1));
-        dao2.insert(new palfraEntity(19,332,2));
-        dao2.insert(new palfraEntity(19,308,3));
-        dao2.insert(new palfraEntity(19,477,4));
-        dao2.insert(new palfraEntity(19,239,5));
-        dao2.insert(new palfraEntity(19,478,6));
-        dao2.insert(new palfraEntity(19,479,7));
-
-        dao2.insert(new palfraEntity(20,480,1));
-        dao2.insert(new palfraEntity(20,308,2));
-        dao2.insert(new palfraEntity(20,481,3));
-        dao2.insert(new palfraEntity(20,239,4));
-        dao2.insert(new palfraEntity(20,308,5));
-        dao2.insert(new palfraEntity(20,482,6));
-
-        dao2.insert(new palfraEntity(21,483,1));
-        dao2.insert(new palfraEntity(21,324,2));
-        dao2.insert(new palfraEntity(21,484,3));
-        dao2.insert(new palfraEntity(21,485,4));
-        dao2.insert(new palfraEntity(21,436,5));
-        dao2.insert(new palfraEntity(21,486,6));
-
-        dao2.insert(new palfraEntity(22,445,1));
-        dao2.insert(new palfraEntity(22,487,2));
-        dao2.insert(new palfraEntity(22,324,3));
-        dao2.insert(new palfraEntity(22,488,4));
-        dao2.insert(new palfraEntity(22,239,5));
-        dao2.insert(new palfraEntity(22,308,6));
-        dao2.insert(new palfraEntity(22,489,7));
-
-        dao2.insert(new palfraEntity(23,445,1));
-        dao2.insert(new palfraEntity(23,490,2));
-        dao2.insert(new palfraEntity(23,324,3));
-        dao2.insert(new palfraEntity(23,491,4));
-        dao2.insert(new palfraEntity(23,244,5));
-        dao2.insert(new palfraEntity(23,492,6));
-
-        dao2.insert(new palfraEntity(24,436,1));
-        dao2.insert(new palfraEntity(24,493,2));
-        dao2.insert(new palfraEntity(24,324,3));
-        dao2.insert(new palfraEntity(24,494,4));
-        dao2.insert(new palfraEntity(24,495,5));
-        dao2.insert(new palfraEntity(24,496,6));
-
-        dao2.insert(new palfraEntity(25,445,1));
-        dao2.insert(new palfraEntity(25,497,2));
-        dao2.insert(new palfraEntity(25,324,3));
-        dao2.insert(new palfraEntity(25,498,4));
-        dao2.insert(new palfraEntity(25,239,5));
-        dao2.insert(new palfraEntity(25,308,6));
-        dao2.insert(new palfraEntity(25,499,7));
-
-        dao2.insert(new palfraEntity(26,324,1));
-        dao2.insert(new palfraEntity(26,480,2));
-        dao2.insert(new palfraEntity(26,308,3));
-        dao2.insert(new palfraEntity(26,481,4));
-        dao2.insert(new palfraEntity(26,239,5));
-        dao2.insert(new palfraEntity(26,308,6));
-        dao2.insert(new palfraEntity(26,482,7));
-
-        dao2.insert(new palfraEntity(27,445,1));
-        dao2.insert(new palfraEntity(27,500,2));
-        dao2.insert(new palfraEntity(27,324,3));
-        dao2.insert(new palfraEntity(27,501,4));
-        dao2.insert(new palfraEntity(27,336,5));
-
-
-
-    }
 
 
     private static void Sustantivos(PalabrasDao dao) {
@@ -2789,7 +2116,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new PalabrasEntity("hermano", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/hermano?m=form"));
         dao.insert( new PalabrasEntity("alegres", false, false, true, false, false, false, false, false, false, "https://dle.rae.es/alegre?m=form"));
         dao.insert(new PalabrasEntity("resultado", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/resultado?m=form"));
-        dao.insert(new PalabrasEntity("partido", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/partido?m=form"));
+        dao.insert(new PalabrasEntity("árbitro", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/%C3%A1rbitro"));
         dao.insert(new PalabrasEntity("nerviosos", false, false, true, false, false, false, false, false, false,"https://dle.rae.es/nervioso?m=form"));
         dao.insert(new PalabrasEntity("ocurrido", false, false, true, false, false, false, false, false, false,"https://dle.rae.es/ocurrido?m=form"));
         dao.insert(new PalabrasEntity("periodista", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/periodista?m=form"));
@@ -2850,11 +2177,11 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new PalabrasEntity("público", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/p%C3%BAblico?m=form"));
         dao.insert(new PalabrasEntity("pollo", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/pollo?m=form"));
         dao.insert(new PalabrasEntity("cocinado", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/cocinar#9aukAUD"));
-        dao.insert(new PalabrasEntity("pollo", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/chef?m=form"));
+        dao.insert(new PalabrasEntity("chef", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/chef?m=form"));
         dao.insert(new PalabrasEntity("chicas", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/chico?m=form"));
         dao.insert(new PalabrasEntity("han sido", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/ser?m=form"));
         dao.insert(new PalabrasEntity("recibidas", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/recibir?m=form"));
-        dao.insert(new PalabrasEntity("chicas", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/decano?m=form"));
+        dao.insert(new PalabrasEntity("decana", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/decano?m=form"));
         dao.insert(new PalabrasEntity("llevado", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/ir#M5ucdgy"));
         dao.insert(new PalabrasEntity("veterinario", true, false, true, false, false, false, false, false, false,"https://dle.rae.es/veterinario?m=form"));
         dao.insert(new PalabrasEntity("dueño", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/due%C3%B1o?m=form"));
@@ -2863,10 +2190,793 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new PalabrasEntity("multa", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/multa?m=form"));
         dao.insert(new PalabrasEntity("redactada", false, false, false, false, true, false, false, false, false,"https://dle.rae.es/redactar?m=form"));
         dao.insert(new PalabrasEntity("policía", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/polic%C3%ADa?m=form"));
+        dao.insert(new PalabrasEntity("árbitro", true, false, false, false, false, false, false, false, false,"https://dle.rae.es/polic%C3%ADa?m=form"));
 
     }
 //Añadir en el layout un aviso que diga que aquellas formas que admiten plural deben ser tenidas en cuentas a la hora de elegir que tipo de función puede desempeñar una palbra
     //Ejemplo: aparece por pantalla la palabra demasiado, pero debe entenderse como demasiado/demasiados
+private static void addItemspalfra(PalfraDao dao2) {
+
+
+    dao2.insert(new palfraEntity(100,471,1));
+    dao2.insert(new palfraEntity(100,681,2));
+    dao2.insert(new palfraEntity(100,682,3));
+    dao2.insert(new palfraEntity(100,243,4));
+    dao2.insert(new palfraEntity(100,448,5));
+    dao2.insert(new palfraEntity(100,683,6));
+
+    dao2.insert(new palfraEntity(99,418,1));
+    dao2.insert(new palfraEntity(99,679,2));
+    dao2.insert(new palfraEntity(99,647,3));
+    dao2.insert(new palfraEntity(99,680,4));
+    dao2.insert(new palfraEntity(99,243,5));
+    dao2.insert(new palfraEntity(99,575,6));
+    dao2.insert(new palfraEntity(99,576,7));
+
+    dao2.insert(new palfraEntity(98,304,1));
+    dao2.insert(new palfraEntity(98,112,2));
+    dao2.insert(new palfraEntity(98,651,3));
+    dao2.insert(new palfraEntity(98,676,4));
+    dao2.insert(new palfraEntity(98,306,5));
+    dao2.insert(new palfraEntity(98,677,6));
+    dao2.insert(new palfraEntity(98,243,7));
+    dao2.insert(new palfraEntity(98,422,8));
+    dao2.insert(new palfraEntity(98,678,9));
+
+
+    dao2.insert(new palfraEntity(97,436,1));
+    dao2.insert(new palfraEntity(97,672,2));
+    dao2.insert(new palfraEntity(97,673,3));
+    dao2.insert(new palfraEntity(97,674,4));
+    dao2.insert(new palfraEntity(97,239,5));
+    dao2.insert(new palfraEntity(97,304,6));
+    dao2.insert(new palfraEntity(97,440,7));
+    dao2.insert(new palfraEntity(97,243,8));
+    dao2.insert(new palfraEntity(97,308,9));
+    dao2.insert(new palfraEntity(97,675,10));
+
+    dao2.insert(new palfraEntity(96,304,1));
+    dao2.insert(new palfraEntity(96,669,2));
+    dao2.insert(new palfraEntity(96,647,3));
+    dao2.insert(new palfraEntity(96,670,4));
+    dao2.insert(new palfraEntity(96,243,5));
+    dao2.insert(new palfraEntity(96,304,6));
+    dao2.insert(new palfraEntity(96,671,7));
+
+    dao2.insert(new palfraEntity(95,445,1));
+    dao2.insert(new palfraEntity(95,665,2));
+    dao2.insert(new palfraEntity(95,666,3));
+    dao2.insert(new palfraEntity(95,667,4));
+    dao2.insert(new palfraEntity(95,243,5));
+    dao2.insert(new palfraEntity(95,304,6));
+    dao2.insert(new palfraEntity(95,668,7));
+
+    dao2.insert(new palfraEntity(94,304,1));
+    dao2.insert(new palfraEntity(94,661,2));
+    dao2.insert(new palfraEntity(94,651,3));
+    dao2.insert(new palfraEntity(94,662,4));
+    dao2.insert(new palfraEntity(94,248,5));
+    dao2.insert(new palfraEntity(94,308,6));
+    dao2.insert(new palfraEntity(94,663,7));
+    dao2.insert(new palfraEntity(94,243,8));
+    dao2.insert(new palfraEntity(94,422,9));
+    dao2.insert(new palfraEntity(94,664,10));
+
+    dao2.insert(new palfraEntity(93,436,1));
+    dao2.insert(new palfraEntity(93,656,2));
+    dao2.insert(new palfraEntity(93,657,3));
+    dao2.insert(new palfraEntity(93,658,4));
+    dao2.insert(new palfraEntity(93,659,5));
+    dao2.insert(new palfraEntity(93,243,6));
+    dao2.insert(new palfraEntity(93,308,7));
+    dao2.insert(new palfraEntity(93,660,8));
+
+
+    dao2.insert(new palfraEntity(92,304,1));
+    dao2.insert(new palfraEntity(92,598,2));
+    dao2.insert(new palfraEntity(92,647,3));
+    dao2.insert(new palfraEntity(92,648,4));
+    dao2.insert(new palfraEntity(92,243,5));
+    dao2.insert(new palfraEntity(92,304,6));
+    dao2.insert(new palfraEntity(92,610,7));
+
+    dao2.insert(new palfraEntity(91,308,1));
+    dao2.insert(new palfraEntity(91,23,2));
+    dao2.insert(new palfraEntity(91,651,3));
+    dao2.insert(new palfraEntity(91,652,4));
+    dao2.insert(new palfraEntity(91,243,5));
+    dao2.insert(new palfraEntity(91,653,6));
+    dao2.insert(new palfraEntity(91,654,7));
+
+    dao2.insert(new palfraEntity(90,308,1));
+    dao2.insert(new palfraEntity(90,649,2));
+    dao2.insert(new palfraEntity(90,647,3));
+    dao2.insert(new palfraEntity(90,650,4));
+    dao2.insert(new palfraEntity(90,243,5));
+    dao2.insert(new palfraEntity(90,445,6));
+    dao2.insert(new palfraEntity(90,510,7));
+
+    dao2.insert(new palfraEntity(89,304,1));
+    dao2.insert(new palfraEntity(89,646,2));
+    dao2.insert(new palfraEntity(89,647,3));
+    dao2.insert(new palfraEntity(89,648,4));
+    dao2.insert(new palfraEntity(89,243,5));
+    dao2.insert(new palfraEntity(89,304,6));
+    dao2.insert(new palfraEntity(89,441,7));
+
+
+    dao2.insert(new palfraEntity(88,483,1));
+    dao2.insert(new palfraEntity(88,323,2));
+    dao2.insert(new palfraEntity(88,644,3));
+    dao2.insert(new palfraEntity(88,304,4));
+    dao2.insert(new palfraEntity(88,309,5));
+    dao2.insert(new palfraEntity(88,306,6));
+    dao2.insert(new palfraEntity(88,330,7));
+    dao2.insert(new palfraEntity(88,236,8));
+    dao2.insert(new palfraEntity(88,436,9));
+    dao2.insert(new palfraEntity(88,645,10));
+
+    dao2.insert(new palfraEntity(87,445,1));
+    dao2.insert(new palfraEntity(87,641,2));
+    dao2.insert(new palfraEntity(87,323,3));
+    dao2.insert(new palfraEntity(87,642,4));
+    dao2.insert(new palfraEntity(87,304,5));
+    dao2.insert(new palfraEntity(87,309,6));
+    dao2.insert(new palfraEntity(87,306,7));
+    dao2.insert(new palfraEntity(87,330,8));
+    dao2.insert(new palfraEntity(87,243,9));
+    dao2.insert(new palfraEntity(87,304,10));
+    dao2.insert(new palfraEntity(87,643,11));
+
+    dao2.insert(new palfraEntity(86,445,1));
+    dao2.insert(new palfraEntity(86,638,2));
+    dao2.insert(new palfraEntity(86,323,3));
+    dao2.insert(new palfraEntity(86,639,4));
+    dao2.insert(new palfraEntity(86,239,5));
+    dao2.insert(new palfraEntity(86,304,6));
+    dao2.insert(new palfraEntity(86,640,7));
+
+    dao2.insert(new palfraEntity(85,483,1));
+    dao2.insert(new palfraEntity(85,323,2));
+    dao2.insert(new palfraEntity(85,636,3));
+    dao2.insert(new palfraEntity(85,238,4));
+    dao2.insert(new palfraEntity(85,308,5));
+    dao2.insert(new palfraEntity(85,637,6));
+
+    dao2.insert(new palfraEntity(84,445,1));
+    dao2.insert(new palfraEntity(84,633,2));
+    dao2.insert(new palfraEntity(84,323,3));
+    dao2.insert(new palfraEntity(84,634,4));
+    dao2.insert(new palfraEntity(84,304,5));
+    dao2.insert(new palfraEntity(84,14,6));
+    dao2.insert(new palfraEntity(84,635,7));
+
+    dao2.insert(new palfraEntity(83,324,1));
+    dao2.insert(new palfraEntity(83,613,2));
+    dao2.insert(new palfraEntity(83,436,3));
+    dao2.insert(new palfraEntity(83,632,4));
+    dao2.insert(new palfraEntity(83,236,5));
+    dao2.insert(new palfraEntity(83,343,6));
+    dao2.insert(new palfraEntity(83,612,7));
+
+
+    dao2.insert(new palfraEntity(82,316,1));
+    dao2.insert(new palfraEntity(82,629,2));
+    dao2.insert(new palfraEntity(82,485,3));
+    dao2.insert(new palfraEntity(82,436,4));
+    dao2.insert(new palfraEntity(82,630,5));
+
+    dao2.insert(new palfraEntity(81,445,1));
+    dao2.insert(new palfraEntity(81,626,2));
+    dao2.insert(new palfraEntity(81,323,3));
+    dao2.insert(new palfraEntity(81,627,4));
+    dao2.insert(new palfraEntity(81,308,5));
+    dao2.insert(new palfraEntity(81,628,6));
+
+    dao2.insert(new palfraEntity(80,445,1));
+    dao2.insert(new palfraEntity(80,624,2));
+    dao2.insert(new palfraEntity(80,625,3));
+    dao2.insert(new palfraEntity(80,305,4));
+    dao2.insert(new palfraEntity(80,69,5));
+    dao2.insert(new palfraEntity(80,460,6));
+
+    dao2.insert(new palfraEntity(79,316,1));
+    dao2.insert(new palfraEntity(79,622,2));
+    dao2.insert(new palfraEntity(79,238,3));
+    dao2.insert(new palfraEntity(79,385,4));
+    dao2.insert(new palfraEntity(79,236,5));
+    dao2.insert(new palfraEntity(79,337,6));
+    dao2.insert(new palfraEntity(79,623,7));
+
+    dao2.insert(new palfraEntity(78,483,1));
+    dao2.insert(new palfraEntity(78,323,2));
+    dao2.insert(new palfraEntity(78,620,3));
+    dao2.insert(new palfraEntity(78,243,4));
+    dao2.insert(new palfraEntity(78,445,5));
+    dao2.insert(new palfraEntity(78,574,6));
+    dao2.insert(new palfraEntity(78,621,7));
+
+    dao2.insert(new palfraEntity(77,316,1));
+    dao2.insert(new palfraEntity(77,618,2));
+    dao2.insert(new palfraEntity(77,237,3));
+    dao2.insert(new palfraEntity(77,619,4));
+
+    dao2.insert(new palfraEntity(76,304,1));
+    dao2.insert(new palfraEntity(76,602,2));
+    dao2.insert(new palfraEntity(76,413,3));
+    dao2.insert(new palfraEntity(76,415,4));
+    dao2.insert(new palfraEntity(76,616,5));
+    dao2.insert(new palfraEntity(76,239,6));
+    dao2.insert(new palfraEntity(76,304,7));
+    dao2.insert(new palfraEntity(76,617,8));
+
+    dao2.insert(new palfraEntity(75,304,1));
+    dao2.insert(new palfraEntity(75,613,2));
+    dao2.insert(new palfraEntity(75,586,3));
+    dao2.insert(new palfraEntity(75,614,4));
+    dao2.insert(new palfraEntity(75,223,5));
+    dao2.insert(new palfraEntity(75,237,6));
+    dao2.insert(new palfraEntity(75,422,7));
+    dao2.insert(new palfraEntity(75,615,8));
+
+    dao2.insert(new palfraEntity(74,316,1));
+    dao2.insert(new palfraEntity(74,590,2));
+    dao2.insert(new palfraEntity(74,611,3));
+    dao2.insert(new palfraEntity(74,223,4));
+    dao2.insert(new palfraEntity(74,237,5));
+    dao2.insert(new palfraEntity(74,343,6));
+    dao2.insert(new palfraEntity(74,612,7));
+
+    dao2.insert(new palfraEntity(73,589,1));
+    dao2.insert(new palfraEntity(73,608,2));
+    dao2.insert(new palfraEntity(73,243,3));
+    dao2.insert(new palfraEntity(73,304,4));
+    dao2.insert(new palfraEntity(73,609,5));
+    dao2.insert(new palfraEntity(73,307,6));
+    dao2.insert(new palfraEntity(73,610,7));
+
+    dao2.insert(new palfraEntity(72,304,1));
+    dao2.insert(new palfraEntity(72,588,2));
+    dao2.insert(new palfraEntity(72,336,3));
+    dao2.insert(new palfraEntity(72,349,4));
+    dao2.insert(new palfraEntity(72,198,5));
+
+    dao2.insert(new palfraEntity(71,422,1));
+    dao2.insert(new palfraEntity(71,607,2));
+    dao2.insert(new palfraEntity(71,413,3));
+    dao2.insert(new palfraEntity(71,305,4));
+    dao2.insert(new palfraEntity(71,602,5));
+    dao2.insert(new palfraEntity(71,415,6));
+    dao2.insert(new palfraEntity(71,198,7));
+
+
+    dao2.insert(new palfraEntity(70,575,1));
+    dao2.insert(new palfraEntity(70,576,2));
+    dao2.insert(new palfraEntity(70,413,3));
+    dao2.insert(new palfraEntity(70,305,4));
+    dao2.insert(new palfraEntity(70,605,5));
+    dao2.insert(new palfraEntity(70,606,6));
+
+
+    dao2.insert(new palfraEntity(69,308,1));
+    dao2.insert(new palfraEntity(69,23,2));
+    dao2.insert(new palfraEntity(69,413,3));
+    dao2.insert(new palfraEntity(69,237,4));
+    dao2.insert(new palfraEntity(69,604,5));
+    dao2.insert(new palfraEntity(69,153,6));
+    dao2.insert(new palfraEntity(69,231,7));
+    dao2.insert(new palfraEntity(69,122,8));
+
+
+    dao2.insert(new palfraEntity(68,462,1));
+    dao2.insert(new palfraEntity(68,602,2));
+    dao2.insert(new palfraEntity(68,586,3));
+    dao2.insert(new palfraEntity(68,603,4));
+
+
+    dao2.insert(new palfraEntity(67,575,1));
+    dao2.insert(new palfraEntity(67,423,2));
+    dao2.insert(new palfraEntity(67,585,3));
+    dao2.insert(new palfraEntity(67,599,4));
+    dao2.insert(new palfraEntity(67,243,5));
+    dao2.insert(new palfraEntity(67,600,6));
+    dao2.insert(new palfraEntity(67,601,7));
+
+    dao2.insert(new palfraEntity(66,595,1));
+    dao2.insert(new palfraEntity(66,596,2));
+    dao2.insert(new palfraEntity(66,584,3));
+    dao2.insert(new palfraEntity(66,597,4));
+    dao2.insert(new palfraEntity(66,223,5));
+    dao2.insert(new palfraEntity(66,307,6));
+    dao2.insert(new palfraEntity(66,610,7));
+
+
+    dao2.insert(new palfraEntity(65,344,1));
+    dao2.insert(new palfraEntity(65,583,2));
+    dao2.insert(new palfraEntity(65,592,3));
+    dao2.insert(new palfraEntity(65,237,4));
+    dao2.insert(new palfraEntity(65,593,5));
+    dao2.insert(new palfraEntity(65,594,6));
+
+    dao2.insert(new palfraEntity(64,321,1));
+    dao2.insert(new palfraEntity(64,323,2));
+    dao2.insert(new palfraEntity(64,580,3));
+    dao2.insert(new palfraEntity(64,237,4));
+    dao2.insert(new palfraEntity(64,436,5));
+    dao2.insert(new palfraEntity(64,581,6));
+
+    dao2.insert(new palfraEntity(63,321,1));
+    dao2.insert(new palfraEntity(63,323,2));
+    dao2.insert(new palfraEntity(63,578,3));
+    dao2.insert(new palfraEntity(63,243,4));
+    dao2.insert(new palfraEntity(63,308,5));
+    dao2.insert(new palfraEntity(63,579,6));
+
+    dao2.insert(new palfraEntity(62,575,1));
+    dao2.insert(new palfraEntity(62,576,2));
+    dao2.insert(new palfraEntity(62,323,3));
+    dao2.insert(new palfraEntity(62,577,4));
+    dao2.insert(new palfraEntity(62,335,5));
+    dao2.insert(new palfraEntity(62,444,6));
+    dao2.insert(new palfraEntity(62,445,7));
+    dao2.insert(new palfraEntity(62,446,8));
+
+
+    dao2.insert(new palfraEntity(61,304,1));
+    dao2.insert(new palfraEntity(61,572,2));
+    dao2.insert(new palfraEntity(61,323,3));
+    dao2.insert(new palfraEntity(61,573,4));
+    dao2.insert(new palfraEntity(61,237,5));
+    dao2.insert(new palfraEntity(61,445,6));
+    dao2.insert(new palfraEntity(61,574,7));
+
+    dao2.insert(new palfraEntity(60,308,1));
+    dao2.insert(new palfraEntity(60,569,2));
+    dao2.insert(new palfraEntity(60,312,3));
+    dao2.insert(new palfraEntity(60,570,4));
+    dao2.insert(new palfraEntity(60,571,5));
+
+    dao2.insert(new palfraEntity(59,323,1));
+    dao2.insert(new palfraEntity(59,312,2));
+    dao2.insert(new palfraEntity(59,566,3));
+    dao2.insert(new palfraEntity(59,305,4));
+    dao2.insert(new palfraEntity(59,567,5));
+    dao2.insert(new palfraEntity(59,243,6));
+    dao2.insert(new palfraEntity(59,304,7));
+    dao2.insert(new palfraEntity(59,568,8));
+
+    dao2.insert(new palfraEntity(58,314,1));
+    dao2.insert(new palfraEntity(58,563,2));
+    dao2.insert(new palfraEntity(58,421,3));
+    dao2.insert(new palfraEntity(58,308,4));
+    dao2.insert(new palfraEntity(58,564,5));
+    dao2.insert(new palfraEntity(58,237,6));
+    dao2.insert(new palfraEntity(58,565,7));
+
+    dao2.insert(new palfraEntity(57,312,1));
+    dao2.insert(new palfraEntity(57,560,2));
+    dao2.insert(new palfraEntity(57,237,3));
+    dao2.insert(new palfraEntity(57,561,4));
+    dao2.insert(new palfraEntity(57,242,5));
+    dao2.insert(new palfraEntity(57,445,6));
+    dao2.insert(new palfraEntity(57,562,7));
+
+    dao2.insert(new palfraEntity(56,321,1));
+    dao2.insert(new palfraEntity(56,323,2));
+    dao2.insert(new palfraEntity(56,558,3));
+    dao2.insert(new palfraEntity(56,237,4));
+    dao2.insert(new palfraEntity(56,495,5));
+    dao2.insert(new palfraEntity(56,559,6));
+
+    dao2.insert(new palfraEntity(55,321,1));
+    dao2.insert(new palfraEntity(55,323,2));
+    dao2.insert(new palfraEntity(55,420,3));
+    dao2.insert(new palfraEntity(55,310,4));
+    dao2.insert(new palfraEntity(55,23,5));
+    dao2.insert(new palfraEntity(55,145,6));
+
+    dao2.insert(new palfraEntity(54,312,1));
+    dao2.insert(new palfraEntity(54,557,2));
+    dao2.insert(new palfraEntity(54,243,3));
+    dao2.insert(new palfraEntity(54,436,4));
+    dao2.insert(new palfraEntity(54,486,5));
+    dao2.insert(new palfraEntity(54,222,6));
+    dao2.insert(new palfraEntity(54,237,7));
+    dao2.insert(new palfraEntity(54,260,8));
+    dao2.insert(new palfraEntity(54,306,9));
+    dao2.insert(new palfraEntity(54,512,9));
+
+
+    dao2.insert(new palfraEntity(53,322,1));
+    dao2.insert(new palfraEntity(53,323,2));
+    dao2.insert(new palfraEntity(53,582,3));
+    dao2.insert(new palfraEntity(53,236,4));
+    dao2.insert(new palfraEntity(53,495,5));
+    dao2.insert(new palfraEntity(53,493,6));
+
+
+    dao2.insert(new palfraEntity(52,304,1));
+    dao2.insert(new palfraEntity(52,414,2));
+    dao2.insert(new palfraEntity(52,323,3));
+    dao2.insert(new palfraEntity(52,131,4));
+    dao2.insert(new palfraEntity(52,308,5));
+    dao2.insert(new palfraEntity(52,353,6));
+    dao2.insert(new palfraEntity(52,236,7));
+    dao2.insert(new palfraEntity(52,308,8));
+    dao2.insert(new palfraEntity(52,556,9));
+
+
+
+    dao2.insert(new palfraEntity(51,312,1));
+    dao2.insert(new palfraEntity(51,555,2));
+    dao2.insert(new palfraEntity(51,308,3));
+    dao2.insert(new palfraEntity(51,353,4));
+    dao2.insert(new palfraEntity(51,236,5));
+    dao2.insert(new palfraEntity(51,308,6));
+    dao2.insert(new palfraEntity(51,556,7));
+
+    dao2.insert(new palfraEntity(50,312,1));
+    dao2.insert(new palfraEntity(50,552,2));
+    dao2.insert(new palfraEntity(50,304,3));
+    dao2.insert(new palfraEntity(50,553,4));
+    dao2.insert(new palfraEntity(50,236,5));
+    dao2.insert(new palfraEntity(50,304,6));
+    dao2.insert(new palfraEntity(50,554,7));
+
+    dao2.insert(new palfraEntity(49,312,1));
+    dao2.insert(new palfraEntity(49,550,2));
+    dao2.insert(new palfraEntity(49,239,3));
+    dao2.insert(new palfraEntity(49,304,4));
+    dao2.insert(new palfraEntity(49,551,5));
+    dao2.insert(new palfraEntity(49,222,6));
+    dao2.insert(new palfraEntity(49,237,7));
+    dao2.insert(new palfraEntity(49,285,8));
+
+    dao2.insert(new palfraEntity(48,312,1));
+    dao2.insert(new palfraEntity(48,548,2));
+    dao2.insert(new palfraEntity(48,223,3));
+    dao2.insert(new palfraEntity(48,237,4));
+    dao2.insert(new palfraEntity(48,549,5));
+
+    dao2.insert(new palfraEntity(47,323,1));
+    dao2.insert(new palfraEntity(47,547,2));
+    dao2.insert(new palfraEntity(47,222,3));
+    dao2.insert(new palfraEntity(47,237,4));
+    dao2.insert(new palfraEntity(47,285,5));
+
+    dao2.insert(new palfraEntity(46,393,1));
+    dao2.insert(new palfraEntity(46,323,2));
+    dao2.insert(new palfraEntity(46,543,3));
+    dao2.insert(new palfraEntity(46,304,4));
+    dao2.insert(new palfraEntity(46,544,5));
+
+    dao2.insert(new palfraEntity(45,323,1));
+    dao2.insert(new palfraEntity(45,545,2));
+    dao2.insert(new palfraEntity(45,546,3));
+    dao2.insert(new palfraEntity(45,242,4));
+    dao2.insert(new palfraEntity(45,304,5));
+    dao2.insert(new palfraEntity(45,147,6));
+
+    dao2.insert(new palfraEntity(44,323,1));
+    dao2.insert(new palfraEntity(44,540,2));
+    dao2.insert(new palfraEntity(44,541,3));
+    dao2.insert(new palfraEntity(44,308,4));
+    dao2.insert(new palfraEntity(44,542,5));
+
+    dao2.insert(new palfraEntity(43,393,2));
+    dao2.insert(new palfraEntity(43,391,3));
+    dao2.insert(new palfraEntity(43,323,4));
+    dao2.insert(new palfraEntity(43,543,5));
+    dao2.insert(new palfraEntity(43,304,6));
+    dao2.insert(new palfraEntity(43,544,7));
+
+
+    dao2.insert(new palfraEntity(42,323,1));
+    dao2.insert(new palfraEntity(42,537,2));
+    dao2.insert(new palfraEntity(42,538,3));
+    dao2.insert(new palfraEntity(42,243,4));
+    dao2.insert(new palfraEntity(42,539,5));
+
+    dao2.insert(new palfraEntity(41,323,1));
+    dao2.insert(new palfraEntity(41,533,2));
+    dao2.insert(new palfraEntity(41,534,3));
+    dao2.insert(new palfraEntity(41,239,4));
+    dao2.insert(new palfraEntity(41,535,5));
+    dao2.insert(new palfraEntity(41,536,6));
+
+
+
+    dao2.insert(new palfraEntity(40,323,1));
+    dao2.insert(new palfraEntity(40,516,2));
+    dao2.insert(new palfraEntity(40,337,3));
+    dao2.insert(new palfraEntity(40,531,4));
+    dao2.insert(new palfraEntity(40,242,5));
+    dao2.insert(new palfraEntity(40,532,6));
+
+    dao2.insert(new palfraEntity(39,323,1));
+    dao2.insert(new palfraEntity(39,545,2));
+    dao2.insert(new palfraEntity(39,546,3));
+    dao2.insert(new palfraEntity(39,242,4));
+    dao2.insert(new palfraEntity(39,304,5));
+    dao2.insert(new palfraEntity(39,147,6));
+
+
+    dao2.insert(new palfraEntity(38,323,1));
+    dao2.insert(new palfraEntity(38,524,2));
+    dao2.insert(new palfraEntity(38,525,3));
+    dao2.insert(new palfraEntity(38,526,4));
+    dao2.insert(new palfraEntity(38,239,5));
+    dao2.insert(new palfraEntity(38,304,6));
+    dao2.insert(new palfraEntity(38,527,7));
+
+    dao2.insert(new palfraEntity(37,323,1));
+    dao2.insert(new palfraEntity(37,524,2));
+    dao2.insert(new palfraEntity(37,525,3));
+    dao2.insert(new palfraEntity(37,239,4));
+    dao2.insert(new palfraEntity(37,505,5));
+    dao2.insert(new palfraEntity(37,526,6));
+
+    dao2.insert(new palfraEntity(36,323,1));
+    dao2.insert(new palfraEntity(36,521,2));
+    dao2.insert(new palfraEntity(36,522,3));
+    dao2.insert(new palfraEntity(36,375,4));
+    dao2.insert(new palfraEntity(36,243,5));
+    dao2.insert(new palfraEntity(36,308,6));
+    dao2.insert(new palfraEntity(36,523,7));
+
+
+    dao2.insert(new palfraEntity(35,323,1));
+    dao2.insert(new palfraEntity(35,123,2));
+    dao2.insert(new palfraEntity(35,305,3));
+    dao2.insert(new palfraEntity(35,519,4));
+    dao2.insert(new palfraEntity(35,520,5));
+
+
+    dao2.insert(new palfraEntity(34,323,1));
+    dao2.insert(new palfraEntity(34,516,2));
+    dao2.insert(new palfraEntity(34,305,3));
+    dao2.insert(new palfraEntity(34,517,4));
+    dao2.insert(new palfraEntity(34,242,5));
+    dao2.insert(new palfraEntity(34,304,6));
+    dao2.insert(new palfraEntity(34,518,7));
+
+
+    dao2.insert(new palfraEntity(33,323,1));
+    dao2.insert(new palfraEntity(33,513,2));
+    dao2.insert(new palfraEntity(33,514,3));
+    dao2.insert(new palfraEntity(33,223,4));
+    dao2.insert(new palfraEntity(33,307,5));
+    dao2.insert(new palfraEntity(33,515,6));
+
+    dao2.insert(new palfraEntity(32,445,1));
+    dao2.insert(new palfraEntity(32,510,2));
+    dao2.insert(new palfraEntity(32,323,3));
+    dao2.insert(new palfraEntity(32,511,4));
+    dao2.insert(new palfraEntity(32,306,5));
+    dao2.insert(new palfraEntity(32,512,6));
+
+
+    dao2.insert(new palfraEntity(31,323,1));
+    dao2.insert(new palfraEntity(31,508,2));
+    dao2.insert(new palfraEntity(31,415,3));
+    dao2.insert(new palfraEntity(31,509,4));
+
+    dao2.insert(new palfraEntity(30,483,1));
+    dao2.insert(new palfraEntity(30,323,2));
+    dao2.insert(new palfraEntity(30,506,3));
+    dao2.insert(new palfraEntity(30,507,4));
+
+    dao2.insert(new palfraEntity(29,323,1));
+    dao2.insert(new palfraEntity(29,504,2));
+    dao2.insert(new palfraEntity(29,350,3));
+    dao2.insert(new palfraEntity(29,505,4));
+    dao2.insert(new palfraEntity(29,463,5));
+
+    dao2.insert(new palfraEntity(28,323,1));
+    dao2.insert(new palfraEntity(28,502,2));
+    dao2.insert(new palfraEntity(28,305,3));
+    dao2.insert(new palfraEntity(28,503,4));
+    dao2.insert(new palfraEntity(28,415,5));
+    dao2.insert(new palfraEntity(28,202,6));
+
+
+    dao2.insert(new palfraEntity(1,304,1));
+    dao2.insert(new palfraEntity(1,414,2));
+    dao2.insert(new palfraEntity(1,413,3));
+    dao2.insert(new palfraEntity(1,415,4));
+    dao2.insert(new palfraEntity(1,65,5));
+
+    dao2.insert(new palfraEntity(2,416,1));
+    dao2.insert(new palfraEntity(2,417,2));
+    dao2.insert(new palfraEntity(2,418,3));
+    dao2.insert(new palfraEntity(2,419,4));
+
+    dao2.insert(new palfraEntity(3,304,1));
+    dao2.insert(new palfraEntity(3,414,2));
+    dao2.insert(new palfraEntity(3,420,3));
+    dao2.insert(new palfraEntity(3,305,4));
+    dao2.insert(new palfraEntity(3,11,5));
+    dao2.insert(new palfraEntity(3,421,6));
+    dao2.insert(new palfraEntity(3,422,7));
+    dao2.insert(new palfraEntity(3,423,8));
+
+    dao2.insert(new palfraEntity(4,308,1));
+    dao2.insert(new palfraEntity(4,424,2));
+    dao2.insert(new palfraEntity(4,324,3));
+    dao2.insert(new palfraEntity(4,425,4));
+    dao2.insert(new palfraEntity(4,305,5));
+    dao2.insert(new palfraEntity(4,426,6));
+    dao2.insert(new palfraEntity(4,242,7));
+    dao2.insert(new palfraEntity(4,427,8));
+
+    dao2.insert(new palfraEntity(5,308,1));
+    dao2.insert(new palfraEntity(5,423,2));
+    dao2.insert(new palfraEntity(5,324,3));
+    dao2.insert(new palfraEntity(5,428,4));
+    dao2.insert(new palfraEntity(5,422,5));
+    dao2.insert(new palfraEntity(5,429,6));
+    dao2.insert(new palfraEntity(5,430,7));
+
+
+    dao2.insert(new palfraEntity(6,304,1));
+    dao2.insert(new palfraEntity(6,431,2));
+    dao2.insert(new palfraEntity(6,432,3));
+    dao2.insert(new palfraEntity(6,304,4));
+    dao2.insert(new palfraEntity(6,433,5));
+    dao2.insert(new palfraEntity(6,434,6));
+
+    dao2.insert(new palfraEntity(7,435,1));
+    dao2.insert(new palfraEntity(7,243,2));
+    dao2.insert(new palfraEntity(7,436,3));
+    dao2.insert(new palfraEntity(7,437,4));
+    dao2.insert(new palfraEntity(7,237,5));
+    dao2.insert(new palfraEntity(7,308,6));
+    dao2.insert(new palfraEntity(7,438,7));
+
+    dao2.insert(new palfraEntity(8,439,1));
+    dao2.insert(new palfraEntity(8,306,2));
+    dao2.insert(new palfraEntity(8,440,3));
+    dao2.insert(new palfraEntity(8,307,4));
+    dao2.insert(new palfraEntity(8,441,5));
+    dao2.insert(new palfraEntity(8,389,6));
+
+    dao2.insert(new palfraEntity(9,442,1));
+    dao2.insert(new palfraEntity(9,421,2));
+    dao2.insert(new palfraEntity(9,308,3));
+    dao2.insert(new palfraEntity(9,443,4));
+    dao2.insert(new palfraEntity(9,444,5));
+    dao2.insert(new palfraEntity(9,445,6));
+    dao2.insert(new palfraEntity(9,446,7));
+
+    dao2.insert(new palfraEntity(10,447,1));
+    dao2.insert(new palfraEntity(10,239,2));
+    dao2.insert(new palfraEntity(10,448,3));
+    dao2.insert(new palfraEntity(10,449,4));
+
+    dao2.insert(new palfraEntity(11,304,1));
+    dao2.insert(new palfraEntity(11,450,2));
+    dao2.insert(new palfraEntity(11,451,3));
+    dao2.insert(new palfraEntity(11,452,4));
+
+    dao2.insert(new palfraEntity(12,453,1));
+    dao2.insert(new palfraEntity(12,305,2));
+    dao2.insert(new palfraEntity(12,454,3));
+    dao2.insert(new palfraEntity(12,332,4));
+    dao2.insert(new palfraEntity(12,308,5));
+    dao2.insert(new palfraEntity(12,455,6));
+
+    dao2.insert(new palfraEntity(13,304,1));
+    dao2.insert(new palfraEntity(13,456,2));
+    dao2.insert(new palfraEntity(13,457,3));
+    dao2.insert(new palfraEntity(13,445,4));
+    dao2.insert(new palfraEntity(13,458,5));
+    dao2.insert(new palfraEntity(13,239,6));
+    dao2.insert(new palfraEntity(13,304,7));
+    dao2.insert(new palfraEntity(13,459,8));
+
+    dao2.insert(new palfraEntity(14,304,1));
+    dao2.insert(new palfraEntity(14,460,2));
+    dao2.insert(new palfraEntity(14,324,3));
+    dao2.insert(new palfraEntity(14,461,4));
+    dao2.insert(new palfraEntity(14,250,5));
+    dao2.insert(new palfraEntity(14,462,6));
+    dao2.insert(new palfraEntity(14,463,7));
+
+    dao2.insert(new palfraEntity(15,464,1));
+    dao2.insert(new palfraEntity(15,304,2));
+    dao2.insert(new palfraEntity(15,465,3));
+    dao2.insert(new palfraEntity(15,466,4));
+
+    dao2.insert(new palfraEntity(16,308,1));
+    dao2.insert(new palfraEntity(16,467,2));
+    dao2.insert(new palfraEntity(16,308,3));
+    dao2.insert(new palfraEntity(16,468,4));
+    dao2.insert(new palfraEntity(16,448,5));
+    dao2.insert(new palfraEntity(16,450,6));
+
+    dao2.insert(new palfraEntity(17,469,1));
+    dao2.insert(new palfraEntity(17,470,2));
+    dao2.insert(new palfraEntity(17,446,3));
+    dao2.insert(new palfraEntity(17,471,4));
+    dao2.insert(new palfraEntity(17,472,5));
+
+    dao2.insert(new palfraEntity(18,308,1));
+    dao2.insert(new palfraEntity(18,473,2));
+    dao2.insert(new palfraEntity(18,474,3));
+    dao2.insert(new palfraEntity(18,421,4));
+    dao2.insert(new palfraEntity(18,445,5));
+    dao2.insert(new palfraEntity(18,475,6));
+
+    dao2.insert(new palfraEntity(19,476,1));
+    dao2.insert(new palfraEntity(19,332,2));
+    dao2.insert(new palfraEntity(19,308,3));
+    dao2.insert(new palfraEntity(19,477,4));
+    dao2.insert(new palfraEntity(19,239,5));
+    dao2.insert(new palfraEntity(19,478,6));
+    dao2.insert(new palfraEntity(19,479,7));
+
+    dao2.insert(new palfraEntity(20,480,1));
+    dao2.insert(new palfraEntity(20,308,2));
+    dao2.insert(new palfraEntity(20,481,3));
+    dao2.insert(new palfraEntity(20,239,4));
+    dao2.insert(new palfraEntity(20,308,5));
+    dao2.insert(new palfraEntity(20,482,6));
+
+    dao2.insert(new palfraEntity(21,483,1));
+    dao2.insert(new palfraEntity(21,324,2));
+    dao2.insert(new palfraEntity(21,484,3));
+    dao2.insert(new palfraEntity(21,485,4));
+    dao2.insert(new palfraEntity(21,436,5));
+    dao2.insert(new palfraEntity(21,486,6));
+
+    dao2.insert(new palfraEntity(22,445,1));
+    dao2.insert(new palfraEntity(22,487,2));
+    dao2.insert(new palfraEntity(22,324,3));
+    dao2.insert(new palfraEntity(22,488,4));
+    dao2.insert(new palfraEntity(22,239,5));
+    dao2.insert(new palfraEntity(22,308,6));
+    dao2.insert(new palfraEntity(22,489,7));
+
+    dao2.insert(new palfraEntity(23,445,1));
+    dao2.insert(new palfraEntity(23,490,2));
+    dao2.insert(new palfraEntity(23,324,3));
+    dao2.insert(new palfraEntity(23,491,4));
+    dao2.insert(new palfraEntity(23,244,5));
+    dao2.insert(new palfraEntity(23,492,6));
+
+    dao2.insert(new palfraEntity(24,436,1));
+    dao2.insert(new palfraEntity(24,493,2));
+    dao2.insert(new palfraEntity(24,324,3));
+    dao2.insert(new palfraEntity(24,494,4));
+    dao2.insert(new palfraEntity(24,495,5));
+    dao2.insert(new palfraEntity(24,496,6));
+
+    dao2.insert(new palfraEntity(25,445,1));
+    dao2.insert(new palfraEntity(25,497,2));
+    dao2.insert(new palfraEntity(25,324,3));
+    dao2.insert(new palfraEntity(25,498,4));
+    dao2.insert(new palfraEntity(25,239,5));
+    dao2.insert(new palfraEntity(25,308,6));
+    dao2.insert(new palfraEntity(25,499,7));
+
+    dao2.insert(new palfraEntity(26,324,1));
+    dao2.insert(new palfraEntity(26,480,2));
+    dao2.insert(new palfraEntity(26,308,3));
+    dao2.insert(new palfraEntity(26,481,4));
+    dao2.insert(new palfraEntity(26,239,5));
+    dao2.insert(new palfraEntity(26,308,6));
+    dao2.insert(new palfraEntity(26,482,7));
+
+    dao2.insert(new palfraEntity(27,445,1));
+    dao2.insert(new palfraEntity(27,500,2));
+    dao2.insert(new palfraEntity(27,324,3));
+    dao2.insert(new palfraEntity(27,501,4));
+    dao2.insert(new palfraEntity(27,336,5));
+
+
+
+}
+
 }
 
 

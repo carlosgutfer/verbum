@@ -1,9 +1,11 @@
 package com.GF.verbum.ui.pantallajuegos;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -15,11 +17,9 @@ import android.widget.ImageView;
 
 import com.GF.verbum.DB.Entities.PalabrasEntity;
 import com.GF.verbum.DB.Entities.PreguntasEntity;
-import com.GF.verbum.DB.Entities.frasesEntity;
 import com.GF.verbum.R;
 import com.GF.verbum.commun.SharedPreferentManager;
 import com.GF.verbum.ui.pantallajuegos.Sintaxis.SintaxisActivity;
-import com.GF.verbum.ui.pantallajuegos.modoJuegos.analisis.analisisViewModel;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.eleccionSinMorActivity;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.modosDeJuegoViewModel;
 import com.GF.verbum.ui.pantallajuegos.record.RecordActivity;
@@ -38,19 +38,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private  int sonido_de_tecla;
     private SoundPool sp;
     private MediaPlayer md;
-    private AdView mAdView;
 
-    private int position;
-
-    private modosDeJuegoViewModel mpalabrasviewModel;
-
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
             }
         });
         findViewById();
@@ -61,8 +57,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(SharedPreferentManager.getIntegerValue("soundMode")==1){
             sound.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_off_24));
         }
-        
-        mpalabrasviewModel = new ViewModelProvider(this).get(modosDeJuegoViewModel.class);
+
+        modosDeJuegoViewModel mpalabrasviewModel = new ViewModelProvider(this).get(modosDeJuegoViewModel.class);
         mpalabrasviewModel.getAllPalabras().observe(this, new Observer<List<PalabrasEntity>>() {
             @Override
             public void onChanged(List<PalabrasEntity> palabrasEntities) {
@@ -75,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        mAdView = findViewById(R.id.adViewBanner);
+        AdView mAdView = findViewById(R.id.adViewBanner);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
@@ -103,27 +99,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         int view=v.getId();
         sonido();
+        int position;
         if(view==R.id.BT_Jugar){
             Intent i = new Intent(this, eleccionSinMorActivity.class);
             if(md!=null){
-            position=md.getCurrentPosition();
-            i.putExtra("position",position);}
+            position =md.getCurrentPosition();
+            i.putExtra("position", position);}
             startActivity(i);
             finish();
            }
         if(view==R.id.BT_Mejores){
             Intent i = new Intent(this, RecordActivity.class);
             if(md!=null){
-                position=md.getCurrentPosition();
-            i.putExtra("position",position);}
+                position =md.getCurrentPosition();
+            i.putExtra("position", position);}
             startActivity(i);
             finish();
         }
         if(view==R.id.Bt_Sintaxis){
             Intent i = new Intent(this, SintaxisActivity.class);
             if(md!=null){
-                position=md.getCurrentPosition();
-            i.putExtra("position",position);}
+                position =md.getCurrentPosition();
+            i.putExtra("position", position);}
             startActivity(i);
         }
         if(view==R.id.IB_sound){
@@ -132,13 +129,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(view==R.id.Bt_tutorial){
             Intent i = new Intent(this, tutorialActivity.class);
             if(md!=null){
-                position=md.getCurrentPosition();
-                i.putExtra("position",position);}
+                position =md.getCurrentPosition();
+                i.putExtra("position", position);}
             startActivity(i);
             finish();
         }
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private void soundMode() {
         int soundMode= SharedPreferentManager.getIntegerValue("soundMode");
         if(soundMode==1){

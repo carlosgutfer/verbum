@@ -1,5 +1,6 @@
 package com.GF.verbum.ui.pantallajuegos.nuevaOportunidad;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,9 +20,15 @@ import androidx.fragment.app.DialogFragment;
 
 import com.GF.verbum.R;
 
+import com.GF.verbum.commun.SharedPreferentManager;
+import com.GF.verbum.ui.pantallajuegos.modoJuegos.analisis.analisFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.escaleraInfinita.PantallaEscaleraInfinitaFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.escaleraInfinita.pantallaEscaleraInfinitaMedioDificilFragment;
 import com.GF.verbum.ui.pantallajuegos.modoJuegos.morfologia.escaleraInfinita.pantallaEscaleraInfinitaPantallaPequeña;
+import com.google.android.gms.ads.OnUserEarnedRewardListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
+
+import static com.GF.verbum.commun.Constantes.reward;
 
 
 public class nuevaOportunidadDialogFragment extends DialogFragment {
@@ -29,20 +36,23 @@ public class nuevaOportunidadDialogFragment extends DialogFragment {
     private TextView name;
     private Button off;
     private ImageButton showVideo;
-    private Activity actividad;
+    @SuppressLint("StaticFieldLeak")
+    private static Activity actividad;
     private int mood=1;
 
-    public static nuevaOportunidadDialogFragment newInstance(String nombre) {
+    public static nuevaOportunidadDialogFragment newInstance(String nombre,Activity a) {
 
         Bundle args = new Bundle();
         nuevaOportunidadDialogFragment fragment = new nuevaOportunidadDialogFragment();
         args.putString("nombre",nombre);
         fragment.setArguments(args);
+        actividad =a;
         return fragment;
     }
 
-    public static nuevaOportunidadDialogFragment newInstance() {
+    public static nuevaOportunidadDialogFragment newInstance(Activity a) {
         nuevaOportunidadDialogFragment fragment = new nuevaOportunidadDialogFragment();
+        actividad=a;
         return fragment;
     }
 
@@ -74,14 +84,36 @@ public class nuevaOportunidadDialogFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
                 if( PantallaEscaleraInfinitaFragment.mRewardedVideoAd!=null){
-                    PantallaEscaleraInfinitaFragment.mRewardedVideoAd.show();
+                    PantallaEscaleraInfinitaFragment.mRewardedVideoAd.show(actividad, new OnUserEarnedRewardListener() {
+                        @Override
+                        public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                            SharedPreferentManager.setIntegerValue(reward,rewardItem.getAmount());
+                        }
+                    });
                 }
                 else if(pantallaEscaleraInfinitaPantallaPequeña.mRewardedVideoAd!=null){
-                    pantallaEscaleraInfinitaPantallaPequeña.mRewardedVideoAd.show();
+                    pantallaEscaleraInfinitaPantallaPequeña.mRewardedVideoAd.show(actividad, new OnUserEarnedRewardListener() {
+                        @Override
+                        public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                            SharedPreferentManager.setIntegerValue(reward,rewardItem.getAmount());
+                        }
+                    });
                 }else if(pantallaEscaleraInfinitaMedioDificilFragment.mRewardedVideoAd!=null){
-                    pantallaEscaleraInfinitaMedioDificilFragment.mRewardedVideoAd.show();
+                    pantallaEscaleraInfinitaMedioDificilFragment.mRewardedVideoAd.show(actividad, new OnUserEarnedRewardListener() {
+                        @Override
+                        public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                            SharedPreferentManager.setIntegerValue(reward,rewardItem.getAmount());
+                        }
+                    });
+                }else if(analisFragment.mRewardedVideoAd!=null) {
+                    analisFragment.mRewardedVideoAd.show(actividad, new OnUserEarnedRewardListener() {
+                        @Override
+                        public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                           SharedPreferentManager.setIntegerValue(reward, rewardItem.getAmount());
+                        }
+                    });
                 }
-                mood=2;
+                    mood=2;
                 dismiss();
 
             }

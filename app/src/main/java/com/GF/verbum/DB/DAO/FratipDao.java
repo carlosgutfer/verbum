@@ -13,8 +13,8 @@ import java.util.List;
 public interface FratipDao {
     @Insert void insert(fratipEntity fratip);
 
-    @Query("Select * from FRATIP where idFrase = :ID order by position")
-    LiveData<List<fratipEntity>> selectFraTip(int ID);
+    @Query("Select * from FRATIP where idFrase = :arg0 order by position")
+    LiveData<List<fratipEntity>> selectFraTip(int arg0);
 
     @Query("Delete from fratip") void deleteAll();
 }

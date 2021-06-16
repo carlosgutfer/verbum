@@ -21,8 +21,8 @@ public interface PalabrasDao {
 
     @Query (" DELETE FROM Palabras") void deleteAll();
 
-    @Query("Select palabra from Palabras T1 inner join (select idPalabra from palfra where idFrase =:ID order by position ) T2 ON T1.idPalabra = T2.idPalabra")
-    LiveData<List<String>> getPalabrasFrase(int ID);
+    @Query("Select palabra from Palabras T1 inner join (select idPalabra from palfra where idFrase =:arg0 order by position ) T2 ON T1.idPalabra = T2.idPalabra")
+    LiveData<List<String>> getPalabrasFrase(int arg0);
 
 }
 
