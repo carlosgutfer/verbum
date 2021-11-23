@@ -16,12 +16,6 @@ public class SharedPreferentManager {
                 .getSharedPreferences(APP_SETTINGS_FILE, Context.MODE_PRIVATE);
     }
 
-    public static void  setBooleanValue(String dataLabel, boolean dataValue){
-        SharedPreferences.Editor editor = getSharePreferences().edit();
-        editor.putBoolean(dataLabel,dataValue);
-        editor.commit();
-    }
-
     public static void  setIntegerValue(String dataLabel, Integer dataValue){
         SharedPreferences.Editor editor = getSharePreferences().edit();
         editor.putInt(dataLabel,dataValue);
@@ -31,10 +25,5 @@ public class SharedPreferentManager {
     public static Integer getIntegerValue(String dataLabel){
         return getSharePreferences().getInt(dataLabel, -1);
     }
-
-    public static Boolean getBooleanValue(String dataLabel){
-        return getSharePreferences().getBoolean(dataLabel, true);
-    }
-
 
 }

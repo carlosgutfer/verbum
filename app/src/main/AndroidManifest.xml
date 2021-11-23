@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".commun.MyApp"
         android:allowBackup="true"
@@ -12,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.pantallajuegos.modoJuegos.eleccionSinMorActivity"></activity>
+        <activity android:name=".ui.pantallajuegos.modoJuegos.eleccionSinMorActivity" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -27,19 +31,20 @@
         <activity android:name=".ui.pantallajuegos.Sintaxis.explicacionSintaxisActivity" />
         <activity
             android:name=".ui.pantallajuegos.Sintaxis.SintaxisActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".ui.pantallajuegos.record.RecordActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".ui.pantallajuegos.modoJuegos.morfologia.EleccionJuegoMorfologiaActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".ui.pantallajuegos.modoJuegos.pantalla_juegos"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".ui.pantallajuegos.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

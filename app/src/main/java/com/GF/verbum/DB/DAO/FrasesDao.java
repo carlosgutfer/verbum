@@ -10,7 +10,8 @@ import com.GF.verbum.DB.Entities.frasesEntity;
 import java.util.List;
 
 @Dao
-public interface FrasesDao {
+public interface FrasesDao
+{
 
     @Insert void insert(frasesEntity frase);
 
