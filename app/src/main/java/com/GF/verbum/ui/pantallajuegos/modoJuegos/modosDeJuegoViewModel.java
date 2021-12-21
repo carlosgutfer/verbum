@@ -18,7 +18,6 @@ public class modosDeJuegoViewModel extends AndroidViewModel {
     private PalabraRepository mRepository;
     private LiveData<List<PalabrasEntity>> allPalabras;
     private LiveData<List<PreguntasEntity>> allPreguntas;
-    private LiveData<List<String>> palFra;
 
     public modosDeJuegoViewModel(@NonNull Application application) {
         super(application);

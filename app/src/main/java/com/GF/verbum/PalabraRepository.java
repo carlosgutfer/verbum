@@ -28,10 +28,10 @@ public class PalabraRepository {
 
     private PalabrasDao DaoPalabras;
     private LiveData<List<PalabrasEntity>> allPalabras;
-    private LiveData<List<String>> palfra;
 
 
-    public PalabraRepository(Application application) {
+    public PalabraRepository(Application application)
+    {
         PalabrasRoomDataBase dbPalabras = PalabrasRoomDataBase.getRoomDataBase(application);
         DaoPalabras=dbPalabras.DAOPALABRAS();
         allPalabras=DaoPalabras.getAllPalabras();

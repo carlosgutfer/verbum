@@ -6,9 +6,6 @@ public class user {
     private int mode;
     private int difficulty;
 
-    public user() {
-    }
-
     public user(String name, int points, int mode, int difficulty) {
         this.name = name;
         this.points = points;
@@ -28,23 +25,5 @@ public class user {
         return points;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
-    }
 
-    public int getMode() {
-        return mode;
-    }
-
-    public void setMode(int mode) {
-        this.mode = mode;
-    }
-
-    public int getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(int difficulty) {
-        this.difficulty = difficulty;
-    }
 }
