@@ -14,8 +14,8 @@ public interface TiposDao {
     @Insert
     void insert(tiposEntity simple);
 
-    @Query("Select * FROM TIPOS WHERE idTipo = :idTipo")
-        LiveData<List<tiposEntity>> getTipos(int idTipo);
+    @Query("  Select * from tipos T1 inner join (select idTipo from FRATIP where idFrase =:idFrase order by position ) T2 ON T1.idTipo = T2.idTipo")
+        LiveData<List<tiposEntity>> getTipos(int idFrase);
 
 
     @Query("Select * FROM TIPOS WHERE idDependiente = :arg1")

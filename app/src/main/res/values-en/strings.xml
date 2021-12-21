@@ -83,5 +83,7 @@
     <string name="verdadero">True</string>
     <string name="falso">False</string>
     <string name="introQueSoy">The word: </string>
+    <string name="predicado1">Predicado 1:</string>
+    <string name="Predicado2">Predicado 2:</string>
 
 </resources>

@@ -87,6 +87,8 @@
     <string name="falloAnalisis">Ups... Parece que has fallado.  ¡No te desanimes y vuelve a probar !</string>
     <string name="aciertoAnalisis">¡Felicidades has hecho correctamente el análisis!</string>
     <string name="aciertoAnalisis2">"Prueba otra vez y sube la dificicultad. "</string>
+    <string name="predicado1">Predicado 1:</string>
+    <string name="Predicado2">Predicado 2:</string>
 
 
 </resources>

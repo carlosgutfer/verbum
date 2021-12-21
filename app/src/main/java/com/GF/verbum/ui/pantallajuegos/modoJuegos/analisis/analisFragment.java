@@ -37,17 +37,21 @@ public class analisFragment extends Fragment implements View.OnClickListener{
 
     private static final String ARG_PARAM1 = "param1";
     //elementos layout
-    private TextView TV_Frase, TV_oracionTipo;
+    private TextView TV_Frase, TV_oracionTipo, TV_pre1, TV_pre2;
     private Button BT_op1, BT_op2, BT_op3,BT_op4, BT_op5,BT_op6;
 
     //variables
     private int idFrase;
     private analisisViewModel anaviewModel;
     private ArrayList<tiposEntity> tiposFrase = new ArrayList<>();
+    private ArrayList<tiposEntity> pre1Frase = new ArrayList<>();
+    private ArrayList<tiposEntity> pre2Frase = new ArrayList<>();
+
     private frasesEntity fraseFinal;
     private String stFrase ="";
     private controlDeJuego newControl;
     public  static RewardedAd mRewardedVideoAd;
+    private boolean compuesta;
 
 
     public static analisFragment newInstance(int param1) {
@@ -65,9 +69,6 @@ public class analisFragment extends Fragment implements View.OnClickListener{
         if (getArguments() != null) {
              int dificultad = getArguments().getInt(ARG_PARAM1);
         }
-
-
-
     }
 
     @Override
@@ -82,31 +83,33 @@ public class analisFragment extends Fragment implements View.OnClickListener{
         anaviewModel.getAllFrases().observe(getActivity(), new Observer<List<frasesEntity>>() {
             @Override
             public void onChanged(List<frasesEntity> frasesEntities) {
-               fraseFinal = getFrase(frasesEntities);
+               getFrase(frasesEntities);
                getStringPal();
                // Llamada a la tabla fratip para tomar todos los registros que tengan el id proporcionado
                 anaviewModel.getTipFra(idFrase).observe(getActivity(), new Observer<List<fratipEntity>>() {
                     @Override
                     public void onChanged(List<fratipEntity> fratip) {
                         getTipos(fratip);
-                        newControl = new controlDeJuego(getActivity(),BT_op1,BT_op2,tiposFrase);
+                        newControl = new controlDeJuego(getActivity(),BT_op1,BT_op2,tiposFrase,compuesta);
                     }
                 });
 
             }
         });
-
-
         return v;
     }
-
 
 
     public void setText(@NonNull ArrayList<String> s) {
         Invisible();
         BT_op1.setText(s.get(0));
+
+        if(s.size()==1)
+            BT_op2.setText("pasiva");
+        else
             BT_op2.setText(s.get(1));
-            if(s.size()>=3) {
+
+        if(s.size()>=3) {
                 BT_op3.setText(s.get(2));
                 BT_op3.setVisibility(View.VISIBLE);
                 if(s.size() >=5){
@@ -124,34 +127,56 @@ public class analisFragment extends Fragment implements View.OnClickListener{
     }
 
     // añado al arrayList de tipos, los registros que pertenecen a la frase
-    private void getTipos(List<fratipEntity> allfratip) {
-        for(int i=0; i<allfratip.size();i++) {
-            anaviewModel.getTipo(allfratip.get(i).getIdTipo()).observe(this, new Observer<List<tiposEntity>>() {
+    private void getTipos(@NonNull List<fratipEntity> allfratip) {
+
+            anaviewModel.getTipo(idFrase).observe(this, new Observer<List<tiposEntity>>() {
                 @Override
                 public void onChanged(List<tiposEntity> tiposEntities) {
-                    for (tiposEntity newAdd: tiposEntities){
-                        tiposFrase.add(newAdd);
-                        if(newAdd.getIdTipo()==14)
-                            TV_Frase.setText("¿"+TV_Frase.getText()+"?");
-                        else if(newAdd.getIdTipo()==21)
-                            TV_Frase.setText("¡"+TV_Frase.getText()+"!");
+                    boolean pre1 = false;
+                    boolean pre2 = false;
+                        for (tiposEntity newAdd : tiposEntities) {
+                            if(compuesta) {
+                                    if (!pre1 && !pre2) {
+                                        if (newAdd.getIdTipo() != 1)
+                                            tiposFrase.add(newAdd);
+                                        else {
+                                            pre1 = true;
+                                        }
+                                    } else if (pre1) {
+                                        if (newAdd.getIdTipo() != 1)
+                                            pre1Frase.add(newAdd);
+                                        else {
+                                            pre1 = false;
+                                            pre2 = true;
+                                        }
+                                    } else if (pre2)
+                                        pre2Frase.add(newAdd);
 
-                    }
+                                }else{
+                                tiposFrase.add(newAdd);
+                            }
+
+                            if (newAdd.getIdTipo() == 14)
+                                TV_Frase.setText("¿" + TV_Frase.getText() + "?");
+                            else if (newAdd.getIdTipo() == 21)
+                                TV_Frase.setText("¡" + TV_Frase.getText() + "!");
+                        }
+
 
                 }
             });
-        }
+
+
     }
 
         // Cojo una frase
-    private frasesEntity getFrase(List<frasesEntity> frase) {
+    private void getFrase(@NonNull List<frasesEntity> frase) {
         int random = (int) (Math.random()*frase.size());
-        this.idFrase = frase.get(random).getIdFrase();
-        fraseFinal = frase.get(random);
-        return fraseFinal;
+        this.fraseFinal = frase.get(random);
+        this.idFrase = fraseFinal.getIdFrase();
+        this.compuesta = fraseFinal.isoCompuesta();
+
     }
-
-
 
     //Del arrayList palfra tomo el idPalabra de cada registro y en la tabla palabra tomo el string que corresponde a ese ID
     private void getStringPal() {
@@ -168,8 +193,7 @@ public class analisFragment extends Fragment implements View.OnClickListener{
         }
 
 
-    private void addString(ArrayList<String> s) {
-
+    private void addString(@NonNull ArrayList<String> s) {
 
         for (int i =0;i<s.size();i++) {
             this.stFrase += s.get(i) + " ";
@@ -180,7 +204,7 @@ public class analisFragment extends Fragment implements View.OnClickListener{
 
 
     @Override
-    public void onClick(View v) {
+    public void onClick(@NonNull View v) {
         int id = v.getId();
 
         if (id == R.id.BT_op1) {
@@ -246,13 +270,11 @@ public class analisFragment extends Fragment implements View.OnClickListener{
     // cambia el fragment por el de la pantalla de fin
     private void juegoFinalizado( boolean correcto) {
         SharedPreferentManager.setIntegerValue(reward,-1);
-
         requireActivity()
                 .getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.containerJuegos, RecordFragment.newInstance(4,correcto,newControl.fraseFinal))
                 .commit();
-
     }
     //  cargar el anuncio por si el jugador falla poder mostrarlo
     private void loadVideoRewar() {
@@ -279,19 +301,12 @@ public class analisFragment extends Fragment implements View.OnClickListener{
         });
         }
 
-
     // instancia el dialogFragment de nueva oportunidad
     private void nuevaOportunidad() {
         nuevaOportunidadDialogFragment dialog = nuevaOportunidadDialogFragment.newInstance(getActivity());
         dialog.setTargetFragment(this, 1);
         dialog.show(requireActivity().getSupportFragmentManager(), "Fragment");
     }
-
-
-
-
-
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
@@ -314,6 +329,8 @@ public class analisFragment extends Fragment implements View.OnClickListener{
     private void findByID(View v) {
         TV_Frase = v.findViewById(R.id.TV_frasPal);
         TV_oracionTipo = v.findViewById(R.id.tv_tipoOracion);
+        TV_pre1 =v.findViewById(R.id.tv_pre1);
+        TV_pre2 = v.findViewById(R.id.tv_pre2);
         BT_op1 = v.findViewById(R.id.BT_op1);
         BT_op2 = v.findViewById(R.id.BT_op2);
         BT_op3 = v.findViewById(R.id.BT_op3);
@@ -331,21 +348,40 @@ public class analisFragment extends Fragment implements View.OnClickListener{
 
     // Tengo que llamar tomar el objetoActual de la clase control, y meterlo aqui. Hacer llamada al observer y dentor de ella llamar a los metodos de contros de juego 1º y después mandar el texto
     private void sonTips(){
-        int idTipo = newControl.actual.getIdTipo();
-        if (newControl.tiposFrase.size()==0)
-            juegoFinalizado(true);
-        if(newControl.tiposFrase.size()==2&&idTipo==4)
-            idTipo = 9;
 
-        anaviewModel.getSonTip(idTipo).observe(getActivity(), new Observer<List<tiposEntity>>() {
-            @Override
-            public void onChanged(List<tiposEntity> tiposEntities) {
+        int idTipo = newControl.actual.getIdTipo();
+
+        if (newControl.tiposFrase.size()==0&&!compuesta)
+            juegoFinalizado(true);
+        else {
+            if(newControl.tiposFrase.size()==0&&!pre1Frase.isEmpty()) {
+                newControl.tiposFrase.addAll(pre1Frase);
+                pre1Frase.clear();
+                TV_oracionTipo.setText(newControl.fraseFinal);
+                TV_oracionTipo=TV_pre1;
+                TV_oracionTipo.setVisibility(View.VISIBLE);
+                newControl.fraseFinal = "";
+
+            }else if(newControl.tiposFrase.size()==0&&!pre2Frase.isEmpty()) {
+                newControl.tiposFrase.addAll(pre2Frase);
+                compuesta = false;
+                TV_oracionTipo.setText(newControl.fraseFinal);
+                TV_oracionTipo=TV_pre2;
+                TV_oracionTipo.setVisibility(View.VISIBLE);
+                newControl.fraseFinal = "";
+            }
+
+            if(newControl.tiposFrase.size()==2&&idTipo==4)
+                idTipo = 9;
+
+            anaviewModel.getSonTip(idTipo).observe(getActivity(), tiposEntities -> {
                 ArrayList<tiposEntity> sonTip = new ArrayList<>();
                 sonTip.addAll(tiposEntities);
                 setText(newControl.flujoDelJuego(sonTip));
-                TV_oracionTipo.setText(TV_oracionTipo.getText()+" "+newControl.actual.getDescriptcion());
+                TV_oracionTipo.setText(newControl.fraseFinal);
 
-            }
-        });
+            });
+        }
     }
+
 }

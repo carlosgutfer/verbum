@@ -10,7 +10,7 @@
 
     <Button
         android:id="@+id/BT_Facil"
-        android:layout_width="300dp"
+        android:layout_width="400dp"
         android:layout_height="100dp"
         android:background="@drawable/button_border_white_tablet"
         android:fontFamily="@font/allerta"

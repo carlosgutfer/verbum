@@ -23,7 +23,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-@Database(entities = {PalabrasEntity.class, palfraEntity.class, tiposEntity.class,fratipEntity.class,frasesEntity.class},version = 4 ,exportSchema = false)
+@Database(entities = {PalabrasEntity.class, palfraEntity.class, tiposEntity.class,fratipEntity.class,frasesEntity.class},version = 5 ,exportSchema = false)
 
 public abstract class PalabrasRoomDataBase extends RoomDatabase {
 
@@ -159,8 +159,8 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         //actitud del hablante
         //enunciativa
         dao.insert(new tiposEntity("enunciativa"));
-        dao.insert(new tiposEntity("afirmativas",11));
-        dao.insert( new tiposEntity("negativas",11));
+        dao.insert(new tiposEntity("afirmativa",11));
+        dao.insert( new tiposEntity("negativa",11));
         //interrogativa
         dao.insert(new tiposEntity("interrogativa"));
         dao.insert( new tiposEntity("directa",14));
@@ -177,22 +177,26 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         //Compuestas
         dao.insert(new tiposEntity("compuesta"));
         //coordinadas
-        dao.insert(new tiposEntity("coordinadas",24));
-        dao.insert(new tiposEntity("copulativas",25));
-        dao.insert( new tiposEntity("disyuntivas",25));
-        dao.insert( new tiposEntity("distributivas",25));
-        dao.insert(new tiposEntity("adversativas",25));
-        dao.insert(new tiposEntity("explicativas",25));
+        dao.insert(new tiposEntity("coordinada",26));
+        dao.insert(new tiposEntity("copulativa",27));
+        dao.insert( new tiposEntity("disyuntiva",27));
+        dao.insert( new tiposEntity("distributiva",27));
+        dao.insert(new tiposEntity("adversativa",27));
+        dao.insert(new tiposEntity("explicativa",27));
         //subordinadas
-        dao.insert(new tiposEntity("subordinadas",24));
-        dao.insert(new tiposEntity("sustantivas",31));
-        dao.insert( new tiposEntity("adjetivas",31));
-        dao.insert(new tiposEntity("adverbiales",31));
+        dao.insert(new tiposEntity("subordinada",26));
+        dao.insert(new tiposEntity("sustantiva",33));
+        dao.insert( new tiposEntity("adjetivas",33));
+        dao.insert(new tiposEntity("adverbiale",33));
         //yuxtapuestas
-        dao.insert(new tiposEntity("yuxtapuestas",24));
+        dao.insert(new tiposEntity("yuxtapuesta",26));
     }
 
     private static void addItemFra(FrasesDao daoFrases) {
+
+
+
+
         daoFrases.insert(new frasesEntity(false));
         daoFrases.insert(new frasesEntity(false));
         daoFrases.insert(new frasesEntity(false));
@@ -293,7 +297,8 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         daoFrases.insert(new frasesEntity(false));
         daoFrases.insert(new frasesEntity(false));
         daoFrases.insert(new frasesEntity(false));
-        daoFrases.insert(new frasesEntity(false));//100
+        daoFrases.insert(new frasesEntity(true));//101
+
     }
 
     private static void addItemFraTip(FratipDao dao) {
@@ -452,7 +457,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new fratipEntity(22,1,1));
         dao.insert(new fratipEntity(22,2,2));
         dao.insert(new fratipEntity(22,3,3));
-        dao.insert(new fratipEntity(22,7,4));
+        dao.insert(new fratipEntity(22,4,4));
         dao.insert(new fratipEntity(22,6,5));
         dao.insert(new fratipEntity(22,11,6));
         dao.insert(new fratipEntity(22,12,7));
@@ -460,7 +465,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new fratipEntity(23,1,1));
         dao.insert(new fratipEntity(23,2,2));
         dao.insert(new fratipEntity(23,3,3));
-        dao.insert(new fratipEntity(23,7,4));
+        dao.insert(new fratipEntity(23,4,4));
         dao.insert(new fratipEntity(23,6,5));
         dao.insert(new fratipEntity(23,11,6));
         dao.insert(new fratipEntity(23,12,7));
@@ -469,7 +474,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new fratipEntity(24,1,1));
         dao.insert(new fratipEntity(24,2,2));
         dao.insert(new fratipEntity(24,3,3));
-        dao.insert(new fratipEntity(24,7,4));
+        dao.insert(new fratipEntity(24,4,4));
         dao.insert(new fratipEntity(24,6,5));
         dao.insert(new fratipEntity(24,11,6));
         dao.insert(new fratipEntity(24,12,7));
@@ -477,7 +482,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new fratipEntity(25,1,1));
         dao.insert(new fratipEntity(25,2,2));
         dao.insert(new fratipEntity(25,3,3));
-        dao.insert(new fratipEntity(25,7,4));
+        dao.insert(new fratipEntity(25,4,4));
         dao.insert(new fratipEntity(25,6,5));
         dao.insert(new fratipEntity(25,11,6));
         dao.insert(new fratipEntity(25,12,7));
@@ -485,7 +490,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new fratipEntity(26,1,1));
         dao.insert(new fratipEntity(26,2,2));
         dao.insert(new fratipEntity(26,3,3));
-        dao.insert(new fratipEntity(26,7,4));
+        dao.insert(new fratipEntity(26,4,4));
         dao.insert(new fratipEntity(26,6,5));
         dao.insert(new fratipEntity(26,11,6));
         dao.insert(new fratipEntity(26,12,7));
@@ -493,7 +498,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new fratipEntity(27,1,1));
         dao.insert(new fratipEntity(27,2,2));
         dao.insert(new fratipEntity(27,3,3));
-        dao.insert(new fratipEntity(27,7,4));
+        dao.insert(new fratipEntity(27,4,4));
         dao.insert(new fratipEntity(27,6,5));
         dao.insert(new fratipEntity(27,11,6));
         dao.insert(new fratipEntity(27,12,7));
@@ -501,7 +506,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new fratipEntity(28,1,1));
         dao.insert(new fratipEntity(28,2,2));
         dao.insert(new fratipEntity(28,3,3));
-        dao.insert(new fratipEntity(28,7,4));
+        dao.insert(new fratipEntity(28,4,4));
         dao.insert(new fratipEntity(28,6,5));
         dao.insert(new fratipEntity(28,11,6));
         dao.insert(new fratipEntity(28,12,7));
@@ -509,7 +514,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new fratipEntity(29,1,1));
         dao.insert(new fratipEntity(29,2,2));
         dao.insert(new fratipEntity(29,3,3));
-        dao.insert(new fratipEntity(29,7,4));
+        dao.insert(new fratipEntity(29,4,4));
         dao.insert(new fratipEntity(29,6,5));
         dao.insert(new fratipEntity(29,11,6));
         dao.insert(new fratipEntity(29,12,7));
@@ -517,7 +522,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new fratipEntity(30,1,1));
         dao.insert(new fratipEntity(30,2,2));
         dao.insert(new fratipEntity(30,3,3));
-        dao.insert(new fratipEntity(30,7,4));
+        dao.insert(new fratipEntity(30,4,4));
         dao.insert(new fratipEntity(30,6,5));
         dao.insert(new fratipEntity(30,11,6));
         dao.insert(new fratipEntity(30,12,7));
@@ -525,7 +530,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new fratipEntity(31,1,1));
         dao.insert(new fratipEntity(31,2,2));
         dao.insert(new fratipEntity(31,3,3));
-        dao.insert(new fratipEntity(31,7,4));
+        dao.insert(new fratipEntity(31,4,4));
         dao.insert(new fratipEntity(31,6,5));
         dao.insert(new fratipEntity(31,11,6));
         dao.insert(new fratipEntity(31,12,7));
@@ -533,7 +538,7 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new fratipEntity(32,1,1));
         dao.insert(new fratipEntity(32,2,2));
         dao.insert(new fratipEntity(32,3,3));
-        dao.insert(new fratipEntity(32,7,4));
+        dao.insert(new fratipEntity(32,4,4));
         dao.insert(new fratipEntity(32,6,5));
         dao.insert(new fratipEntity(32,11,6));
         dao.insert(new fratipEntity(32,12,7));
@@ -1002,6 +1007,25 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
         dao.insert(new fratipEntity(100,8,3));
         dao.insert(new fratipEntity(100,11,4));
         dao.insert(new fratipEntity(100,12,5));
+
+        dao.insert(new fratipEntity(101,26,1));
+        dao.insert(new fratipEntity(101,27,2));
+        dao.insert(new fratipEntity(101,28,3));
+        dao.insert(new fratipEntity(101,1,4));
+        dao.insert(new fratipEntity(101,2,5));
+        dao.insert(new fratipEntity(101,3,6));
+        dao.insert(new fratipEntity(101,7,7));
+        dao.insert(new fratipEntity(101,11,8));
+        dao.insert(new fratipEntity(101,12,9));
+        dao.insert(new fratipEntity(101,1,10));
+        dao.insert(new fratipEntity(101,2,11));
+        dao.insert(new fratipEntity(101,3,12));
+        dao.insert(new fratipEntity(101,4,13));
+        dao.insert(new fratipEntity(101,11,14));
+        dao.insert(new fratipEntity(101,12,15));
+
+
+
     }
 
 
@@ -2197,6 +2221,14 @@ public abstract class PalabrasRoomDataBase extends RoomDatabase {
     //Ejemplo: aparece por pantalla la palabra demasiado, pero debe entenderse como demasiado/demasiados
 private static void addItemspalfra(PalfraDao dao2) {
 
+
+    dao2.insert(new palfraEntity(101,304,1));
+    dao2.insert(new palfraEntity(101,414,2));
+    dao2.insert(new palfraEntity(101,523,3));
+    dao2.insert(new palfraEntity(101,231,4));
+    dao2.insert(new palfraEntity(101,308,5));
+    dao2.insert(new palfraEntity(101,423,6));
+    dao2.insert(new palfraEntity(101,480,7));
 
     dao2.insert(new palfraEntity(100,471,1));
     dao2.insert(new palfraEntity(100,681,2));
